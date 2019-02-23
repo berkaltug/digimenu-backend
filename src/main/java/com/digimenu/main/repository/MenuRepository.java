@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.digimenu.main.entity.Menu;
-import com.digimenu.main.entity.Restaurant;
 
 public interface MenuRepository extends JpaRepository<Menu, Long> {
 	

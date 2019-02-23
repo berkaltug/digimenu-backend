@@ -15,8 +15,10 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 public class Category {
@@ -26,17 +28,13 @@ public class Category {
 	
 	@NotNull
 	private String name;
-	
-	@ManyToMany(cascade=CascadeType.ALL)
-	@JoinTable(name="category_restaurant",joinColumns= {@JoinColumn(name="category_id",referencedColumnName="id")},
-	inverseJoinColumns={@JoinColumn(name="restaurant_id",referencedColumnName="id")})
-	@JsonBackReference
-	private List<Restaurant> restaurants;
+//	@JsonBackReference(value="restaurant-category")
+//	@ManyToMany(mappedBy="categories") unidirectional olduğu için sildik
+//	private List<Restaurant> restaurants;
 
-	public Category(Long id, @NotNull String name,List<Restaurant> restaurants) {
+	public Category(Long id, @NotNull String name) {
 		this.id = id;
 		this.name = name;
-		this.restaurants=restaurants;
 	}
 	
 	public Category() {
@@ -58,13 +56,13 @@ public class Category {
 		this.name = name;
 	}
 
-	public List<Restaurant> getRestaurants() {
-		return restaurants;
-	}
-
-	public void setRestaurants(List<Restaurant> restaurants) {
-		this.restaurants = restaurants;
-	}
+//	public List<Restaurant> getRestaurants() {
+//		return restaurants;
+//	}
+//
+//	public void setRestaurants(List<Restaurant> restaurants) {
+//		this.restaurants = restaurants;
+//	}
 	
 
 	

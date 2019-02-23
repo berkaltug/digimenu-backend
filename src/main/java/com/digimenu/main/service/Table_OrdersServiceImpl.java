@@ -36,4 +36,10 @@ public class Table_OrdersServiceImpl implements Table_OrdersService {
 		tor.save(tableorders);
 	}
 
+
+	@Override
+	public void insertOrder(Long id,Long res, Integer masa) {
+		tor.insertTable_Order(id.intValue(),res, masa);
+	}
+
 }

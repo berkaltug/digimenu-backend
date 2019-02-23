@@ -21,7 +21,7 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public Category updateCategory(Category cat) {
-		Category newCat = new Category(cat.getId(),cat.getName(),cat.getRestaurants());
+		Category newCat = new Category(cat.getId(),cat.getName());
 		catr.delete(cat);
 		return catr.save(newCat);
 	}

@@ -18,6 +18,11 @@ public class MenuServiceImpl implements MenuService {
 	public List<Menu> getMenuItemsByRestaurant(Restaurant res) {
 		return mr.getByRestaurant(res.getId());
 	}
+
+	@Override
+	public Menu getMenuItem(Long id) {
+		return mr.getOne(id);
+	}
 	
 
 

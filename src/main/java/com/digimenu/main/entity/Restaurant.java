@@ -9,28 +9,33 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
+import com.digimenu.main.JsonSerializer.CustomJsonDeserializer;
+import com.digimenu.main.JsonSerializer.CustomJsonSerializer;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity
-
 public class Restaurant {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
 	@NotNull
+	
 	private String name;
-	@JsonBackReference // json cevabında sonsuza kadar iç içe yazmasın diye
+	@JsonBackReference(value="city-restaurant")
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="city_id",nullable=false)
 	private City city;
@@ -42,24 +47,26 @@ public class Restaurant {
 	private String mail;
 	@NotNull
 	private String owner;
-	@NotNull
-	@JsonManagedReference
-	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="restaurant")
-	private List<Menu> menu;
-	//@JsonManagedReference
-	@JsonBackReference
-	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="restaurant")
-	private List<Table_Orders> orders;
-	//@JsonIgnoreProperties("categories")
-	@JsonManagedReference
-	@ManyToMany(mappedBy="restaurants")
+//	@NotNull
+//	@JsonManagedReference(value="restaurant-item")
+//	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="restaurant")
+//	private List<Menu> menu;
+//	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="restaurant")
+//	private List<Table_Orders> orders;
+//	@JsonManagedReference(value="restaurant-category")
+	@ManyToMany
+	@JoinTable(name="restaurant_category",
+	joinColumns= {@JoinColumn(name="restaurant_id")},
+	inverseJoinColumns= {@JoinColumn(name="category_id")})
 	private List<Category> categories;
 
 
 //	@NotNull
 //	private RestaurantAcc restaurantAcc;
 	public Restaurant(Long id, @NotNull String name, City city, @NotNull String address, @NotNull Long tel,
-			@NotNull String mail, @NotNull String owner, @NotNull List<Menu> menu,List<Table_Orders> orders,
+			@NotNull String mail, @NotNull String owner, 
+//			@NotNull List<Menu> menu,
+//			List<Table_Orders> orders,
 			List<Category> categories) {
 		this.id = id;
 		this.name = name;
@@ -68,8 +75,8 @@ public class Restaurant {
 		this.tel = tel;
 		this.mail = mail;
 		this.owner = owner;
-		this.menu = menu;
-		this.orders=orders;
+//		this.menu = menu;
+//		this.orders=orders;
 		this.categories=categories;
 	}
 	
@@ -118,20 +125,20 @@ public class Restaurant {
 	public void setOwner(String owner) {
 		this.owner = owner;
 	}
-	public List<Menu> getMenu() {
-		return menu;
-	}
-	public void setMenu(List<Menu> menu) {
-		this.menu = menu;
-	}
+//	public List<Menu> getMenu() {
+//		return menu;
+//	}
+//	public void setMenu(List<Menu> menu) {
+//		this.menu = menu;
+//	}
 
-	public List<Table_Orders> getOrders() {
-		return orders;
-	}
-
-	public void setOrders(List<Table_Orders> orders) {
-		this.orders = orders;
-	}
+//	public List<Table_Orders> getOrders() {
+//		return orders;
+//	}
+//
+//	public void setOrders(List<Table_Orders> orders) {
+//		this.orders = orders;
+//	}
 
 	public List<Category> getCategories() {
 		return categories;
@@ -140,6 +147,13 @@ public class Restaurant {
 	public void setCategories(List<Category> categories) {
 		this.categories = categories;
 	}
+
+	@Override
+	public String toString() {
+		return "Restaurant [id=" + id + ", name=" + name + ", city=" + city.toString() + ", address=" + address + ", tel=" + tel
+				+ ", mail=" + mail + ", owner=" + owner + ", categories=" + categories + "]";
+	}
+	
 	
 	
 

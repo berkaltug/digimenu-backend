@@ -10,17 +10,18 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
-public class City {
+public class City { // deftere yazdığın gibi addRestaurant metodu ekle !!!
 	
 	@Id
 	@NotNull
 	private Integer id;
 	@NotNull
 	private String name;
-	@JsonManagedReference
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="city")
 	private List<Restaurant> restaurants=new ArrayList<Restaurant>();
 	
@@ -57,6 +58,12 @@ public class City {
 		this.restaurants = restaurants;
 	}
 
+	@Override
+	public String toString() {
+		return "City [id=" + id + ", name=" + name + ", restaurants=" + restaurants + "]";
+	}
+	
+	
 	
 
 	

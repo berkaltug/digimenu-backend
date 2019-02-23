@@ -1,16 +1,26 @@
 package com.digimenu.main.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
+import com.digimenu.main.JsonSerializer.CustomJsonDeserializer;
+import com.digimenu.main.JsonSerializer.CustomJsonSerializer;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity
 public class Menu {
@@ -23,21 +33,29 @@ public class Menu {
 	private String ingredients;
 	
 	private Integer price;
-	@JsonBackReference
+	@JsonBackReference(value="restaurant-item")  //json ignore görevi gördü karşı bir @jsonMaagedRef olmamasına rağmen
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="restaurant_id")
 	private Restaurant restaurant;
-	//fk bağlamadık o yüzden String
-	private String category;
 	
+	
+	//fk bağlamadık o yüzden String , mappinge gerek yok diye düşündüm 
+	private String category;
+
 	public Menu(Long id, @NotNull String item, String ingredients, Integer price, Restaurant restaurant,String category) {
 		this.id = id;
 		this.item = item;
 		this.ingredients = ingredients;
 		this.price = price;
 		this.restaurant = restaurant;
-		this.category=category;
+		this.category = category;
 	}
+	
+	
+	public Menu(Long id) {
+		this.id = id;
+	}
+
 
 	public Menu() {
 	}
@@ -89,4 +107,19 @@ public class Menu {
 	public void setCategory(String category) {
 		this.category = category;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Menu [id=" + id + ", item=" + item + ", ingredients=" + ingredients + ", price=" + price
+				+ ", restaurant=" + restaurant.toString() + ", category=" + category + "]";
+	}
+
+    
+	
+
+
+	
+	
+	
 }

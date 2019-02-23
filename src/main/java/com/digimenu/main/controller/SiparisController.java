@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.digimenu.main.entity.Category;
 import com.digimenu.main.entity.City;
 import com.digimenu.main.entity.Menu;
 import com.digimenu.main.entity.Restaurant;
@@ -69,4 +70,12 @@ public class SiparisController {
 		}
 		return result.get(0);
 	}	
+	@GetMapping("restaurant/{id}")
+	Restaurant getRestaurant(@PathVariable("id") Long id) {
+		return restaurantService.getRestaurant(id);
+	}
+	@GetMapping("restaurant/{id}/categories")
+	Collection<Category> getCategories(@PathVariable("id") Long id){
+		return restaurantService.getRestaurant(id).getCategories();
+	}
 }

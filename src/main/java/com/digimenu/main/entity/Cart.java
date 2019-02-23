@@ -1,31 +1,64 @@
 package com.digimenu.main.entity;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.sql.Timestamp;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 
 @Entity
+//@JsonIdentityInfo(
+//		  generator = ObjectIdGenerators.PropertyGenerator.class, 
+//		  property = "id")
 public class Cart {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-	@OneToOne
-	@JoinColumn(name="table_orders_id")
-	private Table_Orders table_orders;
+	
+	private String item;
 	
 	private Integer totalPrice;
-
-	public Cart(Long id, Table_Orders table_orders, Integer totalPrice) {
-		this.id = id;
-		this.table_orders = table_orders;
-		this.totalPrice = totalPrice;
-	}
-
+//	DB'de trigger sayesinde bu tabloya entity eklendiği için  Table_Orders'a bağlamaya gerek duymadık
+//	onun yerine triggerda tableordersa eklenen restoran ve masa numarasını bu fieldlere atıyoruz.
+	private Long restaurantId;
+	private Integer masaNo;
+	
+	@CreationTimestamp
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date siparisTarihi;
+	
+	@UpdateTimestamp
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date guncellemeTarihi;
+	
 	public Cart() {
 	}
+
+	
+
+	public Cart(Long id, String item, Integer totalPrice, Long restaurantId, Integer masaNo, Date siparisTarihi,
+			Date guncellemeTarihi) {
+		this.id = id;
+		this.item = item;
+		this.totalPrice = totalPrice;
+		this.restaurantId = restaurantId;
+		this.masaNo = masaNo;
+		this.siparisTarihi = siparisTarihi;
+		this.guncellemeTarihi = guncellemeTarihi;
+	}
+
+
 
 	public Long getId() {
 		return id;
@@ -35,12 +68,36 @@ public class Cart {
 		this.id = id;
 	}
 
-	public Table_Orders getTable_orders() {
-		return table_orders;
+	public String getItem() {
+		return item;
 	}
 
-	public void setTable_orders(Table_Orders table_orders) {
-		this.table_orders = table_orders;
+	public void setItem(String item) {
+		this.item = item;
+	}
+
+	public Long getRestaurantId() {
+		return restaurantId;
+	}
+
+	public void setRestaurantId(Long restaurantId) {
+		this.restaurantId = restaurantId;
+	}
+
+	public Integer getMasaNo() {
+		return masaNo;
+	}
+
+	public void setMasaNo(Integer masaNo) {
+		this.masaNo = masaNo;
+	}
+
+	public Date getGuncellemeTarihi() {
+		return guncellemeTarihi;
+	}
+
+	public void setGuncellemeTarihi(Date guncellemeTarihi) {
+		this.guncellemeTarihi = guncellemeTarihi;
 	}
 
 	public Integer getTotalPrice() {
@@ -50,6 +107,23 @@ public class Cart {
 	public void setTotalPrice(Integer totalPrice) {
 		this.totalPrice = totalPrice;
 	}
+
+	public Date getSiparisTarihi() {
+		return siparisTarihi;
+	}
+
+	public void setSiparisTarihi(Date siparisTarihi) {
+		this.siparisTarihi = siparisTarihi;
+	}
+
+	@Override
+	public String toString() {
+		return "Cart [id=" + id + ", item=" + item + ", totalPrice=" + totalPrice + ", restaurantId=" + restaurantId
+				+ ", masaNo=" + masaNo + ", siparisTarihi=" + siparisTarihi + ", guncellemeTarihi=" + guncellemeTarihi
+				+ "]";
+	}
+
+	
 	
 	
 	
