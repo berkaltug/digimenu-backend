@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +17,8 @@ import com.digimenu.main.service.CartService;
 import com.digimenu.main.service.Table_OrdersService;
 
 @RestController
-@RequestMapping("/cart")
+@RequestMapping("/restaurant")
+@PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_RESTAURANT')")
 public class CartController {
 
 	@Autowired
@@ -23,7 +26,7 @@ public class CartController {
 	@Autowired 
 	private Table_OrdersService tos;
 	
-	@GetMapping("/{restaurant}/{masa}")
+	@GetMapping("cart/{restaurant}/{masa}")
 	public List<Cart> getCart(@PathVariable("restaurant") Long resId,@PathVariable("masa")Integer masaNo) {
 		return cs.getCart(resId, masaNo);
 	}

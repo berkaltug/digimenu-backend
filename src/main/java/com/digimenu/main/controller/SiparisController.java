@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +25,7 @@ import com.digimenu.main.service.RestaurantService;
 import com.digimenu.main.service.Table_OrdersService;
 
 @RestController
-@RequestMapping("/{il}")
+@RequestMapping("/menu")
 public class SiparisController {
 	
 	@Autowired
@@ -38,17 +41,17 @@ public class SiparisController {
 	@Autowired 
 	private Table_OrdersService table_ordersService;
 	
-	@GetMapping
-	City getCity(@PathVariable("il") Integer il) {
-		return cityService.getCity(il);
-	}
 	
+	@PreAuthorize("hasRole('ROLE_USER')")
+	//@Secured("USER")
 	@GetMapping("/{restaurantmenu}") //bütün menüyü çeker
 	Collection<Menu> getMenu(@PathVariable("restaurantmenu") Long id) {
 		// burada o şehre ait olmayan restoran idsi verince de menüyü gösteriyor göstermememsi lazım.
 		//Qr koda gömücez ama gömerken de sıkıntı yaratabilir.
 		return menuService.getMenuItemsByRestaurant(restaurantService.getRestaurant(id));
 	}
+	
+	@PreAuthorize("hasRole('ADMIN') OR hasRole('RESTAURANT') OR hasRole('USER')")
 	//Gerek var mı emin değilim
 	@GetMapping("/{restaurantmenu}/{menuitem}") //tek bir itemi ismi ile çeker
 	Menu getMenuItem(@PathVariable("restaurantmenu") Long id,@PathVariable("menuitem") String menuItem) {
@@ -70,10 +73,14 @@ public class SiparisController {
 		}
 		return result.get(0);
 	}	
+	
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("restaurant/{id}")
 	Restaurant getRestaurant(@PathVariable("id") Long id) {
 		return restaurantService.getRestaurant(id);
 	}
+	
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("restaurant/{id}/categories")
 	Collection<Category> getCategories(@PathVariable("id") Long id){
 		return restaurantService.getRestaurant(id).getCategories();

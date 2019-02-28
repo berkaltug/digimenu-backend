@@ -18,14 +18,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
-import com.digimenu.main.JsonSerializer.CustomCartDeserializer;
-import com.digimenu.main.JsonSerializer.CustomCartSerializer;
-import com.digimenu.main.JsonSerializer.CustomJsonDeserializer;
-import com.digimenu.main.JsonSerializer.CustomJsonSerializer;
-import com.digimenu.main.JsonSerializer.CustomMenuDeserializer;
-import com.digimenu.main.JsonSerializer.CustomMenuSerializer;
-import com.digimenu.main.JsonSerializer.CustomRestaurantDeserializer;
-import com.digimenu.main.JsonSerializer.CustomRestaurantSerializer;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;

@@ -11,6 +11,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,7 +43,7 @@ public class Table_OrdersController {
 	Collection<Table_Orders> getAllTableOrders(){
 		return table_ordersService.getTable_Orders();
 	}
-	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")  //test amaçlı fonk
 	@GetMapping("{restaurant}/{masa}")
 	Collection<Table_Orders> getTableOrders(@PathVariable("restaurant") Long id,@PathVariable("masa")Integer masaNo){
 		//return table_ordersService.getByTableNo(masaNo);
@@ -53,6 +54,7 @@ public class Table_OrdersController {
 		return masaorders;
 	}
 	
+	@PreAuthorize("hasRole('USER') OR hasRole('RESTAURANT') OR hasRole('ADMIN')")
 	@PostMapping("{restaurant}/{masa}")
 	@ResponseStatus(HttpStatus.CREATED)
 	void createTableOrder(@PathVariable("restaurant") Long id,@PathVariable("masa")Integer masaNo,@RequestBody String ordersStr) throws ParseException{

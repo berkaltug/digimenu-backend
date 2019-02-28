@@ -13,7 +13,11 @@ insert into menu(id,item,ingredients,price,restaurant_id) values (4,'patates kı
 insert into category(id,name) values (1,'yiyecek');
 insert into category(id,name) values (2,'içecek');
 
-insert into category_restaurant(category_id,restaurant_id) values (1,1);
-insert into category_restaurant(category_id,restaurant_id) values (2,1);
-insert into category_restaurant(category_id,restaurant_id) values (1,2);
-insert into category_restaurant(category_id,restaurant_id) values (2,2);
+insert into restaurant_category(category_id,restaurant_id) values (1,1);
+insert into restaurant_category(category_id,restaurant_id) values (2,1);
+insert into restaurant_category(category_id,restaurant_id) values (1,2);
+insert into restaurant_category(category_id,restaurant_id) values (2,2);
+
+insert into role(id,name) values (1,'ROLE_ADMIN')
+insert into role(id,name) values (2,'ROLE_RESTAURANT')
+insert into role(id,name) values (3,'ROLE_USER')
