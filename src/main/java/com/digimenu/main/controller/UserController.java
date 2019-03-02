@@ -57,7 +57,7 @@ public class UserController {
             SimpleMailMessage mailMessage = new SimpleMailMessage();
             mailMessage.setTo(user.getEmail());
             mailMessage.setSubject("Digimenu'ye Hoşgeldiniz!");
-            mailMessage.setFrom("business@digimenu.online"); //gereksiz 	
+//            mailMessage.setFrom("business@digimenu.online"); //gereksiz 	
             mailMessage.setText("Üyeliğinizi doğrulamak için lütfen doğrulama linkine tıklayınız : "
             +"http://localhost:8080/user/confirm-account?token="+confirmationToken.getConfirmationToken());
             
