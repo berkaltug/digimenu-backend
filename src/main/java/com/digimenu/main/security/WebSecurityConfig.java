@@ -69,7 +69,7 @@ public class WebSecurityConfig {
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+                .sessionCreationPolicy(SessionCreationPolicy.NEVER)
                 .and()
                 .csrf().disable()
                 .httpBasic()
