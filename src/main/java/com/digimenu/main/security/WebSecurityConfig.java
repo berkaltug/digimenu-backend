@@ -56,7 +56,7 @@ public class WebSecurityConfig {
                 
                 .authorizeRequests()
                 .antMatchers(
-                		"/user/register/",
+                		"/user/register",
                 		"/user/confirmaccount/**",
                 		"/user/forgetpassword/**",
                 		"/user/resetpassword/**"
@@ -69,7 +69,7 @@ public class WebSecurityConfig {
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
                 .and()
                 .csrf().disable()
                 .httpBasic()
