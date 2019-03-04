@@ -53,12 +53,15 @@ public class WebSecurityConfig {
     	@Override
         protected void configure(HttpSecurity http) throws Exception {
             http
-                .csrf().disable()
-                .httpBasic()
-                .authenticationEntryPoint(authEntryPoint)
-                .and()
+                
                 .authorizeRequests()
-                .antMatchers("/user/**").permitAll()
+                .antMatchers(
+                		"/user/register/",
+                		"/user/confirmaccount/**",
+                		"/user/forgetpassword/**",
+                		"/user/resetpassword/**"
+                		).permitAll()
+                .antMatchers("/user/savepassword").hasAuthority("CHANGE_PASSWORD_PRIVILIGE")
 //                .antMatchers("/restaurant/**").hasRole("RESTAURANT")
 //                .antMatchers("/city/**").hasRole("ADMIN")
 //                .antMatchers("/table_orders/**").hasRole("ADMIN")
@@ -66,19 +69,24 @@ public class WebSecurityConfig {
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+                .and()
+                .csrf().disable()
+                .httpBasic()
+                .authenticationEntryPoint(authEntryPoint)
+                
                  ;
         }
     }
     
     @Configuration
-    @Order(2)
+    @Order(2)	// no order means order of config value is last
     public static class RestaurantSecurityConfig extends WebSecurityConfigurerAdapter{
     	
     	@Override
     	protected void configure(HttpSecurity http) throws Exception{
     		http
-    		
+    		.antMatcher("/restaurant/**")
     		.authorizeRequests()
 				.antMatchers("/assets/**", "/webjars/**").permitAll()
 				.antMatchers("/restaurant/**")
