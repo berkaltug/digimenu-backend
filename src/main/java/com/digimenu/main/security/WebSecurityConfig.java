@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -63,10 +64,11 @@ public class WebSecurityConfig {
                 		).permitAll()
                 .antMatchers("/user/savepassword").hasAuthority("CHANGE_PASSWORD_PRIVILIGE")
 //                .antMatchers("/restaurant/**").hasRole("RESTAURANT")
-//                .antMatchers("/city/**").hasRole("ADMIN")
-//                .antMatchers("/table_orders/**").hasRole("ADMIN")
-//                .antMatchers("/menu/**").hasRole("USER")
-                .anyRequest().authenticated()
+                .antMatchers("/city/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST,"/table_orders/**").hasRole("USER")
+                .antMatchers(HttpMethod.GET,"/table_orders/**").hasRole("ADMIN")
+                .antMatchers("/menu/**").hasRole("USER")
+
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.NEVER)
