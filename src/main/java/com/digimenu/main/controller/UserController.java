@@ -101,10 +101,6 @@ public class UserController {
 	ResponseEntity<String> login(){
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		
-		if(auth.getPrincipal()==null) {
-			return new ResponseEntity<>("Lütfen girdiğiniz bilgileri kontrol ediniz!",HttpStatus.NOT_FOUND);
-		}
-		
 		return new ResponseEntity<>("Başarılı",HttpStatus.ACCEPTED);
 	}
 	
