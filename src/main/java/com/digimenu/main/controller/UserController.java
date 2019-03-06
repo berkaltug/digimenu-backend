@@ -90,10 +90,22 @@ public class UserController {
             user.setEnabled(true);
             userService.save(user);  
             confirmTokenRepo.delete(token); // onaylanınca tokenı siliyoruz
-		}else {
+		}
+		else {
 		}
 		
 		return new ResponseEntity<>("üyelik onaylanmıştır",HttpStatus.ACCEPTED);
+	}
+	
+	@PostMapping("/login")
+	ResponseEntity<String> login(){
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user = (User) auth.getPrincipal();
+		if(user==null) {
+			return new ResponseEntity<>("Lütfen girdiğiniz bilgileri kontrol ediniz!",HttpStatus.NOT_FOUND);
+		}
+		
+		return new ResponseEntity<>("Başarılı",HttpStatus.ACCEPTED);
 	}
 	
 	@PostMapping("/forgetpassword/{email}")

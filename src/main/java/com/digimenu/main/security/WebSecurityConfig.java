@@ -60,7 +60,8 @@ public class WebSecurityConfig {
                 		"/user/register",
                 		"/user/confirmaccount/**",
                 		"/user/forgetpassword/**",
-                		"/user/resetpassword/**"
+                		"/user/resetpassword/**",
+                		"/user/login"
                 		).permitAll()
                 .antMatchers("/user/savepassword").hasAuthority("CHANGE_PASSWORD_PRIVILIGE")
 //                .antMatchers("/restaurant/**").hasRole("RESTAURANT")
