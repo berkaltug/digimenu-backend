@@ -100,8 +100,8 @@ public class UserController {
 	@PostMapping("/login")
 	ResponseEntity<String> login(){
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		User user = (User) auth.getPrincipal();
-		if(user==null) {
+		
+		if(auth.getPrincipal()==null) {
 			return new ResponseEntity<>("Lütfen girdiğiniz bilgileri kontrol ediniz!",HttpStatus.NOT_FOUND);
 		}
 		
