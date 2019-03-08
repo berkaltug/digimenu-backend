@@ -12,4 +12,15 @@ public class RestaurantController {
 	public String getlogin() {
 		return "login";
 	}
+	
+	@GetMapping("/tables")
+	public String getTables() {
+		return "showtables";
+	}
+	
+	@GetMapping("/menu")
+	public String getMenu() {
+		return "showmenu";
+	}
+	
 }
