@@ -28,7 +28,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 	protected final Log logger = LogFactory.getLog(getClass());
 	@Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
-		boolean isEnabled=true;
+//		boolean isEnabled=true;
 		boolean accountNonExpired = true;
 	    boolean credentialsNonExpired = true;
 	    boolean accountNonLocked = true;
@@ -37,7 +37,6 @@ public class CustomUserDetailsService implements UserDetailsService {
         if (user == null) {
         	throw  new UsernameNotFoundException(username +" not found");
         }
-      System.out.println(user.toString());
         org.springframework.security.core.userdetails.User authUser = new org.springframework.security.core.userdetails.User(
         		user.getUsername(),
         		user.getPassword(),
