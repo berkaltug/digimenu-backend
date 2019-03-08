@@ -15,7 +15,7 @@ public class RestaurantController {
 	
 	@GetMapping("/tables")
 	public String getTables() {
-		return "showtables";
+		return "showtable";
 	}
 	
 	@GetMapping("/menu")
