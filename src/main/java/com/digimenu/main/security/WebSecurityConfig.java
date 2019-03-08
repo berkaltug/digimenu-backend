@@ -92,7 +92,7 @@ public class WebSecurityConfig {
     		.antMatcher("/restaurant/**")  //antmatcher tekil şekilde urlleri farklı configler için gruplamada kullanılır
     		.authorizeRequests()
 				.antMatchers("/assets/**", "/webjars/**","/static/**").permitAll()
-				.antMatchers("/restaurant/**")
+				.antMatchers("/restaurant/*")
 				.hasRole("RESTAURANT")
 				.and()
 			.formLogin()
@@ -104,7 +104,9 @@ public class WebSecurityConfig {
 				.and()
 			.logout()
 			.logoutUrl("/restaurant/logout")
-			.deleteCookies("JSESSIONID");
+			.deleteCookies("JSESSIONID")
+			.and()
+            .csrf().disable();
     	}
     	
     }
