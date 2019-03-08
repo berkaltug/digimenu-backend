@@ -141,6 +141,7 @@ public class UserController {
 		return "forgetpassword";	    
 	}
 	
+	//hatalı
 	@PostMapping("/savepassword")
 	public String resetPassword(@ModelAttribute("pass") String pass){
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
