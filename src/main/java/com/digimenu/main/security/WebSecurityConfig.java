@@ -99,7 +99,6 @@ public class WebSecurityConfig {
 				.loginPage("/restaurant/login")
 				.failureUrl("/restaurant/login-error")
 				.defaultSuccessUrl("/restaurant/tables")
-				.loginProcessingUrl("/perform_login")
 				.permitAll()
 				.and()
 			.logout()
