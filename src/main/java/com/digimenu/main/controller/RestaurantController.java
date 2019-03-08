@@ -10,17 +10,17 @@ public class RestaurantController {
 
 	@GetMapping("/login")
 	public String getlogin() {
-		return "login";
+		return "restaurant/login";
 	}
 	
 	@GetMapping("/tables")
 	public String getTables() {
-		return "showtables";
+		return "restaurant/showtables";
 	}
 	
 	@GetMapping("/menu")
 	public String getMenu() {
-		return "showmenu";
+		return "restaurant/showmenu";
 	}
 	
 }
