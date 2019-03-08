@@ -98,7 +98,7 @@ public class WebSecurityConfig {
 			.formLogin()
 				.loginPage("/restaurant/login")
 				.failureUrl("/restaurant/login?error")
-				.loginProcessingUrl("/restaurant/processlogin")
+				.loginProcessingUrl("/j_spring_security_check")
 				.defaultSuccessUrl("/restaurant/tables")
 				.permitAll()
 				.and()
