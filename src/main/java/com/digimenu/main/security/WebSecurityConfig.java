@@ -89,7 +89,7 @@ public class WebSecurityConfig {
     	@Override
     	protected void configure(HttpSecurity http) throws Exception{
     		http
-    		.antMatcher("/restaurant/**")
+    		.antMatcher("/restaurant/**")  //antmatcher tekil şekilde urlleri farklı configler için gruplamada kullanılır
     		.authorizeRequests()
 				.antMatchers("/assets/**", "/webjars/**","/static/**").permitAll()
 				.antMatchers("/restaurant/**")
@@ -99,6 +99,7 @@ public class WebSecurityConfig {
 				.loginPage("/restaurant/login")
 				.failureUrl("/restaurant/login-error")
 				.defaultSuccessUrl("/restaurant/tables")
+				.loginProcessingUrl("/perform_login")
 				.permitAll()
 				.and()
 			.logout()
