@@ -98,14 +98,13 @@ public class WebSecurityConfig {
 			.formLogin()
 				.loginPage("/restaurant/login")
 				.failureUrl("/restaurant/login?error")
-				.defaultSuccessUrl("/restaurant/tables")
+				.defaultSuccessUrl("/restaurant/tables",true)
 				.permitAll()
 				.and()
 			.logout()
 			.logoutUrl("/restaurant/logout")
 			.deleteCookies("JSESSIONID")
-			.and()
-            .csrf().disable();
+			;
     	}
     	
     }
