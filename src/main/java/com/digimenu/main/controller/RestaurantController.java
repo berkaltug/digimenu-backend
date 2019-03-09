@@ -15,8 +15,9 @@ public class RestaurantController {
 		return "login";
 	}
 	
-	@GetMapping("/login")
-	public String errorlogin(@RequestParam("error") Boolean err) {
+	@GetMapping("/login-error")
+	public String errorlogin(Model model) {
+		model.addAttribute("loginError", true);
 		return "login";
 	}
 	
