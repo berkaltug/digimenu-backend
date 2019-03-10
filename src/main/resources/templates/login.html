@@ -1,5 +1,8 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html 
+xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -7,8 +10,8 @@
 
     <!-- Bootstrap CSS -->
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
-    <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css}" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet"  th:href="@{/mystyles.css}" media="screen">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css}" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/mystyles.css" th:href="@{/mystyles.css}" media="screen">
     <!-- <link rel="stylesheet" href="../static/fontawesome-free-5.7.2-web/css/all.css"> -->
     <title>Digimenu Corp</title>
   </head>
@@ -22,14 +25,14 @@
         </div>
         <div class="col-md-6">
           <div id="loginjumbotron" class="jumbotron d-flex flex-column">
-            <img th:src="@{/static/img/logo_gri.png}" alt="Digimenu Logo" style="width:60%; margin-bottom:2em; margin-left:auto;margin-right:auto">
+            <img  src="../static/img/logo.png" th:src="@{/static/img/logo.png}" alt="Digimenu Logo" style="width:60%; margin-bottom:2em; margin-left:auto;margin-right:auto">
             <h1 class="display-5"><b>Restoran Paneline Hoşgeldiniz</b></h1>
-            <form class="mt-5" th:action="@{/restaurant/login}" method="post">
-              <div th:if="${loginError}">
+            <form class="mt-5"  th:action="@{/restaurant/reslogin}" method="post">
+              <!-- <div th:if="${loginError}">
                     <div class="alert alert-danger">
                         Invalid username or password.
                     </div>
-                </div>
+                </div> -->
               <div class="form-group">
                 <label for="exampleInputEmail1">Restoran Kullanıcı Adı</label>
                 <input class="form-control" id="username" name="username" placeholder="Kullanıcı Adı">
@@ -38,7 +41,9 @@
                 <label for="exampleInputPassword1">Parola</label>
                 <input type="password"  class="form-control" id="password" name="password"  placeholder="Parola">
               </div>
-              <button type="submit" class="btn btn-primary">Giriş</button>
+			
+			<button type="submit" class="btn btn-primary">Giriş</button>
+
             </form>
           </div>
         </div>
