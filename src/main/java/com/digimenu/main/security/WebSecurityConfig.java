@@ -18,12 +18,16 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.AuthenticationEntryPoint;
+import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
+import org.springframework.security.web.reactive.result.view.CsrfRequestDataValueProcessor;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.servlet.support.RequestDataValueProcessor;
 
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true,prePostEnabled=true,jsr250Enabled=true)
-public class WebSecurityConfig {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Autowired
     private UserDetailsService customUserDetailsService;
@@ -47,14 +51,14 @@ public class WebSecurityConfig {
     @Configuration
     @Order(1)
     public static class AppSecurityConfig extends WebSecurityConfigurerAdapter{
-    	
+ 
     	@Autowired
-        private AuthenticationEntryPoint authEntryPoint;
+        private MyRestAuthenticationEntryPoint authEntryPoint;
     	
     	@Override
         protected void configure(HttpSecurity http) throws Exception {
             http
-                
+                .antMatcher("/user/**")
                 .authorizeRequests()
                 .antMatchers(
                 		"/user/register",
@@ -64,7 +68,7 @@ public class WebSecurityConfig {
                 		"/user/login"
                 		).permitAll()
                 .antMatchers("/user/savepassword").hasAuthority("CHANGE_PASSWORD_PRIVILIGE")
-//                .antMatchers("/restaurant/**").hasRole("RESTAURANT")
+                //.antMatchers("/restaurant/**").hasRole("RESTAURANT")
                 .antMatchers("/city/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.POST,"/table_orders/**").hasRole("USER")
                 .antMatchers(HttpMethod.GET,"/table_orders/**").hasRole("ADMIN")
@@ -86,29 +90,37 @@ public class WebSecurityConfig {
     @Order(2)	// no order means order of config value is last
     public static class RestaurantSecurityConfig extends WebSecurityConfigurerAdapter{
     	
+    	@Bean  // dönüş tipi interface olunca hata verdi ilginç? 
+    	public AuthenticationEntryPoint loginUrlAuthenticationEntryPoint() {
+    		return new LoginUrlAuthenticationEntryPoint("/restaurant/login");
+    	}
     	@Override
     	protected void configure(HttpSecurity http) throws Exception{
-    		http
+    		http.csrf().disable()
     		.antMatcher("/restaurant/**")  //antmatcher tekil şekilde urlleri farklı configler için gruplamada kullanılır
     		.authorizeRequests()
 				.antMatchers("/assets/**", "/webjars/**","/static/**").permitAll()
-				.antMatchers("/restaurant/**").hasRole("RESTAURANT")
+				.anyRequest().hasRole("RESTAURANT")
 				.and()
 			.formLogin()
-				.loginPage("/login")
-				.loginProcessingUrl("/restaurant/reslogin")
+				.loginPage("/restaurant/login")
+				//.loginProcessingUrl("/restaurant/reslogin")
 				.failureUrl("/restaurant/login?error")
 				.defaultSuccessUrl("/restaurant/tables",true)
 				.permitAll()
 				.and()
 			.logout()
 			.logoutUrl("/restaurant/logout")
+			.logoutSuccessUrl("/restaurant/login?logout")
 			.deleteCookies("JSESSIONID")
+			.permitAll()
+			.and()
+			.exceptionHandling().authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/restaurant/login"))
+			//.defaultAuthenticationEntryPointFor(loginUrlAuthenticationEntryPoint(), new AntPathRequestMatcher("/restaurant/**"))
 			;
     	}
     	
     }
-    
-    
-    
 }
+    
+    

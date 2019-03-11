@@ -26,7 +26,7 @@ public class RestaurantController {
 	CustomUserDetailsService userDetailsService;
 	
 	@RequestMapping(value="/login",method=RequestMethod.GET)
-	public ModelAndView getlogin() {
+	public ModelAndView getlogin(Model model) {
 		ModelAndView mav = new ModelAndView();
 	    mav.setViewName("login");
 	    return mav;
@@ -42,7 +42,7 @@ public class RestaurantController {
 //			return "restaurant/showtable";
 //		}
 //	}
-	@GetMapping("/login-error")
+	@GetMapping("/login----")
 	public String errorlogin(Model model) {
 		 model.addAttribute("loginError", true);
 		return "login";
