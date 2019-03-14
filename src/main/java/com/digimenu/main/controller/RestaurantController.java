@@ -16,14 +16,26 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.digimenu.main.dto.RestaurantDto;
+import com.digimenu.main.entity.Restaurant;
 import com.digimenu.main.service.CustomUserDetailsService;
+import com.digimenu.main.service.MenuService;
+import com.digimenu.main.service.RestaurantService;
+import com.digimenu.main.service.SecurityService;
+import com.digimenu.main.service.UserService;
 
 @Controller
 @RequestMapping(value="/restaurant")
 public class RestaurantController {
 	
 	@Autowired 
-	CustomUserDetailsService userDetailsService;
+	SecurityService securityService;
+	@Autowired
+	UserService userService;
+	@Autowired
+	RestaurantService restaurantService;
+	@Autowired
+	MenuService menuService;
+	
 	
 	@RequestMapping(value="/login",method=RequestMethod.GET)
 	public ModelAndView getlogin(Model model) {
@@ -31,31 +43,34 @@ public class RestaurantController {
 	    mav.setViewName("login");
 	    return mav;
 	}
-//	@RequestMapping(value="/login" ,method=RequestMethod.POST)
-//	public String postlogin(@ModelAttribute("restaurantDto") RestaurantDto resDto,Model model) {
-//		
-//		Authentication authentication=SecurityContextHolder.getContext().getAuthentication(); //kullanmadık
-//		UserDetails userDetails=null;
-//		
-//		
-//		if( userDetails!=null ) {
-//			return "restaurant/showtable";
-//		}
-//	}
-	@GetMapping("/login----")
-	public String errorlogin(Model model) {
-		 model.addAttribute("loginError", true);
-		return "login";
+	
+	@GetMapping("/additem")
+	public String addItem(Model model) {
+		String loggedInUser=securityService.findLoggedInUsername();
+		model.addAttribute("category",
+				restaurantService.getByOwner(userService.findByUsername(loggedInUser))
+				.getCategories());
+		return "addmenuitem";
 	}
 	
 	@GetMapping("/tables")
-	public String getTables() {
+	public String getTables(Model model) {
+		Restaurant restaurant=getRestaurant();
+		model.addAttribute("tables",restaurant.getTableAmount());
 		return "showtable";
 	}
 	
 	@GetMapping("/menu")
-	public String getMenu() {
+	public String getMenu(Model model) {
+		Restaurant restaurant=getRestaurant();
+		model.addAttribute("menu",menuService.getMenuItemsByRestaurant(restaurant));
 		return "showmenu";
+	}
+	
+	private Restaurant getRestaurant() {
+		String loggedInUser=securityService.findLoggedInUsername();
+		Restaurant restaurant=restaurantService.getByOwner(userService.findByUsername(loggedInUser));
+		return restaurant;
 	}
 	
 }
