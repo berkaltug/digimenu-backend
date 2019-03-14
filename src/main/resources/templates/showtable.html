@@ -27,10 +27,10 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#" ><i class="fas fa-book-open mr-2"></i>Menü</a>
+            <a class="nav-link" href="#" th:href="@{/restaurant/menu}"><i class="fas fa-book-open mr-2"></i>Menü</a>
           </li>
           <li class="nav-item" >
-            <a class="nav-link" href="#"><i class="fas fa-chair mr-2"></i>Masalar</a>
+            <a class="nav-link" href="#" th:href="@{/restaurant/tables}"><i class="fas fa-chair mr-2"></i>Masalar</a>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto">
@@ -40,106 +40,18 @@
         </ul>
       </div>
     </nav>
-    <div class="container-fluid mt-5">
-      <div class="col-sm-12">
-        <div class="grid-container">
-          <button type="button" class="btn btn-lg btn-secondary d-flex flex-column justify-content-center">
-            <i class="fa fa-chair"></i>
-            <div>Masa 1</div>
-          </button>
-          <button type="button" class="btn btn-lg btn-secondary d-flex flex-column justify-content-center">
-            <i class="fa fa-chair"></i>
-            <div>Masa 2</div>
-          </button>
-          <button type="button" class="btn btn-lg btn-secondary d-flex flex-column justify-content-center">
-            <i class="fa fa-chair"></i>
-            <div>Masa 3</div>
-          </button>
-          <button type="button" class="btn btn-lg btn-secondary d-flex flex-column justify-content-center">
-            <i class="fa fa-chair"></i>
-            <div>Masa 4</div>
-          </button>
-          <button type="button" class="btn btn-lg btn-secondary d-flex flex-column justify-content-center">
-            <i class="fa fa-chair"></i>
-            <div>Masa 5</div>
-          </button>
-          <button type="button" class="btn btn-lg btn-secondary d-flex flex-column justify-content-center">
-            <i class="fa fa-chair"></i>
-            <div>Masa 6</div>
-          </button>
-          <button type="button" class="btn btn-lg btn-secondary d-flex flex-column justify-content-center">
-            <i class="fa fa-chair"></i>
-            <div>Masa 7</div>
-          </button>
-          <button type="button" class="btn btn-lg btn-secondary d-flex flex-column justify-content-center">
-            <i class="fa fa-chair"></i>
-            <div>Masa 8</div>
-          </button>
-          <button type="button" class="btn btn-lg btn-secondary d-flex flex-column justify-content-center">
-            <i class="fa fa-chair"></i>
-            <div>Masa 9</div>
-          </button>
-          <button type="button" class="btn btn-lg btn-secondary d-flex flex-column justify-content-center">
-            <i class="fa fa-chair"></i>
-            <div>Masa 10</div>
-          </button>
-          <button type="button" class="btn btn-lg btn-secondary d-flex flex-column justify-content-center">
-            <i class="fa fa-chair"></i>
-            <div>Masa 11</div>
-          </button>
-          <button type="button" class="btn btn-lg btn-secondary d-flex flex-column justify-content-center">
-            <i class="fa fa-chair"></i>
-            <div>Masa 12</div>
-          </button>
-          <button type="button" class="btn btn-lg btn-secondary d-flex flex-column justify-content-center">
-            <i class="fa fa-chair"></i>
-            <div>Masa 13</div>
-          </button>
-          <button type="button" class="btn btn-lg btn-secondary d-flex flex-column justify-content-center">
-            <i class="fa fa-chair"></i>
-            <div>Masa 14</div>
-          </button>
-          <button type="button" class="btn btn-lg btn-secondary d-flex flex-column justify-content-center">
-            <i class="fa fa-chair"></i>
-            <div>Masa 15</div>
-          </button>
-          <button type="button" class="btn btn-lg btn-secondary d-flex flex-column justify-content-center">
-            <i class="fa fa-chair"></i>
-            <div>Masa 16</div>
-          </button>
-          <button type="button" class="btn btn-lg btn-secondary d-flex flex-column justify-content-center">
-            <i class="fa fa-chair"></i>
-            <div>Masa 17</div>
-          </button>
-          <button type="button" class="btn btn-lg btn-secondary d-flex flex-column justify-content-center">
-            <i class="fa fa-chair"></i>
-            <div>Masa 18</div>
-          </button>
-          <button type="button" class="btn btn-lg btn-secondary d-flex flex-column justify-content-center">
-            <i class="fa fa-chair"></i>
-            <div>Masa 19</div>
-          </button>
-          <button type="button" class="btn btn-lg btn-secondary d-flex flex-column justify-content-center">
-            <i class="fa fa-chair"></i>
-            <div>Masa 20</div>
-          </button>
-          <button type="button" class="btn btn-lg btn-secondary d-flex flex-column justify-content-center">
-            <i class="fa fa-chair"></i>
-            <div>Masa 21</div>
-          </button>
-          <button type="button" class="btn btn-lg btn-secondary d-flex flex-column justify-content-center">
-            <i class="fa fa-chair"></i>
-            <div>Masa 22</div>
-          </button>
-          <button type="button" class="btn btn-lg btn-secondary d-flex flex-column justify-content-center">
-            <i class="fa fa-chair"></i>
-            <div>Masa 23</div>
-          </button>
-
-
-
-        </div>
-    </div>
+		<div class="container-fluid mt-5">
+			<div class="col-sm-12">
+				<div class="grid-container">
+					<th:block th:each="i : ${#numbers.sequence(1,tables)}">
+					<button type="button" class="btn btn-lg btn-secondary d-flex flex-column justify-content-center">
+						<i class="fa fa-chair"></i>
+						<div><span th:text="'Masa'+*{i}"></span></div>
+					</button>
+				</th:block>
+			</div>
+		</div>
+	</div>
 
 
 

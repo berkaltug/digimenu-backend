@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.digimenu.main.entity.Restaurant;
 import com.digimenu.main.repository.RestaurantRepository;
+import com.digimenu.main.security.User;
 @Service
 public class RestaurantServiceImpl implements RestaurantService {
 	
@@ -13,6 +14,10 @@ public class RestaurantServiceImpl implements RestaurantService {
 	@Override
 	public Restaurant getRestaurant(Long id) {
 		return rr.getOne(id);
+	}
+	@Override
+	public Restaurant getByOwner(User owner) {
+		return rr.findByOwner(owner);
 	}
 
 }

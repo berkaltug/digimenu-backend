@@ -27,10 +27,10 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#" ><i class="fas fa-book-open mr-2"></i>Menü</a>
+            <a class="nav-link" href="showmenu" th:href="@{/restaurant/menu}" ><i class="fas fa-book-open mr-2"></i>Menü</a>
           </li>
           <li class="nav-item" >
-            <a class="nav-link" href="#"><i class="fas fa-chair mr-2"></i>Masalar</a>
+            <a class="nav-link" href="showtable" th:href="@{/restaurant/tables}" ><i class="fas fa-chair mr-2"></i>Masalar</a>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto">
@@ -42,72 +42,28 @@
     </nav>
     <div class="container-fluid mt-5">
       <div class="col-sm-12">
-        <ul class="list-group grid-container">
-          <li class="list-group-item d-flex flex-row justify-content-center ">
-            <div class="mt-1">menuitem</div>
+				
+        <ul th:if="!${#lists.isEmpty(menu)}" class="list-group grid-container">
+          <li th:each="m : ${menu}" class="list-group-item d-flex flex-row justify-content-center ">
+            <div class="mt-1" th:text="*{m.item}"></div>
             <div class="btn-group btn-group-sm ml-auto" role="group">
               <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
               <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
             </div>
           </li>
-          <li class="list-group-item d-flex flex-row justify-content-center ">
-            <div class="mt-1">menuitem</div>
-            <div class="btn-group btn-group-sm ml-auto" role="group">
-              <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
-              <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-            </div>
-          </li>
-          <li class="list-group-item d-flex flex-row justify-content-center ">
-            <div class="mt-1">menuitem</div>
-            <div class="btn-group btn-group-sm ml-auto" role="group">
-              <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
-              <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-            </div>
-          </li>
-          <li class="list-group-item d-flex flex-row justify-content-center ">
-            <div class="mt-1">menuitem</div>
-            <div class="btn-group btn-group-sm ml-auto" role="group">
-              <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
-              <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-            </div>
-          </li>
-          <li class="list-group-item d-flex flex-row justify-content-center ">
-            <div class="mt-1">menuitem</div>
-            <div class="btn-group btn-group-sm ml-auto" role="group">
-              <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
-              <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-            </div>
-          </li>
-          <li class="list-group-item d-flex flex-row justify-content-center ">
-            <div class="mt-1">menuitem</div>
-            <div class="btn-group btn-group-sm ml-auto" role="group">
-              <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
-              <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-            </div>
-          </li>
-          <li class="list-group-item d-flex flex-row justify-content-center ">
-            <div class="mt-1">menuitem</div>
-            <div class="btn-group btn-group-sm ml-auto" role="group">
-              <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
-              <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-            </div>
-          </li>
-          <li class="list-group-item d-flex flex-row justify-content-center ">
-            <div class="mt-1">menuitem</div>
-            <div class="btn-group btn-group-sm ml-auto" role="group">
-              <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
-              <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-            </div>
-          </li>
-
-
-
         </ul>
+			
+				<ul th:if="${#lists.isEmpty(menu)}" class="list-group grid-container">
+					<li class="list-group-item d-flex flex-row justify-content-center ">
+            <div class="mt-1">Menünüze kayıtlı ürün bulunmamaktadır !</div>
+					</li>
+				</ul>
     </div>
-
+	</div>
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
+  </html>
