@@ -3,62 +3,47 @@
 		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
 		xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css}" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-		<link rel="stylesheet" href="../static/mystyles.css" th:href="@{/mystyles.css}" media="screen">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <title>Digimenu Corp</title>
+   <th:block th:replace="fragments/head :: head"></th:block>
   </head>
   <body>
-    <div id="bg1"></div>
-    <div id="bg2"></div>
-    <div id="bg3"></div>
-
-    <!-- navbar -->
-    <nav class="navbar navbar-expand-lg ">
-      <a class="navbar-brand" >Digimenu</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="showmenu" th:href="@{/restaurant/menu}" ><i class="fas fa-book-open mr-2"></i>Menü</a>
-          </li>
-          <li class="nav-item" >
-            <a class="nav-link" href="showtable" th:href="@{/restaurant/tables}" ><i class="fas fa-chair mr-2"></i>Masalar</a>
-          </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a th:href="@{/restaurant/logout}" class="nav-link"><i class="fas fa-key mr-2"></i>Logout</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+    <th:block th:include=" fragments/header :: body"></th:block>
     <div class="container-fluid mt-5">
       <div class="col-sm-12">
-				
+
         <ul th:if="!${#lists.isEmpty(menu)}" class="list-group grid-container">
-          <li th:each="m : ${menu}" class="list-group-item d-flex flex-row justify-content-center ">
+        	 <li class="list-group-item d-flex flex-row justify-content-center">
+					<div class="mt-1">Yeni ürün ekle</div>
+					<div class="btn-group btn-group-sm ml-auto" role="group">
+
+							<a  class="btn btn-success" th:href="@{/restaurant/additem}">
+							<i class="fas fa-plus"></i>
+							</a>
+
+					</div>
+			 </li>
+          <li th:each="m : ${menu}" class="list-group-item d-flex flex-row justify-content-center">
             <div class="mt-1" th:text="*{m.item}"></div>
             <div class="btn-group btn-group-sm ml-auto" role="group">
-              <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
-              <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+              <a th:href="${'/restaurant/edititem/' + m.id}" class="btn btn-success"><span class="fas fa-edit"></span></a>
+              <a th:href="${'/restaurant/delete/' + m.id}" class="btn btn-danger"><span class="fas fa-trash-alt"></span></a>
             </div>
           </li>
         </ul>
-			
-				<ul th:if="${#lists.isEmpty(menu)}" class="list-group grid-container">
-					<li class="list-group-item d-flex flex-row justify-content-center ">
-            <div class="mt-1">Menünüze kayıtlı ürün bulunmamaktadır !</div>
-					</li>
-				</ul>
-    </div>
+
+			<ul th:if="${#lists.isEmpty(menu)}" class="list-group grid-container">
+				<li class="list-group-item d-flex flex-row justify-content-center">
+					<div class="mt-1">Menünüze kayıtlı ürün bulunmamaktadır !</div>
+				</li>
+				<li class="list-group-item d-flex flex-row justify-content-center">
+					<div class="mt-1">Yeni ürün ekle</div>
+					<div class="btn-group btn-group-sm ml-auto" role="group">
+						<a  class="btn btn-success" th:href="@{/restaurant/additem}">
+							<i class="fas fa-plus"></i>
+							</a>
+					</div>
+				</li>
+			</ul>
+		</div>
 	</div>
 
 

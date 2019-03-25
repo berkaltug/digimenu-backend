@@ -8,4 +8,6 @@ import com.digimenu.main.entity.Restaurant;
 public interface MenuService {
 	public List<Menu> getMenuItemsByRestaurant(Restaurant res);
 	public Menu getMenuItem(Long id);
+	public void saveMenuItem(Menu menu);
+	public void deleteMenuItem(Menu menu);
 }

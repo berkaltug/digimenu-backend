@@ -2,6 +2,8 @@ body{
 --bg1color:linear-gradient(to bottom left,rgb(0, 5, 5),rgb(104, 236, 224));
 --bg2color:linear-gradient( to bottom right,rgb(0, 3, 6), rgb(33, 143, 245) );
 --bg3color: linear-gradient(to bottom left,rgb(23, 5, 60),rgb(146, 112, 218));
+
+
 }
 #bg1{
 height: 100%;

@@ -20,9 +20,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.digimenu.main.entity.Cart;
 import com.digimenu.main.entity.Menu;
 import com.digimenu.main.entity.Restaurant;
 import com.digimenu.main.entity.Table_Orders;
+import com.digimenu.main.service.CartService;
 import com.digimenu.main.service.MenuService;
 import com.digimenu.main.service.RestaurantService;
 import com.digimenu.main.service.Table_OrdersService;
@@ -38,6 +40,8 @@ public class Table_OrdersController {
 	private RestaurantService restaurantService;
 	@Autowired 
 	private MenuService menuService;
+	@Autowired
+	private CartService cartService;
 	
 	@GetMapping
 	Collection<Table_Orders> getAllTableOrders(){
@@ -65,13 +69,13 @@ public class Table_OrdersController {
 		JSONArray arr=(JSONArray)parser.parse(ordersStr);
 		
 		//burda gelen cevaptaki bütün itemlerin idsini çekiyoruz
-		//ilerde bir çeşit hashmape çekmeyi dene aynı itemler için tekrar dbden sorgu çekmemeye çalış
 		for(int i=0;i<arr.size();i++) { 	
 			JSONObject jsonObject = (JSONObject) arr.get(i);
 			itemIds.add((Long)jsonObject.get("id"));	
 		}
 		
-		//her item idsi için tableorder set edip dbye gönderiyoruz
+		//her item idsi için tableorder set edip carta da ekleyip dbye gönderiyoruz
+		//CrudRepo daki saveAll ile yapmayı dene
 		itemIds.forEach(i->{		 
 			Table_Orders to=new Table_Orders();
 			to.setRestaurant(res);
@@ -79,7 +83,16 @@ public class Table_OrdersController {
 			Menu item=menuService.getMenuItem(i);
 			to.setItem(item);
 			to.setPrice(item.getPrice());
-			table_ordersService.addTable_Order(to);
+			table_ordersService.addTable_Order(to); 
+			//ilerde performans için to'ları topluca save fonksiyonuna gödermeyi dene db-java arasında tek sorgu gitsin
+			//simdi cart tablosuna da eklicez manuel yapıcaz db triggerı ile yapınca thymeleaf ile cartı çekerken item isimleri fk gözüküyor
+			Cart cart=new Cart();
+			cart.setItem(item.getItem()); //menu nesnesinin isim kısmını set ettik
+			cart.setTotalPrice(item.getPrice());
+			cart.setRestaurantId(res.getId());
+			cart.setMasaNo(masaNo);
+			cartService.addCart(cart);
+			
 		});
 	}
 }
