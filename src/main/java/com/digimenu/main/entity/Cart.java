@@ -18,9 +18,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 
 @Entity
-//@JsonIdentityInfo(
-//		  generator = ObjectIdGenerators.PropertyGenerator.class, 
-//		  property = "id")
 public class Cart {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -28,7 +25,7 @@ public class Cart {
 	
 	private String item;
 	
-	private Integer totalPrice;
+	private Float totalPrice;
 //	DB'de trigger sayesinde bu tabloya entity eklendiği için  Table_Orders'a bağlamaya gerek duymadık
 //	onun yerine triggerda tableordersa eklenen restoran ve masa numarasını bu fieldlere atıyoruz.
 	private Long restaurantId;
@@ -47,7 +44,7 @@ public class Cart {
 
 	
 
-	public Cart(Long id, String item, Integer totalPrice, Long restaurantId, Integer masaNo, Date siparisTarihi,
+	public Cart(Long id, String item, Float totalPrice, Long restaurantId, Integer masaNo, Date siparisTarihi,
 			Date guncellemeTarihi) {
 		this.id = id;
 		this.item = item;
@@ -100,11 +97,11 @@ public class Cart {
 		this.guncellemeTarihi = guncellemeTarihi;
 	}
 
-	public Integer getTotalPrice() {
+	public Float getTotalPrice() {
 		return totalPrice;
 	}
 
-	public void setTotalPrice(Integer totalPrice) {
+	public void setTotalPrice(Float totalPrice) {
 		this.totalPrice = totalPrice;
 	}
 

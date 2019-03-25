@@ -49,12 +49,12 @@ public class Table_Orders {
 	@JoinColumn(name="item")
 	private Menu item;
 	
-	private Integer price;
+	private Float price;
 	
 
 
 
-public Table_Orders(Long id, Restaurant restaurant, @NotNull Integer masa, Menu item, Integer price) {
+public Table_Orders(Long id, Restaurant restaurant, @NotNull Integer masa, Menu item, Float price) {
 		this.id = id;
 		this.restaurant = restaurant;
 		this.masa = masa;
@@ -99,11 +99,11 @@ public void setItem(Menu item) {
 
 
 
-public Integer getPrice() {
+public Float getPrice() {
 	return price;
 }
 
-public void setPrice(Integer price) {
+public void setPrice(Float price) {
 	this.price = price;
 }
 

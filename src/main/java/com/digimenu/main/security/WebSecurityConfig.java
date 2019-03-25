@@ -57,8 +57,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     	
     	@Override
         protected void configure(HttpSecurity http) throws Exception {
-            http
-                .antMatcher("/user/**")
+            http.requestMatchers()
+                .antMatchers("/user/**","/table_orders/**").and()
                 .authorizeRequests()
                 .antMatchers(
                 		"/user/register",
@@ -90,7 +90,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     @Order(2)	// no order means order of config value is last
     public static class RestaurantSecurityConfig extends WebSecurityConfigurerAdapter{
     	
-    	@Bean  // dönüş tipi interface olunca hata verdi ilginç? 
+    	@Bean  
     	public AuthenticationEntryPoint loginUrlAuthenticationEntryPoint() {
     		return new LoginUrlAuthenticationEntryPoint("/restaurant/login");
     	}

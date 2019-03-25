@@ -23,6 +23,16 @@ public class MenuServiceImpl implements MenuService {
 	public Menu getMenuItem(Long id) {
 		return mr.getOne(id);
 	}
+
+	@Override
+	public void saveMenuItem(Menu menu) {
+		mr.save(menu);
+	}
+
+	@Override
+	public void deleteMenuItem(Menu menu) {
+		mr.delete(menu);
+	}
 	
 
 

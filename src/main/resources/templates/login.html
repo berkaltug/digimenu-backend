@@ -5,15 +5,7 @@ xmlns:th="http://www.thymeleaf.org"
 xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
   <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css}" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"  crossorigin="anonymous">
-    <link rel="stylesheet" href="../static/mystyles.css" th:href="@{/mystyles.css}" media="screen">
-    <!-- <link rel="stylesheet" href="../static/fontawesome-free-5.7.2-web/css/all.css"> -->
-    <title>Digimenu Corp</title>
+    <th:block th:replace="fragments/head :: head"></th:block>
   </head>
   <body>
     <div id="bg1"></div>
@@ -25,7 +17,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
         </div>
         <div class="col-md-6">
           <div id="loginjumbotron" class="jumbotron d-flex flex-column">
-            <img  src="../static/img/logo.png" th:src="@{/static/img/logo.png}" alt="Digimenu Logo" style="width:60%; margin-bottom:2em; margin-left:auto;margin-right:auto">
+            <img  src="../static/img/logo.png" th:src="@{/img/logo.png}" alt="Digimenu Logo" style="width:60%; margin-bottom:2em; margin-left:auto;margin-right:auto">
             <h1 class="display-5"><b>Restoran Paneline Hoşgeldiniz</b></h1>
             <form class="mt-5" name="f" th:action="@{/restaurant/login}" method="post">
                <div th:if="${param.error}">

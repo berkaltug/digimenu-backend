@@ -17,13 +17,18 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public void deleteCart(Long id) {
+	public void deleteCart(Long id) { //kullanılmıyor test amaçlı yazdım
 		cr.delete(cr.getOne(id));
 	}
 
 	@Override
-	public Cart addCart(Cart c) { //kullanılmıyor
+	public Cart addCart(Cart c) { //kullanılmıyor test amaçlı yazdım
 		return cr.save(c);
+	}
+
+	@Override
+	public void emptyCart(Long id, Integer no) {
+		cr.flushCart(id, no);
 	}
 
 }

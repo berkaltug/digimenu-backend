@@ -12,4 +12,5 @@ public interface CartService {
 	
 	public Cart addCart(Cart c);
 	
+	public void emptyCart(Long id , Integer no);
 }

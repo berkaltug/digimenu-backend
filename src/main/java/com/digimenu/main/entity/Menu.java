@@ -23,14 +23,14 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 @Entity
 public class Menu {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private Long id;
 	@NotNull
 	private String item;
 	
 	private String ingredients;
 	
-	private Integer price;
+	private Float price;
 	@JsonBackReference(value="restaurant-item")  //json ignore görevi gördü karşı bir @jsonMaagedRef olmamasına rağmen
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="restaurant_id")
@@ -40,7 +40,7 @@ public class Menu {
 	//fk bağlamadık o yüzden String , mappinge gerek yok diye düşündüm 
 	private String category;
 
-	public Menu(Long id, @NotNull String item, String ingredients, Integer price, Restaurant restaurant,String category) {
+	public Menu(Long id, @NotNull String item, String ingredients, Float price, Restaurant restaurant,String category) {
 		this.id = id;
 		this.item = item;
 		this.ingredients = ingredients;
@@ -82,11 +82,11 @@ public class Menu {
 		this.ingredients = ingredients;
 	}
 
-	public Integer getPrice() {
+	public Float getPrice() {
 		return price;
 	}
 
-	public void setPrice(Integer price) {
+	public void setPrice(Float price) {
 		this.price = price;
 	}
 
