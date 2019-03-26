@@ -49,7 +49,7 @@ public class RestaurantController {
 	CartService cartService;
 	
 	
-	@RequestMapping(value="/login",method=RequestMethod.GET)
+	@GetMapping("/login")
 	public ModelAndView getlogin(Model model) {
 		ModelAndView mav = new ModelAndView();
 	    mav.setViewName("login");

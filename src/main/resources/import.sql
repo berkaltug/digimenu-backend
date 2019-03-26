@@ -3,6 +3,8 @@ insert into city(id,name) values (17,'Çanakkale');
 
 insert into user_table(id,email,is_enabled,name,password,surname,username) values(-1,'user@gmail.com',true,'user','$2a$10$ByIUiNaRfBKSV6urZoBBxe4UbJ/sS6u1ZaPORHF9AtNWAuVPVz1by','user','user');
 insert into user_table(id,email,is_enabled,name,password,surname,username) values(-2,'user2@gmail.com',true,'user2','$2a$10$ByIUiNaRfBKSV6urZoBBxe4UbJ/sS6u1ZaPORHF9AtNWAuVPVz1by','user2','user2');
+insert into user_table(id,email,is_enabled,name,password,surname,username) values(-3,'user3@gmail.com',true,'user3','$2a$10$ByIUiNaRfBKSV6urZoBBxe4UbJ/sS6u1ZaPORHF9AtNWAuVPVz1by','user3','user3');
+
 
 insert into role(id,name) values (1,'ROLE_ADMIN');
 insert into role(id,name) values (2,'ROLE_RESTAURANT');
@@ -11,9 +13,11 @@ insert into role(id,name) values (3,'ROLE_USER');
 insert into user_role(user_id,role_id) values (-1,3);
 insert into user_role(user_id,role_id) values (-1,2);
 insert into user_role(user_id,role_id) values (-2,3);
+insert into user_role(user_id,role_id) values (-3,3);
+insert into user_role(user_id,role_id) values (-3,2);
 
 insert into restaurant(id,name,address,tel,mail,owner_id,city_id,table_amount) values (1,'Aydın Tava Ciğer','çilingirler cad',123456789,'aydın@asd',-1,22,20);
-insert into restaurant(id,name,address,tel,mail,owner_id,city_id,table_amount) values (2,'Variant','üni',123456789,'var@asd',-2,22,15);
+insert into restaurant(id,name,address,tel,mail,owner_id,city_id,table_amount) values (2,'Variant','üni',123456789,'var@asd',-3,22,15);
 
 insert into category(id,name) values (1,'yiyecek');
 insert into category(id,name) values (2,'içecek');

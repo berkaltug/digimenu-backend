@@ -33,35 +33,41 @@
     </nav>
 
 	<script type="text/javascript">
+
+	var audio=new Audio("../sounds/door_bell.mp3")
 		//websocket connection
 		$(document).ready(function() {
+
+			
+			
 
 			var socket = new SockJS('/stomp');
 			var stompClient = Stomp.over(socket);
 			stompClient.connect({}, function(frame) {
 				stompClient.subscribe("/user/restaurant/message", function(data) {
 					html =  '<div class="modal" tabindex="-1" role="dialog" id="dynamicModal">';
-	    html += '<div class="modal-dialog" role="document">';
-	    html += '<div class="modal-content">';
-	    html += '<div class="modal-header">';
-	    html += '<h5 class="modal-title">Yeni Sipariş</h5>';
-	    html += '<button type="button" class="close" data-dismiss="modal" aria-label="Close">'
-	    html += '<span aria-hidden="true">&times;</span>';
-	    html += '</button>';
-	    html += '</div>';
-	    html += '<div class="modal-body">';
-	    html += '<p>' + data.body + '</p>';
-	    html += '</div>';
-	    html += '<div class="modal-footer">';
-	    html += '<button type="button" class="btn btn-primary">Save changes</button>';
-	    html += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>';
-	    html += '</div>';
-	    html += '</div>';
-	    html += '</div>';
-	    html += '</div>';
-	    $('body').append(html);
-	    $("#dynamicModal").modal();
-	    $("#dynamicModal").modal('show');
+					html += '<div class="modal-dialog" role="document">';
+					html += '<div class="modal-content">';
+					html += '<div class="modal-header">';
+					html += '<h5 class="modal-title">Yeni Sipariş</h5>';
+					html += '<button type="button" class="close" data-dismiss="modal" aria-label="Close">'
+					html += '<span aria-hidden="true">&times;</span>';
+					html += '</button>';
+					html += '</div>';
+					html += '<div class="modal-body">';
+					html += '<p>' + data.body + '</p>';
+					html += '</div>';
+					html += '<div class="modal-footer">';
+					html += '<button type="button" class="btn btn-primary">Save changes</button>';
+					html += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>';
+					html += '</div>';
+					html += '</div>';
+					html += '</div>';
+					html += '</div>';
+					$('body').append(html);
+					$("#dynamicModal").modal();
+					$("#dynamicModal").modal('show');
+					audio.play();
 				});
 			});
 		});
