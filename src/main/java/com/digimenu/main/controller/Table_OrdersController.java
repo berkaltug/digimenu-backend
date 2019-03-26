@@ -1,5 +1,6 @@
 package com.digimenu.main.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -11,6 +12,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,6 +36,7 @@ import com.digimenu.main.service.Table_OrdersService;
 @RequestMapping("/table_orders")
 public class Table_OrdersController {
 	
+	
 	@Autowired
 	private Table_OrdersService table_ordersService;
 	@Autowired
@@ -42,6 +45,9 @@ public class Table_OrdersController {
 	private MenuService menuService;
 	@Autowired
 	private CartService cartService;
+	@Autowired
+	SimpMessagingTemplate msgTemplate;
+	
 	
 	@GetMapping
 	Collection<Table_Orders> getAllTableOrders(){
@@ -76,6 +82,10 @@ public class Table_OrdersController {
 		
 		//her item idsi için tableorder set edip carta da ekleyip dbye gönderiyoruz
 		//CrudRepo daki saveAll ile yapmayı dene
+		//siparis mesajı hazırlıyoruz
+		StringBuilder sb=new StringBuilder(); //daha sonra formatla oynamak icin stringbuilder
+		sb.append("MASA:" + masaNo +" YENi SİPARİŞ ! <br>" );
+		
 		itemIds.forEach(i->{		 
 			Table_Orders to=new Table_Orders();
 			to.setRestaurant(res);
@@ -92,7 +102,14 @@ public class Table_OrdersController {
 			cart.setRestaurantId(res.getId());
 			cart.setMasaNo(masaNo);
 			cartService.addCart(cart);
+			// websocket mesajı oluşturuyoruz
+			sb.append(item.getItem() + "<br>");
 			
 		});
+		
+		
+		String msg=sb.toString();
+		this.msgTemplate.convertAndSendToUser(res.getOwner().getUsername(), "/restaurant/message", msg);
+		
 	}
 }
