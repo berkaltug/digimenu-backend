@@ -3,7 +3,9 @@ package com.digimenu.main.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.digimenu.main.entity.Menu;
 import com.digimenu.main.entity.Restaurant;
@@ -32,6 +34,13 @@ public class MenuServiceImpl implements MenuService {
 	@Override
 	public void deleteMenuItem(Menu menu) {
 		mr.delete(menu);
+	}
+	
+	@Override
+	@Transactional
+	@Modifying
+	public void updateMenuItem(Menu menu) {
+		mr.save(menu);
 	}
 	
 

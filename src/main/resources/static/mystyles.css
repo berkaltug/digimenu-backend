@@ -2,8 +2,9 @@ body{
 --bg1color:linear-gradient(to bottom left,rgb(0, 5, 5),rgb(104, 236, 224));
 --bg2color:linear-gradient( to bottom right,rgb(0, 3, 6), rgb(33, 143, 245) );
 --bg3color: linear-gradient(to bottom left,rgb(23, 5, 60),rgb(146, 112, 218));
-
-
+background-image:url("/img/logotile.png");
+background-repeat:repeat;
+background-size:90px 90px;
 }
 #bg1{
 height: 100%;
@@ -42,7 +43,7 @@ box-shadow: 0px 20px 10px black;
   background-color: rgba(166, 191, 207, 0.9);
 }
 .navbar{
-background-color: rgb(0, 1, 102);
+background-color: #A91101;
 }
 /* logo rengi için */
 .navbar{
@@ -64,7 +65,7 @@ background-color: rgb(0, 1, 102);
 }
 /* masa butonları stili */
 .grid-container>.btn-secondary{
-  background-color: rgb(180, 180, 180);
+  background-color: #515689;
   border-top: rgb(221, 221, 221) solid 1px;
   border-bottom: rgb(71, 71, 71) solid 1px;
 }
