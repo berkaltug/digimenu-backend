@@ -10,4 +10,5 @@ public interface MenuService {
 	public Menu getMenuItem(Long id);
 	public void saveMenuItem(Menu menu);
 	public void deleteMenuItem(Menu menu);
+	public void updateMenuItem(Menu menu);
 }

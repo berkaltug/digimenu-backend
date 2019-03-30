@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -55,7 +56,7 @@ public class RestaurantController {
 	    mav.setViewName("login");
 	    return mav;
 	}
-	
+	@PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
 	@GetMapping("/additem")
 	public String addItemGet(Menu menu,Model model) {
 		
@@ -65,6 +66,7 @@ public class RestaurantController {
 		return "addmenuitem";
 	}
 	
+	@PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
 	@PostMapping("/additem")
 	public String addItemPost(@ModelAttribute(value="menu") @Valid Menu menu,Model model,BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
@@ -75,6 +77,7 @@ public class RestaurantController {
 		return "redirect:/restaurant/menu";
 	}
 	
+	@PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
 	@GetMapping("/tables")
 	public String getTables(Model model) {
 		Restaurant restaurant=getRestaurant();
@@ -82,6 +85,7 @@ public class RestaurantController {
 		return "showtable";
 	}
 	
+	@PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
 	@GetMapping("/menu")
 	public String getMenu(Model model) {
 		Restaurant restaurant=getRestaurant();
@@ -89,23 +93,24 @@ public class RestaurantController {
 		return "showmenu";
 	}
 	
+	@PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
 	@GetMapping("/edititem/{id}")
 	public String editMenu(Model model,@PathVariable("id") Long id) {
-		model.addAttribute("item",menuService.getMenuItem(id));
-		return "edit";
+		Restaurant res=getRestaurant();
+		model.addAttribute("category",res.getCategories());
+		model.addAttribute("menu",menuService.getMenuItem(id));
+		return "editmenuitem";
 	}
 	
-	@PutMapping("/edititem/{id}")
-	public String editItem(@ModelAttribute("menu") @Valid Menu menu,Model model,BindingResult bindingResult) {
-		if(bindingResult.hasErrors()) {
-			model.addAttribute("error", bindingResult.getFieldError().toString());
-			return "edit";
-		}
+	@PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
+	@PostMapping("/updateitem")
+	public String editItem(@ModelAttribute(value="menu") @Valid Menu menu) {
 		
-		menuService.saveMenuItem(menu);
+		menuService.updateMenuItem(menu);
 		return "redirect:/restaurant/menu";
 	}
 	
+	@PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
 	@GetMapping("/delete/{id}")
 	public String deleteItem(@PathVariable("id") Long id) {
 		try {
@@ -117,6 +122,7 @@ public class RestaurantController {
 		return "redirect:/restaurant/menu";
 	}
 	
+	@PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
 	@GetMapping("/cart/{masa}")
 	public String getCart(Model model,@PathVariable("masa") Integer id) {
 		Restaurant res=getRestaurant();
@@ -131,6 +137,7 @@ public class RestaurantController {
 		return "showcart";
 	}
 	
+	@PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
 	@GetMapping("/flushcart/{masa}")
 	public String freeCart(@PathVariable("masa") Integer id) {
 		Restaurant res=getRestaurant();
@@ -143,6 +150,17 @@ public class RestaurantController {
 		return "redirect:/restaurant/tables";
 	}
 	
+	@PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
+	@GetMapping("/flushcartitem/{id}")
+	public void freeCartItem(@PathVariable("id") Long id) {
+		try {
+			cartService.deleteCart(id);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	//login olmuş restoranı çeker
 	private Restaurant getRestaurant() {
 		String loggedInUser=securityService.findLoggedInUsername();
 		Restaurant restaurant=restaurantService.getByOwner(userService.findByUsername(loggedInUser));

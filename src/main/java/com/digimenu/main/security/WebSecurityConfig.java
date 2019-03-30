@@ -64,8 +64,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 		"/user/register",
                 		"/user/confirmaccount/**",
                 		"/user/forgetpassword/**",
-                		"/user/resetpassword/**",
-                		"/user/login"
+                		"/user/resetpassword/**"
+                		//"/user/login"
                 		).permitAll()
                 .antMatchers("/user/savepassword").hasAuthority("CHANGE_PASSWORD_PRIVILIGE")
                 //.antMatchers("/restaurant/**").hasRole("RESTAURANT")
@@ -73,7 +73,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .antMatchers(HttpMethod.POST,"/table_orders/**").hasRole("USER")
                 .antMatchers(HttpMethod.GET,"/table_orders/**").hasRole("ADMIN")
                 .antMatchers("/menu/**").hasRole("USER")
-
+                .antMatchers(HttpMethod.POST,"/user/login").hasRole("USER")
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.NEVER)

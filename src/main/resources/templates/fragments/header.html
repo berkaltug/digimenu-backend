@@ -5,10 +5,11 @@
 <head>
 </head>
 <body>
-	 <div id="bg1"></div>
+<!--
+	<div id="bg1"></div>
     <div id="bg2"></div>
     <div id="bg3"></div>
-
+ -->
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg ">
       <a class="navbar-brand" >Digimenu</a>
@@ -34,18 +35,17 @@
 
 	<script type="text/javascript">
 
-	var audio=new Audio("../sounds/door_bell.mp3")
+	var audio=new Audio("../sounds/door_bell.mp3");
+	var stack=[];
+	var stackindex=1;
 		//websocket connection
 		$(document).ready(function() {
-
-			
-			
 
 			var socket = new SockJS('/stomp');
 			var stompClient = Stomp.over(socket);
 			stompClient.connect({}, function(frame) {
 				stompClient.subscribe("/user/restaurant/message", function(data) {
-					html =  '<div class="modal" tabindex="-1" role="dialog" id="dynamicModal">';
+					html =  '<div class="modal" tabindex="-1" role="dialog" id="dynamicModal' +(stackindex++).toString() + '">';
 					html += '<div class="modal-dialog" role="document">';
 					html += '<div class="modal-content">';
 					html += '<div class="modal-header">';
@@ -64,9 +64,14 @@
 					html += '</div>';
 					html += '</div>';
 					html += '</div>';
-					$('body').append(html);
+					stack.push(html);
+					var modal=stack.pop();
+					$('body').append(modal);
+					$(modal).modal();
+					/*$(modal).modal('show');*/
+					/* $('body').append(html);
 					$("#dynamicModal").modal();
-					$("#dynamicModal").modal('show');
+					$("#dynamicModal").modal('show');  */
 					audio.play();
 				});
 			});
