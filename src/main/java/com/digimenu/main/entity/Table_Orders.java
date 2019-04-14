@@ -45,16 +45,16 @@ public class Table_Orders {
 	@NotNull
 	private Integer masa;
 	
-	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
-	@JoinColumn(name="item")
-	private Menu item;
-	
+//	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+//	@JoinColumn(name="item")
+//	private Menu item;
+	private String item;
 	private Float price;
 	
 
 
 
-public Table_Orders(Long id, Restaurant restaurant, @NotNull Integer masa, Menu item, Float price) {
+public Table_Orders(Long id, Restaurant restaurant, @NotNull Integer masa, String item, Float price) {
 		this.id = id;
 		this.restaurant = restaurant;
 		this.masa = masa;
@@ -89,11 +89,11 @@ public void setMasa(Integer masa) {
 	this.masa = masa;
 }
 
-public Menu getItem() {
+public String getItem() {
 	return item;
 }
 
-public void setItem(Menu item) {
+public void setItem(String item) {
 	this.item = item;
 }
 
