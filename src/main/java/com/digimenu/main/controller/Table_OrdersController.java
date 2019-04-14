@@ -91,7 +91,7 @@ public class Table_OrdersController {
 			to.setRestaurant(res);
 			to.setMasa(masaNo);
 			Menu item=menuService.getMenuItem(i);
-			to.setItem(item);
+			to.setItem(item.getItem()); //string , ismi atanıyor
 			to.setPrice(item.getPrice());
 			table_ordersService.addTable_Order(to); 
 			//ilerde performans için to'ları topluca save fonksiyonuna gödermeyi dene db-java arasında tek sorgu gitsin
