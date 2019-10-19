@@ -62,20 +62,24 @@ public class UserController {
 			return new ResponseEntity<>("Bu kullanıcı adı kullanılmaktadır",HttpStatus.CONFLICT);
 		}
 		else {
-			userService.save(user);
-			ConfirmationToken confirmationToken = new ConfirmationToken(user);
+			try {
+				userService.save(user);
+				ConfirmationToken confirmationToken = new ConfirmationToken(user);
 
-            confirmTokenRepo.save(confirmationToken);
+				confirmTokenRepo.save(confirmationToken);
 
-            SimpleMailMessage mailMessage = new SimpleMailMessage();
-            mailMessage.setTo(user.getEmail());
-            mailMessage.setSubject("Digimenu'ye Hoşgeldiniz!");
+				SimpleMailMessage mailMessage = new SimpleMailMessage();
+				mailMessage.setTo(user.getEmail());
+				mailMessage.setSubject("Digimenu'ye Hoşgeldiniz!");
 //            mailMessage.setFrom("business@digimenu.online"); //gereksiz 	
-            mailMessage.setText("Üyeliğinizi doğrulamak için lütfen doğrulama linkine tıklayınız : " +"\n"
-            +"https://digimenu.herokuapp.com/user/confirmaccount/"+confirmationToken.getConfirmationToken()+"\n"
-            +"Digimenu Ekibi");
-            
-            emailSenderService.sendEmail(mailMessage);
+				mailMessage.setText("Üyeliğinizi doğrulamak için lütfen doğrulama linkine tıklayınız : " + "\n"
+						+ "https://digimenu.herokuapp.com/user/confirmaccount/" + confirmationToken.getConfirmationToken() + "\n"
+						+ "Digimenu Ekibi");
+
+				emailSenderService.sendEmail(mailMessage);
+			}catch(Exception e){
+				System.err.println(e.getMessage());
+			}
 		}
 		
 		return new ResponseEntity<>("Aktivasyon epostasi adresinize gönderilmiştir",HttpStatus.CREATED);
