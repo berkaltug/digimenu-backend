@@ -53,6 +53,7 @@ public class Table_OrdersController {
 	Collection<Table_Orders> getAllTableOrders(){
 		return table_ordersService.getTable_Orders();
 	}
+	
 	@PreAuthorize("hasRole('ROLE_ADMIN')")  //test amaçlı fonk
 	@GetMapping("{restaurant}/{masa}")
 	Collection<Table_Orders> getTableOrders(@PathVariable("restaurant") Long id,@PathVariable("masa")Integer masaNo){
