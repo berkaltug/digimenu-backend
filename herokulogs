@@ -1,0 +1,1000 @@
+2019-10-19T14:34:04.980291+00:00 app[web.1]: =========|_|==============|___/=/_/_/_/
+2019-10-19T14:34:04.982300+00:00 app[web.1]: :: Spring Boot ::        (v2.1.0.RELEASE)
+2019-10-19T14:34:04.982356+00:00 app[web.1]: 
+2019-10-19T14:34:05.254160+00:00 app[web.1]: 2019-10-19 14:34:05.244  INFO 4 --- [           main] com.digimenu.main.DigiMenuApplication    : Starting DigiMenuApplication v0.0.1-SNAPSHOT on 6c725c6d-b192-4729-80a3-23ecdadde58a with PID 4 (/app/target/DigiMenu-0.0.1-SNAPSHOT.jar started by u16364 in /app)
+2019-10-19T14:34:05.260874+00:00 app[web.1]: 2019-10-19 14:34:05.260  INFO 4 --- [           main] com.digimenu.main.DigiMenuApplication    : No active profile set, falling back to default profiles: default
+2019-10-19T14:34:07.260518+00:00 app[web.1]: 2019-10-19 14:34:07.258  INFO 4 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-10-19T14:34:07.486351+00:00 app[web.1]: 2019-10-19 14:34:07.486  INFO 4 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 215ms. Found 10 repository interfaces.
+2019-10-19T14:34:08.163251+00:00 app[web.1]: 2019-10-19 14:34:08.162  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$4de21765] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T14:34:08.273052+00:00 app[web.1]: 2019-10-19 14:34:08.272  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration$$EnhancerBySpringCGLIB$$e68fdf9f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T14:34:08.295686+00:00 app[web.1]: 2019-10-19 14:34:08.295  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T14:34:08.299780+00:00 app[web.1]: 2019-10-19 14:34:08.299  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@c86b9e3' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T14:34:08.307537+00:00 app[web.1]: 2019-10-19 14:34:08.307  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration$$EnhancerBySpringCGLIB$$b648251] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T14:34:08.333105+00:00 app[web.1]: 2019-10-19 14:34:08.332  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.method.configuration.Jsr250MetadataSourceConfiguration' of type [org.springframework.security.config.annotation.method.configuration.Jsr250MetadataSourceConfiguration$$EnhancerBySpringCGLIB$$30b99a67] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T14:34:08.345758+00:00 app[web.1]: 2019-10-19 14:34:08.345  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'jsr250MethodSecurityMetadataSource' of type [org.springframework.security.access.annotation.Jsr250MethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T14:34:08.349221+00:00 app[web.1]: 2019-10-19 14:34:08.348  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T14:34:09.221010+00:00 app[web.1]: 2019-10-19 14:34:09.220  INFO 4 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9486 (http)
+2019-10-19T14:34:09.310181+00:00 app[web.1]: 2019-10-19 14:34:09.309  INFO 4 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-10-19T14:34:09.310453+00:00 app[web.1]: 2019-10-19 14:34:09.310  INFO 4 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.12
+2019-10-19T14:34:09.340579+00:00 app[web.1]: 2019-10-19 14:34:09.340  INFO 4 --- [           main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/app/.jdk/jre/lib/amd64/server::/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-10-19T14:34:09.957423+00:00 app[web.1]: 2019-10-19 14:34:09.957  INFO 4 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-10-19T14:34:09.957723+00:00 app[web.1]: 2019-10-19 14:34:09.957  INFO 4 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4552 ms
+2019-10-19T14:34:10.060746+00:00 app[web.1]: 2019-10-19 14:34:10.058  INFO 4 --- [           main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-10-19T14:34:10.061139+00:00 app[web.1]: 2019-10-19 14:34:10.060  INFO 4 --- [           main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-10-19T14:34:10.061304+00:00 app[web.1]: 2019-10-19 14:34:10.061  INFO 4 --- [           main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'formContentFilter' to: [/*]
+2019-10-19T14:34:10.061453+00:00 app[web.1]: 2019-10-19 14:34:10.061  INFO 4 --- [           main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-10-19T14:34:10.062252+00:00 app[web.1]: 2019-10-19 14:34:10.062  INFO 4 --- [           main] .s.DelegatingFilterProxyRegistrationBean : Mapping filter: 'springSecurityFilterChain' to: [/*]
+2019-10-19T14:34:10.062458+00:00 app[web.1]: 2019-10-19 14:34:10.062  INFO 4 --- [           main] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-10-19T14:34:10.568449+00:00 app[web.1]: 2019-10-19 14:34:10.568  INFO 4 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-10-19T14:34:11.104606+00:00 app[web.1]: 2019-10-19 14:34:11.104  INFO 4 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-10-19T14:34:11.324254+00:00 app[web.1]: 2019-10-19 14:34:11.324  INFO 4 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+2019-10-19T14:34:11.324260+00:00 app[web.1]: name: default
+2019-10-19T14:34:11.324262+00:00 app[web.1]: ...]
+2019-10-19T14:34:11.532974+00:00 app[web.1]: 2019-10-19 14:34:11.532  INFO 4 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2019-10-19T14:34:11.535841+00:00 app[web.1]: 2019-10-19 14:34:11.535  INFO 4 --- [           main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2019-10-19T14:34:11.925836+00:00 app[web.1]: 2019-10-19 14:34:11.925  INFO 4 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-10-19T14:34:12.680445+00:00 app[web.1]: 2019-10-19 14:34:12.680  INFO 4 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2019-10-19T14:34:12.740650+00:00 app[web.1]: 2019-10-19 14:34:12.740  INFO 4 --- [           main] o.h.e.j.e.i.LobCreatorBuilderImpl        : HHH000422: Disabling contextual LOB creation as connection was null
+2019-10-19T14:34:12.756071+00:00 app[web.1]: 2019-10-19 14:34:12.755  INFO 4 --- [           main] org.hibernate.type.BasicTypeRegistry     : HHH000270: Type registration [java.util.UUID] overrides previous : org.hibernate.type.UUIDBinaryType@54a3ab8f
+2019-10-19T14:34:15.255651+00:00 app[web.1]: 2019-10-19 14:34:15.255  INFO 4 --- [           main] o.h.t.schema.internal.SchemaCreatorImpl  : HHH000476: Executing import script 'ScriptSourceInputFromUrl(jar:file:/app/target/DigiMenu-0.0.1-SNAPSHOT.jar!/BOOT-INF/classes!/import.sql)'
+2019-10-19T14:34:15.358167+00:00 app[web.1]: 2019-10-19 14:34:15.357  INFO 4 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-10-19T14:34:16.926618+00:00 app[web.1]: 2019-10-19 14:34:16.926  INFO 4 --- [           main] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2019-10-19T14:34:17.872578+00:00 app[web.1]: 2019-10-19 14:34:17.872  INFO 4 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'clientInboundChannelExecutor'
+2019-10-19T14:34:17.884219+00:00 app[web.1]: 2019-10-19 14:34:17.883  INFO 4 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'clientOutboundChannelExecutor'
+2019-10-19T14:34:18.179448+00:00 app[web.1]: 2019-10-19 14:34:18.179  INFO 4 --- [           main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'messageBrokerTaskScheduler'
+2019-10-19T14:34:18.344706+00:00 app[web.1]: 2019-10-19 14:34:18.343  INFO 4 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'brokerChannelExecutor'
+2019-10-19T14:34:19.523426+00:00 app[web.1]: 2019-10-19 14:34:19.523  WARN 4 --- [           main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-10-19T14:34:20.773251+00:00 heroku[web.1]: State changed from starting to up
+2019-10-19T14:34:20.419727+00:00 app[web.1]: 2019-10-19 14:34:20.419  INFO 4 --- [           main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2019-10-19T14:34:20.420956+00:00 app[web.1]: 2019-10-19 14:34:20.420  INFO 4 --- [           main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2019-10-19T14:34:20.421639+00:00 app[web.1]: 2019-10-19 14:34:20.421  INFO 4 --- [           main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2019-10-19T14:34:20.480218+00:00 app[web.1]: 2019-10-19 14:34:20.479  INFO 4 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9486 (http) with context path ''
+2019-10-19T14:34:20.488710+00:00 app[web.1]: 2019-10-19 14:34:20.488  INFO 4 --- [           main] com.digimenu.main.DigiMenuApplication    : Started DigiMenuApplication in 16.237 seconds (JVM running for 17.711)
+2019-10-19T14:35:00.058883+00:00 app[web.1]: 2019-10-19 14:35:00.058  INFO 4 --- [nio-9486-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-10-19T14:35:00.059010+00:00 app[web.1]: 2019-10-19 14:35:00.058  INFO 4 --- [nio-9486-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-10-19T14:35:00.091698+00:00 app[web.1]: 2019-10-19 14:35:00.091  INFO 4 --- [nio-9486-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 32 ms
+2019-10-19T14:35:18.342829+00:00 app[web.1]: 2019-10-19 14:35:18.342  INFO 4 --- [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2019-10-19T14:35:29.958693+00:00 heroku[router]: at=error code=H12 desc="Request timeout" method=POST path="/user/register" host=digimenu.herokuapp.com request_id=72c5d807-886d-4c47-ad73-ea4c82e2fa54 fwd="46.197.65.130" dyno=web.1 connect=1ms service=30000ms status=503 bytes=0 protocol=https
+2019-10-19T14:35:51.235520+00:00 app[web.1]: 2019-10-19 14:35:51.234 ERROR 4 --- [nio-9486-exec-3] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.mail.MailSendException: Mail server connection failed; nested exception is javax.mail.MessagingException: Exception reading response;
+2019-10-19T14:35:51.235533+00:00 app[web.1]: nested exception is:
+2019-10-19T14:35:51.235535+00:00 app[web.1]: java.net.SocketTimeoutException: Read timed out. Failed messages: javax.mail.MessagingException: Exception reading response;
+2019-10-19T14:35:51.235537+00:00 app[web.1]: nested exception is:
+2019-10-19T14:35:51.235539+00:00 app[web.1]: java.net.SocketTimeoutException: Read timed out; message exceptions (1) are:
+2019-10-19T14:35:51.235542+00:00 app[web.1]: Failed message 1: javax.mail.MessagingException: Exception reading response;
+2019-10-19T14:35:51.235544+00:00 app[web.1]: nested exception is:
+2019-10-19T14:35:51.235546+00:00 app[web.1]: java.net.SocketTimeoutException: Read timed out] with root cause
+2019-10-19T14:35:51.235548+00:00 app[web.1]: 
+2019-10-19T14:35:51.235550+00:00 app[web.1]: java.net.SocketTimeoutException: Read timed out
+2019-10-19T14:35:51.235553+00:00 app[web.1]: at java.net.SocketInputStream.socketRead0(Native Method) ~[na:1.8.0_222-heroku]
+2019-10-19T14:35:51.235555+00:00 app[web.1]: at java.net.SocketInputStream.socketRead(SocketInputStream.java:116) ~[na:1.8.0_222-heroku]
+2019-10-19T14:35:51.235557+00:00 app[web.1]: at java.net.SocketInputStream.read(SocketInputStream.java:171) ~[na:1.8.0_222-heroku]
+2019-10-19T14:35:51.235559+00:00 app[web.1]: at java.net.SocketInputStream.read(SocketInputStream.java:141) ~[na:1.8.0_222-heroku]
+2019-10-19T14:35:51.235561+00:00 app[web.1]: at com.sun.mail.util.TraceInputStream.read(TraceInputStream.java:126) ~[javax.mail-1.6.2.jar!/:1.6.2]
+2019-10-19T14:35:51.235563+00:00 app[web.1]: at java.io.BufferedInputStream.fill(BufferedInputStream.java:246) ~[na:1.8.0_222-heroku]
+2019-10-19T14:35:51.235565+00:00 app[web.1]: at java.io.BufferedInputStream.read(BufferedInputStream.java:265) ~[na:1.8.0_222-heroku]
+2019-10-19T14:35:51.235567+00:00 app[web.1]: at com.sun.mail.util.LineInputStream.readLine(LineInputStream.java:106) ~[javax.mail-1.6.2.jar!/:1.6.2]
+2019-10-19T14:35:51.235569+00:00 app[web.1]: at com.sun.mail.smtp.SMTPTransport.readServerResponse(SMTPTransport.java:2440) ~[javax.mail-1.6.2.jar!/:1.6.2]
+2019-10-19T14:35:51.235571+00:00 app[web.1]: at com.sun.mail.smtp.SMTPTransport.openServer(SMTPTransport.java:2187) ~[javax.mail-1.6.2.jar!/:1.6.2]
+2019-10-19T14:35:51.235573+00:00 app[web.1]: at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:740) ~[javax.mail-1.6.2.jar!/:1.6.2]
+2019-10-19T14:35:51.235575+00:00 app[web.1]: at javax.mail.Service.connect(Service.java:366) ~[javax.mail-1.6.2.jar!/:1.6.2]
+2019-10-19T14:35:51.235579+00:00 app[web.1]: at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:515) ~[spring-context-support-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:35:51.235582+00:00 app[web.1]: at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:435) ~[spring-context-support-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:35:51.235584+00:00 app[web.1]: at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:321) ~[spring-context-support-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:35:51.235586+00:00 app[web.1]: at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:310) ~[spring-context-support-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:35:51.235587+00:00 app[web.1]: at com.digimenu.main.service.EmailSenderService.sendEmail(EmailSenderService.java:21) ~[classes!/:0.0.1-SNAPSHOT]
+2019-10-19T14:35:51.235589+00:00 app[web.1]: at com.digimenu.main.controller.UserController.registerUser(UserController.java:78) ~[classes!/:0.0.1-SNAPSHOT]
+2019-10-19T14:35:51.235591+00:00 app[web.1]: at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_222-heroku]
+2019-10-19T14:35:51.235593+00:00 app[web.1]: at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_222-heroku]
+2019-10-19T14:35:51.235595+00:00 app[web.1]: at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_222-heroku]
+2019-10-19T14:35:51.235597+00:00 app[web.1]: at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_222-heroku]
+2019-10-19T14:35:51.235599+00:00 app[web.1]: at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:215) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:35:51.235601+00:00 app[web.1]: at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:142) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:35:51.235605+00:00 app[web.1]: at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102) ~[spring-webmvc-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:35:51.235607+00:00 app[web.1]: at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:35:51.235617+00:00 app[web.1]: at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800) ~[spring-webmvc-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:35:51.235619+00:00 app[web.1]: at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:35:51.235621+00:00 app[web.1]: at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038) ~[spring-webmvc-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:35:51.235623+00:00 app[web.1]: at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942) ~[spring-webmvc-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:35:51.235625+00:00 app[web.1]: at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:998) ~[spring-webmvc-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:35:51.235627+00:00 app[web.1]: at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:901) ~[spring-webmvc-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:35:51.235629+00:00 app[web.1]: at javax.servlet.http.HttpServlet.service(HttpServlet.java:660) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:35:51.235631+00:00 app[web.1]: at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:875) ~[spring-webmvc-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:35:51.235633+00:00 app[web.1]: at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:35:51.235635+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:35:51.235637+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:35:51.235639+00:00 app[web.1]: at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.12.jar!/:9.0.12]
+2019-10-19T14:35:51.235641+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:35:51.235643+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:35:51.235644+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:320) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:35:51.235646+00:00 app[web.1]: at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:127) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:35:51.235648+00:00 app[web.1]: at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:91) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:35:51.235650+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:35:51.235652+00:00 app[web.1]: at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:35:51.235654+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:35:51.235656+00:00 app[web.1]: at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:137) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:35:51.235657+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:35:51.235659+00:00 app[web.1]: at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:111) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:35:51.235661+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:35:51.235663+00:00 app[web.1]: at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:170) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:35:51.235665+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:35:51.235670+00:00 app[web.1]: at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:35:51.235672+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:35:51.235674+00:00 app[web.1]: at org.springframework.security.web.authentication.www.BasicAuthenticationFilter.doFilterInternal(BasicAuthenticationFilter.java:158) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:35:51.235676+00:00 app[web.1]: at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:35:51.235677+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:35:51.235679+00:00 app[web.1]: at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:35:51.235681+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:35:51.235683+00:00 app[web.1]: at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:66) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:35:51.235685+00:00 app[web.1]: at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:35:51.235687+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:35:51.235689+00:00 app[web.1]: at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:35:51.235690+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:35:51.235692+00:00 app[web.1]: at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:35:51.235694+00:00 app[web.1]: at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:35:51.235696+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:35:51.235698+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:215) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:35:51.235700+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:35:51.235702+00:00 app[web.1]: at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:357) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:35:51.235704+00:00 app[web.1]: at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:270) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:35:51.235706+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:35:51.235708+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:35:51.235710+00:00 app[web.1]: at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:35:51.235712+00:00 app[web.1]: at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:35:51.235714+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:35:51.235716+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:35:51.235721+00:00 app[web.1]: at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:35:51.235723+00:00 app[web.1]: at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:35:51.235725+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:35:51.235727+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:35:51.235729+00:00 app[web.1]: at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:35:51.235731+00:00 app[web.1]: at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:35:51.235733+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:35:51.235735+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:35:51.235737+00:00 app[web.1]: at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:35:51.235739+00:00 app[web.1]: at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:35:51.235741+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:35:51.235743+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:35:51.235745+00:00 app[web.1]: at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:35:51.235747+00:00 app[web.1]: at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:35:51.235749+00:00 app[web.1]: at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:35:51.235751+00:00 app[web.1]: at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:35:51.235753+00:00 app[web.1]: at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:35:51.235754+00:00 app[web.1]: at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:35:51.235756+00:00 app[web.1]: at org.apache.catalina.valves.RemoteIpValve.invoke(RemoteIpValve.java:685) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:35:51.235759+00:00 app[web.1]: at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:35:51.235760+00:00 app[web.1]: at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:35:51.235762+00:00 app[web.1]: at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:35:51.235764+00:00 app[web.1]: at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:770) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:35:51.235766+00:00 app[web.1]: at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1415) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:35:51.235768+00:00 app[web.1]: at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:35:51.235770+00:00 app[web.1]: at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_222-heroku]
+2019-10-19T14:35:51.235772+00:00 app[web.1]: at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_222-heroku]
+2019-10-19T14:35:51.235773+00:00 app[web.1]: at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:35:51.235775+00:00 app[web.1]: at java.lang.Thread.run(Thread.java:748) [na:1.8.0_222-heroku]
+2019-10-19T14:35:51.235777+00:00 app[web.1]: 
+2019-10-19T14:39:11.152623+00:00 heroku[router]: at=error code=H12 desc="Request timeout" method=POST path="/user/register" host=digimenu.herokuapp.com request_id=40e13718-636f-4052-966e-de1c4655d4e0 fwd="46.197.65.130" dyno=web.1 connect=1ms service=30003ms status=503 bytes=0 protocol=https
+2019-10-19T14:39:31.556643+00:00 app[web.1]: 2019-10-19 14:39:31.555 ERROR 4 --- [nio-9486-exec-6] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.mail.MailSendException: Mail server connection failed; nested exception is javax.mail.MessagingException: Exception reading response;
+2019-10-19T14:39:31.556662+00:00 app[web.1]: nested exception is:
+2019-10-19T14:39:31.556666+00:00 app[web.1]: java.net.SocketTimeoutException: Read timed out. Failed messages: javax.mail.MessagingException: Exception reading response;
+2019-10-19T14:39:31.556668+00:00 app[web.1]: nested exception is:
+2019-10-19T14:39:31.556671+00:00 app[web.1]: java.net.SocketTimeoutException: Read timed out; message exceptions (1) are:
+2019-10-19T14:39:31.556674+00:00 app[web.1]: Failed message 1: javax.mail.MessagingException: Exception reading response;
+2019-10-19T14:39:31.556676+00:00 app[web.1]: nested exception is:
+2019-10-19T14:39:31.556678+00:00 app[web.1]: java.net.SocketTimeoutException: Read timed out] with root cause
+2019-10-19T14:39:31.556682+00:00 app[web.1]: 
+2019-10-19T14:39:31.556686+00:00 app[web.1]: java.net.SocketTimeoutException: Read timed out
+2019-10-19T14:39:31.556688+00:00 app[web.1]: at java.net.SocketInputStream.socketRead0(Native Method) ~[na:1.8.0_222-heroku]
+2019-10-19T14:39:31.556691+00:00 app[web.1]: at java.net.SocketInputStream.socketRead(SocketInputStream.java:116) ~[na:1.8.0_222-heroku]
+2019-10-19T14:39:31.556692+00:00 app[web.1]: at java.net.SocketInputStream.read(SocketInputStream.java:171) ~[na:1.8.0_222-heroku]
+2019-10-19T14:39:31.556694+00:00 app[web.1]: at java.net.SocketInputStream.read(SocketInputStream.java:141) ~[na:1.8.0_222-heroku]
+2019-10-19T14:39:31.556699+00:00 app[web.1]: at com.sun.mail.util.TraceInputStream.read(TraceInputStream.java:126) ~[javax.mail-1.6.2.jar!/:1.6.2]
+2019-10-19T14:39:31.556702+00:00 app[web.1]: at java.io.BufferedInputStream.fill(BufferedInputStream.java:246) ~[na:1.8.0_222-heroku]
+2019-10-19T14:39:31.556704+00:00 app[web.1]: at java.io.BufferedInputStream.read(BufferedInputStream.java:265) ~[na:1.8.0_222-heroku]
+2019-10-19T14:39:31.556705+00:00 app[web.1]: at com.sun.mail.util.LineInputStream.readLine(LineInputStream.java:106) ~[javax.mail-1.6.2.jar!/:1.6.2]
+2019-10-19T14:39:31.556707+00:00 app[web.1]: at com.sun.mail.smtp.SMTPTransport.readServerResponse(SMTPTransport.java:2440) ~[javax.mail-1.6.2.jar!/:1.6.2]
+2019-10-19T14:39:31.556708+00:00 app[web.1]: at com.sun.mail.smtp.SMTPTransport.openServer(SMTPTransport.java:2187) ~[javax.mail-1.6.2.jar!/:1.6.2]
+2019-10-19T14:39:31.556710+00:00 app[web.1]: at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:740) ~[javax.mail-1.6.2.jar!/:1.6.2]
+2019-10-19T14:39:31.556712+00:00 app[web.1]: at javax.mail.Service.connect(Service.java:366) ~[javax.mail-1.6.2.jar!/:1.6.2]
+2019-10-19T14:39:31.556716+00:00 app[web.1]: at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:515) ~[spring-context-support-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:39:31.556718+00:00 app[web.1]: at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:435) ~[spring-context-support-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:39:31.556720+00:00 app[web.1]: at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:321) ~[spring-context-support-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:39:31.556722+00:00 app[web.1]: at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:310) ~[spring-context-support-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:39:31.556723+00:00 app[web.1]: at com.digimenu.main.service.EmailSenderService.sendEmail(EmailSenderService.java:21) ~[classes!/:0.0.1-SNAPSHOT]
+2019-10-19T14:39:31.556725+00:00 app[web.1]: at com.digimenu.main.controller.UserController.registerUser(UserController.java:78) ~[classes!/:0.0.1-SNAPSHOT]
+2019-10-19T14:39:31.556727+00:00 app[web.1]: at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_222-heroku]
+2019-10-19T14:39:31.556728+00:00 app[web.1]: at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_222-heroku]
+2019-10-19T14:39:31.556730+00:00 app[web.1]: at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_222-heroku]
+2019-10-19T14:39:31.556732+00:00 app[web.1]: at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_222-heroku]
+2019-10-19T14:39:31.556733+00:00 app[web.1]: at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:215) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:39:31.556735+00:00 app[web.1]: at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:142) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:39:31.556737+00:00 app[web.1]: at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102) ~[spring-webmvc-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:39:31.556739+00:00 app[web.1]: at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:39:31.556747+00:00 app[web.1]: at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800) ~[spring-webmvc-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:39:31.556749+00:00 app[web.1]: at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:39:31.556750+00:00 app[web.1]: at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038) ~[spring-webmvc-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:39:31.556752+00:00 app[web.1]: at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942) ~[spring-webmvc-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:39:31.556754+00:00 app[web.1]: at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:998) ~[spring-webmvc-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:39:31.556756+00:00 app[web.1]: at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:901) ~[spring-webmvc-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:39:31.556757+00:00 app[web.1]: at javax.servlet.http.HttpServlet.service(HttpServlet.java:660) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:39:31.556759+00:00 app[web.1]: at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:875) ~[spring-webmvc-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:39:31.556760+00:00 app[web.1]: at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:39:31.556762+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:39:31.556764+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:39:31.556765+00:00 app[web.1]: at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.12.jar!/:9.0.12]
+2019-10-19T14:39:31.556767+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:39:31.556768+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:39:31.556770+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:320) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:39:31.556772+00:00 app[web.1]: at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:127) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:39:31.556773+00:00 app[web.1]: at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:91) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:39:31.556775+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:39:31.556776+00:00 app[web.1]: at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:39:31.556778+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:39:31.556779+00:00 app[web.1]: at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:137) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:39:31.556781+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:39:31.556782+00:00 app[web.1]: at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:111) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:39:31.556784+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:39:31.556786+00:00 app[web.1]: at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:170) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:39:31.556788+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:39:31.556794+00:00 app[web.1]: at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:39:31.556796+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:39:31.556800+00:00 app[web.1]: at org.springframework.security.web.authentication.www.BasicAuthenticationFilter.doFilterInternal(BasicAuthenticationFilter.java:158) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:39:31.556801+00:00 app[web.1]: at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:39:31.556803+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:39:31.556806+00:00 app[web.1]: at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:39:31.556808+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:39:31.556810+00:00 app[web.1]: at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:66) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:39:31.556812+00:00 app[web.1]: at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:39:31.556814+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:39:31.556816+00:00 app[web.1]: at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:39:31.556818+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:39:31.556821+00:00 app[web.1]: at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:39:31.556824+00:00 app[web.1]: at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:39:31.556826+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:39:31.556828+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:215) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:39:31.556830+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T14:39:31.556833+00:00 app[web.1]: at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:357) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:39:31.556835+00:00 app[web.1]: at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:270) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:39:31.556837+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:39:31.556840+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:39:31.556842+00:00 app[web.1]: at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:39:31.556844+00:00 app[web.1]: at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:39:31.556846+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:39:31.556849+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:39:31.556855+00:00 app[web.1]: at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:39:31.556856+00:00 app[web.1]: at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:39:31.556858+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:39:31.556859+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:39:31.556861+00:00 app[web.1]: at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:39:31.556863+00:00 app[web.1]: at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:39:31.556864+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:39:31.556866+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:39:31.556868+00:00 app[web.1]: at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:39:31.556869+00:00 app[web.1]: at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T14:39:31.556871+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:39:31.556872+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:39:31.556874+00:00 app[web.1]: at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:39:31.556875+00:00 app[web.1]: at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:39:31.556877+00:00 app[web.1]: at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:39:31.556879+00:00 app[web.1]: at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:39:31.556880+00:00 app[web.1]: at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:39:31.556882+00:00 app[web.1]: at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:39:31.556883+00:00 app[web.1]: at org.apache.catalina.valves.RemoteIpValve.invoke(RemoteIpValve.java:685) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:39:31.556885+00:00 app[web.1]: at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:39:31.556886+00:00 app[web.1]: at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:39:31.556888+00:00 app[web.1]: at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:39:31.556894+00:00 app[web.1]: at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:770) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:39:31.556896+00:00 app[web.1]: at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1415) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:39:31.556898+00:00 app[web.1]: at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:39:31.556899+00:00 app[web.1]: at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_222-heroku]
+2019-10-19T14:39:31.556901+00:00 app[web.1]: at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_222-heroku]
+2019-10-19T14:39:31.556902+00:00 app[web.1]: at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T14:39:31.556905+00:00 app[web.1]: at java.lang.Thread.run(Thread.java:748) [na:1.8.0_222-heroku]
+2019-10-19T14:39:31.556907+00:00 app[web.1]: 
+2019-10-19T14:56:32.000000+00:00 app[api]: Build started by user berkaltug96@gmail.com
+2019-10-19T14:57:01.636090+00:00 app[api]: Release v59 created by user berkaltug96@gmail.com
+2019-10-19T14:57:01.636090+00:00 app[api]: Deploy 30ae37f3 by user berkaltug96@gmail.com
+2019-10-19T14:57:02.397482+00:00 heroku[web.1]: Restarting
+2019-10-19T14:57:02.404346+00:00 heroku[web.1]: State changed from up to starting
+2019-10-19T14:57:03.420330+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2019-10-19T14:57:03.441946+00:00 app[web.1]: 2019-10-19 14:57:03.438  INFO 4 --- [       Thread-4] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2019-10-19T14:57:03.441964+00:00 app[web.1]: 2019-10-19 14:57:03.440  INFO 4 --- [       Thread-4] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2019-10-19T14:57:03.441967+00:00 app[web.1]: 2019-10-19 14:57:03.440  INFO 4 --- [       Thread-4] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2019-10-19T14:57:03.454015+00:00 app[web.1]: 2019-10-19 14:57:03.453  INFO 4 --- [       Thread-4] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'brokerChannelExecutor'
+2019-10-19T14:57:03.454667+00:00 app[web.1]: 2019-10-19 14:57:03.454  INFO 4 --- [       Thread-4] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'messageBrokerTaskScheduler'
+2019-10-19T14:57:03.456457+00:00 app[web.1]: 2019-10-19 14:57:03.456  INFO 4 --- [       Thread-4] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'clientOutboundChannelExecutor'
+2019-10-19T14:57:03.456753+00:00 app[web.1]: 2019-10-19 14:57:03.456  INFO 4 --- [       Thread-4] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'clientInboundChannelExecutor'
+2019-10-19T14:57:03.460909+00:00 app[web.1]: 2019-10-19 14:57:03.460  INFO 4 --- [       Thread-4] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-10-19T14:57:03.464597+00:00 app[web.1]: 2019-10-19 14:57:03.464  INFO 4 --- [       Thread-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2019-10-19T14:57:03.498150+00:00 app[web.1]: 2019-10-19 14:57:03.497  INFO 4 --- [       Thread-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2019-10-19T14:57:03.690061+00:00 heroku[web.1]: Process exited with status 143
+2019-10-19T14:57:07.057510+00:00 heroku[web.1]: Starting process with command `java -Dserver.port=42892 $JAVA_OPTS -jar target/DigiMenu-0.0.1-SNAPSHOT.jar`
+2019-10-19T14:57:08.704046+00:00 app[web.1]: Create a Procfile to customize the command used to run this process: https://devcenter.heroku.com/articles/procfile
+2019-10-19T14:57:08.732310+00:00 app[web.1]: Setting JAVA_TOOL_OPTIONS defaults based on dyno size. Custom settings will override them.
+2019-10-19T14:57:08.735999+00:00 app[web.1]: Picked up JAVA_TOOL_OPTIONS: -Xmx300m -Xss512k -XX:CICompilerCount=2 -Dfile.encoding=UTF-8
+2019-10-19T14:57:09.000000+00:00 app[api]: Build succeeded
+2019-10-19T14:57:11.082991+00:00 app[web.1]: 
+2019-10-19T14:57:11.083023+00:00 app[web.1]: .   ____          _            __ _ _
+2019-10-19T14:57:11.083066+00:00 app[web.1]: /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+2019-10-19T14:57:11.083130+00:00 app[web.1]: ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+2019-10-19T14:57:11.083201+00:00 app[web.1]: \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+2019-10-19T14:57:11.083241+00:00 app[web.1]: '  |____| .__|_| |_|_| |_\__, | / / / /
+2019-10-19T14:57:11.083311+00:00 app[web.1]: =========|_|==============|___/=/_/_/_/
+2019-10-19T14:57:11.085310+00:00 app[web.1]: :: Spring Boot ::        (v2.1.0.RELEASE)
+2019-10-19T14:57:11.085351+00:00 app[web.1]: 
+2019-10-19T14:57:11.328902+00:00 app[web.1]: 2019-10-19 14:57:11.322  INFO 4 --- [           main] com.digimenu.main.DigiMenuApplication    : Starting DigiMenuApplication v0.0.1-SNAPSHOT on 6752fe86-eb9b-46a3-9ec5-873e20a6db5f with PID 4 (/app/target/DigiMenu-0.0.1-SNAPSHOT.jar started by u18391 in /app)
+2019-10-19T14:57:11.331206+00:00 app[web.1]: 2019-10-19 14:57:11.331  INFO 4 --- [           main] com.digimenu.main.DigiMenuApplication    : No active profile set, falling back to default profiles: default
+2019-10-19T14:57:16.001537+00:00 app[web.1]: 2019-10-19 14:57:15.998  INFO 4 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-10-19T14:57:16.473137+00:00 app[web.1]: 2019-10-19 14:57:16.472  INFO 4 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 459ms. Found 10 repository interfaces.
+2019-10-19T14:57:17.701656+00:00 app[web.1]: 2019-10-19 14:57:17.701  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$3a10ae48] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T14:57:17.805655+00:00 app[web.1]: 2019-10-19 14:57:17.805  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration$$EnhancerBySpringCGLIB$$d2be7682] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T14:57:17.816632+00:00 app[web.1]: 2019-10-19 14:57:17.816  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T14:57:17.819698+00:00 app[web.1]: 2019-10-19 14:57:17.819  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@75db5df9' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T14:57:17.822778+00:00 app[web.1]: 2019-10-19 14:57:17.822  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration$$EnhancerBySpringCGLIB$$f7931934] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T14:57:17.838735+00:00 app[web.1]: 2019-10-19 14:57:17.838  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.method.configuration.Jsr250MetadataSourceConfiguration' of type [org.springframework.security.config.annotation.method.configuration.Jsr250MetadataSourceConfiguration$$EnhancerBySpringCGLIB$$1ce8314a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T14:57:17.845062+00:00 app[web.1]: 2019-10-19 14:57:17.844  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'jsr250MethodSecurityMetadataSource' of type [org.springframework.security.access.annotation.Jsr250MethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T14:57:17.850886+00:00 app[web.1]: 2019-10-19 14:57:17.850  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T14:57:19.292991+00:00 app[web.1]: 2019-10-19 14:57:19.292  INFO 4 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 42892 (http)
+2019-10-19T14:57:19.533940+00:00 app[web.1]: 2019-10-19 14:57:19.533  INFO 4 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-10-19T14:57:19.534855+00:00 app[web.1]: 2019-10-19 14:57:19.534  INFO 4 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.12
+2019-10-19T14:57:19.575899+00:00 app[web.1]: 2019-10-19 14:57:19.575  INFO 4 --- [           main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/app/.jdk/jre/lib/amd64/server::/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-10-19T14:57:20.479297+00:00 app[web.1]: 2019-10-19 14:57:20.479  INFO 4 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-10-19T14:57:20.479516+00:00 app[web.1]: 2019-10-19 14:57:20.479  INFO 4 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 9023 ms
+2019-10-19T14:57:20.827179+00:00 app[web.1]: 2019-10-19 14:57:20.825  INFO 4 --- [           main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-10-19T14:57:20.831178+00:00 app[web.1]: 2019-10-19 14:57:20.830  INFO 4 --- [           main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-10-19T14:57:20.831876+00:00 app[web.1]: 2019-10-19 14:57:20.831  INFO 4 --- [           main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'formContentFilter' to: [/*]
+2019-10-19T14:57:20.833759+00:00 app[web.1]: 2019-10-19 14:57:20.832  INFO 4 --- [           main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-10-19T14:57:20.835682+00:00 app[web.1]: 2019-10-19 14:57:20.835  INFO 4 --- [           main] .s.DelegatingFilterProxyRegistrationBean : Mapping filter: 'springSecurityFilterChain' to: [/*]
+2019-10-19T14:57:20.836152+00:00 app[web.1]: 2019-10-19 14:57:20.835  INFO 4 --- [           main] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-10-19T14:57:21.634153+00:00 app[web.1]: 2019-10-19 14:57:21.633  INFO 4 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-10-19T14:57:22.427921+00:00 app[web.1]: 2019-10-19 14:57:22.427  INFO 4 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-10-19T14:57:22.754703+00:00 app[web.1]: 2019-10-19 14:57:22.754  INFO 4 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+2019-10-19T14:57:22.754714+00:00 app[web.1]: name: default
+2019-10-19T14:57:22.754716+00:00 app[web.1]: ...]
+2019-10-19T14:57:23.274843+00:00 app[web.1]: 2019-10-19 14:57:23.274  INFO 4 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2019-10-19T14:57:23.278247+00:00 app[web.1]: 2019-10-19 14:57:23.277  INFO 4 --- [           main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2019-10-19T14:57:24.227489+00:00 app[web.1]: 2019-10-19 14:57:24.227  INFO 4 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-10-19T14:57:25.182421+00:00 app[web.1]: 2019-10-19 14:57:25.181  INFO 4 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2019-10-19T14:57:25.236384+00:00 app[web.1]: 2019-10-19 14:57:25.235  INFO 4 --- [           main] o.h.e.j.e.i.LobCreatorBuilderImpl        : HHH000422: Disabling contextual LOB creation as connection was null
+2019-10-19T14:57:25.270219+00:00 app[web.1]: 2019-10-19 14:57:25.269  INFO 4 --- [           main] org.hibernate.type.BasicTypeRegistry     : HHH000270: Type registration [java.util.UUID] overrides previous : org.hibernate.type.UUIDBinaryType@24b52d3e
+2019-10-19T14:57:29.257537+00:00 app[web.1]: 2019-10-19 14:57:29.257  INFO 4 --- [           main] o.h.t.schema.internal.SchemaCreatorImpl  : HHH000476: Executing import script 'ScriptSourceInputFromUrl(jar:file:/app/target/DigiMenu-0.0.1-SNAPSHOT.jar!/BOOT-INF/classes!/import.sql)'
+2019-10-19T14:57:29.398413+00:00 app[web.1]: 2019-10-19 14:57:29.398  INFO 4 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-10-19T14:57:31.546099+00:00 app[web.1]: 2019-10-19 14:57:31.545  INFO 4 --- [           main] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2019-10-19T14:57:32.505057+00:00 app[web.1]: 2019-10-19 14:57:32.501  INFO 4 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'clientInboundChannelExecutor'
+2019-10-19T14:57:32.529667+00:00 app[web.1]: 2019-10-19 14:57:32.529  INFO 4 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'clientOutboundChannelExecutor'
+2019-10-19T14:57:33.279300+00:00 app[web.1]: 2019-10-19 14:57:33.279  INFO 4 --- [           main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'messageBrokerTaskScheduler'
+2019-10-19T14:57:33.403907+00:00 app[web.1]: 2019-10-19 14:57:33.403  INFO 4 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'brokerChannelExecutor'
+2019-10-19T14:57:34.590824+00:00 app[web.1]: 2019-10-19 14:57:34.590  WARN 4 --- [           main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-10-19T14:57:35.267501+00:00 app[web.1]: 2019-10-19 14:57:35.267  INFO 4 --- [           main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2019-10-19T14:57:35.269019+00:00 app[web.1]: 2019-10-19 14:57:35.268  INFO 4 --- [           main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2019-10-19T14:57:35.280130+00:00 app[web.1]: 2019-10-19 14:57:35.279  INFO 4 --- [           main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2019-10-19T14:57:35.354122+00:00 app[web.1]: 2019-10-19 14:57:35.353  INFO 4 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 42892 (http) with context path ''
+2019-10-19T14:57:35.367229+00:00 app[web.1]: 2019-10-19 14:57:35.366  INFO 4 --- [           main] com.digimenu.main.DigiMenuApplication    : Started DigiMenuApplication in 25.364 seconds (JVM running for 26.631)
+2019-10-19T14:57:36.024721+00:00 heroku[web.1]: State changed from starting to up
+2019-10-19T14:58:33.401543+00:00 app[web.1]: 2019-10-19 14:58:33.401  INFO 4 --- [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2019-10-19T14:58:36.097468+00:00 app[web.1]: 2019-10-19 14:58:36.097  INFO 4 --- [io-42892-exec-5] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-10-19T14:58:36.097557+00:00 app[web.1]: 2019-10-19 14:58:36.097  INFO 4 --- [io-42892-exec-5] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-10-19T14:58:36.111883+00:00 app[web.1]: 2019-10-19 14:58:36.111  INFO 4 --- [io-42892-exec-5] o.s.web.servlet.DispatcherServlet        : Completed initialization in 14 ms
+2019-10-19T14:59:06.057492+00:00 heroku[router]: at=error code=H12 desc="Request timeout" method=POST path="/user/register" host=digimenu.herokuapp.com request_id=9570c943-ab07-418a-81f1-3703db5ced75 fwd="46.197.65.130" dyno=web.1 connect=0ms service=30000ms status=503 bytes=0 protocol=https
+2019-10-19T15:01:37.380626+00:00 app[web.1]: 2019-10-19 15:01:37.379 ERROR 4 --- [io-42892-exec-5] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.mail.MailSendException: Mail server connection failed; nested exception is javax.mail.MessagingException: Could not connect to SMTP host: cpanel.freehosting.com, port: 993, response: -1. Failed messages: javax.mail.MessagingException: Could not connect to SMTP host: cpanel.freehosting.com, port: 993, response: -1; message exceptions (1) are:
+2019-10-19T15:01:37.380642+00:00 app[web.1]: Failed message 1: javax.mail.MessagingException: Could not connect to SMTP host: cpanel.freehosting.com, port: 993, response: -1] with root cause
+2019-10-19T15:01:37.380645+00:00 app[web.1]: 
+2019-10-19T15:01:37.380648+00:00 app[web.1]: javax.mail.MessagingException: Could not connect to SMTP host: cpanel.freehosting.com, port: 993, response: -1
+2019-10-19T15:01:37.380650+00:00 app[web.1]: at com.sun.mail.smtp.SMTPTransport.openServer(SMTPTransport.java:2197) ~[javax.mail-1.6.2.jar!/:1.6.2]
+2019-10-19T15:01:37.380652+00:00 app[web.1]: at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:740) ~[javax.mail-1.6.2.jar!/:1.6.2]
+2019-10-19T15:01:37.380656+00:00 app[web.1]: at javax.mail.Service.connect(Service.java:366) ~[javax.mail-1.6.2.jar!/:1.6.2]
+2019-10-19T15:01:37.380659+00:00 app[web.1]: at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:515) ~[spring-context-support-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T15:01:37.380661+00:00 app[web.1]: at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:435) ~[spring-context-support-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T15:01:37.380663+00:00 app[web.1]: at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:321) ~[spring-context-support-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T15:01:37.380665+00:00 app[web.1]: at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:310) ~[spring-context-support-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T15:01:37.380668+00:00 app[web.1]: at com.digimenu.main.service.EmailSenderService.sendEmail(EmailSenderService.java:21) ~[classes!/:0.0.1-SNAPSHOT]
+2019-10-19T15:01:37.380670+00:00 app[web.1]: at com.digimenu.main.controller.UserController.registerUser(UserController.java:78) ~[classes!/:0.0.1-SNAPSHOT]
+2019-10-19T15:01:37.380672+00:00 app[web.1]: at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_222-heroku]
+2019-10-19T15:01:37.380674+00:00 app[web.1]: at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_222-heroku]
+2019-10-19T15:01:37.380676+00:00 app[web.1]: at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_222-heroku]
+2019-10-19T15:01:37.380679+00:00 app[web.1]: at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_222-heroku]
+2019-10-19T15:01:37.380681+00:00 app[web.1]: at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:215) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T15:01:37.380683+00:00 app[web.1]: at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:142) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T15:01:37.380686+00:00 app[web.1]: at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102) ~[spring-webmvc-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T15:01:37.380688+00:00 app[web.1]: at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T15:01:37.380690+00:00 app[web.1]: at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800) ~[spring-webmvc-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T15:01:37.380692+00:00 app[web.1]: at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T15:01:37.380694+00:00 app[web.1]: at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038) ~[spring-webmvc-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T15:01:37.380701+00:00 app[web.1]: at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942) ~[spring-webmvc-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T15:01:37.380703+00:00 app[web.1]: at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:998) ~[spring-webmvc-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T15:01:37.380706+00:00 app[web.1]: at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:901) ~[spring-webmvc-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T15:01:37.380716+00:00 app[web.1]: at javax.servlet.http.HttpServlet.service(HttpServlet.java:660) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T15:01:37.380718+00:00 app[web.1]: at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:875) ~[spring-webmvc-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T15:01:37.380720+00:00 app[web.1]: at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T15:01:37.380722+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T15:01:37.380724+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T15:01:37.380726+00:00 app[web.1]: at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.12.jar!/:9.0.12]
+2019-10-19T15:01:37.380728+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T15:01:37.380731+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T15:01:37.380733+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:320) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T15:01:37.380735+00:00 app[web.1]: at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:127) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T15:01:37.380737+00:00 app[web.1]: at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:91) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T15:01:37.380739+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T15:01:37.380741+00:00 app[web.1]: at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T15:01:37.380743+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T15:01:37.380746+00:00 app[web.1]: at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:137) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T15:01:37.380748+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T15:01:37.380750+00:00 app[web.1]: at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:111) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T15:01:37.380752+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T15:01:37.380754+00:00 app[web.1]: at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:170) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T15:01:37.380786+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T15:01:37.380788+00:00 app[web.1]: at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T15:01:37.380790+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T15:01:37.380792+00:00 app[web.1]: at org.springframework.security.web.authentication.www.BasicAuthenticationFilter.doFilterInternal(BasicAuthenticationFilter.java:158) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T15:01:37.380794+00:00 app[web.1]: at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T15:01:37.380796+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T15:01:37.380805+00:00 app[web.1]: at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T15:01:37.380808+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T15:01:37.380810+00:00 app[web.1]: at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:66) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T15:01:37.380812+00:00 app[web.1]: at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T15:01:37.380814+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T15:01:37.380817+00:00 app[web.1]: at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T15:01:37.380819+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T15:01:37.380821+00:00 app[web.1]: at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T15:01:37.380823+00:00 app[web.1]: at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T15:01:37.380825+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T15:01:37.380827+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:215) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T15:01:37.380829+00:00 app[web.1]: at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178) ~[spring-security-web-5.1.1.RELEASE.jar!/:5.1.1.RELEASE]
+2019-10-19T15:01:37.380832+00:00 app[web.1]: at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:357) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T15:01:37.380834+00:00 app[web.1]: at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:270) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T15:01:37.380836+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T15:01:37.380838+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T15:01:37.380840+00:00 app[web.1]: at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T15:01:37.380842+00:00 app[web.1]: at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T15:01:37.380844+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T15:01:37.380846+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T15:01:37.380848+00:00 app[web.1]: at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T15:01:37.380851+00:00 app[web.1]: at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T15:01:37.380853+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T15:01:37.380855+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T15:01:37.380856+00:00 app[web.1]: at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T15:01:37.380858+00:00 app[web.1]: at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T15:01:37.380867+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T15:01:37.380869+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T15:01:37.380871+00:00 app[web.1]: at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T15:01:37.380873+00:00 app[web.1]: at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.2.RELEASE.jar!/:5.1.2.RELEASE]
+2019-10-19T15:01:37.380875+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T15:01:37.380877+00:00 app[web.1]: at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T15:01:37.380879+00:00 app[web.1]: at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199) ~[tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T15:01:37.380881+00:00 app[web.1]: at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T15:01:37.380883+00:00 app[web.1]: at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T15:01:37.380885+00:00 app[web.1]: at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T15:01:37.380887+00:00 app[web.1]: at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T15:01:37.380889+00:00 app[web.1]: at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T15:01:37.380892+00:00 app[web.1]: at org.apache.catalina.valves.RemoteIpValve.invoke(RemoteIpValve.java:685) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T15:01:37.380894+00:00 app[web.1]: at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T15:01:37.380896+00:00 app[web.1]: at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T15:01:37.380898+00:00 app[web.1]: at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T15:01:37.380906+00:00 app[web.1]: at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:770) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T15:01:37.380908+00:00 app[web.1]: at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1415) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T15:01:37.380910+00:00 app[web.1]: at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T15:01:37.380912+00:00 app[web.1]: at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_222-heroku]
+2019-10-19T15:01:37.380914+00:00 app[web.1]: at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_222-heroku]
+2019-10-19T15:01:37.380916+00:00 app[web.1]: at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.12.jar!/:9.0.12]
+2019-10-19T15:01:37.380919+00:00 app[web.1]: at java.lang.Thread.run(Thread.java:748) [na:1.8.0_222-heroku]
+2019-10-19T15:01:37.380921+00:00 app[web.1]: 
+2019-10-19T15:05:10.000000+00:00 app[api]: Build started by user berkaltug96@gmail.com
+2019-10-19T15:05:39.653292+00:00 app[api]: Release v60 created by user berkaltug96@gmail.com
+2019-10-19T15:05:39.653292+00:00 app[api]: Deploy ba239881 by user berkaltug96@gmail.com
+2019-10-19T15:05:40.187883+00:00 heroku[web.1]: Restarting
+2019-10-19T15:05:41.505919+00:00 heroku[web.1]: State changed from up to starting
+2019-10-19T15:05:42.535092+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2019-10-19T15:05:42.884541+00:00 heroku[web.1]: Process exited with status 143
+2019-10-19T15:05:42.635134+00:00 app[web.1]: 2019-10-19 15:05:42.634  INFO 4 --- [       Thread-4] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2019-10-19T15:05:42.641118+00:00 app[web.1]: 2019-10-19 15:05:42.640  INFO 4 --- [       Thread-4] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2019-10-19T15:05:42.641407+00:00 app[web.1]: 2019-10-19 15:05:42.641  INFO 4 --- [       Thread-4] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2019-10-19T15:05:42.646792+00:00 app[web.1]: 2019-10-19 15:05:42.646  INFO 4 --- [       Thread-4] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'brokerChannelExecutor'
+2019-10-19T15:05:42.647483+00:00 app[web.1]: 2019-10-19 15:05:42.647  INFO 4 --- [       Thread-4] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'messageBrokerTaskScheduler'
+2019-10-19T15:05:42.649502+00:00 app[web.1]: 2019-10-19 15:05:42.649  INFO 4 --- [       Thread-4] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'clientOutboundChannelExecutor'
+2019-10-19T15:05:42.649869+00:00 app[web.1]: 2019-10-19 15:05:42.649  INFO 4 --- [       Thread-4] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'clientInboundChannelExecutor'
+2019-10-19T15:05:42.654991+00:00 app[web.1]: 2019-10-19 15:05:42.654  INFO 4 --- [       Thread-4] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-10-19T15:05:42.658692+00:00 app[web.1]: 2019-10-19 15:05:42.658  INFO 4 --- [       Thread-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2019-10-19T15:05:42.704566+00:00 app[web.1]: 2019-10-19 15:05:42.704  INFO 4 --- [       Thread-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2019-10-19T15:05:45.736572+00:00 heroku[web.1]: Starting process with command `java -Dserver.port=25236 $JAVA_OPTS -jar target/DigiMenu-0.0.1-SNAPSHOT.jar`
+2019-10-19T15:05:46.000000+00:00 app[api]: Build succeeded
+2019-10-19T15:05:46.915109+00:00 app[web.1]: Create a Procfile to customize the command used to run this process: https://devcenter.heroku.com/articles/procfile
+2019-10-19T15:05:46.937930+00:00 app[web.1]: Setting JAVA_TOOL_OPTIONS defaults based on dyno size. Custom settings will override them.
+2019-10-19T15:05:46.941361+00:00 app[web.1]: Picked up JAVA_TOOL_OPTIONS: -Xmx300m -Xss512k -XX:CICompilerCount=2 -Dfile.encoding=UTF-8
+2019-10-19T15:05:48.074890+00:00 app[web.1]: 
+2019-10-19T15:05:48.074952+00:00 app[web.1]: .   ____          _            __ _ _
+2019-10-19T15:05:48.074955+00:00 app[web.1]: /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+2019-10-19T15:05:48.074981+00:00 app[web.1]: ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+2019-10-19T15:05:48.075045+00:00 app[web.1]: \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+2019-10-19T15:05:48.075088+00:00 app[web.1]: '  |____| .__|_| |_|_| |_\__, | / / / /
+2019-10-19T15:05:48.075163+00:00 app[web.1]: =========|_|==============|___/=/_/_/_/
+2019-10-19T15:05:48.076503+00:00 app[web.1]: :: Spring Boot ::        (v2.1.0.RELEASE)
+2019-10-19T15:05:48.076525+00:00 app[web.1]: 
+2019-10-19T15:05:48.207882+00:00 app[web.1]: 2019-10-19 15:05:48.193  INFO 4 --- [           main] com.digimenu.main.DigiMenuApplication    : Starting DigiMenuApplication v0.0.1-SNAPSHOT on f63e9419-dadc-407e-9068-67da5dea90ab with PID 4 (/app/target/DigiMenu-0.0.1-SNAPSHOT.jar started by u43436 in /app)
+2019-10-19T15:05:48.209960+00:00 app[web.1]: 2019-10-19 15:05:48.209  INFO 4 --- [           main] com.digimenu.main.DigiMenuApplication    : No active profile set, falling back to default profiles: default
+2019-10-19T15:05:49.325755+00:00 app[web.1]: 2019-10-19 15:05:49.324  INFO 4 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-10-19T15:05:49.538834+00:00 app[web.1]: 2019-10-19 15:05:49.538  INFO 4 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 204ms. Found 10 repository interfaces.
+2019-10-19T15:05:50.121266+00:00 app[web.1]: 2019-10-19 15:05:50.120  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$99bc64d8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:05:50.206125+00:00 app[web.1]: 2019-10-19 15:05:50.205  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration$$EnhancerBySpringCGLIB$$326a2d12] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:05:50.215566+00:00 app[web.1]: 2019-10-19 15:05:50.215  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:05:50.218458+00:00 app[web.1]: 2019-10-19 15:05:50.218  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@394df057' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:05:50.220340+00:00 app[web.1]: 2019-10-19 15:05:50.220  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration$$EnhancerBySpringCGLIB$$573ecfc4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:05:50.233941+00:00 app[web.1]: 2019-10-19 15:05:50.233  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.method.configuration.Jsr250MetadataSourceConfiguration' of type [org.springframework.security.config.annotation.method.configuration.Jsr250MetadataSourceConfiguration$$EnhancerBySpringCGLIB$$7c93e7da] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:05:50.238544+00:00 app[web.1]: 2019-10-19 15:05:50.238  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'jsr250MethodSecurityMetadataSource' of type [org.springframework.security.access.annotation.Jsr250MethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:05:50.240211+00:00 app[web.1]: 2019-10-19 15:05:50.240  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:05:50.891594+00:00 app[web.1]: 2019-10-19 15:05:50.891  INFO 4 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 25236 (http)
+2019-10-19T15:05:50.937265+00:00 app[web.1]: 2019-10-19 15:05:50.937  INFO 4 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-10-19T15:05:50.937447+00:00 app[web.1]: 2019-10-19 15:05:50.937  INFO 4 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.12
+2019-10-19T15:05:50.955427+00:00 app[web.1]: 2019-10-19 15:05:50.955  INFO 4 --- [           main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/app/.jdk/jre/lib/amd64/server::/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-10-19T15:05:51.342712+00:00 app[web.1]: 2019-10-19 15:05:51.342  INFO 4 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-10-19T15:05:51.342875+00:00 app[web.1]: 2019-10-19 15:05:51.342  INFO 4 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3078 ms
+2019-10-19T15:05:51.404113+00:00 app[web.1]: 2019-10-19 15:05:51.403  INFO 4 --- [           main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-10-19T15:05:51.404445+00:00 app[web.1]: 2019-10-19 15:05:51.404  INFO 4 --- [           main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-10-19T15:05:51.404568+00:00 app[web.1]: 2019-10-19 15:05:51.404  INFO 4 --- [           main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'formContentFilter' to: [/*]
+2019-10-19T15:05:51.404685+00:00 app[web.1]: 2019-10-19 15:05:51.404  INFO 4 --- [           main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-10-19T15:05:51.405369+00:00 app[web.1]: 2019-10-19 15:05:51.405  INFO 4 --- [           main] .s.DelegatingFilterProxyRegistrationBean : Mapping filter: 'springSecurityFilterChain' to: [/*]
+2019-10-19T15:05:51.405548+00:00 app[web.1]: 2019-10-19 15:05:51.405  INFO 4 --- [           main] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-10-19T15:05:51.612286+00:00 app[web.1]: 2019-10-19 15:05:51.612  INFO 4 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-10-19T15:05:51.963601+00:00 app[web.1]: 2019-10-19 15:05:51.963  INFO 4 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-10-19T15:05:52.101770+00:00 app[web.1]: 2019-10-19 15:05:52.101  INFO 4 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+2019-10-19T15:05:52.101779+00:00 app[web.1]: name: default
+2019-10-19T15:05:52.101781+00:00 app[web.1]: ...]
+2019-10-19T15:05:52.332393+00:00 app[web.1]: 2019-10-19 15:05:52.332  INFO 4 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2019-10-19T15:05:52.336134+00:00 app[web.1]: 2019-10-19 15:05:52.335  INFO 4 --- [           main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2019-10-19T15:05:52.704425+00:00 app[web.1]: 2019-10-19 15:05:52.704  INFO 4 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-10-19T15:05:53.384844+00:00 app[web.1]: 2019-10-19 15:05:53.384  INFO 4 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2019-10-19T15:05:53.415204+00:00 app[web.1]: 2019-10-19 15:05:53.414  INFO 4 --- [           main] o.h.e.j.e.i.LobCreatorBuilderImpl        : HHH000422: Disabling contextual LOB creation as connection was null
+2019-10-19T15:05:53.423797+00:00 app[web.1]: 2019-10-19 15:05:53.423  INFO 4 --- [           main] org.hibernate.type.BasicTypeRegistry     : HHH000270: Type registration [java.util.UUID] overrides previous : org.hibernate.type.UUIDBinaryType@323e8306
+2019-10-19T15:05:55.248417+00:00 app[web.1]: 2019-10-19 15:05:55.248  INFO 4 --- [           main] o.h.t.schema.internal.SchemaCreatorImpl  : HHH000476: Executing import script 'ScriptSourceInputFromUrl(jar:file:/app/target/DigiMenu-0.0.1-SNAPSHOT.jar!/BOOT-INF/classes!/import.sql)'
+2019-10-19T15:05:55.306692+00:00 app[web.1]: 2019-10-19 15:05:55.306  INFO 4 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-10-19T15:05:56.364711+00:00 app[web.1]: 2019-10-19 15:05:56.364  INFO 4 --- [           main] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2019-10-19T15:05:57.068578+00:00 app[web.1]: 2019-10-19 15:05:57.068  INFO 4 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'clientInboundChannelExecutor'
+2019-10-19T15:05:57.076841+00:00 app[web.1]: 2019-10-19 15:05:57.076  INFO 4 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'clientOutboundChannelExecutor'
+2019-10-19T15:05:57.362458+00:00 app[web.1]: 2019-10-19 15:05:57.362  INFO 4 --- [           main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'messageBrokerTaskScheduler'
+2019-10-19T15:05:57.440047+00:00 app[web.1]: 2019-10-19 15:05:57.439  INFO 4 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'brokerChannelExecutor'
+2019-10-19T15:05:57.733479+00:00 app[web.1]: 2019-10-19 15:05:57.733  WARN 4 --- [           main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-10-19T15:05:58.175577+00:00 heroku[web.1]: State changed from starting to up
+2019-10-19T15:05:58.101325+00:00 app[web.1]: 2019-10-19 15:05:58.101  INFO 4 --- [           main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2019-10-19T15:05:58.102352+00:00 app[web.1]: 2019-10-19 15:05:58.102  INFO 4 --- [           main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2019-10-19T15:05:58.102788+00:00 app[web.1]: 2019-10-19 15:05:58.102  INFO 4 --- [           main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2019-10-19T15:05:58.139623+00:00 app[web.1]: 2019-10-19 15:05:58.139  INFO 4 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 25236 (http) with context path ''
+2019-10-19T15:05:58.141726+00:00 app[web.1]: 2019-10-19 15:05:58.141  INFO 4 --- [           main] com.digimenu.main.DigiMenuApplication    : Started DigiMenuApplication in 10.503 seconds (JVM running for 11.2)
+2019-10-19T15:06:35.072447+00:00 app[web.1]: 2019-10-19 15:06:35.072  INFO 4 --- [io-25236-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-10-19T15:06:35.072557+00:00 app[web.1]: 2019-10-19 15:06:35.072  INFO 4 --- [io-25236-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-10-19T15:06:35.102216+00:00 app[web.1]: 2019-10-19 15:06:35.101  INFO 4 --- [io-25236-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 29 ms
+2019-10-19T15:06:37.068856+00:00 heroku[router]: at=info method=POST path="/user/register" host=digimenu.herokuapp.com request_id=bab23af9-eb45-44c8-82cb-1022628a11d4 fwd="46.197.65.130" dyno=web.1 connect=1ms service=2046ms status=201 bytes=433 protocol=https
+2019-10-19T15:06:57.439111+00:00 app[web.1]: 2019-10-19 15:06:57.438  INFO 4 --- [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2019-10-19T15:10:31.677921+00:00 heroku[router]: at=info method=POST path="/user/login" host=digimenu.herokuapp.com request_id=b872adcc-7ee7-4aed-a893-183f034f1bb0 fwd="46.197.65.130" dyno=web.1 connect=1ms service=161ms status=401 bytes=415 protocol=https
+2019-10-19T15:12:25.312466+00:00 heroku[router]: at=info method=POST path="/user/register" host=digimenu.herokuapp.com request_id=f871f895-e26e-4789-8b74-c3cb7e8a457c fwd="46.197.65.130" dyno=web.1 connect=1ms service=1013ms status=201 bytes=433 protocol=https
+2019-10-19T15:16:50.000000+00:00 app[api]: Build started by user berkaltug96@gmail.com
+2019-10-19T15:17:20.533514+00:00 app[api]: Release v61 created by user berkaltug96@gmail.com
+2019-10-19T15:17:21.469692+00:00 heroku[web.1]: Restarting
+2019-10-19T15:17:21.485934+00:00 heroku[web.1]: State changed from up to starting
+2019-10-19T15:17:20.533514+00:00 app[api]: Deploy 3f840b89 by user berkaltug96@gmail.com
+2019-10-19T15:17:22.175378+00:00 app[web.1]: 2019-10-19 15:17:22.175  INFO 4 --- [       Thread-4] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2019-10-19T15:17:22.175500+00:00 app[web.1]: 2019-10-19 15:17:22.175  INFO 4 --- [       Thread-4] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2019-10-19T15:17:22.175637+00:00 app[web.1]: 2019-10-19 15:17:22.175  INFO 4 --- [       Thread-4] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2019-10-19T15:17:22.178173+00:00 app[web.1]: 2019-10-19 15:17:22.178  INFO 4 --- [       Thread-4] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'brokerChannelExecutor'
+2019-10-19T15:17:22.178579+00:00 app[web.1]: 2019-10-19 15:17:22.178  INFO 4 --- [       Thread-4] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'messageBrokerTaskScheduler'
+2019-10-19T15:17:22.179918+00:00 app[web.1]: 2019-10-19 15:17:22.179  INFO 4 --- [       Thread-4] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'clientOutboundChannelExecutor'
+2019-10-19T15:17:22.180150+00:00 app[web.1]: 2019-10-19 15:17:22.180  INFO 4 --- [       Thread-4] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'clientInboundChannelExecutor'
+2019-10-19T15:17:22.183742+00:00 app[web.1]: 2019-10-19 15:17:22.183  INFO 4 --- [       Thread-4] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-10-19T15:17:22.186203+00:00 app[web.1]: 2019-10-19 15:17:22.186  INFO 4 --- [       Thread-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2019-10-19T15:17:22.205605+00:00 app[web.1]: 2019-10-19 15:17:22.205  INFO 4 --- [       Thread-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2019-10-19T15:17:22.166239+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2019-10-19T15:17:22.340695+00:00 heroku[web.1]: Process exited with status 143
+2019-10-19T15:17:27.619505+00:00 heroku[web.1]: Starting process with command `java -Dserver.port=16397 $JAVA_OPTS -jar target/DigiMenu-0.0.1-SNAPSHOT.jar`
+2019-10-19T15:17:28.000000+00:00 app[api]: Build succeeded
+2019-10-19T15:17:30.347476+00:00 app[web.1]: Create a Procfile to customize the command used to run this process: https://devcenter.heroku.com/articles/procfile
+2019-10-19T15:17:30.533911+00:00 app[web.1]: Setting JAVA_TOOL_OPTIONS defaults based on dyno size. Custom settings will override them.
+2019-10-19T15:17:30.545064+00:00 app[web.1]: Picked up JAVA_TOOL_OPTIONS: -Xmx300m -Xss512k -XX:CICompilerCount=2 -Dfile.encoding=UTF-8
+2019-10-19T15:17:34.362337+00:00 app[web.1]: 
+2019-10-19T15:17:34.362379+00:00 app[web.1]: .   ____          _            __ _ _
+2019-10-19T15:17:34.362405+00:00 app[web.1]: /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+2019-10-19T15:17:34.363980+00:00 app[web.1]: ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+2019-10-19T15:17:34.364083+00:00 app[web.1]: \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+2019-10-19T15:17:34.364190+00:00 app[web.1]: '  |____| .__|_| |_|_| |_\__, | / / / /
+2019-10-19T15:17:34.364289+00:00 app[web.1]: =========|_|==============|___/=/_/_/_/
+2019-10-19T15:17:34.366296+00:00 app[web.1]: :: Spring Boot ::        (v2.1.0.RELEASE)
+2019-10-19T15:17:34.366362+00:00 app[web.1]: 
+2019-10-19T15:17:34.587372+00:00 app[web.1]: 2019-10-19 15:17:34.581  INFO 4 --- [           main] com.digimenu.main.DigiMenuApplication    : Starting DigiMenuApplication v0.0.1-SNAPSHOT on 6e38e148-061a-482a-8985-ae67188adc4f with PID 4 (/app/target/DigiMenu-0.0.1-SNAPSHOT.jar started by u52371 in /app)
+2019-10-19T15:17:34.589633+00:00 app[web.1]: 2019-10-19 15:17:34.589  INFO 4 --- [           main] com.digimenu.main.DigiMenuApplication    : No active profile set, falling back to default profiles: default
+2019-10-19T15:17:37.968161+00:00 app[web.1]: 2019-10-19 15:17:37.965  INFO 4 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-10-19T15:17:38.600874+00:00 app[web.1]: 2019-10-19 15:17:38.600  INFO 4 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 614ms. Found 10 repository interfaces.
+2019-10-19T15:17:40.778322+00:00 app[web.1]: 2019-10-19 15:17:40.777  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$e1c4934] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:17:41.079740+00:00 app[web.1]: 2019-10-19 15:17:41.079  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration$$EnhancerBySpringCGLIB$$a6ca116e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:17:41.097387+00:00 app[web.1]: 2019-10-19 15:17:41.097  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:17:41.102263+00:00 app[web.1]: 2019-10-19 15:17:41.102  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@7530ad9c' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:17:41.105809+00:00 app[web.1]: 2019-10-19 15:17:41.105  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration$$EnhancerBySpringCGLIB$$cb9eb420] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:17:41.143869+00:00 app[web.1]: 2019-10-19 15:17:41.143  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.method.configuration.Jsr250MetadataSourceConfiguration' of type [org.springframework.security.config.annotation.method.configuration.Jsr250MetadataSourceConfiguration$$EnhancerBySpringCGLIB$$f0f3cc36] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:17:41.153729+00:00 app[web.1]: 2019-10-19 15:17:41.153  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'jsr250MethodSecurityMetadataSource' of type [org.springframework.security.access.annotation.Jsr250MethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:17:41.162177+00:00 app[web.1]: 2019-10-19 15:17:41.161  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:17:42.569371+00:00 app[web.1]: 2019-10-19 15:17:42.568  INFO 4 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 16397 (http)
+2019-10-19T15:17:42.658407+00:00 app[web.1]: 2019-10-19 15:17:42.658  INFO 4 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-10-19T15:17:42.658699+00:00 app[web.1]: 2019-10-19 15:17:42.658  INFO 4 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.12
+2019-10-19T15:17:42.688243+00:00 app[web.1]: 2019-10-19 15:17:42.685  INFO 4 --- [           main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/app/.jdk/jre/lib/amd64/server::/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-10-19T15:17:44.249541+00:00 app[web.1]: 2019-10-19 15:17:44.249  INFO 4 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-10-19T15:17:44.249806+00:00 app[web.1]: 2019-10-19 15:17:44.249  INFO 4 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 9485 ms
+2019-10-19T15:17:44.557774+00:00 app[web.1]: 2019-10-19 15:17:44.550  INFO 4 --- [           main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-10-19T15:17:44.558421+00:00 app[web.1]: 2019-10-19 15:17:44.558  INFO 4 --- [           main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-10-19T15:17:44.558623+00:00 app[web.1]: 2019-10-19 15:17:44.558  INFO 4 --- [           main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'formContentFilter' to: [/*]
+2019-10-19T15:17:44.559424+00:00 app[web.1]: 2019-10-19 15:17:44.558  INFO 4 --- [           main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-10-19T15:17:44.560936+00:00 app[web.1]: 2019-10-19 15:17:44.560  INFO 4 --- [           main] .s.DelegatingFilterProxyRegistrationBean : Mapping filter: 'springSecurityFilterChain' to: [/*]
+2019-10-19T15:17:44.561747+00:00 app[web.1]: 2019-10-19 15:17:44.561  INFO 4 --- [           main] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-10-19T15:17:45.300826+00:00 app[web.1]: 2019-10-19 15:17:45.300  INFO 4 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-10-19T15:17:46.222691+00:00 app[web.1]: 2019-10-19 15:17:46.222  INFO 4 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-10-19T15:17:46.648146+00:00 app[web.1]: 2019-10-19 15:17:46.647  INFO 4 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+2019-10-19T15:17:46.648160+00:00 app[web.1]: name: default
+2019-10-19T15:17:46.648163+00:00 app[web.1]: ...]
+2019-10-19T15:17:47.030979+00:00 app[web.1]: 2019-10-19 15:17:47.030  INFO 4 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2019-10-19T15:17:47.035863+00:00 app[web.1]: 2019-10-19 15:17:47.035  INFO 4 --- [           main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2019-10-19T15:17:47.604216+00:00 app[web.1]: 2019-10-19 15:17:47.603  INFO 4 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-10-19T15:17:48.492663+00:00 app[web.1]: 2019-10-19 15:17:48.492  INFO 4 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2019-10-19T15:17:48.547605+00:00 app[web.1]: 2019-10-19 15:17:48.547  INFO 4 --- [           main] o.h.e.j.e.i.LobCreatorBuilderImpl        : HHH000422: Disabling contextual LOB creation as connection was null
+2019-10-19T15:17:48.563483+00:00 app[web.1]: 2019-10-19 15:17:48.562  INFO 4 --- [           main] org.hibernate.type.BasicTypeRegistry     : HHH000270: Type registration [java.util.UUID] overrides previous : org.hibernate.type.UUIDBinaryType@1e53135d
+2019-10-19T15:17:51.035908+00:00 app[web.1]: 2019-10-19 15:17:51.035  INFO 4 --- [           main] o.h.t.schema.internal.SchemaCreatorImpl  : HHH000476: Executing import script 'ScriptSourceInputFromUrl(jar:file:/app/target/DigiMenu-0.0.1-SNAPSHOT.jar!/BOOT-INF/classes!/import.sql)'
+2019-10-19T15:17:51.144095+00:00 app[web.1]: 2019-10-19 15:17:51.143  INFO 4 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-10-19T15:17:54.785914+00:00 app[web.1]: 2019-10-19 15:17:54.785  INFO 4 --- [           main] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2019-10-19T15:17:56.400441+00:00 app[web.1]: 2019-10-19 15:17:56.396  INFO 4 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'clientInboundChannelExecutor'
+2019-10-19T15:17:56.470243+00:00 app[web.1]: 2019-10-19 15:17:56.469  INFO 4 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'clientOutboundChannelExecutor'
+2019-10-19T15:17:57.843610+00:00 app[web.1]: 2019-10-19 15:17:57.828  INFO 4 --- [           main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'messageBrokerTaskScheduler'
+2019-10-19T15:17:58.137528+00:00 app[web.1]: 2019-10-19 15:17:58.137  INFO 4 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'brokerChannelExecutor'
+2019-10-19T15:17:59.197736+00:00 app[web.1]: 2019-10-19 15:17:59.197  WARN 4 --- [           main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-10-19T15:18:00.879601+00:00 app[web.1]: 2019-10-19 15:18:00.879  INFO 4 --- [           main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2019-10-19T15:18:00.881473+00:00 app[web.1]: 2019-10-19 15:18:00.881  INFO 4 --- [           main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2019-10-19T15:18:00.883859+00:00 app[web.1]: 2019-10-19 15:18:00.883  INFO 4 --- [           main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2019-10-19T15:18:00.984569+00:00 app[web.1]: 2019-10-19 15:18:00.984  INFO 4 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 16397 (http) with context path ''
+2019-10-19T15:18:00.989373+00:00 app[web.1]: 2019-10-19 15:18:00.988  INFO 4 --- [           main] com.digimenu.main.DigiMenuApplication    : Started DigiMenuApplication in 28.027 seconds (JVM running for 30.444)
+2019-10-19T15:18:01.638626+00:00 heroku[web.1]: State changed from starting to up
+2019-10-19T15:18:15.119475+00:00 app[web.1]: 2019-10-19 15:18:15.116  INFO 4 --- [io-16397-exec-4] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-10-19T15:18:15.119488+00:00 app[web.1]: 2019-10-19 15:18:15.116  INFO 4 --- [io-16397-exec-4] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-10-19T15:18:15.153544+00:00 app[web.1]: 2019-10-19 15:18:15.153  INFO 4 --- [io-16397-exec-4] o.s.web.servlet.DispatcherServlet        : Completed initialization in 37 ms
+2019-10-19T15:18:45.069065+00:00 heroku[router]: at=error code=H12 desc="Request timeout" method=POST path="/user/register" host=digimenu.herokuapp.com request_id=571f8576-5da6-4049-b154-fadb32fd8c55 fwd="46.197.65.130" dyno=web.1 connect=1ms service=30000ms status=503 bytes=0 protocol=https
+2019-10-19T15:18:58.148435+00:00 app[web.1]: 2019-10-19 15:18:58.148  INFO 4 --- [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2019-10-19T15:20:34.000000+00:00 app[api]: Build started by user berkaltug96@gmail.com
+2019-10-19T15:21:05.884272+00:00 heroku[web.1]: Restarting
+2019-10-19T15:21:05.932026+00:00 heroku[web.1]: State changed from up to starting
+2019-10-19T15:21:05.678735+00:00 app[api]: Release v62 created by user berkaltug96@gmail.com
+2019-10-19T15:21:05.678735+00:00 app[api]: Deploy b07ca5d0 by user berkaltug96@gmail.com
+2019-10-19T15:21:07.243954+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2019-10-19T15:21:07.304113+00:00 app[web.1]: 2019-10-19 15:21:07.303  INFO 4 --- [       Thread-4] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2019-10-19T15:21:07.305638+00:00 app[web.1]: 2019-10-19 15:21:07.304  INFO 4 --- [       Thread-4] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2019-10-19T15:21:07.306080+00:00 app[web.1]: 2019-10-19 15:21:07.305  INFO 4 --- [       Thread-4] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2019-10-19T15:21:07.325884+00:00 app[web.1]: 2019-10-19 15:21:07.325  INFO 4 --- [       Thread-4] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'brokerChannelExecutor'
+2019-10-19T15:21:07.326651+00:00 app[web.1]: 2019-10-19 15:21:07.326  INFO 4 --- [       Thread-4] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'messageBrokerTaskScheduler'
+2019-10-19T15:21:07.344230+00:00 app[web.1]: 2019-10-19 15:21:07.340  INFO 4 --- [       Thread-4] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'clientOutboundChannelExecutor'
+2019-10-19T15:21:07.345355+00:00 app[web.1]: 2019-10-19 15:21:07.344  INFO 4 --- [       Thread-4] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'clientInboundChannelExecutor'
+2019-10-19T15:21:07.355276+00:00 app[web.1]: 2019-10-19 15:21:07.355  INFO 4 --- [       Thread-4] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-10-19T15:21:07.383713+00:00 app[web.1]: 2019-10-19 15:21:07.383  INFO 4 --- [       Thread-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2019-10-19T15:21:07.459487+00:00 app[web.1]: 2019-10-19 15:21:07.459  INFO 4 --- [       Thread-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2019-10-19T15:21:10.252037+00:00 heroku[web.1]: Starting process with command `java -Dserver.port=48099 $JAVA_OPTS -jar target/DigiMenu-0.0.1-SNAPSHOT.jar`
+2019-10-19T15:21:11.986580+00:00 app[web.1]: Create a Procfile to customize the command used to run this process: https://devcenter.heroku.com/articles/procfile
+2019-10-19T15:21:12.009792+00:00 app[web.1]: Setting JAVA_TOOL_OPTIONS defaults based on dyno size. Custom settings will override them.
+2019-10-19T15:21:12.013297+00:00 app[web.1]: Picked up JAVA_TOOL_OPTIONS: -Xmx300m -Xss512k -XX:CICompilerCount=2 -Dfile.encoding=UTF-8
+2019-10-19T15:21:12.000000+00:00 app[api]: Build succeeded
+2019-10-19T15:21:13.546717+00:00 app[web.1]: 
+2019-10-19T15:21:13.546757+00:00 app[web.1]: .   ____          _            __ _ _
+2019-10-19T15:21:13.546805+00:00 app[web.1]: /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+2019-10-19T15:21:13.546858+00:00 app[web.1]: ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+2019-10-19T15:21:13.546919+00:00 app[web.1]: \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+2019-10-19T15:21:13.546977+00:00 app[web.1]: '  |____| .__|_| |_|_| |_\__, | / / / /
+2019-10-19T15:21:13.547038+00:00 app[web.1]: =========|_|==============|___/=/_/_/_/
+2019-10-19T15:21:13.548700+00:00 app[web.1]: :: Spring Boot ::        (v2.1.0.RELEASE)
+2019-10-19T15:21:13.548744+00:00 app[web.1]: 
+2019-10-19T15:21:13.680432+00:00 app[web.1]: 2019-10-19 15:21:13.676  INFO 4 --- [           main] com.digimenu.main.DigiMenuApplication    : Starting DigiMenuApplication v0.0.1-SNAPSHOT on f09a3cc8-f534-4219-8513-09e60b0c63db with PID 4 (/app/target/DigiMenu-0.0.1-SNAPSHOT.jar started by u8150 in /app)
+2019-10-19T15:21:13.681588+00:00 app[web.1]: 2019-10-19 15:21:13.681  INFO 4 --- [           main] com.digimenu.main.DigiMenuApplication    : No active profile set, falling back to default profiles: default
+2019-10-19T15:21:15.063213+00:00 heroku[web.1]: Process exited with status 143
+2019-10-19T15:21:15.067896+00:00 app[web.1]: 2019-10-19 15:21:15.065  INFO 4 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-10-19T15:21:15.288462+00:00 app[web.1]: 2019-10-19 15:21:15.288  INFO 4 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 208ms. Found 10 repository interfaces.
+2019-10-19T15:21:16.023382+00:00 app[web.1]: 2019-10-19 15:21:16.023  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$247859af] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:21:16.098993+00:00 app[web.1]: 2019-10-19 15:21:16.098  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration$$EnhancerBySpringCGLIB$$bd2621e9] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:21:16.123686+00:00 app[web.1]: 2019-10-19 15:21:16.123  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:21:16.127395+00:00 app[web.1]: 2019-10-19 15:21:16.127  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@1f59a598' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:21:16.128864+00:00 app[web.1]: 2019-10-19 15:21:16.128  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration$$EnhancerBySpringCGLIB$$e1fac49b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:21:16.139140+00:00 app[web.1]: 2019-10-19 15:21:16.139  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.method.configuration.Jsr250MetadataSourceConfiguration' of type [org.springframework.security.config.annotation.method.configuration.Jsr250MetadataSourceConfiguration$$EnhancerBySpringCGLIB$$74fdcb1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:21:16.143393+00:00 app[web.1]: 2019-10-19 15:21:16.143  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'jsr250MethodSecurityMetadataSource' of type [org.springframework.security.access.annotation.Jsr250MethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:21:16.144607+00:00 app[web.1]: 2019-10-19 15:21:16.144  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:21:16.784575+00:00 app[web.1]: 2019-10-19 15:21:16.784  INFO 4 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 48099 (http)
+2019-10-19T15:21:16.818932+00:00 app[web.1]: 2019-10-19 15:21:16.818  INFO 4 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-10-19T15:21:16.819223+00:00 app[web.1]: 2019-10-19 15:21:16.819  INFO 4 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.12
+2019-10-19T15:21:16.839136+00:00 app[web.1]: 2019-10-19 15:21:16.838  INFO 4 --- [           main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/app/.jdk/jre/lib/amd64/server::/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-10-19T15:21:17.178696+00:00 app[web.1]: 2019-10-19 15:21:17.178  INFO 4 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-10-19T15:21:17.179221+00:00 app[web.1]: 2019-10-19 15:21:17.178  INFO 4 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3420 ms
+2019-10-19T15:21:17.282434+00:00 app[web.1]: 2019-10-19 15:21:17.282  INFO 4 --- [           main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-10-19T15:21:17.282829+00:00 app[web.1]: 2019-10-19 15:21:17.282  INFO 4 --- [           main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-10-19T15:21:17.282966+00:00 app[web.1]: 2019-10-19 15:21:17.282  INFO 4 --- [           main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'formContentFilter' to: [/*]
+2019-10-19T15:21:17.283085+00:00 app[web.1]: 2019-10-19 15:21:17.282  INFO 4 --- [           main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-10-19T15:21:17.283675+00:00 app[web.1]: 2019-10-19 15:21:17.283  INFO 4 --- [           main] .s.DelegatingFilterProxyRegistrationBean : Mapping filter: 'springSecurityFilterChain' to: [/*]
+2019-10-19T15:21:17.283864+00:00 app[web.1]: 2019-10-19 15:21:17.283  INFO 4 --- [           main] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-10-19T15:21:17.508046+00:00 app[web.1]: 2019-10-19 15:21:17.507  INFO 4 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-10-19T15:21:17.840614+00:00 app[web.1]: 2019-10-19 15:21:17.840  INFO 4 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-10-19T15:21:17.980819+00:00 app[web.1]: 2019-10-19 15:21:17.980  INFO 4 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+2019-10-19T15:21:17.980825+00:00 app[web.1]: name: default
+2019-10-19T15:21:17.980829+00:00 app[web.1]: ...]
+2019-10-19T15:21:18.185210+00:00 app[web.1]: 2019-10-19 15:21:18.184  INFO 4 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2019-10-19T15:21:18.188620+00:00 app[web.1]: 2019-10-19 15:21:18.188  INFO 4 --- [           main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2019-10-19T15:21:18.539752+00:00 app[web.1]: 2019-10-19 15:21:18.539  INFO 4 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-10-19T15:21:19.185930+00:00 app[web.1]: 2019-10-19 15:21:19.185  INFO 4 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2019-10-19T15:21:19.232435+00:00 app[web.1]: 2019-10-19 15:21:19.232  INFO 4 --- [           main] o.h.e.j.e.i.LobCreatorBuilderImpl        : HHH000422: Disabling contextual LOB creation as connection was null
+2019-10-19T15:21:19.253183+00:00 app[web.1]: 2019-10-19 15:21:19.252  INFO 4 --- [           main] org.hibernate.type.BasicTypeRegistry     : HHH000270: Type registration [java.util.UUID] overrides previous : org.hibernate.type.UUIDBinaryType@33aa93c
+2019-10-19T15:21:21.068323+00:00 app[web.1]: 2019-10-19 15:21:21.068  INFO 4 --- [           main] o.h.t.schema.internal.SchemaCreatorImpl  : HHH000476: Executing import script 'ScriptSourceInputFromUrl(jar:file:/app/target/DigiMenu-0.0.1-SNAPSHOT.jar!/BOOT-INF/classes!/import.sql)'
+2019-10-19T15:21:21.139321+00:00 app[web.1]: 2019-10-19 15:21:21.138  INFO 4 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-10-19T15:21:21.720072+00:00 app[web.1]: 2019-10-19 15:21:21.719  INFO 4 --- [           main] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2019-10-19T15:21:23.750955+00:00 app[web.1]: 2019-10-19 15:21:23.750  INFO 4 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'clientInboundChannelExecutor'
+2019-10-19T15:21:23.764784+00:00 app[web.1]: 2019-10-19 15:21:23.764  INFO 4 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'clientOutboundChannelExecutor'
+2019-10-19T15:21:23.907945+00:00 app[web.1]: 2019-10-19 15:21:23.907  INFO 4 --- [           main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'messageBrokerTaskScheduler'
+2019-10-19T15:21:24.048691+00:00 app[web.1]: 2019-10-19 15:21:24.038  INFO 4 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'brokerChannelExecutor'
+2019-10-19T15:21:24.727192+00:00 app[web.1]: 2019-10-19 15:21:24.726  WARN 4 --- [           main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-10-19T15:21:25.480528+00:00 heroku[web.1]: State changed from starting to up
+2019-10-19T15:21:25.332038+00:00 app[web.1]: 2019-10-19 15:21:25.331  INFO 4 --- [           main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2019-10-19T15:21:25.333349+00:00 app[web.1]: 2019-10-19 15:21:25.333  INFO 4 --- [           main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2019-10-19T15:21:25.335052+00:00 app[web.1]: 2019-10-19 15:21:25.334  INFO 4 --- [           main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2019-10-19T15:21:25.452856+00:00 app[web.1]: 2019-10-19 15:21:25.452  INFO 4 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 48099 (http) with context path ''
+2019-10-19T15:21:25.455853+00:00 app[web.1]: 2019-10-19 15:21:25.455  INFO 4 --- [           main] com.digimenu.main.DigiMenuApplication    : Started DigiMenuApplication in 12.43 seconds (JVM running for 13.442)
+2019-10-19T15:22:00.661163+00:00 app[web.1]: 2019-10-19 15:22:00.660  INFO 4 --- [io-48099-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-10-19T15:22:00.661347+00:00 app[web.1]: 2019-10-19 15:22:00.661  INFO 4 --- [io-48099-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-10-19T15:22:00.679940+00:00 app[web.1]: 2019-10-19 15:22:00.679  INFO 4 --- [io-48099-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 18 ms
+2019-10-19T15:22:02.457849+00:00 heroku[router]: at=info method=POST path="/user/register" host=digimenu.herokuapp.com request_id=26445599-4b97-4489-9a2a-9650807a8a2b fwd="46.197.65.130" dyno=web.1 connect=1ms service=1836ms status=201 bytes=433 protocol=https
+2019-10-19T15:22:24.032202+00:00 app[web.1]: 2019-10-19 15:22:24.031  INFO 4 --- [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2019-10-19T15:25:10.540005+00:00 heroku[router]: at=info method=POST path="/user/register" host=digimenu.herokuapp.com request_id=18b9bcd4-e4f2-4e4e-a932-43f4fc61d2e9 fwd="46.197.65.130" dyno=web.1 connect=1ms service=53ms status=409 bytes=439 protocol=https
+2019-10-19T15:25:34.542423+00:00 heroku[router]: at=info method=POST path="/user/login" host=digimenu.herokuapp.com request_id=6b5cd0dc-fe21-4052-8ba1-4d54be97e33c fwd="46.197.65.130" dyno=web.1 connect=1ms service=190ms status=401 bytes=415 protocol=https
+2019-10-19T15:25:44.829276+00:00 heroku[router]: at=info method=POST path="/user/login" host=digimenu.herokuapp.com request_id=2fdeb4d2-e48a-4dfa-b151-36ee1223437a fwd="46.197.65.130" dyno=web.1 connect=1ms service=20ms status=401 bytes=415 protocol=https
+2019-10-19T15:28:41.000000+00:00 app[api]: Build started by user berkaltug96@gmail.com
+2019-10-19T15:29:10.537230+00:00 app[api]: Deploy 145a1607 by user berkaltug96@gmail.com
+2019-10-19T15:29:10.537230+00:00 app[api]: Release v63 created by user berkaltug96@gmail.com
+2019-10-19T15:29:12.038467+00:00 heroku[web.1]: Restarting
+2019-10-19T15:29:12.057396+00:00 heroku[web.1]: State changed from up to starting
+2019-10-19T15:29:13.196975+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2019-10-19T15:29:13.238008+00:00 app[web.1]: 2019-10-19 15:29:13.237  INFO 4 --- [       Thread-4] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2019-10-19T15:29:13.238261+00:00 app[web.1]: 2019-10-19 15:29:13.238  INFO 4 --- [       Thread-4] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2019-10-19T15:29:13.238453+00:00 app[web.1]: 2019-10-19 15:29:13.238  INFO 4 --- [       Thread-4] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2019-10-19T15:29:13.244169+00:00 app[web.1]: 2019-10-19 15:29:13.243  INFO 4 --- [       Thread-4] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'brokerChannelExecutor'
+2019-10-19T15:29:13.244923+00:00 app[web.1]: 2019-10-19 15:29:13.244  INFO 4 --- [       Thread-4] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'messageBrokerTaskScheduler'
+2019-10-19T15:29:13.248174+00:00 app[web.1]: 2019-10-19 15:29:13.247  INFO 4 --- [       Thread-4] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'clientOutboundChannelExecutor'
+2019-10-19T15:29:13.248606+00:00 app[web.1]: 2019-10-19 15:29:13.248  INFO 4 --- [       Thread-4] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'clientInboundChannelExecutor'
+2019-10-19T15:29:13.268168+00:00 app[web.1]: 2019-10-19 15:29:13.267  INFO 4 --- [       Thread-4] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-10-19T15:29:13.270846+00:00 app[web.1]: 2019-10-19 15:29:13.270  INFO 4 --- [       Thread-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2019-10-19T15:29:13.348813+00:00 app[web.1]: 2019-10-19 15:29:13.348  INFO 4 --- [       Thread-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2019-10-19T15:29:13.554798+00:00 heroku[web.1]: Process exited with status 143
+2019-10-19T15:29:18.434077+00:00 heroku[web.1]: Starting process with command `java -Dserver.port=14870 $JAVA_OPTS -jar target/DigiMenu-0.0.1-SNAPSHOT.jar`
+2019-10-19T15:29:17.000000+00:00 app[api]: Build succeeded
+2019-10-19T15:29:21.258477+00:00 app[web.1]: Create a Procfile to customize the command used to run this process: https://devcenter.heroku.com/articles/procfile
+2019-10-19T15:29:21.382152+00:00 app[web.1]: Setting JAVA_TOOL_OPTIONS defaults based on dyno size. Custom settings will override them.
+2019-10-19T15:29:21.401773+00:00 app[web.1]: Picked up JAVA_TOOL_OPTIONS: -Xmx300m -Xss512k -XX:CICompilerCount=2 -Dfile.encoding=UTF-8
+2019-10-19T15:29:32.912216+00:00 app[web.1]: 
+2019-10-19T15:29:32.912269+00:00 app[web.1]: .   ____          _            __ _ _
+2019-10-19T15:29:32.912756+00:00 app[web.1]: /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+2019-10-19T15:29:32.912803+00:00 app[web.1]: ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+2019-10-19T15:29:32.912859+00:00 app[web.1]: \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+2019-10-19T15:29:32.912919+00:00 app[web.1]: '  |____| .__|_| |_|_| |_\__, | / / / /
+2019-10-19T15:29:32.912988+00:00 app[web.1]: =========|_|==============|___/=/_/_/_/
+2019-10-19T15:29:32.915057+00:00 app[web.1]: :: Spring Boot ::        (v2.1.0.RELEASE)
+2019-10-19T15:29:32.915337+00:00 app[web.1]: 
+2019-10-19T15:29:33.863154+00:00 app[web.1]: 2019-10-19 15:29:33.788  INFO 4 --- [           main] com.digimenu.main.DigiMenuApplication    : Starting DigiMenuApplication v0.0.1-SNAPSHOT on 8aa07960-5dd6-4586-9e23-601ccbf1d0d5 with PID 4 (/app/target/DigiMenu-0.0.1-SNAPSHOT.jar started by u18216 in /app)
+2019-10-19T15:29:33.918703+00:00 app[web.1]: 2019-10-19 15:29:33.918  INFO 4 --- [           main] com.digimenu.main.DigiMenuApplication    : No active profile set, falling back to default profiles: default
+2019-10-19T15:29:42.806637+00:00 app[web.1]: 2019-10-19 15:29:42.804  INFO 4 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-10-19T15:29:43.953380+00:00 app[web.1]: 2019-10-19 15:29:43.950  INFO 4 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1121ms. Found 10 repository interfaces.
+2019-10-19T15:29:47.597472+00:00 app[web.1]: 2019-10-19 15:29:47.596  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$dfdc1822] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:29:48.020636+00:00 app[web.1]: 2019-10-19 15:29:48.020  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration$$EnhancerBySpringCGLIB$$7889e05c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:29:48.115181+00:00 app[web.1]: 2019-10-19 15:29:48.109  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:29:48.156795+00:00 app[web.1]: 2019-10-19 15:29:48.156  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@6a2f6f80' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:29:48.159708+00:00 app[web.1]: 2019-10-19 15:29:48.159  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration$$EnhancerBySpringCGLIB$$9d5e830e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:29:48.205882+00:00 app[web.1]: 2019-10-19 15:29:48.205  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.method.configuration.Jsr250MetadataSourceConfiguration' of type [org.springframework.security.config.annotation.method.configuration.Jsr250MetadataSourceConfiguration$$EnhancerBySpringCGLIB$$c2b39b24] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:29:48.214323+00:00 app[web.1]: 2019-10-19 15:29:48.213  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'jsr250MethodSecurityMetadataSource' of type [org.springframework.security.access.annotation.Jsr250MethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:29:48.222703+00:00 app[web.1]: 2019-10-19 15:29:48.222  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:29:50.926262+00:00 app[web.1]: 2019-10-19 15:29:50.925  INFO 4 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 14870 (http)
+2019-10-19T15:29:51.006374+00:00 app[web.1]: 2019-10-19 15:29:51.006  INFO 4 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-10-19T15:29:51.006618+00:00 app[web.1]: 2019-10-19 15:29:51.006  INFO 4 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.12
+2019-10-19T15:29:51.040362+00:00 app[web.1]: 2019-10-19 15:29:51.040  INFO 4 --- [           main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/app/.jdk/jre/lib/amd64/server::/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-10-19T15:29:52.915617+00:00 app[web.1]: 2019-10-19 15:29:52.907  INFO 4 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-10-19T15:29:52.916053+00:00 app[web.1]: 2019-10-19 15:29:52.915  INFO 4 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 18326 ms
+2019-10-19T15:29:53.219183+00:00 app[web.1]: 2019-10-19 15:29:53.216  INFO 4 --- [           main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-10-19T15:29:53.224407+00:00 app[web.1]: 2019-10-19 15:29:53.223  INFO 4 --- [           main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-10-19T15:29:53.225302+00:00 app[web.1]: 2019-10-19 15:29:53.224  INFO 4 --- [           main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'formContentFilter' to: [/*]
+2019-10-19T15:29:53.228211+00:00 app[web.1]: 2019-10-19 15:29:53.225  INFO 4 --- [           main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-10-19T15:29:53.231449+00:00 app[web.1]: 2019-10-19 15:29:53.229  INFO 4 --- [           main] .s.DelegatingFilterProxyRegistrationBean : Mapping filter: 'springSecurityFilterChain' to: [/*]
+2019-10-19T15:29:53.231830+00:00 app[web.1]: 2019-10-19 15:29:53.231  INFO 4 --- [           main] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-10-19T15:29:54.674665+00:00 app[web.1]: 2019-10-19 15:29:54.674  INFO 4 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-10-19T15:29:56.094885+00:00 app[web.1]: 2019-10-19 15:29:56.094  INFO 4 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-10-19T15:29:56.672650+00:00 app[web.1]: 2019-10-19 15:29:56.672  INFO 4 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+2019-10-19T15:29:56.672664+00:00 app[web.1]: name: default
+2019-10-19T15:29:56.672667+00:00 app[web.1]: ...]
+2019-10-19T15:29:57.393444+00:00 app[web.1]: 2019-10-19 15:29:57.392  INFO 4 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2019-10-19T15:29:57.397210+00:00 app[web.1]: 2019-10-19 15:29:57.397  INFO 4 --- [           main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2019-10-19T15:29:58.297693+00:00 app[web.1]: 2019-10-19 15:29:58.297  INFO 4 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-10-19T15:29:59.521828+00:00 app[web.1]: 2019-10-19 15:29:59.519  INFO 4 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2019-10-19T15:29:59.692841+00:00 app[web.1]: 2019-10-19 15:29:59.692  INFO 4 --- [           main] o.h.e.j.e.i.LobCreatorBuilderImpl        : HHH000422: Disabling contextual LOB creation as connection was null
+2019-10-19T15:29:59.738923+00:00 app[web.1]: 2019-10-19 15:29:59.738  INFO 4 --- [           main] org.hibernate.type.BasicTypeRegistry     : HHH000270: Type registration [java.util.UUID] overrides previous : org.hibernate.type.UUIDBinaryType@15deb1dc
+2019-10-19T15:30:05.946834+00:00 app[web.1]: 2019-10-19 15:30:05.942  INFO 4 --- [           main] o.h.t.schema.internal.SchemaCreatorImpl  : HHH000476: Executing import script 'ScriptSourceInputFromUrl(jar:file:/app/target/DigiMenu-0.0.1-SNAPSHOT.jar!/BOOT-INF/classes!/import.sql)'
+2019-10-19T15:30:06.293943+00:00 app[web.1]: 2019-10-19 15:30:06.293  INFO 4 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-10-19T15:30:19.714428+00:00 app[web.1]: 2019-10-19 15:30:19.714  INFO 4 --- [           main] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2019-10-19T15:30:22.422993+00:00 app[web.1]: 2019-10-19 15:30:22.420  INFO 4 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'clientInboundChannelExecutor'
+2019-10-19T15:30:22.463618+00:00 app[web.1]: 2019-10-19 15:30:22.463  INFO 4 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'clientOutboundChannelExecutor'
+2019-10-19T15:30:23.532230+00:00 app[web.1]: 2019-10-19 15:30:23.531  INFO 4 --- [           main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'messageBrokerTaskScheduler'
+2019-10-19T15:30:23.972687+00:00 app[web.1]: 2019-10-19 15:30:23.970  INFO 4 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'brokerChannelExecutor'
+2019-10-19T15:30:27.054146+00:00 app[web.1]: 2019-10-19 15:30:27.053  WARN 4 --- [           main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-10-19T15:30:29.581178+00:00 app[web.1]: 2019-10-19 15:30:29.580  INFO 4 --- [           main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2019-10-19T15:30:29.584787+00:00 app[web.1]: 2019-10-19 15:30:29.584  INFO 4 --- [           main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2019-10-19T15:30:29.600744+00:00 app[web.1]: 2019-10-19 15:30:29.600  INFO 4 --- [           main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2019-10-19T15:30:30.109840+00:00 heroku[web.1]: State changed from starting to up
+2019-10-19T15:30:29.997938+00:00 app[web.1]: 2019-10-19 15:30:29.997  INFO 4 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 14870 (http) with context path ''
+2019-10-19T15:30:30.009547+00:00 app[web.1]: 2019-10-19 15:30:30.009  INFO 4 --- [           main] com.digimenu.main.DigiMenuApplication    : Started DigiMenuApplication in 60.776 seconds (JVM running for 68.608)
+2019-10-19T15:30:33.011480+00:00 app[web.1]: 2019-10-19 15:30:32.990  INFO 4 --- [io-14870-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-10-19T15:30:33.011756+00:00 app[web.1]: 2019-10-19 15:30:33.011  INFO 4 --- [io-14870-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-10-19T15:30:33.198429+00:00 app[web.1]: 2019-10-19 15:30:33.198  INFO 4 --- [io-14870-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 187 ms
+2019-10-19T15:30:37.872859+00:00 heroku[router]: at=info method=POST path="/user/register" host=digimenu.herokuapp.com request_id=20cb9ae7-6a10-4323-b003-df8acfd6f5a0 fwd="46.197.65.130" dyno=web.1 connect=1ms service=5014ms status=201 bytes=433 protocol=https
+2019-10-19T15:31:23.955115+00:00 app[web.1]: 2019-10-19 15:31:23.952  INFO 4 --- [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2019-10-19T15:35:34.000000+00:00 app[api]: Build started by user berkaltug96@gmail.com
+2019-10-19T15:36:04.262703+00:00 heroku[web.1]: Restarting
+2019-10-19T15:36:04.272072+00:00 heroku[web.1]: State changed from up to starting
+2019-10-19T15:36:03.814119+00:00 app[api]: Deploy e5deb88b by user berkaltug96@gmail.com
+2019-10-19T15:36:03.814119+00:00 app[api]: Release v64 created by user berkaltug96@gmail.com
+2019-10-19T15:36:05.644476+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2019-10-19T15:36:05.755283+00:00 app[web.1]: 2019-10-19 15:36:05.748  INFO 4 --- [       Thread-4] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2019-10-19T15:36:05.755299+00:00 app[web.1]: 2019-10-19 15:36:05.748  INFO 4 --- [       Thread-4] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2019-10-19T15:36:05.755302+00:00 app[web.1]: 2019-10-19 15:36:05.749  INFO 4 --- [       Thread-4] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2019-10-19T15:36:05.799460+00:00 app[web.1]: 2019-10-19 15:36:05.792  INFO 4 --- [       Thread-4] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'brokerChannelExecutor'
+2019-10-19T15:36:05.800440+00:00 app[web.1]: 2019-10-19 15:36:05.800  INFO 4 --- [       Thread-4] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'messageBrokerTaskScheduler'
+2019-10-19T15:36:05.802472+00:00 app[web.1]: 2019-10-19 15:36:05.802  INFO 4 --- [       Thread-4] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'clientOutboundChannelExecutor'
+2019-10-19T15:36:05.802763+00:00 app[web.1]: 2019-10-19 15:36:05.802  INFO 4 --- [       Thread-4] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'clientInboundChannelExecutor'
+2019-10-19T15:36:05.838173+00:00 app[web.1]: 2019-10-19 15:36:05.837  INFO 4 --- [       Thread-4] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-10-19T15:36:05.882044+00:00 app[web.1]: 2019-10-19 15:36:05.881  INFO 4 --- [       Thread-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2019-10-19T15:36:06.200957+00:00 app[web.1]: 2019-10-19 15:36:06.198  INFO 4 --- [       Thread-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2019-10-19T15:36:06.508385+00:00 heroku[web.1]: Process exited with status 143
+2019-10-19T15:36:09.624044+00:00 heroku[web.1]: Starting process with command `java -Dserver.port=51664 $JAVA_OPTS -jar target/DigiMenu-0.0.1-SNAPSHOT.jar`
+2019-10-19T15:36:11.000000+00:00 app[api]: Build succeeded
+2019-10-19T15:36:11.898536+00:00 app[web.1]: Create a Procfile to customize the command used to run this process: https://devcenter.heroku.com/articles/procfile
+2019-10-19T15:36:11.961631+00:00 app[web.1]: Setting JAVA_TOOL_OPTIONS defaults based on dyno size. Custom settings will override them.
+2019-10-19T15:36:11.967544+00:00 app[web.1]: Picked up JAVA_TOOL_OPTIONS: -Xmx300m -Xss512k -XX:CICompilerCount=2 -Dfile.encoding=UTF-8
+2019-10-19T15:36:15.367308+00:00 app[web.1]: 
+2019-10-19T15:36:15.367355+00:00 app[web.1]: .   ____          _            __ _ _
+2019-10-19T15:36:15.367396+00:00 app[web.1]: /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+2019-10-19T15:36:15.367451+00:00 app[web.1]: ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+2019-10-19T15:36:15.367507+00:00 app[web.1]: \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+2019-10-19T15:36:15.367571+00:00 app[web.1]: '  |____| .__|_| |_|_| |_\__, | / / / /
+2019-10-19T15:36:15.367630+00:00 app[web.1]: =========|_|==============|___/=/_/_/_/
+2019-10-19T15:36:15.369623+00:00 app[web.1]: :: Spring Boot ::        (v2.1.0.RELEASE)
+2019-10-19T15:36:15.369669+00:00 app[web.1]: 
+2019-10-19T15:36:16.235107+00:00 app[web.1]: 2019-10-19 15:36:16.152  INFO 4 --- [           main] com.digimenu.main.DigiMenuApplication    : Starting DigiMenuApplication v0.0.1-SNAPSHOT on ecb0e551-6d62-488a-9c9b-3fdc462b8ce1 with PID 4 (/app/target/DigiMenu-0.0.1-SNAPSHOT.jar started by u58977 in /app)
+2019-10-19T15:36:16.239208+00:00 app[web.1]: 2019-10-19 15:36:16.238  INFO 4 --- [           main] com.digimenu.main.DigiMenuApplication    : No active profile set, falling back to default profiles: default
+2019-10-19T15:36:22.025428+00:00 app[web.1]: 2019-10-19 15:36:22.022  INFO 4 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-10-19T15:36:22.504502+00:00 app[web.1]: 2019-10-19 15:36:22.504  INFO 4 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 462ms. Found 10 repository interfaces.
+2019-10-19T15:36:24.736728+00:00 app[web.1]: 2019-10-19 15:36:24.730  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$45145b3b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:36:25.439715+00:00 app[web.1]: 2019-10-19 15:36:25.439  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration$$EnhancerBySpringCGLIB$$ddc22375] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:36:25.563916+00:00 app[web.1]: 2019-10-19 15:36:25.563  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:36:25.607285+00:00 app[web.1]: 2019-10-19 15:36:25.606  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@4c39bec8' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:36:25.720420+00:00 app[web.1]: 2019-10-19 15:36:25.720  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration$$EnhancerBySpringCGLIB$$296c627] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:36:25.842547+00:00 app[web.1]: 2019-10-19 15:36:25.842  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.method.configuration.Jsr250MetadataSourceConfiguration' of type [org.springframework.security.config.annotation.method.configuration.Jsr250MetadataSourceConfiguration$$EnhancerBySpringCGLIB$$27ebde3d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:36:25.895665+00:00 app[web.1]: 2019-10-19 15:36:25.895  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'jsr250MethodSecurityMetadataSource' of type [org.springframework.security.access.annotation.Jsr250MethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:36:25.925658+00:00 app[web.1]: 2019-10-19 15:36:25.925  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:36:28.744327+00:00 app[web.1]: 2019-10-19 15:36:28.743  INFO 4 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 51664 (http)
+2019-10-19T15:36:29.183313+00:00 app[web.1]: 2019-10-19 15:36:29.172  INFO 4 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-10-19T15:36:29.183882+00:00 app[web.1]: 2019-10-19 15:36:29.183  INFO 4 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.12
+2019-10-19T15:36:29.275639+00:00 app[web.1]: 2019-10-19 15:36:29.275  INFO 4 --- [           main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/app/.jdk/jre/lib/amd64/server::/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-10-19T15:36:32.634291+00:00 app[web.1]: 2019-10-19 15:36:32.633  INFO 4 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-10-19T15:36:32.634783+00:00 app[web.1]: 2019-10-19 15:36:32.634  INFO 4 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 15927 ms
+2019-10-19T15:36:33.009549+00:00 app[web.1]: 2019-10-19 15:36:33.009  INFO 4 --- [           main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-10-19T15:36:33.009932+00:00 app[web.1]: 2019-10-19 15:36:33.009  INFO 4 --- [           main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-10-19T15:36:33.010090+00:00 app[web.1]: 2019-10-19 15:36:33.009  INFO 4 --- [           main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'formContentFilter' to: [/*]
+2019-10-19T15:36:33.010301+00:00 app[web.1]: 2019-10-19 15:36:33.010  INFO 4 --- [           main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-10-19T15:36:33.010897+00:00 app[web.1]: 2019-10-19 15:36:33.010  INFO 4 --- [           main] .s.DelegatingFilterProxyRegistrationBean : Mapping filter: 'springSecurityFilterChain' to: [/*]
+2019-10-19T15:36:33.022420+00:00 app[web.1]: 2019-10-19 15:36:33.011  INFO 4 --- [           main] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-10-19T15:36:34.432776+00:00 app[web.1]: 2019-10-19 15:36:34.432  INFO 4 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-10-19T15:36:36.588051+00:00 app[web.1]: 2019-10-19 15:36:36.587  INFO 4 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-10-19T15:36:39.069351+00:00 app[web.1]: 2019-10-19 15:36:39.069  INFO 4 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+2019-10-19T15:36:39.069364+00:00 app[web.1]: name: default
+2019-10-19T15:36:39.069366+00:00 app[web.1]: ...]
+2019-10-19T15:36:40.116101+00:00 app[web.1]: 2019-10-19 15:36:40.115  INFO 4 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2019-10-19T15:36:40.128713+00:00 app[web.1]: 2019-10-19 15:36:40.125  INFO 4 --- [           main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2019-10-19T15:36:41.454074+00:00 app[web.1]: 2019-10-19 15:36:41.453  INFO 4 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-10-19T15:36:43.256780+00:00 app[web.1]: 2019-10-19 15:36:43.256  INFO 4 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2019-10-19T15:36:43.317243+00:00 app[web.1]: 2019-10-19 15:36:43.315  INFO 4 --- [           main] o.h.e.j.e.i.LobCreatorBuilderImpl        : HHH000422: Disabling contextual LOB creation as connection was null
+2019-10-19T15:36:43.336252+00:00 app[web.1]: 2019-10-19 15:36:43.335  INFO 4 --- [           main] org.hibernate.type.BasicTypeRegistry     : HHH000270: Type registration [java.util.UUID] overrides previous : org.hibernate.type.UUIDBinaryType@27a0a5a2
+2019-10-19T15:36:48.623590+00:00 app[web.1]: 2019-10-19 15:36:48.623  INFO 4 --- [           main] o.h.t.schema.internal.SchemaCreatorImpl  : HHH000476: Executing import script 'ScriptSourceInputFromUrl(jar:file:/app/target/DigiMenu-0.0.1-SNAPSHOT.jar!/BOOT-INF/classes!/import.sql)'
+2019-10-19T15:36:48.913812+00:00 app[web.1]: 2019-10-19 15:36:48.913  INFO 4 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-10-19T15:36:51.091514+00:00 app[web.1]: 2019-10-19 15:36:51.090  INFO 4 --- [           main] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2019-10-19T15:36:53.726519+00:00 app[web.1]: 2019-10-19 15:36:53.726  INFO 4 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'clientInboundChannelExecutor'
+2019-10-19T15:36:53.780353+00:00 app[web.1]: 2019-10-19 15:36:53.770  INFO 4 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'clientOutboundChannelExecutor'
+2019-10-19T15:36:54.338125+00:00 app[web.1]: 2019-10-19 15:36:54.337  INFO 4 --- [           main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'messageBrokerTaskScheduler'
+2019-10-19T15:36:54.652324+00:00 app[web.1]: 2019-10-19 15:36:54.652  INFO 4 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'brokerChannelExecutor'
+2019-10-19T15:36:55.730776+00:00 app[web.1]: 2019-10-19 15:36:55.730  WARN 4 --- [           main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-10-19T15:36:56.622463+00:00 heroku[web.1]: State changed from starting to up
+2019-10-19T15:36:56.484240+00:00 app[web.1]: 2019-10-19 15:36:56.483  INFO 4 --- [           main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2019-10-19T15:36:56.485894+00:00 app[web.1]: 2019-10-19 15:36:56.485  INFO 4 --- [           main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2019-10-19T15:36:56.486631+00:00 app[web.1]: 2019-10-19 15:36:56.486  INFO 4 --- [           main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2019-10-19T15:36:56.578851+00:00 app[web.1]: 2019-10-19 15:36:56.578  INFO 4 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 51664 (http) with context path ''
+2019-10-19T15:36:56.582990+00:00 app[web.1]: 2019-10-19 15:36:56.582  INFO 4 --- [           main] com.digimenu.main.DigiMenuApplication    : Started DigiMenuApplication in 42.873 seconds (JVM running for 44.615)
+2019-10-19T15:36:58.214476+00:00 app[web.1]: 2019-10-19 15:36:58.214  INFO 4 --- [io-51664-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-10-19T15:36:58.214626+00:00 app[web.1]: 2019-10-19 15:36:58.214  INFO 4 --- [io-51664-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-10-19T15:36:58.231311+00:00 app[web.1]: 2019-10-19 15:36:58.231  INFO 4 --- [io-51664-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 17 ms
+2019-10-19T15:36:59.754057+00:00 heroku[router]: at=info method=POST path="/user/register" host=digimenu.herokuapp.com request_id=4ed2eddc-8617-4a5f-976e-473b74ee3b42 fwd="46.197.65.130" dyno=web.1 connect=0ms service=1597ms status=201 bytes=433 protocol=https
+2019-10-19T15:36:59.728419+00:00 app[web.1]: Mail server connection failed; nested exception is com.sun.mail.util.MailConnectException: Couldn't connect to host, port: mail.digimenu.online, 587; timeout 500000;
+2019-10-19T15:36:59.728442+00:00 app[web.1]: nested exception is:
+2019-10-19T15:36:59.728445+00:00 app[web.1]: java.net.ConnectException: Connection refused (Connection refused). Failed messages: com.sun.mail.util.MailConnectException: Couldn't connect to host, port: mail.digimenu.online, 587; timeout 500000;
+2019-10-19T15:36:59.728447+00:00 app[web.1]: nested exception is:
+2019-10-19T15:36:59.728456+00:00 app[web.1]: java.net.ConnectException: Connection refused (Connection refused)
+2019-10-19T15:37:54.670139+00:00 app[web.1]: 2019-10-19 15:37:54.669  INFO 4 --- [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2019-10-19T15:40:49.607231+00:00 heroku[router]: at=info method=POST path="/user/login" host=digimenu.herokuapp.com request_id=77fbfe79-1b0e-499f-918f-43b00a8746e1 fwd="46.197.65.130" dyno=web.1 connect=1ms service=382ms status=401 bytes=415 protocol=https
+2019-10-19T15:52:11.000000+00:00 app[api]: Build started by user berkaltug96@gmail.com
+2019-10-19T15:52:41.348558+00:00 heroku[web.1]: Restarting
+2019-10-19T15:52:41.353774+00:00 heroku[web.1]: State changed from up to starting
+2019-10-19T15:52:41.125089+00:00 app[api]: Deploy eefaff51 by user berkaltug96@gmail.com
+2019-10-19T15:52:41.125089+00:00 app[api]: Release v65 created by user berkaltug96@gmail.com
+2019-10-19T15:52:42.505706+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2019-10-19T15:52:42.753287+00:00 heroku[web.1]: Process exited with status 143
+2019-10-19T15:52:42.545270+00:00 app[web.1]: 2019-10-19 15:52:42.544  INFO 4 --- [       Thread-4] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2019-10-19T15:52:42.546317+00:00 app[web.1]: 2019-10-19 15:52:42.545  INFO 4 --- [       Thread-4] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2019-10-19T15:52:42.546866+00:00 app[web.1]: 2019-10-19 15:52:42.546  INFO 4 --- [       Thread-4] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2019-10-19T15:52:42.550910+00:00 app[web.1]: 2019-10-19 15:52:42.550  INFO 4 --- [       Thread-4] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'brokerChannelExecutor'
+2019-10-19T15:52:42.551881+00:00 app[web.1]: 2019-10-19 15:52:42.551  INFO 4 --- [       Thread-4] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'messageBrokerTaskScheduler'
+2019-10-19T15:52:42.553973+00:00 app[web.1]: 2019-10-19 15:52:42.553  INFO 4 --- [       Thread-4] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'clientOutboundChannelExecutor'
+2019-10-19T15:52:42.554412+00:00 app[web.1]: 2019-10-19 15:52:42.554  INFO 4 --- [       Thread-4] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'clientInboundChannelExecutor'
+2019-10-19T15:52:42.560685+00:00 app[web.1]: 2019-10-19 15:52:42.560  INFO 4 --- [       Thread-4] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-10-19T15:52:42.566900+00:00 app[web.1]: 2019-10-19 15:52:42.566  INFO 4 --- [       Thread-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2019-10-19T15:52:42.596064+00:00 app[web.1]: 2019-10-19 15:52:42.595  INFO 4 --- [       Thread-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2019-10-19T15:52:47.003932+00:00 heroku[web.1]: Starting process with command `java -Dserver.port=5404 $JAVA_OPTS -jar target/DigiMenu-0.0.1-SNAPSHOT.jar`
+2019-10-19T15:52:48.000000+00:00 app[api]: Build succeeded
+2019-10-19T15:52:49.446101+00:00 app[web.1]: Create a Procfile to customize the command used to run this process: https://devcenter.heroku.com/articles/procfile
+2019-10-19T15:52:49.515794+00:00 app[web.1]: Setting JAVA_TOOL_OPTIONS defaults based on dyno size. Custom settings will override them.
+2019-10-19T15:52:49.524699+00:00 app[web.1]: Picked up JAVA_TOOL_OPTIONS: -Xmx300m -Xss512k -XX:CICompilerCount=2 -Dfile.encoding=UTF-8
+2019-10-19T15:52:51.653565+00:00 app[web.1]: 
+2019-10-19T15:52:51.653619+00:00 app[web.1]: .   ____          _            __ _ _
+2019-10-19T15:52:51.653654+00:00 app[web.1]: /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+2019-10-19T15:52:51.653712+00:00 app[web.1]: ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+2019-10-19T15:52:51.653769+00:00 app[web.1]: \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+2019-10-19T15:52:51.653826+00:00 app[web.1]: '  |____| .__|_| |_|_| |_\__, | / / / /
+2019-10-19T15:52:51.653883+00:00 app[web.1]: =========|_|==============|___/=/_/_/_/
+2019-10-19T15:52:51.655681+00:00 app[web.1]: :: Spring Boot ::        (v2.1.0.RELEASE)
+2019-10-19T15:52:51.655742+00:00 app[web.1]: 
+2019-10-19T15:52:51.843711+00:00 app[web.1]: 2019-10-19 15:52:51.838  INFO 4 --- [           main] com.digimenu.main.DigiMenuApplication    : Starting DigiMenuApplication v0.0.1-SNAPSHOT on 83074278-2f51-49de-b74b-8e52384b6535 with PID 4 (/app/target/DigiMenu-0.0.1-SNAPSHOT.jar started by u4297 in /app)
+2019-10-19T15:52:51.845412+00:00 app[web.1]: 2019-10-19 15:52:51.845  INFO 4 --- [           main] com.digimenu.main.DigiMenuApplication    : No active profile set, falling back to default profiles: default
+2019-10-19T15:52:53.608064+00:00 app[web.1]: 2019-10-19 15:52:53.605  INFO 4 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-10-19T15:52:53.883773+00:00 app[web.1]: 2019-10-19 15:52:53.883  INFO 4 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 262ms. Found 10 repository interfaces.
+2019-10-19T15:52:54.644461+00:00 app[web.1]: 2019-10-19 15:52:54.644  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$29abebde] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:52:54.716788+00:00 app[web.1]: 2019-10-19 15:52:54.716  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration$$EnhancerBySpringCGLIB$$c259b418] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:52:54.727116+00:00 app[web.1]: 2019-10-19 15:52:54.726  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:52:54.729755+00:00 app[web.1]: 2019-10-19 15:52:54.729  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@13b6aecc' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:52:54.733572+00:00 app[web.1]: 2019-10-19 15:52:54.733  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration$$EnhancerBySpringCGLIB$$e72e56ca] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:52:54.746513+00:00 app[web.1]: 2019-10-19 15:52:54.746  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.method.configuration.Jsr250MetadataSourceConfiguration' of type [org.springframework.security.config.annotation.method.configuration.Jsr250MetadataSourceConfiguration$$EnhancerBySpringCGLIB$$c836ee0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:52:54.751716+00:00 app[web.1]: 2019-10-19 15:52:54.751  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'jsr250MethodSecurityMetadataSource' of type [org.springframework.security.access.annotation.Jsr250MethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:52:54.753444+00:00 app[web.1]: 2019-10-19 15:52:54.753  INFO 4 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-19T15:52:55.430284+00:00 app[web.1]: 2019-10-19 15:52:55.429  INFO 4 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5404 (http)
+2019-10-19T15:52:55.479286+00:00 app[web.1]: 2019-10-19 15:52:55.479  INFO 4 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-10-19T15:52:55.479492+00:00 app[web.1]: 2019-10-19 15:52:55.479  INFO 4 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.12
+2019-10-19T15:52:55.496816+00:00 app[web.1]: 2019-10-19 15:52:55.496  INFO 4 --- [           main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/app/.jdk/jre/lib/amd64/server::/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-10-19T15:52:55.860068+00:00 app[web.1]: 2019-10-19 15:52:55.859  INFO 4 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-10-19T15:52:55.860423+00:00 app[web.1]: 2019-10-19 15:52:55.860  INFO 4 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3750 ms
+2019-10-19T15:52:55.953097+00:00 app[web.1]: 2019-10-19 15:52:55.952  INFO 4 --- [           main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-10-19T15:52:55.953451+00:00 app[web.1]: 2019-10-19 15:52:55.953  INFO 4 --- [           main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-10-19T15:52:55.953594+00:00 app[web.1]: 2019-10-19 15:52:55.953  INFO 4 --- [           main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'formContentFilter' to: [/*]
+2019-10-19T15:52:55.953748+00:00 app[web.1]: 2019-10-19 15:52:55.953  INFO 4 --- [           main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-10-19T15:52:55.954368+00:00 app[web.1]: 2019-10-19 15:52:55.954  INFO 4 --- [           main] .s.DelegatingFilterProxyRegistrationBean : Mapping filter: 'springSecurityFilterChain' to: [/*]
+2019-10-19T15:52:55.954548+00:00 app[web.1]: 2019-10-19 15:52:55.954  INFO 4 --- [           main] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-10-19T15:52:56.252470+00:00 app[web.1]: 2019-10-19 15:52:56.252  INFO 4 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-10-19T15:52:56.616864+00:00 app[web.1]: 2019-10-19 15:52:56.616  INFO 4 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-10-19T15:52:56.783335+00:00 app[web.1]: 2019-10-19 15:52:56.783  INFO 4 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+2019-10-19T15:52:56.783339+00:00 app[web.1]: name: default
+2019-10-19T15:52:56.783341+00:00 app[web.1]: ...]
+2019-10-19T15:52:57.013510+00:00 app[web.1]: 2019-10-19 15:52:57.013  INFO 4 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2019-10-19T15:52:57.024207+00:00 app[web.1]: 2019-10-19 15:52:57.023  INFO 4 --- [           main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2019-10-19T15:52:57.388150+00:00 app[web.1]: 2019-10-19 15:52:57.387  INFO 4 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-10-19T15:52:57.952107+00:00 app[web.1]: 2019-10-19 15:52:57.951  INFO 4 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2019-10-19T15:52:57.986636+00:00 app[web.1]: 2019-10-19 15:52:57.985  INFO 4 --- [           main] o.h.e.j.e.i.LobCreatorBuilderImpl        : HHH000422: Disabling contextual LOB creation as connection was null
+2019-10-19T15:52:57.999535+00:00 app[web.1]: 2019-10-19 15:52:57.999  INFO 4 --- [           main] org.hibernate.type.BasicTypeRegistry     : HHH000270: Type registration [java.util.UUID] overrides previous : org.hibernate.type.UUIDBinaryType@2b27cc70
+2019-10-19T15:52:59.941443+00:00 app[web.1]: 2019-10-19 15:52:59.940  INFO 4 --- [           main] o.h.t.schema.internal.SchemaCreatorImpl  : HHH000476: Executing import script 'ScriptSourceInputFromUrl(jar:file:/app/target/DigiMenu-0.0.1-SNAPSHOT.jar!/BOOT-INF/classes!/import.sql)'
+2019-10-19T15:53:00.025250+00:00 app[web.1]: 2019-10-19 15:53:00.025  INFO 4 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-10-19T15:53:00.988043+00:00 app[web.1]: 2019-10-19 15:53:00.987  INFO 4 --- [           main] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2019-10-19T15:53:03.333116+00:00 app[web.1]: 2019-10-19 15:53:03.330  INFO 4 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'clientInboundChannelExecutor'
+2019-10-19T15:53:03.359314+00:00 app[web.1]: 2019-10-19 15:53:03.358  INFO 4 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'clientOutboundChannelExecutor'
+2019-10-19T15:53:04.263582+00:00 app[web.1]: 2019-10-19 15:53:04.263  INFO 4 --- [           main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'messageBrokerTaskScheduler'
+2019-10-19T15:53:04.383646+00:00 app[web.1]: 2019-10-19 15:53:04.383  INFO 4 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'brokerChannelExecutor'
+2019-10-19T15:53:05.406202+00:00 app[web.1]: 2019-10-19 15:53:05.405  WARN 4 --- [           main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-10-19T15:53:06.919851+00:00 heroku[web.1]: State changed from starting to up
+2019-10-19T15:53:06.793576+00:00 app[web.1]: 2019-10-19 15:53:06.793  INFO 4 --- [           main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2019-10-19T15:53:06.795391+00:00 app[web.1]: 2019-10-19 15:53:06.795  INFO 4 --- [           main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2019-10-19T15:53:06.796184+00:00 app[web.1]: 2019-10-19 15:53:06.796  INFO 4 --- [           main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2019-10-19T15:53:06.889129+00:00 app[web.1]: 2019-10-19 15:53:06.888  INFO 4 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5404 (http) with context path ''
+2019-10-19T15:53:06.898303+00:00 app[web.1]: 2019-10-19 15:53:06.897  INFO 4 --- [           main] com.digimenu.main.DigiMenuApplication    : Started DigiMenuApplication in 16.014 seconds (JVM running for 17.373)
+2019-10-19T15:54:04.381102+00:00 app[web.1]: 2019-10-19 15:54:04.380  INFO 4 --- [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2019-10-19T15:54:09.514419+00:00 app[web.1]: 2019-10-19 15:54:09.514  INFO 4 --- [nio-5404-exec-4] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-10-19T15:54:09.514520+00:00 app[web.1]: 2019-10-19 15:54:09.514  INFO 4 --- [nio-5404-exec-4] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-10-19T15:54:09.533719+00:00 app[web.1]: 2019-10-19 15:54:09.533  INFO 4 --- [nio-5404-exec-4] o.s.web.servlet.DispatcherServlet        : Completed initialization in 19 ms
+2019-10-19T15:54:12.654648+00:00 heroku[router]: at=info method=POST path="/user/register" host=digimenu.herokuapp.com request_id=d2b6c363-1bed-47ad-8ca5-61a960aa8730 fwd="46.197.65.130" dyno=web.1 connect=0ms service=3164ms status=201 bytes=433 protocol=https
