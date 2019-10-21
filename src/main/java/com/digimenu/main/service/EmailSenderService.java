@@ -1,5 +1,6 @@
 package com.digimenu.main.service;
 
+import net.bytebuddy.implementation.bind.MethodDelegationBinder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
@@ -21,6 +22,8 @@ public class EmailSenderService {
     	try {
             javaMailSender.send(email);
         }catch(MailException e){
+    	    System.err.println(e.getMessage());
+        }catch(Exception e){
     	    System.err.println(e.getMessage());
         }
     }
