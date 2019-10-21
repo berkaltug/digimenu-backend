@@ -62,7 +62,6 @@ public class UserController {
 			return new ResponseEntity<>("Bu kullanıcı adı kullanılmaktadır",HttpStatus.CONFLICT);
 		}
 		else {
-			try {
 				userService.save(user);
 				ConfirmationToken confirmationToken = new ConfirmationToken(user);
 
@@ -77,9 +76,8 @@ public class UserController {
 						+ "Digimenu Ekibi");
 
 				emailSenderService.sendEmail(mailMessage);
-			}catch(Exception e){
-				System.err.println(e.getMessage());
-			}
+
+
 		}
 		
 		return new ResponseEntity<>("Aktivasyon epostasi adresinize gönderilmiştir",HttpStatus.CREATED);
