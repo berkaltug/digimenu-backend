@@ -46,8 +46,8 @@ public class UserController {
 	private UserService userService;
 	@Autowired
 	private ConfirmationTokenRepository confirmTokenRepo;
-	@Autowired
-    private EmailSenderService emailSenderService;
+//	@Autowired
+//    private EmailSenderService emailSenderService;
 	@Autowired
 	private SendGridMailService sendGridMailService;
 	@Autowired
@@ -72,9 +72,9 @@ public class UserController {
 
 				confirmTokenRepo.save(confirmationToken);
 				StringBuilder sb=new StringBuilder();
-				String mailContent=sb.append("Üyeliğinizi doğrulamak için lütfen doğrulama linkine tıklayınız : ").append("\n")
+				String mailContent=sb.append("Üyeliğinizi doğrulamak için lütfen doğrulama linkine tıklayınız : '\n'")
 						.append("https://digimenu.herokuapp.com/user/confirmaccount/").append(confirmationToken.getConfirmationToken())
-						.append("\n")
+						.append('\n')
 						.append("Digimenu Ekibi").toString();
 				sendGridMailService.sendEmail("digimenuinfo@gmail.com",user.getEmail(),"Digimenu'ye Hoşgeldiniz !",new Content("text/plain",mailContent));
 //				SimpleMailMessage mailMessage = new SimpleMailMessage();
@@ -115,7 +115,7 @@ public class UserController {
 		return new ResponseEntity<>("Başarılı",HttpStatus.ACCEPTED);
 	}
 	
-	@PostMapping("/forgetpassword/{email}")
+	/*@PostMapping("/forgetpassword/{email}")
 	@ResponseBody
 	ResponseEntity<String> forgetPassword(@PathVariable("email") String email){
 		
@@ -135,7 +135,7 @@ public class UserController {
         +"Digimenu Ekibi");
         emailSenderService.sendEmail(mailMessage);
 		return new ResponseEntity<>("Parola resetleme linkiniz epostanıza gönderilmiştir",HttpStatus.ACCEPTED);
-	}
+	}*/
 	
 	@GetMapping("/resetpassword/{token}")
 	String resetPasswordPage(Model model,@PathVariable("token") String token) {
