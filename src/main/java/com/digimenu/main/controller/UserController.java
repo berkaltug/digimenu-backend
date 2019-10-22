@@ -5,12 +5,12 @@ import java.util.UUID;
 
 import javax.validation.Valid;
 
+import com.digimenu.main.service.SecurityService;
 import com.digimenu.main.service.SendGridMailService;
 import com.sendgrid.helpers.mail.objects.Content;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -23,19 +23,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.digimenu.main.repository.ConfirmationTokenRepository;
 import com.digimenu.main.repository.PasswordResetTokenRepository;
-import com.digimenu.main.repository.RoleRepository;
-import com.digimenu.main.repository.UserRepository;
 import com.digimenu.main.security.ConfirmationToken;
 import com.digimenu.main.security.PasswordResetToken;
 import com.digimenu.main.security.User;
-import com.digimenu.main.service.EmailSenderService;
-import com.digimenu.main.service.SecurityService;
 import com.digimenu.main.service.UserService;
 
 @Controller
@@ -46,13 +40,12 @@ public class UserController {
 	private UserService userService;
 	@Autowired
 	private ConfirmationTokenRepository confirmTokenRepo;
-//	@Autowired
-//    private EmailSenderService emailSenderService;
 	@Autowired
 	private SendGridMailService sendGridMailService;
 	@Autowired
 	private PasswordResetTokenRepository passwordResetTokenRepository;
-	
+	@Autowired
+	private SecurityService securityService;
 	@PostMapping("/register")
 	@ResponseBody
 	ResponseEntity<String> registerUser(@Valid @RequestBody User user) {
@@ -69,7 +62,6 @@ public class UserController {
 		else {
 				userService.save(user);
 				ConfirmationToken confirmationToken = new ConfirmationToken(user);
-
 				confirmTokenRepo.save(confirmationToken);
 				StringBuilder sb=new StringBuilder();
 				String mailContent=sb.append("Üyeliğinizi doğrulamak için lütfen doğrulama linkine tıklayınız : '\n'")
@@ -77,18 +69,7 @@ public class UserController {
 						.append('\n')
 						.append("Digimenu Ekibi").toString();
 				sendGridMailService.sendEmail("digimenuinfo@gmail.com",user.getEmail(),"Digimenu'ye Hoşgeldiniz !",new Content("text/plain",mailContent));
-//				SimpleMailMessage mailMessage = new SimpleMailMessage();
-//				mailMessage.setTo(user.getEmail());
-//				mailMessage.setSubject("Digimenu'ye Hoşgeldiniz!");
-//            mailMessage.setFrom("business@digimenu.online"); //gereksiz
-//				mailMessage.setText("Üyeliğinizi doğrulamak için lütfen doğrulama linkine tıklayınız : " + "\n"
-//						+ "https://digimenu.herokuapp.com/user/confirmaccount/" + confirmationToken.getConfirmationToken() + "\n"
-//						+ "Digimenu Ekibi");
-//				emailSenderService.sendEmail(mailMessage);
-
-
 		}
-		
 		return new ResponseEntity<>("Aktivasyon epostasi adresinize gönderilmiştir",HttpStatus.CREATED);
 	}
 	
@@ -103,19 +84,19 @@ public class UserController {
             confirmTokenRepo.delete(token); // onaylanınca tokenı siliyoruz
 		}
 		else {
+			return new ResponseEntity<>("Üyelik onaylanırken bir hata oluştu !",HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
 		return new ResponseEntity<>("üyelik onaylanmıştır",HttpStatus.ACCEPTED);
 	}
 	
 	@PostMapping("/login")
 	ResponseEntity<String> login(){
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		
-		return new ResponseEntity<>("Başarılı",HttpStatus.ACCEPTED);
+ 		return new ResponseEntity<>("Başarılı",HttpStatus.ACCEPTED);
 	}
-	
-	/*@PostMapping("/forgetpassword/{email}")
+
+	//burası sendgride göre yazılıp düzenlenicek
+	@PostMapping("/forgetpassword/{email}")
 	@ResponseBody
 	ResponseEntity<String> forgetPassword(@PathVariable("email") String email){
 		
@@ -126,16 +107,16 @@ public class UserController {
 
 		PasswordResetToken prt=new PasswordResetToken(user);
 		passwordResetTokenRepository.save(prt);
-		SimpleMailMessage mailMessage = new SimpleMailMessage();
-        mailMessage.setTo(user.getEmail());
-        mailMessage.setSubject("Digimenu Parola Yenileme");
-        mailMessage.setText("Parolanızı yenilemek için lütfen linke tıklayınız : " +"\n"
-        +"https://digimenu.herokuapp.com/user/resetpassword/"+prt.getToken() +"\n"
-        +"Eğer bu eposta bilginiz dahilinde gelmediyse , lütfen tıklamayıp görmezden geliniz ! "+"\n"
-        +"Digimenu Ekibi");
-        emailSenderService.sendEmail(mailMessage);
+		StringBuilder sb=new StringBuilder();
+		String contentBody=sb.append("Parolanızı yenilemek için lütfen linke tıklayınız : " +"\n"
+				+"https://digimenu.herokuapp.com/user/resetpassword/"+prt.getToken() +"\n"
+				+"Eğer bu eposta bilginiz dahilinde gelmediyse , lütfen tıklamayıp görmezden geliniz ! "+"\n"
+				+"Digimenu Ekibi")
+				.toString();
+		sendGridMailService.sendEmail("digimenuinfo@gmail.com",user.getEmail(),"Digimenu Parola Yenileme",new Content("text/plain",contentBody));
+
 		return new ResponseEntity<>("Parola resetleme linkiniz epostanıza gönderilmiştir",HttpStatus.ACCEPTED);
-	}*/
+	}
 	
 	@GetMapping("/resetpassword/{token}")
 	String resetPasswordPage(Model model,@PathVariable("token") String token) {
@@ -155,7 +136,7 @@ public class UserController {
 	//hatalı
 	@PostMapping("/savepassword")
 	public String resetPassword(@ModelAttribute("pass") String pass){
-		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User user=userService.findByUsername(securityService.findLoggedInUsername());
 		user.setPassword(pass);
 		userService.save(user);
 		return "resetpasswordsuccess";
