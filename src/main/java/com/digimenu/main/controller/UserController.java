@@ -5,6 +5,8 @@ import java.util.UUID;
 
 import javax.validation.Valid;
 
+import com.digimenu.main.service.SendGridMailService;
+import com.sendgrid.helpers.mail.objects.Content;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,12 +41,15 @@ import com.digimenu.main.service.UserService;
 @Controller
 @RequestMapping(value="/user")
 public class UserController {
+
 	@Autowired
 	private UserService userService;
 	@Autowired
 	private ConfirmationTokenRepository confirmTokenRepo;
 	@Autowired
     private EmailSenderService emailSenderService;
+	@Autowired
+	private SendGridMailService sendGridMailService;
 	@Autowired
 	private PasswordResetTokenRepository passwordResetTokenRepository;
 	
@@ -66,16 +71,20 @@ public class UserController {
 				ConfirmationToken confirmationToken = new ConfirmationToken(user);
 
 				confirmTokenRepo.save(confirmationToken);
-
-				SimpleMailMessage mailMessage = new SimpleMailMessage();
-				mailMessage.setTo(user.getEmail());
-				mailMessage.setSubject("Digimenu'ye Hoşgeldiniz!");
-//            mailMessage.setFrom("business@digimenu.online"); //gereksiz 	
-				mailMessage.setText("Üyeliğinizi doğrulamak için lütfen doğrulama linkine tıklayınız : " + "\n"
-						+ "https://digimenu.herokuapp.com/user/confirmaccount/" + confirmationToken.getConfirmationToken() + "\n"
-						+ "Digimenu Ekibi");
-
-				emailSenderService.sendEmail(mailMessage);
+				StringBuilder sb=new StringBuilder();
+				String mailContent=sb.append("Üyeliğinizi doğrulamak için lütfen doğrulama linkine tıklayınız : ").append("\n")
+						.append("https://digimenu.herokuapp.com/user/confirmaccount/").append(confirmationToken.getConfirmationToken())
+						.append("\n")
+						.append("Digimenu Ekibi").toString();
+				sendGridMailService.sendEmail("digimenuinfo@gmail.com",user.getEmail(),"Digimenu'ye Hoşgeldiniz !",new Content("text/plain",mailContent));
+//				SimpleMailMessage mailMessage = new SimpleMailMessage();
+//				mailMessage.setTo(user.getEmail());
+//				mailMessage.setSubject("Digimenu'ye Hoşgeldiniz!");
+//            mailMessage.setFrom("business@digimenu.online"); //gereksiz
+//				mailMessage.setText("Üyeliğinizi doğrulamak için lütfen doğrulama linkine tıklayınız : " + "\n"
+//						+ "https://digimenu.herokuapp.com/user/confirmaccount/" + confirmationToken.getConfirmationToken() + "\n"
+//						+ "Digimenu Ekibi");
+//				emailSenderService.sendEmail(mailMessage);
 
 
 		}

@@ -1,0 +1,446 @@
+[33mcommit 09f73204b2d852ff04e51695741b8bf686b41dad[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31mheroku/master[m[33m)[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Tue Oct 22 09:27:14 2019 +0300
+
+    sendgrid smtp configure
+
+[33mcommit 9e7aae1c53a4daba0ad3098ed3201316aec5a3bf[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Tue Oct 22 09:06:02 2019 +0300
+
+     tried sendgrid
+
+[33mcommit 1fa3eb2d9217bf378aea2170119dd190271f5fab[m[33m ([m[1;32mheroku[m[33m)[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Mon Oct 21 17:40:59 2019 +0300
+
+    mail changed to yahoo
+
+[33mcommit 4354ea32fe3b5c8b29a38e791b1b7b20ae079c82[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Mon Oct 21 11:10:37 2019 +0300
+
+    heroku vars modified
+
+[33mcommit eefaff51566d40ab05936a4be9be9284b483b675[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Sat Oct 19 18:52:03 2019 +0300
+
+     freehosting mail denendi
+
+[33mcommit e5deb88b0ec907a3c62fefeeddb1d00fd244998a[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Sat Oct 19 18:35:24 2019 +0300
+
+     freehosting mail denendi
+
+[33mcommit 145a160787089d5ef88a61cf977a4e8528b70702[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Sat Oct 19 18:28:33 2019 +0300
+
+     freehosting mail denendi
+
+[33mcommit b07ca5d0adc9813083a93439b0940b129cfe31f0[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Sat Oct 19 18:20:27 2019 +0300
+
+     freehosting mail denendi
+
+[33mcommit 3f840b89613c088a575e2fb6123d1ef596f60960[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Sat Oct 19 18:16:39 2019 +0300
+
+     freehosting mail denendi
+
+[33mcommit ba23988167a351b0c799b3c0487881a9e571a426[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Sat Oct 19 18:05:01 2019 +0300
+
+     freehosting mail denendi
+
+[33mcommit 30ae37f3fa57ff9b0250e3c8adef45de933025d5[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Sat Oct 19 17:56:21 2019 +0300
+
+     freehosting mail denendi
+
+[33mcommit d5ddb94acc21c0d93e8811204f421c4871028486[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Sat Oct 19 17:33:12 2019 +0300
+
+     freehosting mail denendi
+
+[33mcommit 5117ae58a10bbae6c049234e005b06ccc3d587a4[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Sat Oct 19 17:25:05 2019 +0300
+
+    freehosting mail sunucusuna dönüldü
+
+[33mcommit 37ae40322b78299e3c6136df6ba836be23787540[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Sat May 18 11:06:04 2019 +0300
+
+    hibernate ddl mode update
+
+[33mcommit 9e3292a3b07720149524246b9359f199fec4884b[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Sun Apr 14 18:03:56 2019 +0300
+
+    menüden item silme exception çözüldü
+
+[33mcommit b80f38165b91646cb260f6b4f208a55ddc6ad335[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Sun Apr 14 18:00:47 2019 +0300
+
+    menüden item silme exception'ı çözüldü
+
+[33mcommit 5e474b21f880a91ccb6d6563325dda6dcf59ece4[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Sat Mar 30 17:48:55 2019 +0300
+
+    db ayarı
+
+[33mcommit 1d172033ba8e5910032541fc83bc33bbaf513268[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Sat Mar 30 17:33:23 2019 +0300
+
+    websocket bağlandı
+
+[33mcommit ec90c9b166d8c097c432ea7df7b7575fff711766[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Tue Mar 26 22:42:16 2019 +0300
+
+    sipariş sesi eklendi
+
+[33mcommit 285604b778948e23308df0fd23d28576d51b37ad[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Tue Mar 26 20:11:47 2019 +0300
+
+    websocket mesajı gösterildi
+
+[33mcommit 3d654a23ca7510a47379f24c737b48908151f11e[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Mon Mar 25 23:56:34 2019 +0300
+
+    siparişlerin gözüktüğü sekmeler yapıldı
+
+[33mcommit 2a66e91664a865c67cd22de12e7018cb480cf684[m
+Merge: af06949 452fd7b
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Thu Mar 14 21:12:58 2019 +0300
+
+    Merge branch 'master' of https://github.com/berkaltug/digimenu-backend
+
+[33mcommit af0694957b2ca2320864b9711ab8cc32aa7d438c[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Thu Mar 14 21:10:22 2019 +0300
+
+    restoran sayfası baglandı
+
+[33mcommit 4254b3b4b7e45ffc2955354bcd146284f0c6bc72[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Thu Mar 14 21:09:09 2019 +0300
+
+    restoran sayfası bağlandı
+
+[33mcommit 452fd7b9c64a64ca20c08c3c4fcd278949e96811[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Mon Mar 11 22:02:03 2019 +0300
+
+    Create README.md
+
+[33mcommit e3badfbf62e46f86ea439d8026dd812d99c61efe[m
+Merge: 186ebae b75dc20
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Mon Mar 11 21:59:55 2019 +0300
+
+    res login made
+
+[33mcommit 186ebae32b72d054670104192f08ad556170adaf[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Mon Mar 11 21:49:08 2019 +0300
+
+    res login made
+
+[33mcommit b75dc20b5b9877fb004d981ea19fff862601efb3[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Mon Mar 11 21:44:06 2019 +0300
+
+    Initial commit
+
+[33mcommit 7c5e1dd7e0923995072f964b0aeebfb5c538dbb5[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Sun Mar 10 11:46:50 2019 +0300
+
+    res login
+
+[33mcommit d0f87800fb2eca5203013e35b5de42da9b9e5206[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Sat Mar 9 03:52:54 2019 +0300
+
+    res
+
+[33mcommit 1e554e4eb7095f4dd37e3ef17504beac43b8c184[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Sat Mar 9 03:47:48 2019 +0300
+
+    res
+
+[33mcommit 4bf374180e71cf73c6055a34863fb3c4d7a6c7bf[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Sat Mar 9 03:41:08 2019 +0300
+
+    res
+
+[33mcommit e3bf3c474456f24a24bb4a6322857804e5dd68e7[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Sat Mar 9 03:28:17 2019 +0300
+
+    res
+
+[33mcommit 42bea998cee0c5a4192f3bd55bf82dec48585d76[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Sat Mar 9 03:23:44 2019 +0300
+
+    res
+
+[33mcommit e699c5c9016b2b1829f1a217191cb231bc052f46[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Sat Mar 9 03:11:59 2019 +0300
+
+    res
+
+[33mcommit 486f4914fd4536134d72e449ddcd4315be0a9b5e[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Sat Mar 9 02:58:10 2019 +0300
+
+    res
+
+[33mcommit b6b78670d7d552c3581234546c5f0236dfd127eb[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Sat Mar 9 02:11:10 2019 +0300
+
+    res
+
+[33mcommit 795d0d99bd7889c2fafe50019ac54b4ea119f35b[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Sat Mar 9 02:05:53 2019 +0300
+
+    res
+
+[33mcommit 696cbfeabf212525f5ef5bd58e8c5bbe43ab7e9b[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Sat Mar 9 02:00:13 2019 +0300
+
+    res
+
+[33mcommit 70647042003874b249f4b9627b1396a27da94dd8[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Sat Mar 9 01:56:24 2019 +0300
+
+    res
+
+[33mcommit 3dbb3e62ce8c6166aa3349dc437a634fa18b440a[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Sat Mar 9 01:46:15 2019 +0300
+
+    res
+
+[33mcommit e1c9ec37f407a60192c0e6e3b3355bca56095bd3[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Sat Mar 9 01:33:35 2019 +0300
+
+    res
+
+[33mcommit 73515c9c418cb6bfcb1537e4ed397a9d58e2fba7[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Sat Mar 9 01:24:30 2019 +0300
+
+    res
+
+[33mcommit d828e85397e34e54cc26a3e6b2da92aeecc4dc71[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Sat Mar 9 01:15:03 2019 +0300
+
+    res
+
+[33mcommit b473435748a7a03bf8eb86677c7ce64d8cc598aa[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Sat Mar 9 00:59:44 2019 +0300
+
+    res
+
+[33mcommit e72f53577b4b462ec004814c45e1575d696f1555[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Sat Mar 9 00:47:44 2019 +0300
+
+    res
+
+[33mcommit eda416cb911c25b9ed4baa8ebb740bbe9290daf2[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Sat Mar 9 00:16:43 2019 +0300
+
+    res
+
+[33mcommit 7c58de09dac449eae1ae7abc6ff03ccd3d67e556[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Sat Mar 9 00:12:35 2019 +0300
+
+    res
+
+[33mcommit ddaeb80c49a8c91ed9ff58740870dbdbe0a128e7[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Fri Mar 8 23:59:05 2019 +0300
+
+    css
+
+[33mcommit 99937786b796b6031afa1357be4fc7c67ad79243[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Fri Mar 8 22:33:47 2019 +0300
+
+    resetpass
+
+[33mcommit 855a2c3e00a3ac374c97ef7d3f5212118be276ca[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Fri Mar 8 22:29:49 2019 +0300
+
+    resetpass
+
+[33mcommit 08714d395603223e37f5d73622288150054f8109[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Fri Mar 8 22:14:20 2019 +0300
+
+    resetpass
+
+[33mcommit 55f160f1b2f90335f2c1d96ce5dc145a04b40594[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Fri Mar 8 21:32:23 2019 +0300
+
+    forgetpass
+
+[33mcommit a855a10ba46daa5a8168f929946d25295257f642[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Fri Mar 8 11:28:47 2019 +0300
+
+    menü zenginleşti
+
+[33mcommit 9f4e859a3749626c940eb15d703dcc5c08ebd116[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Thu Mar 7 17:28:03 2019 +0300
+
+    bootstrap cdn changed
+
+[33mcommit d57294b440a7b4265692fd9203f4b9116e977f6f[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Thu Mar 7 17:19:20 2019 +0300
+
+    restaurant login page
+
+[33mcommit 606b071a9ba4062aadd0539781d9b5b5b8ee2a93[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Wed Mar 6 19:24:20 2019 +0300
+
+    /user/login url eklendi
+
+[33mcommit 65e684214e44feb2c7f5d1b8f80129a64c31be9b[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Wed Mar 6 19:18:08 2019 +0300
+
+    /user/login url eklendi
+
+[33mcommit 61f5b99aa9761b45ae7ccc2ac298fb11e601333c[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Wed Mar 6 19:09:27 2019 +0300
+
+    /user/login url eklendi
+
+[33mcommit f8a53f504f1f9d88a0a77b16be21a87c51b249fb[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Mon Mar 4 22:14:09 2019 +0300
+
+    table-orders auth hatası
+
+[33mcommit efe78495b85a4b0369ca1db58107fc36d4374589[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Mon Mar 4 21:33:48 2019 +0300
+
+    heroku db config yapıldı
+
+[33mcommit dd4352e36f0cef660aeaa397f77e642de3022399[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Mon Mar 4 21:10:45 2019 +0300
+
+    heroku db config yapıldı
+
+[33mcommit 4ed9c2fc336151ceb2de0337b4e2a6f93835d182[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Mon Mar 4 21:00:30 2019 +0300
+
+    heroku db config
+
+[33mcommit 176082d0fe34a64bc3c9880c2e0cd0537ff71cde[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Mon Mar 4 20:39:53 2019 +0300
+
+    heroku db config
+
+[33mcommit 4409e2a0efdee0b39ad14d62772ed98df13dff77[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Mon Mar 4 20:30:11 2019 +0300
+
+    heroku db config
+
+[33mcommit 632c919c61723bba00e6ddd550272f92ef38995a[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Mon Mar 4 20:11:06 2019 +0300
+
+    heroku postgres env var ayarlandı2
+
+[33mcommit 550a60155ff2d214503dc8d8921a64a5b82a91ea[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Mon Mar 4 20:02:11 2019 +0300
+
+    heroku postgres env var ayarlandı
+
+[33mcommit a8b4b36054f5fdae0c3edde37be65a2d85bbafa5[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Sat Mar 2 16:25:42 2019 +0300
+
+    mail sv değişti
+
+[33mcommit c02b9373870cb9fb4b8d8bdc6149cf6cfba94c40[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Sat Mar 2 14:07:05 2019 +0300
+
+    mail sv değişti
+
+[33mcommit 26d314e2837a2c99467a7667fae29aaec9a58f95[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Thu Feb 28 21:34:36 2019 +0300
+
+    registration eklendi
+
+[33mcommit 9c864b9ff8a546a418f634939d48b5c861877a0d[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Sat Feb 23 14:35:19 2019 +0300
+
+    ordering completed without registration
+
+[33mcommit 69352cbd59d05e2680ec57c5ab82be60d312058a[m
+Merge: 1dff8ef fe812ac
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Mon Feb 4 17:30:43 2019 +0300
+
+    Merge branch 'master' of https://bitbucket.org/digimenu/backend
+
+[33mcommit 1dff8ef976c2039dc6e148e65a8045d73b6c4c23[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Mon Feb 4 17:27:22 2019 +0300
+
+    ilk commit
+
+[33mcommit fe812acd3da6c66b4183df7e228c249c0b37ea85[m
+Author: Berk Altuğ <berkaltug96@gmail.com>
+Date:   Fri Feb 1 10:02:14 2019 +0000
+
+    Initial commit

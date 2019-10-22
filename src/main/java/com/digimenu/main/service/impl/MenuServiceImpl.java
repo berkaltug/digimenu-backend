@@ -1,7 +1,8 @@
-package com.digimenu.main.service;
+package com.digimenu.main.service.impl;
 
 import java.util.List;
 
+import com.digimenu.main.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;

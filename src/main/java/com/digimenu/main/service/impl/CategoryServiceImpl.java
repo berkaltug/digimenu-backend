@@ -1,5 +1,6 @@
-package com.digimenu.main.service;
+package com.digimenu.main.service.impl;
 
+import com.digimenu.main.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
