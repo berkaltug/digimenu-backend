@@ -1,8 +1,9 @@
-package com.digimenu.main.service;
+package com.digimenu.main.service.impl;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import com.digimenu.main.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
