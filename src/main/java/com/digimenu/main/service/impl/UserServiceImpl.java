@@ -24,16 +24,13 @@ public class UserServiceImpl implements UserService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	@Override
-	public void save(User user) {
-		try {
+	public void save(User user) throws Exception{
+
 			if (!user.getPassword().contains("$2a$10$")) {
 				user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 			}
 			user.setRoles(new ArrayList<Role>(Arrays.asList(roleRepository.getOne(3)))); // direk user rolunde ekliyor
 			userRepository.save(user);
-		}catch(Exception e){
-			System.err.println(e.getMessage());
-		}
 	}
 
 	@Override
