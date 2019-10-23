@@ -52,30 +52,31 @@ public class UserController {
 		
 		User existingUser= userService.findByEmail(user.getEmail());
 		User existingUsername=userService.findByUsername(user.getUsername());
-		
-		if(existingUser!=null) {
-			return new ResponseEntity<>("Bu mail adresine kayıtlı kullanıcı bulunmaktadır",HttpStatus.CONFLICT);
-		}
-		else if(existingUsername!=null) {
-			return new ResponseEntity<>("Bu kullanıcı adı kullanılmaktadır",HttpStatus.CONFLICT);
-		}
-		else {
+		try {
+			if (existingUser != null) {
+				return new ResponseEntity<>("Bu mail adresine kayıtlı kullanıcı bulunmaktadır", HttpStatus.CONFLICT);
+			} else if (existingUsername != null) {
+				return new ResponseEntity<>("Bu kullanıcı adı kullanılmaktadır", HttpStatus.CONFLICT);
+			} else {
 				userService.save(user);
 				ConfirmationToken confirmationToken = new ConfirmationToken(user);
 				confirmTokenRepo.save(confirmationToken);
-				StringBuilder sb=new StringBuilder();
-				String mailContent=sb.append("Üyeliğinizi doğrulamak için lütfen doğrulama linkine tıklayınız : '\n'")
+				StringBuilder sb = new StringBuilder();
+				String mailContent = sb.append("Üyeliğinizi doğrulamak için lütfen doğrulama linkine tıklayınız : '\n'")
 						.append("https://digimenu.herokuapp.com/user/confirmaccount/").append(confirmationToken.getConfirmationToken())
 						.append('\n')
 						.append("Digimenu Ekibi").toString();
-				sendGridMailService.sendEmail("digimenuinfo@gmail.com",user.getEmail(),"Digimenu'ye Hoşgeldiniz !",new Content("text/plain",mailContent));
-		}
+				sendGridMailService.sendEmail("digimenuinfo@gmail.com", user.getEmail(), "Digimenu'ye Hoşgeldiniz !", new Content("text/plain", mailContent));
+			}
+		}catch(Exception ex){
+			return new ResponseEntity<>(ex.getMessage(),HttpStatus.BAD_REQUEST);
+			}
 		return new ResponseEntity<>("Aktivasyon epostasi adresinize gönderilmiştir",HttpStatus.CREATED);
 	}
 	
 	@GetMapping("/confirmaccount/{token}")
 	@ResponseBody
-		ResponseEntity<String >confirmAccount(@PathVariable("token") String confirmToken) {
+		ResponseEntity<String >confirmAccount(@PathVariable("token") String confirmToken) throws Exception {
 		ConfirmationToken token=confirmTokenRepo.findByConfirmationToken(confirmToken);
 		if(token!=null) {
 			User user = userService.findByEmail(token.getUser().getEmail());
@@ -135,7 +136,7 @@ public class UserController {
 	
 	//hatalı
 	@PostMapping("/savepassword")
-	public String resetPassword(@ModelAttribute("pass") String pass){
+	public String resetPassword(@ModelAttribute("pass") String pass) throws Exception {
 		User user=userService.findByUsername(securityService.findLoggedInUsername());
 		user.setPassword(pass);
 		userService.save(user);
