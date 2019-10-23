@@ -17,6 +17,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -48,7 +49,7 @@ public class UserController {
 	private SecurityService securityService;
 	@PostMapping("/register")
 	@ResponseBody
-	ResponseEntity<String> registerUser(@Valid @RequestBody User user) {
+	ResponseEntity<String> registerUser(@Valid @RequestBody User user, BindingResult bindingResult) {
 		
 		User existingUser= userService.findByEmail(user.getEmail());
 		User existingUsername=userService.findByUsername(user.getUsername());
@@ -57,7 +58,10 @@ public class UserController {
 				return new ResponseEntity<>("Bu mail adresine kayıtlı kullanıcı bulunmaktadır", HttpStatus.CONFLICT);
 			} else if (existingUsername != null) {
 				return new ResponseEntity<>("Bu kullanıcı adı kullanılmaktadır", HttpStatus.CONFLICT);
-			} else {
+			}else if(bindingResult.hasErrors()){
+				return new ResponseEntity<>(bindingResult.getFieldErrors().get(0).getDefaultMessage(),HttpStatus.BAD_REQUEST);
+			}
+			else {
 				userService.save(user);
 				ConfirmationToken confirmationToken = new ConfirmationToken(user);
 				confirmTokenRepo.save(confirmationToken);
@@ -69,7 +73,7 @@ public class UserController {
 				sendGridMailService.sendEmail("digimenuinfo@gmail.com", user.getEmail(), "Digimenu'ye Hoşgeldiniz !", new Content("text/plain", mailContent));
 			}
 		}catch(Exception ex){
-			return new ResponseEntity<>(ex.getMessage(),HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(ex.getCause().getMessage(),HttpStatus.BAD_REQUEST);
 			}
 		return new ResponseEntity<>("Aktivasyon epostasi adresinize gönderilmiştir",HttpStatus.CREATED);
 	}
