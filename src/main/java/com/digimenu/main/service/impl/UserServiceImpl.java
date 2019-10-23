@@ -25,11 +25,15 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void save(User user) {
-		if(!user.getPassword().contains("$2a$10$")) {
-		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+		try {
+			if (!user.getPassword().contains("$2a$10$")) {
+				user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+			}
+			user.setRoles(new ArrayList<Role>(Arrays.asList(roleRepository.getOne(3)))); // direk user rolunde ekliyor
+			userRepository.save(user);
+		}catch(Exception e){
+			System.err.println(e.getMessage());
 		}
-		user.setRoles(new ArrayList<Role>(Arrays.asList(roleRepository.getOne(3)))); // direk user rolunde ekliyor
-        userRepository.save(user);	
 	}
 
 	@Override
