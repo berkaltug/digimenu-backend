@@ -87,7 +87,7 @@ public class Table_OrdersController {
 		//CrudRepo daki saveAll ile yapmayı dene
 		//siparis mesajı hazırlıyoruz
 		StringBuilder sb=new StringBuilder(); //daha sonra formatla oynamak icin stringbuilder
-		sb.append("MASA:" + masaNo +" YENi SİPARİŞ ! <br>" );
+		sb.append("MASA:" + masaNo + " YENi SİPARİŞ ! <br> " );
 		
 		itemIds.forEach(i->{		 
 			Table_Orders to=new Table_Orders();
@@ -111,5 +111,14 @@ public class Table_OrdersController {
 		});
 		String msg=sb.toString();
 		this.msgTemplate.convertAndSendToUser(res.getOwner().getUsername(), "/restaurant/message", msg);
+	}
+
+	@PreAuthorize("hasRole('USER') or hasRole('RESTAURANT') or hasRole('ADMIN')")
+	@PostMapping("/garson/{restaurant}/{masa}")
+	public void callWaiter(@PathVariable("restaurant") Long restaurantId,@PathVariable("masa") Integer masaNo){
+		Restaurant res=restaurantService.getRestaurant(restaurantId);
+		StringBuilder sb=new StringBuilder();
+		sb.append("Garson Bekleniyor ! Lütfen <h6>" + masaNo + " </h6> Numaralı Masayla İlgileniniz.");
+		this.msgTemplate.convertAndSendToUser(res.getOwner().getUsername(),"/restaurant/message", sb.toString());
 	}
 }
