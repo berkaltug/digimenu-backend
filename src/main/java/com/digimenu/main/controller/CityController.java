@@ -15,9 +15,13 @@ import com.digimenu.main.service.CityService;
 @RequestMapping("/city")
 public class CityController {
 	
-	@Autowired
+
 	private CityService cityService;
-	
+	@Autowired
+	public CityController(CityService cityService) {
+		this.cityService = cityService;
+	}
+
 	@GetMapping("/{il}")
 	public City getCity(@PathVariable("il") Integer id) {
 		return cityService.getCity(id);

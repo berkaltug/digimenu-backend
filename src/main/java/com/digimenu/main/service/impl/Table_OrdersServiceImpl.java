@@ -10,8 +10,14 @@ import com.digimenu.main.entity.Table_Orders;
 import com.digimenu.main.repository.Table_OrdersRepository;
 @Service
 public class Table_OrdersServiceImpl implements Table_OrdersService {
-	@Autowired
+
 	private Table_OrdersRepository tor;
+
+	@Autowired
+	public Table_OrdersServiceImpl(Table_OrdersRepository tor) {
+		this.tor = tor;
+	}
+
 	@Override
 	public Table_Orders getTable_Order(Long id) {
 		return tor.getOne(id);

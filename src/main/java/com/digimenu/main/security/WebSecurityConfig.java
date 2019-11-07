@@ -6,6 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -50,41 +51,41 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     
     @Configuration
     @Order(1)
-    public static class AppSecurityConfig extends WebSecurityConfigurerAdapter{
- 
-    	@Autowired
-        private MyRestAuthenticationEntryPoint authEntryPoint;
-    	
-    	@Override
-        protected void configure(HttpSecurity http) throws Exception {
-            http.requestMatchers()
-                .antMatchers("/user/**","/table_orders/**").and()
-                .authorizeRequests()
-                .antMatchers(
-                		"/user/register",
-                		"/user/confirmaccount/**",
-                		"/user/forgetpassword/**",
-                		"/user/resetpassword/**"
-                		//"/user/login"
-                		).permitAll()
-                .antMatchers("/user/savepassword").hasAuthority("CHANGE_PASSWORD_PRIVILIGE")
-                //.antMatchers("/restaurant/**").hasRole("RESTAURANT")
-                .antMatchers("/city/**").hasRole("ADMIN")
-                .antMatchers(HttpMethod.POST,"/table_orders/**").hasRole("USER")
-                .antMatchers(HttpMethod.GET,"/table_orders/**").hasRole("ADMIN")
-                .antMatchers("/menu/**").hasRole("USER")
-                .antMatchers(HttpMethod.POST,"/user/login").hasRole("USER")
-                .and()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.NEVER)
-                .and()
-                .csrf().disable()
-                .httpBasic()
-                .authenticationEntryPoint(authEntryPoint)
-                
-                 ;
-        }
-    }
+    public static class AppSecurityConfig extends WebSecurityConfigurerAdapter {
+
+		@Autowired
+		private MyRestAuthenticationEntryPoint authEntryPoint;
+
+		@Override
+		protected void configure(HttpSecurity http) throws Exception {
+			http.requestMatchers()
+					.antMatchers("/user/**", "/table_orders/**").and()
+					.authorizeRequests()
+					.antMatchers(
+							"/user/register",
+							"/user/confirmaccount/**",
+							"/user/forgetpassword/**",
+							"/user/resetpassword/**"
+							//"/user/login"
+					)
+					.permitAll()
+					.antMatchers("/user/savepassword").hasAuthority("CHANGE_PASSWORD_PRIVILIGE")
+					//.antMatchers("/restaurant/**").hasRole("RESTAURANT")
+					.antMatchers("/city/**").hasRole("ADMIN")
+					.antMatchers(HttpMethod.POST, "/table_orders/**").hasRole("USER")
+					.antMatchers(HttpMethod.GET, "/table_orders/**").hasRole("ADMIN")
+					.antMatchers("/menu/**").hasRole("USER")
+					.antMatchers(HttpMethod.POST, "/user/login").hasRole("USER")
+					.and()
+					.sessionManagement()
+					.sessionCreationPolicy(SessionCreationPolicy.NEVER)
+					.and()
+					.csrf().disable()
+					.httpBasic()
+					.authenticationEntryPoint(authEntryPoint)
+			;
+		}
+	}
     
     @Configuration
     @Order(2)	// no order means order of config value is last
@@ -94,12 +95,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     	public AuthenticationEntryPoint loginUrlAuthenticationEntryPoint() {
     		return new LoginUrlAuthenticationEntryPoint("/restaurant/login");
     	}
+
     	@Override
     	protected void configure(HttpSecurity http) throws Exception{
     		http.csrf().disable()
     		.antMatcher("/restaurant/**")  //antmatcher tekil şekilde urlleri farklı configler için gruplamada kullanılır
     		.authorizeRequests()
-				.antMatchers("/assets/**", "/webjars/**","/static/**").permitAll()
+				.antMatchers("/restaurant/flushitem/**").permitAll()
+				.antMatchers("/assets/**", "/webjars/**","/static/**","/h2-console/**").permitAll()
 				.anyRequest().hasRole("RESTAURANT")
 				.and()
 			.formLogin()
@@ -121,6 +124,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     	}
     	
     }
+
 }
     
     

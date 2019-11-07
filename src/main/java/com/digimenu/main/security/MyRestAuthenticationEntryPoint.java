@@ -14,13 +14,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class MyRestAuthenticationEntryPoint extends BasicAuthenticationEntryPoint {
 
-	@Override
+    @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authEx)
-      throws IOException, ServletException {
-        response.addHeader("WWW-Authenticate", "Basic realm=" +getRealmName());
-        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-        PrintWriter writer = response.getWriter();
-        writer.println("HTTP Status 401 - " + authEx.getMessage());
+            throws IOException, ServletException {
+
+            response.addHeader("WWW-Authenticate", "Basic realm=" + getRealmName());
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            PrintWriter writer = response.getWriter();
+            writer.println("HTTP Status 401 - " + authEx.getMessage());
+            System.out.println("------------------------here------------------");
+
     }
 
 	@Override
@@ -28,5 +31,4 @@ public class MyRestAuthenticationEntryPoint extends BasicAuthenticationEntryPoin
         setRealmName("Digimenu");
         super.afterPropertiesSet();
     }
-
 }

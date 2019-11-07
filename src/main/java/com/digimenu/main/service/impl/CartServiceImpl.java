@@ -10,8 +10,14 @@ import com.digimenu.main.entity.Cart;
 import com.digimenu.main.repository.CartRepository;
 @Service
 public class CartServiceImpl implements CartService {
-	@Autowired
+
 	private CartRepository cr;
+
+	@Autowired
+	public CartServiceImpl(CartRepository cr) {
+		this.cr = cr;
+	}
+
 	@Override
 	public List<Cart> getCart(Long id,Integer no) {
 		return cr.getCart(id, no);

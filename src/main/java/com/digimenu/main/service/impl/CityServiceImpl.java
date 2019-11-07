@@ -11,8 +11,12 @@ import com.digimenu.main.repository.CityRepository;
 @Service
 public class CityServiceImpl implements CityService {
 	
-	@Autowired 
 	private CityRepository cr;
+	@Autowired
+	public CityServiceImpl(CityRepository cr) {
+		this.cr = cr;
+	}
+
 	@Override
 	public City getCity(Integer id) {
 		return cr.getOne(id);

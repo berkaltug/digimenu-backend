@@ -8,8 +8,13 @@ import com.digimenu.main.entity.Category;
 import com.digimenu.main.repository.CategoryRepository;
 @Service
 public class CategoryServiceImpl implements CategoryService {
-	@Autowired
 	private CategoryRepository catr;
+
+	@Autowired
+	public CategoryServiceImpl(CategoryRepository catr) {
+		this.catr = catr;
+	}
+
 	@Override
 	public Category getCategory(Long id) {
 		return catr.getOne(id);

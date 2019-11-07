@@ -5,6 +5,8 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -13,14 +15,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.digimenu.main.dto.RestaurantDto;
@@ -38,18 +33,20 @@ import com.digimenu.main.service.UserService;
 @RequestMapping(value="/restaurant")
 public class RestaurantController {
 	
-	@Autowired 
 	SecurityService securityService;
-	@Autowired
 	UserService userService;
-	@Autowired
 	RestaurantService restaurantService;
-	@Autowired
 	MenuService menuService;
-	@Autowired
 	CartService cartService;
-	
-	
+	@Autowired
+	public RestaurantController(SecurityService securityService, UserService userService, RestaurantService restaurantService, MenuService menuService, CartService cartService) {
+		this.securityService = securityService;
+		this.userService = userService;
+		this.restaurantService = restaurantService;
+		this.menuService = menuService;
+		this.cartService = cartService;
+	}
+
 	@GetMapping("/login")
 	public ModelAndView getlogin(Model model) {
 		ModelAndView mav = new ModelAndView();
@@ -109,7 +106,8 @@ public class RestaurantController {
 		menuService.updateMenuItem(menu);
 		return "redirect:/restaurant/menu";
 	}
-	
+
+	@ResponseBody
 	@PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
 	@GetMapping("/delete/{id}")
 	public String deleteItem(@PathVariable("id") Long id) {
@@ -149,15 +147,18 @@ public class RestaurantController {
 		
 		return "redirect:/restaurant/tables";
 	}
-	
-	@PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
-	@GetMapping("/flushcartitem/{id}")
-	public void freeCartItem(@PathVariable("id") Long id) {
+
+	@CrossOrigin
+	@ResponseBody
+	//@PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
+	@GetMapping("/flushitem/{id}")
+	public ResponseEntity<String> freeCartItem(@PathVariable("id") Long id) {
 		try {
 			cartService.deleteCart(id);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	//login olmuş restoranı çeker
