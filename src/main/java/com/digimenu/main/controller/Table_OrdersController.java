@@ -37,18 +37,20 @@ import com.digimenu.main.service.Table_OrdersService;
 public class Table_OrdersController {
 	
 	
-	@Autowired
 	private Table_OrdersService table_ordersService;
-	@Autowired
 	private RestaurantService restaurantService;
-	@Autowired 
 	private MenuService menuService;
-	@Autowired
 	private CartService cartService;
-	@Autowired
 	SimpMessagingTemplate msgTemplate;
-	
-	
+	@Autowired
+	public Table_OrdersController(Table_OrdersService table_ordersService, RestaurantService restaurantService, MenuService menuService, CartService cartService, SimpMessagingTemplate msgTemplate) {
+		this.table_ordersService = table_ordersService;
+		this.restaurantService = restaurantService;
+		this.menuService = menuService;
+		this.cartService = cartService;
+		this.msgTemplate = msgTemplate;
+	}
+
 	@GetMapping
 	Collection<Table_Orders> getAllTableOrders(){
 		return table_ordersService.getTable_Orders();
@@ -107,10 +109,7 @@ public class Table_OrdersController {
 			sb.append(item.getItem() + "<br>");
 			
 		});
-		
-		
 		String msg=sb.toString();
 		this.msgTemplate.convertAndSendToUser(res.getOwner().getUsername(), "/restaurant/message", msg);
-		
 	}
 }

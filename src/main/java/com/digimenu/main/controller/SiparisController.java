@@ -28,20 +28,15 @@ import com.digimenu.main.service.Table_OrdersService;
 @RequestMapping("/menu")
 public class SiparisController {
 	
-	@Autowired
-	private CityService cityService;
-
-	@Autowired
 	private MenuService menuService;
-	@Autowired
 	private RestaurantService restaurantService;
 
 	@Autowired
-	private CartService cartService;
-	@Autowired 
-	private Table_OrdersService table_ordersService;
-	
-	
+	public SiparisController(MenuService menuService, RestaurantService restaurantService) {
+		this.menuService = menuService;
+		this.restaurantService = restaurantService;
+	}
+
 	@PreAuthorize("hasRole('ROLE_USER')")
 	//@Secured("USER")
 	@GetMapping("/{restaurantmenu}") //bütün menüyü çeker

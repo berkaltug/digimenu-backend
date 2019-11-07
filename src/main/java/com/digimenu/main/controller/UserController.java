@@ -37,16 +37,21 @@ import com.digimenu.main.service.UserService;
 @RequestMapping(value="/user")
 public class UserController {
 
-	@Autowired
 	private UserService userService;
-	@Autowired
 	private ConfirmationTokenRepository confirmTokenRepo;
-	@Autowired
 	private SendGridMailService sendGridMailService;
-	@Autowired
 	private PasswordResetTokenRepository passwordResetTokenRepository;
-	@Autowired
 	private SecurityService securityService;
+
+	@Autowired
+	public UserController(UserService userService, ConfirmationTokenRepository confirmTokenRepo, SendGridMailService sendGridMailService, PasswordResetTokenRepository passwordResetTokenRepository, SecurityService securityService) {
+		this.userService = userService;
+		this.confirmTokenRepo = confirmTokenRepo;
+		this.sendGridMailService = sendGridMailService;
+		this.passwordResetTokenRepository = passwordResetTokenRepository;
+		this.securityService = securityService;
+	}
+
 	@PostMapping("/register")
 	@ResponseBody
 	ResponseEntity<String> registerUser(@Valid @RequestBody User user, BindingResult bindingResult) {

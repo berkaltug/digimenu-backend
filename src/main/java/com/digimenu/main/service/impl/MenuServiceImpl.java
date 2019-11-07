@@ -14,9 +14,12 @@ import com.digimenu.main.repository.MenuRepository;
 @Service
 public class MenuServiceImpl implements MenuService {
 	
-	@Autowired
 	private MenuRepository mr;
-	
+	@Autowired
+	public MenuServiceImpl(MenuRepository mr) {
+		this.mr = mr;
+	}
+
 	@Override
 	public List<Menu> getMenuItemsByRestaurant(Restaurant res) {
 		return mr.getByRestaurant(res.getId());

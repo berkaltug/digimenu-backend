@@ -18,4 +18,5 @@ public interface CartRepository extends JpaRepository<Cart, Long> {
 	@Modifying
 	@Query("DELETE FROM Cart c WHERE c.restaurantId = :id AND c.masaNo = :no ")
 	void flushCart(@Param("id")Long id,@Param("no")Integer no);
+
 }

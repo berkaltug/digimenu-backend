@@ -10,8 +10,12 @@ import com.digimenu.main.security.User;
 @Service
 public class RestaurantServiceImpl implements RestaurantService {
 	
-	@Autowired
 	private RestaurantRepository rr;
+	@Autowired
+	public RestaurantServiceImpl(RestaurantRepository rr) {
+		this.rr = rr;
+	}
+
 	@Override
 	public Restaurant getRestaurant(Long id) {
 		return rr.getOne(id);

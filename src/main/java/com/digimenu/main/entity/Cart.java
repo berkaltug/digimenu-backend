@@ -42,8 +42,6 @@ public class Cart {
 	public Cart() {
 	}
 
-	
-
 	public Cart(Long id, String item, Float totalPrice, Long restaurantId, Integer masaNo, Date siparisTarihi,
 			Date guncellemeTarihi) {
 		this.id = id;
@@ -119,10 +117,4 @@ public class Cart {
 				+ ", masaNo=" + masaNo + ", siparisTarihi=" + siparisTarihi + ", guncellemeTarihi=" + guncellemeTarihi
 				+ "]";
 	}
-
-	
-	
-	
-	
-	
 }

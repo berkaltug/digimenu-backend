@@ -4,6 +4,7 @@ import com.digimenu.main.service.SecurityService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,10 +14,12 @@ public class SecurityServiceImpl implements SecurityService {
 //	    @Autowired
 //	    private AuthenticationManager authenticationManager;
 
-	    @Autowired
-	    private UserDetailsService userDetailsService;
+	private UserDetailsService userDetailsService;
+	@Autowired
+	public SecurityServiceImpl(@Qualifier("customUserDetailsService") UserDetailsService userDetailsService) {
+		this.userDetailsService = userDetailsService;
+	}
 
-	    private static final Logger logger = LoggerFactory.getLogger(SecurityServiceImpl.class);
 
 	    @Override
 	    public String findLoggedInUsername() {

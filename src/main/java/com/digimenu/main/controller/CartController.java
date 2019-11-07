@@ -21,11 +21,13 @@ import com.digimenu.main.service.Table_OrdersService;
 @PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_RESTAURANT')")
 public class CartController {
 
-	@Autowired
 	private CartService cs;
-	@Autowired 
-	private Table_OrdersService tos;
-	
+
+	@Autowired
+	public CartController(CartService cs) {
+		this.cs = cs;
+	}
+
 	@GetMapping("cart/{restaurant}/{masa}")
 	public List<Cart> getCart(@PathVariable("restaurant") Long resId,@PathVariable("masa")Integer masaNo) {
 		return cs.getCart(resId, masaNo);
