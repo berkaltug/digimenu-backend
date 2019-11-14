@@ -2,10 +2,14 @@ package com.digimenu.main.service.impl;
 
 import com.digimenu.main.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.digimenu.main.entity.Category;
 import com.digimenu.main.repository.CategoryRepository;
+
+import java.util.Collection;
+
 @Service
 public class CategoryServiceImpl implements CategoryService {
 	private CategoryRepository catr;
@@ -35,6 +39,11 @@ public class CategoryServiceImpl implements CategoryService {
 	@Override
 	public void addCategory(Category cat) {
 		catr.save(cat);
+	}
+
+	@Override
+	public Collection<Category> getCategories() {
+		return catr.findAll(Sort.by("name"));
 	}
 
 }
