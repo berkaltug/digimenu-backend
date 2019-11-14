@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import com.digimenu.main.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,12 +23,6 @@ import com.digimenu.main.dto.RestaurantDto;
 import com.digimenu.main.entity.Cart;
 import com.digimenu.main.entity.Menu;
 import com.digimenu.main.entity.Restaurant;
-import com.digimenu.main.service.CartService;
-import com.digimenu.main.service.CustomUserDetailsService;
-import com.digimenu.main.service.MenuService;
-import com.digimenu.main.service.RestaurantService;
-import com.digimenu.main.service.SecurityService;
-import com.digimenu.main.service.UserService;
 
 @Controller
 @RequestMapping(value="/restaurant")
@@ -38,14 +33,19 @@ public class RestaurantController {
 	RestaurantService restaurantService;
 	MenuService menuService;
 	CartService cartService;
+	CategoryService categoryService;
 	@Autowired
-	public RestaurantController(SecurityService securityService, UserService userService, RestaurantService restaurantService, MenuService menuService, CartService cartService) {
+	public RestaurantController(SecurityService securityService, UserService userService, RestaurantService restaurantService, MenuService menuService, CartService cartService, CategoryService categoryService) {
 		this.securityService = securityService;
 		this.userService = userService;
 		this.restaurantService = restaurantService;
 		this.menuService = menuService;
 		this.cartService = cartService;
+		this.categoryService = categoryService;
 	}
+
+
+
 
 	@GetMapping("/login")
 	public ModelAndView getlogin(Model model) {
@@ -59,7 +59,8 @@ public class RestaurantController {
 		
 		String loggedInUser=securityService.findLoggedInUsername();
 		model.addAttribute("category",
-				restaurantService.getByOwner(userService.findByUsername(loggedInUser)).getCategories());
+				categoryService.getCategories());
+		System.err.println(categoryService.getCategories());
 		return "addmenuitem";
 	}
 	
