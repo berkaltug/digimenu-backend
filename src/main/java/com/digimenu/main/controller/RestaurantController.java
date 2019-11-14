@@ -95,7 +95,7 @@ public class RestaurantController {
 	@GetMapping("/edititem/{id}")
 	public String editMenu(Model model,@PathVariable("id") Long id) {
 		Restaurant res=getRestaurant();
-		model.addAttribute("category",res.getCategories());
+		model.addAttribute("category",categoryService.getCategories());
 		model.addAttribute("menu",menuService.getMenuItem(id));
 		return "editmenuitem";
 	}
@@ -108,7 +108,7 @@ public class RestaurantController {
 		return "redirect:/restaurant/menu";
 	}
 
-	@ResponseBody
+
 	@PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
 	@GetMapping("/delete/{id}")
 	public String deleteItem(@PathVariable("id") Long id) {
