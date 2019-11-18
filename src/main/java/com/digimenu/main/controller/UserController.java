@@ -136,13 +136,14 @@ public class UserController {
 			model.addAttribute("error", "Bir sorun oluştu,lütfen yeniden deneyiniz.");
 		}
 		User user=prt.getUser();
-		System.err.println("reset token userı !!!! -----------> " + user.toString() );
+
 
 		Authentication auth = new UsernamePasswordAuthenticationToken(
 			      user, null, Arrays.asList(
 			      new SimpleGrantedAuthority("CHANGE_PASSWORD_PRIVILEGE")));
 		SecurityContextHolder.getContext().setAuthentication(auth);			//sadece şifre yenileme sırasında bu yetkiyi veriyoruz
-		return "forgetpassword";	    
+		System.err.println("reset token userı !!!! -----------> " + user.toString());
+		return "forgetpassword";
 	}
 	
 	//hatalı
