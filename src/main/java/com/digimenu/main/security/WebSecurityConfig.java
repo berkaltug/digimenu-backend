@@ -69,7 +69,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 							//"/user/login"
 					)
 					.permitAll()
-					.antMatchers("/user/savepassword").hasAuthority("CHANGE_PASSWORD_PRIVILIGE")
+					.antMatchers("/user/savepassword*").hasAuthority("CHANGE_PASSWORD_PRIVILIGE")
 					//.antMatchers("/restaurant/**").hasRole("RESTAURANT")
 					.antMatchers("/city/**").hasRole("ADMIN")
 					.antMatchers(HttpMethod.POST, "/table_orders/**").hasRole("USER")
