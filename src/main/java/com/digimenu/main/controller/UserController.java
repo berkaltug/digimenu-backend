@@ -1,6 +1,8 @@
 package com.digimenu.main.controller;
 
 import java.util.Arrays;
+import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 
 import javax.validation.Valid;
@@ -18,13 +20,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import com.digimenu.main.repository.ConfirmationTokenRepository;
 import com.digimenu.main.repository.PasswordResetTokenRepository;
@@ -32,6 +28,9 @@ import com.digimenu.main.security.ConfirmationToken;
 import com.digimenu.main.security.PasswordResetToken;
 import com.digimenu.main.security.User;
 import com.digimenu.main.service.UserService;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @RequestMapping(value="/user")
@@ -72,7 +71,7 @@ public class UserController {
 				confirmTokenRepo.save(confirmationToken);
 				StringBuilder sb = new StringBuilder();
 				String mailContent = sb.append("Üyeliğinizi doğrulamak için lütfen doğrulama linkine tıklayınız : '\n'")
-						.append("https://digimenu.herokuapp.com/user/confirmaccount/").append(confirmationToken.getConfirmationToken())
+						.append("http://localhost:8080/user/confirmaccount/").append(confirmationToken.getConfirmationToken())
 						.append('\n')
 						.append("Digimenu Ekibi").toString();
 				sendGridMailService.sendEmail("digimenuinfo@gmail.com", user.getEmail(), "Digimenu'ye Hoşgeldiniz !", new Content("text/plain", mailContent));
@@ -100,6 +99,7 @@ public class UserController {
 	}
 	
 	@PostMapping("/login")
+	@ResponseBody
 	ResponseEntity<String> login(){
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
  		return new ResponseEntity<>("Başarılı",HttpStatus.ACCEPTED);
@@ -119,7 +119,7 @@ public class UserController {
 		passwordResetTokenRepository.save(prt);
 		StringBuilder sb=new StringBuilder();
 		String contentBody=sb.append("Parolanızı yenilemek için lütfen linke tıklayınız : " +"\n"
-				+"https://digimenu.herokuapp.com/user/resetpassword/"+prt.getToken() +"\n"
+				+"http://localhost:8080/user/resetpassword/"+prt.getToken() +"\n"
 				+"Eğer bu eposta bilginiz dahilinde gelmediyse , lütfen tıklamayıp görmezden geliniz ! "+"\n"
 				+"Digimenu Ekibi")
 				.toString();
@@ -130,28 +130,38 @@ public class UserController {
 	
 	@GetMapping("/resetpassword/{token}")
 	String resetPasswordPage(Model model,@PathVariable("token") String token) {
-		
 		PasswordResetToken prt=passwordResetTokenRepository.findByToken(token);
 		if(prt==null) {
-			model.addAttribute("error", "Bir sorun oluştu,lütfen yeniden deneyiniz.");
+			model.addAttribute("error","bir sorun oluştu.tekrar deneyiniz.");
 		}
-		User user=prt.getUser();
+		else {
+			User user = prt.getUser();
+			model.addAttribute("token",prt.getToken());
+		}
 
-
-		Authentication auth = new UsernamePasswordAuthenticationToken(
-			      user, null, Arrays.asList(
-			      new SimpleGrantedAuthority("CHANGE_PASSWORD_PRIVILEGE")));
-		SecurityContextHolder.getContext().setAuthentication(auth);			//sadece şifre yenileme sırasında bu yetkiyi veriyoruz
-		System.err.println("reset token userı !!!! -----------> " + user.toString());
+//		Authentication auth = new UsernamePasswordAuthenticationToken(
+//			      user, null, Arrays.asList(
+//			      new SimpleGrantedAuthority("CHANGE_PASSWORD_PRIVILEGE")));
+//		SecurityContextHolder.getContext().setAuthentication(auth);			//sadece şifre yenileme sırasında bu yetkiyi veriyoruz
 		return "forgetpassword";
 	}
 	
 	//hatalı
-	@PostMapping("/savepassword")
-	public String resetPassword(@ModelAttribute("pass") String pass) throws Exception {
-		User user=userService.findByUsername(securityService.findLoggedInUsername());
-		user.setPassword(pass);
-		userService.save(user);
-		return "resetpasswordsuccess";
+	@PostMapping("/resetpassword")
+	public String resetPassword(@ModelAttribute("token") String token,@ModelAttribute("pass") String pass) throws Exception {
+		PasswordResetToken passwordResetToken=passwordResetTokenRepository.findByToken(token);
+		System.err.println(token);
+		Optional<User> optionalUser= Optional.of(userService.findByUsername(passwordResetToken.getUser().getUsername()));
+		if(optionalUser.isPresent()){
+			User user= optionalUser.get();
+			user.setPassword(pass);
+			userService.save(user);
+			return "resetpasswordsuccess";
+
+		}
+		else{
+			return "resetpasswordfail";
+		}
+
 	}
 }
