@@ -108,7 +108,7 @@ public class UserController {
 	//burası sendgride göre yazılıp düzenlenicek
 	@PostMapping("/forgetpassword/{email}")
 	@ResponseBody
-	ResponseEntity<String> forgetPassword(@RequestParam("email") String email){
+	ResponseEntity<String> forgetPassword(@PathVariable("email") String email){
 		User user=userService.findByEmail(email);
 		if(user==null) {
 			return new ResponseEntity<>("Böyle bir epostaya kayıtlı kullanıcı bulunmamıştır",HttpStatus.NOT_FOUND);
