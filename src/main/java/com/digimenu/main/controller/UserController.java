@@ -71,7 +71,7 @@ public class UserController {
 				confirmTokenRepo.save(confirmationToken);
 				StringBuilder sb = new StringBuilder();
 				String mailContent = sb.append("Üyeliğinizi doğrulamak için lütfen doğrulama linkine tıklayınız : '\n'")
-						.append("http://localhost:8080/user/confirmaccount/").append(confirmationToken.getConfirmationToken())
+						.append("https://digimenu.herokuapp.com/user/confirmaccount/").append(confirmationToken.getConfirmationToken())
 						.append('\n')
 						.append("Digimenu Ekibi").toString();
 				sendGridMailService.sendEmail("digimenuinfo@gmail.com", user.getEmail(), "Digimenu'ye Hoşgeldiniz !", new Content("text/plain", mailContent));
@@ -118,7 +118,7 @@ public class UserController {
 		passwordResetTokenRepository.save(prt);
 		StringBuilder sb=new StringBuilder();
 		String contentBody=sb.append("Parolanızı yenilemek için lütfen linke tıklayınız : " +"\n"
-				+"http://localhost:8080/user/resetpassword/"+prt.getToken() +"\n"
+				+"https://digimenu.herokuapp.com/user/resetpassword/"+prt.getToken() +"\n"
 				+"Eğer bu eposta bilginiz dahilinde gelmediyse , lütfen tıklamayıp görmezden geliniz ! "+"\n"
 				+"Digimenu Ekibi")
 				.toString();
