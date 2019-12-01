@@ -43,7 +43,11 @@ public class SiparisController {
 	Collection<Menu> getMenu(@PathVariable("restaurantmenu") Long id) {
 		// burada o şehre ait olmayan restoran idsi verince de menüyü gösteriyor göstermememsi lazım.
 		//Qr koda gömücez ama gömerken de sıkıntı yaratabilir.
-		return menuService.getMenuItemsByRestaurant(restaurantService.getRestaurant(id));
+		List<Menu> items = menuService.getMenuItemsByRestaurant(restaurantService.getRestaurant(id))
+				.stream()
+				.filter(item -> item.getActive())
+				.collect(Collectors.toList());
+		return items;
 	}
 	
 	@PreAuthorize("hasRole('ADMIN') OR hasRole('RESTAURANT') OR hasRole('USER')")
