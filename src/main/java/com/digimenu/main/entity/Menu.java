@@ -1,6 +1,7 @@
 package com.digimenu.main.entity;
 
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -40,22 +41,18 @@ public class Menu {
 	//fk bağlamadık o yüzden String , mappinge gerek yok diye düşündüm 
 	private String category;
 
-	public Menu(Long id, @NotNull String item, String ingredients, Float price, Restaurant restaurant,String category) {
-		this.id = id;
+	private Boolean isActive=true;
+
+	public Menu() {
+	}
+
+	public Menu(@NotNull String item, String ingredients, Float price, Restaurant restaurant, String category, Boolean isActive) {
 		this.item = item;
 		this.ingredients = ingredients;
 		this.price = price;
 		this.restaurant = restaurant;
 		this.category = category;
-	}
-	
-	
-	public Menu(Long id) {
-		this.id = id;
-	}
-
-
-	public Menu() {
+		this.isActive = isActive;
 	}
 
 	public Long getId() {
@@ -106,18 +103,44 @@ public class Menu {
 		this.category = category;
 	}
 
+	public Boolean getActive() {
+		return isActive;
+	}
+
+	public void setActive(Boolean active) {
+		isActive = active;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Menu)) return false;
+		Menu menu = (Menu) o;
+		return Objects.equals(id, menu.id) &&
+				Objects.equals(item, menu.item) &&
+				Objects.equals(ingredients, menu.ingredients) &&
+				Objects.equals(price, menu.price) &&
+				Objects.equals(restaurant, menu.restaurant) &&
+				Objects.equals(category, menu.category) &&
+				Objects.equals(isActive, menu.isActive);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, item, ingredients, price, restaurant, category, isActive);
+	}
 
 	@Override
 	public String toString() {
-		return "Menu [id=" + id + ", item=" + item + ", ingredients=" + ingredients + ", price=" + price
-				+ ", restaurant=" + restaurant.toString() + ", category=" + category + "]";
+		return "Menu{" +
+				"id=" + id +
+				", item='" + item + '\'' +
+				", ingredients='" + ingredients + '\'' +
+				", price=" + price +
+				", restaurant=" + restaurant +
+				", category='" + category + '\'' +
+				", isActive=" + isActive +
+				'}';
 	}
-
-    
-	
-
-
-	
-	
-	
 }
+
