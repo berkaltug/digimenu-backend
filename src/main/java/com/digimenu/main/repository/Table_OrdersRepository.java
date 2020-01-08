@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.digimenu.main.entity.Table_Orders;
+import com.digimenu.main.domain.entity.Table_Orders;
 
 public interface Table_OrdersRepository extends JpaRepository<Table_Orders, Long> {
 	

@@ -1,6 +1,5 @@
 package com.digimenu.main.controller;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -22,10 +21,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.digimenu.main.entity.Cart;
-import com.digimenu.main.entity.Menu;
-import com.digimenu.main.entity.Restaurant;
-import com.digimenu.main.entity.Table_Orders;
+import com.digimenu.main.domain.entity.Cart;
+import com.digimenu.main.domain.entity.Menu;
+import com.digimenu.main.domain.entity.Restaurant;
+import com.digimenu.main.domain.entity.Table_Orders;
 import com.digimenu.main.service.CartService;
 import com.digimenu.main.service.MenuService;
 import com.digimenu.main.service.RestaurantService;
@@ -101,7 +100,7 @@ public class Table_OrdersController {
 			//simdi cart tablosuna da eklicez manuel yapıcaz db triggerı ile yapınca thymeleaf ile cartı çekerken item isimleri fk gözüküyor
 			Cart cart=new Cart();
 			cart.setItem(item.getItem()); //menu nesnesinin isim kısmını set ettik
-			cart.setTotalPrice(item.getPrice());
+			cart.setPrice(item.getPrice());
 			cart.setRestaurantId(res.getId());
 			cart.setMasaNo(masaNo);
 			cartService.addCart(cart);

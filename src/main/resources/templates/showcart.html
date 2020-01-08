@@ -25,7 +25,7 @@
               <th:block th:if="${orders!=null and !orders.isEmpty()}">
                 <tr  class="siparisItem" th:each=" o : ${orders}">
                   <td th:text="${o.item}"></td>
-                  <td class="price" th:text="${o.totalPrice}" th:value="${o.totalPrice}" name="price"></td>
+                  <td class="price" th:text="${o.price}" th:value="${o.price}" name="price"></td>
                   <td th:text="${o.siparisTarihi}"></td>
                   <td>
                     <button class="btn btn-sm btn-danger" th:onclick="'deleteItem(\'' + *{o.id} + '\');'" ><span class="fas fa-times"></span></button>
@@ -34,6 +34,8 @@
                 <tr>
                   <td>Toplam Ücret</td>
                   <td id="toplamUcret"></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                 	<td></td>

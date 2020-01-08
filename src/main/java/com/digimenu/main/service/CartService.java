@@ -1,16 +1,16 @@
 package com.digimenu.main.service;
 
 import java.util.List;
+import java.util.Optional;
 
-import com.digimenu.main.entity.Cart;
+import com.digimenu.main.domain.dto.TransferCartDto;
+import com.digimenu.main.domain.entity.Cart;
 
 public interface CartService {
 	
-	public  List<Cart> getCart(Long id,Integer no);
-	
-	public void deleteCart(Long id);
-	
-	public Cart addCart(Cart c);
-	
-	public void emptyCart(Long id , Integer no);
+	  List<Cart> getCart(Long id,Integer no);
+	  void deleteCart(Long id);
+	  Cart addCart(Cart c);
+	  void emptyCart(Long id , Integer no);
+	  Optional<List<Cart>> transferCart(TransferCartDto dto);
 }

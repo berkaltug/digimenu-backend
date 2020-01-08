@@ -4,7 +4,7 @@ import com.digimenu.main.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.digimenu.main.entity.Restaurant;
+import com.digimenu.main.domain.entity.Restaurant;
 import com.digimenu.main.repository.RestaurantRepository;
 import com.digimenu.main.security.User;
 @Service

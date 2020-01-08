@@ -1,11 +1,9 @@
-package com.digimenu.main.entity;
+package com.digimenu.main.domain.entity;
 
-import java.util.ArrayList;
+import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
-import java.sql.Timestamp;
+import java.util.Objects;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,7 +23,7 @@ public class Cart {
 	
 	private String item;
 	
-	private Float totalPrice;
+	private BigDecimal Price;
 //	DB'de trigger sayesinde bu tabloya entity eklendiği için  Table_Orders'a bağlamaya gerek duymadık
 //	onun yerine triggerda tableordersa eklenen restoran ve masa numarasını bu fieldlere atıyoruz.
 	private Long restaurantId;
@@ -42,11 +40,11 @@ public class Cart {
 	public Cart() {
 	}
 
-	public Cart(Long id, String item, Float totalPrice, Long restaurantId, Integer masaNo, Date siparisTarihi,
-			Date guncellemeTarihi) {
+	public Cart(Long id, String item, BigDecimal Price, Long restaurantId, Integer masaNo, Date siparisTarihi,
+				Date guncellemeTarihi) {
 		this.id = id;
 		this.item = item;
-		this.totalPrice = totalPrice;
+		this.Price = Price;
 		this.restaurantId = restaurantId;
 		this.masaNo = masaNo;
 		this.siparisTarihi = siparisTarihi;
@@ -95,12 +93,12 @@ public class Cart {
 		this.guncellemeTarihi = guncellemeTarihi;
 	}
 
-	public Float getTotalPrice() {
-		return totalPrice;
+	public BigDecimal getPrice() {
+		return Price;
 	}
 
-	public void setTotalPrice(Float totalPrice) {
-		this.totalPrice = totalPrice;
+	public void setPrice(BigDecimal totalPrice) {
+		this.Price = totalPrice;
 	}
 
 	public Date getSiparisTarihi() {
@@ -112,8 +110,27 @@ public class Cart {
 	}
 
 	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Cart)) return false;
+		Cart cart = (Cart) o;
+		return Objects.equals(id, cart.id) &&
+				Objects.equals(item, cart.item) &&
+				Objects.equals(Price, cart.Price) &&
+				Objects.equals(restaurantId, cart.restaurantId) &&
+				Objects.equals(masaNo, cart.masaNo) &&
+				Objects.equals(siparisTarihi, cart.siparisTarihi) &&
+				Objects.equals(guncellemeTarihi, cart.guncellemeTarihi);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, item, Price, restaurantId, masaNo, siparisTarihi, guncellemeTarihi);
+	}
+
+	@Override
 	public String toString() {
-		return "Cart [id=" + id + ", item=" + item + ", totalPrice=" + totalPrice + ", restaurantId=" + restaurantId
+		return "Cart [id=" + id + ", item=" + item + ", totalPrice=" + Price + ", restaurantId=" + restaurantId
 				+ ", masaNo=" + masaNo + ", siparisTarihi=" + siparisTarihi + ", guncellemeTarihi=" + guncellemeTarihi
 				+ "]";
 	}

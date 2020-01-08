@@ -1,4 +1,4 @@
-package com.digimenu.main.entity;
+package com.digimenu.main.domain.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,10 +9,6 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
-
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 public class City { // deftere yazdığın gibi addRestaurant metodu ekle !!!

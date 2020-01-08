@@ -1,28 +1,27 @@
 package com.digimenu.main.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
+import com.digimenu.main.domain.converter.TransferCartConverter;
+import com.digimenu.main.domain.dto.TransferCartDto;
+import com.digimenu.main.domain.request.TransferCartRequest;
 import com.digimenu.main.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.digimenu.main.dto.RestaurantDto;
-import com.digimenu.main.entity.Cart;
-import com.digimenu.main.entity.Menu;
-import com.digimenu.main.entity.Restaurant;
+import com.digimenu.main.domain.entity.Cart;
+import com.digimenu.main.domain.entity.Menu;
+import com.digimenu.main.domain.entity.Restaurant;
 
 @Controller
 @RequestMapping(value="/restaurant")
@@ -56,11 +55,7 @@ public class RestaurantController {
 	@PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
 	@GetMapping("/additem")
 	public String addItemGet(Menu menu,Model model) {
-		
-		String loggedInUser=securityService.findLoggedInUsername();
-		model.addAttribute("category",
-				categoryService.getCategories());
-		System.err.println(categoryService.getCategories());
+		model.addAttribute("category", categoryService.getCategories());
 		return "addmenuitem";
 	}
 	
@@ -160,6 +155,29 @@ public class RestaurantController {
 			e.printStackTrace();
 		}
 		return new ResponseEntity<>(HttpStatus.OK);
+	}
+
+	@PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
+	@GetMapping ("/transferCart")
+	public String transferCartGet(TransferCartRequest transferCartRequest,Model model){
+		model.addAttribute("tables",getRestaurant().getTableAmount());
+		return "transfercart";
+	}
+
+
+	@PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
+	@PostMapping ("/transferCart")
+	public String transferCartPost(@ModelAttribute("transferCartRequest") TransferCartRequest transferCartRequest,BindingResult bindingResult,Model model){
+		TransferCartDto dto = TransferCartConverter.convert(transferCartRequest);
+		dto.setId(getRestaurant().getId());// converterda gerçekleştir bu işlemi
+		Optional<List<Cart>> result = cartService.transferCart(dto);
+		if(result.isPresent()){
+			return "redirect:/restaurant/tables";
+		}
+		else{
+			model.addAttribute("error","Bir hata oluştu ve transfer yapılamadı.");
+			return "redirect:/restaurant/transferCart";
+		}
 	}
 	
 	//login olmuş restoranı çeker

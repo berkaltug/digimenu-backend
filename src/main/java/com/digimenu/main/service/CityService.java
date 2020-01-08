@@ -2,7 +2,7 @@ package com.digimenu.main.service;
 
 import java.util.List;
 
-import com.digimenu.main.entity.City;
+import com.digimenu.main.domain.entity.City;
 
 public interface CityService {
 	

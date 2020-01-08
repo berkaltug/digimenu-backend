@@ -8,8 +8,8 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.digimenu.main.entity.Menu;
-import com.digimenu.main.entity.Restaurant;
+import com.digimenu.main.domain.entity.Menu;
+import com.digimenu.main.domain.entity.Restaurant;
 import com.digimenu.main.repository.MenuRepository;
 @Service
 public class MenuServiceImpl implements MenuService {

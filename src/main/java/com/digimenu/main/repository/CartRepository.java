@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.digimenu.main.entity.Cart;
+import com.digimenu.main.domain.entity.Cart;
 
 public interface CartRepository extends JpaRepository<Cart, Long> {
 	@Query("SELECT c FROM Cart c WHERE c.restaurantId = :id AND c.masaNo = :no ")

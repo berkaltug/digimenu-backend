@@ -6,7 +6,7 @@ import com.digimenu.main.service.Table_OrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.digimenu.main.entity.Table_Orders;
+import com.digimenu.main.domain.entity.Table_Orders;
 import com.digimenu.main.repository.Table_OrdersRepository;
 @Service
 public class Table_OrdersServiceImpl implements Table_OrdersService {

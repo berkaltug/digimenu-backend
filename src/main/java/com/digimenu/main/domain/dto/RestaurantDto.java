@@ -1,4 +1,4 @@
-package com.digimenu.main.dto;
+package com.digimenu.main.domain.dto;
 
 import org.springframework.stereotype.Component;
 
