@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <head>
+        <th:block th:replace="fragments/head :: head"></th:block>
+    </head>
+</head>
+<body>
+<th:block th:include=" fragments/header :: body"></th:block>
+<div class="container rounded p-2 mt-4" id="menuitemadd">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 d-flex flex-column">
+            <h3 class="ml-auto mr-auto">Adisyon Aktarma Ekranı</h3>
+            <form th:action="@{/restaurant/transferCart}" th:object="${transferCartRequest}" method="post">
+                <div th:if="${ error != null }">
+                    <div class="alert alert-danger">
+                        <span th:text="${error}"></span>
+                    </div>
+                </div>
+                <div th:unless="${error}">
+                    <div class="form-group">
+                        <label for="masa1">Boşalan Masayı Seçiniz</label>
+                        <select name="masa1" id="masa1" th:field="*{source}" class="form-control">
+                            <option th:each="i : ${#numbers.sequence(1,tables)}" th:value="${i}"
+                                    th:text="Masa + ${i}"></option>
+                        </select>
+                        <label for="masa1">Aktarılacak Masayı Seçiniz</label>
+                        <select name="masa2" id="masa2" th:field="*{target}" class="form-control">
+                            <option th:each="i : ${#numbers.sequence(1,tables)}" th:value="${i}"
+                                    th:text="Masa + ${i}"></option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Aktar</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

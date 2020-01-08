@@ -33,13 +33,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
     private UserDetailsService customUserDetailsService;
 
-    
-    
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-    
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth)

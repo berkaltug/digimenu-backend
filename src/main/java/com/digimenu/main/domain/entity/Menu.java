@@ -1,25 +1,18 @@
-package com.digimenu.main.entity;
+package com.digimenu.main.domain.entity;
 
-import java.util.List;
+import java.math.BigDecimal;
 import java.util.Objects;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity
 public class Menu {
@@ -31,7 +24,7 @@ public class Menu {
 	
 	private String ingredients;
 	
-	private Float price;
+	private BigDecimal price;
 	@JsonBackReference(value="restaurant-item")  //json ignore görevi gördü karşı bir @jsonMaagedRef olmamasına rağmen
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="restaurant_id")
@@ -46,7 +39,7 @@ public class Menu {
 	public Menu() {
 	}
 
-	public Menu(@NotNull String item, String ingredients, Float price, Restaurant restaurant, String category, Boolean isActive) {
+	public Menu(@NotNull String item, String ingredients, BigDecimal price, Restaurant restaurant, String category, Boolean isActive) {
 		this.item = item;
 		this.ingredients = ingredients;
 		this.price = price;
@@ -79,11 +72,11 @@ public class Menu {
 		this.ingredients = ingredients;
 	}
 
-	public Float getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 
-	public void setPrice(Float price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 

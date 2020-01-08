@@ -2,7 +2,7 @@ package com.digimenu.main.service;
 
 import java.util.List;
 
-import com.digimenu.main.entity.Table_Orders;
+import com.digimenu.main.domain.entity.Table_Orders;
 
 public interface Table_OrdersService {
 	public Table_Orders getTable_Order(Long id);

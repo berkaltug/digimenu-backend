@@ -6,7 +6,7 @@ import com.digimenu.main.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.digimenu.main.entity.City;
+import com.digimenu.main.domain.entity.City;
 import com.digimenu.main.repository.CityRepository;
 @Service
 public class CityServiceImpl implements CityService {
