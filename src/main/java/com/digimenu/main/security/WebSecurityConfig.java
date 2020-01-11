@@ -122,6 +122,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     	
     }
 
+	@Configuration
+	@Order(3)	//8080/login sayfası static resourcelara engel koyuyor nedense bu restaurant logini de etkiliyordu.
+	public static class DefaultLoginPageSecurityConfig extends WebSecurityConfigurerAdapter {
+
+		@Override
+		protected void configure(HttpSecurity http) throws Exception {
+			http.authorizeRequests().antMatchers("/assets/**", "/webjars/**","/static/**","/h2-console/**").permitAll();
+		}
+
+
+    }
 }
     
     
