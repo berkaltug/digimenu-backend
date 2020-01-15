@@ -40,18 +40,22 @@ box-shadow: 0px 20px 10px black;
   background-color: rgba(244, 220, 95, 0.81);
 }
 #menuitemadd{
-  background-color: rgba(166, 191, 207, 0.9);
+  background-color: #e19c8e;
 }
 .navbar{
-background-color: #A91101;
+background-color: #a10000;
 }
 /* logo rengi için */
 .navbar{
-  color: white;
+  color: #ffe5db;
 }
 /* navbar linkleri için */
 .navbar-nav>.nav-item>.nav-link{
+  color:#ffe5db;
+}
+.navbar-nav>.nav-item>.nav-link:hover{
   color:white;
+  text-shadow: 0 0 20px white;
 }
 /* menu ve masalar tablo gibi gözüksün diye grid kullandık bootstra4 listgroup ile birleştirdik */
 .grid-container{
@@ -62,10 +66,19 @@ background-color: #A91101;
 .grid-container>.list-group-item{
   padding-left: 5px;
   padding-right: 5px;
+  background-color: #ede9d0;
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px black;
 }
 /* masa butonları stili */
 .grid-container>.btn-secondary{
-  background-color: #515689;
-  border-top: rgb(221, 221, 221) solid 1px;
-  border-bottom: rgb(71, 71, 71) solid 1px;
+  background-color: #e19c8e;
+  border:none;
+  box-shadow: 2px 2px 6px black;
+  color:#2f4858;
+}
+
+.grid-container>.btn-secondary:hover{
+  color:white;
+  text-shadow: 0 0 20px white;
 }

@@ -42,6 +42,10 @@ public class CartServiceImpl implements CartService {
 	public void emptyCart(Long id, Integer no) {
 		cr.flushCart(id, no);
 	}
+	@Override
+	public List<Cart> saveAllCart(List<Cart> carts){
+		return cr.saveAll(carts);
+	}
 
 	@Override
 	@Transactional
