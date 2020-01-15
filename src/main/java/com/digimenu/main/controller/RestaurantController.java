@@ -49,7 +49,7 @@ public class RestaurantController {
 	@GetMapping("/login")
 	public ModelAndView getlogin(Model model) {
 		ModelAndView mav = new ModelAndView();
-	    mav.setViewName("login");
+	    mav.setViewName("restaurantlogin");
 	    return mav;
 	}
 	@PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
