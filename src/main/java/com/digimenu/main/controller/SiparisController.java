@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.digimenu.main.domain.response.GetMenuResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,25 +35,19 @@ public class SiparisController {
 	@PreAuthorize("hasRole('ROLE_USER')")
 	//@Secured("USER")
 	@GetMapping("/{restaurantmenu}") //bütün menüyü çeker
-	Collection<Menu> getMenu(@PathVariable("restaurantmenu") Long id) {
-		// burada o şehre ait olmayan restoran idsi verince de menüyü gösteriyor göstermememsi lazım.
-		//Qr koda gömücez ama gömerken de sıkıntı yaratabilir.
-		List<Menu> items = menuService.getMenuItemsByRestaurant(restaurantService.getRestaurant(id))
-				.stream()
-				.filter(item -> item.getActive())
-				.collect(Collectors.toList());
-		return items;
+	GetMenuResponse getMenu(@PathVariable("restaurantmenu") Long id) {
+		return menuService.getMenuItemsByRestaurant(id);
 	}
 	
 	@PreAuthorize("hasRole('ADMIN') OR hasRole('RESTAURANT') OR hasRole('USER')")
 	//Gerek var mı emin değilim
 	@GetMapping("/{restaurantmenu}/{menuitem}") //tek bir itemi ismi ile çeker
 	Menu getMenuItem(@PathVariable("restaurantmenu") Long id,@PathVariable("menuitem") String menuItem) {
-		List<Menu> menu=new ArrayList<Menu>();
-		menu=menuService.getMenuItemsByRestaurant(restaurantService.getRestaurant(id));
+
+		GetMenuResponse menu = menuService.getMenuItemsByRestaurant(id);
 		List<Menu> result=new ArrayList<Menu>();
 		try {
-			result=menu.stream().filter(m->m.getItem().equals(menuItem)).collect(Collectors.toList());
+			result=menu.getItems().stream().filter(m->m.getItem().equals(menuItem)).collect(Collectors.toList());
 			System.out.println(result);
 			if (result.size()!=1) {
 				throw new IllegalStateException(); //buraya alternatif bul!!!!!!!!!!!!!!!!!!!!!

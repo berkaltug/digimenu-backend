@@ -28,30 +28,11 @@ public class Cart {
 //	onun yerine triggerda tableordersa eklenen restoran ve masa numarasını bu fieldlere atıyoruz.
 	private Long restaurantId;
 	private Integer masaNo;
+	private String message;
 	
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date siparisTarihi;
-	
-	@UpdateTimestamp
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date guncellemeTarihi;
-	
-	public Cart() {
-	}
-
-	public Cart(Long id, String item, BigDecimal Price, Long restaurantId, Integer masaNo, Date siparisTarihi,
-				Date guncellemeTarihi) {
-		this.id = id;
-		this.item = item;
-		this.Price = Price;
-		this.restaurantId = restaurantId;
-		this.masaNo = masaNo;
-		this.siparisTarihi = siparisTarihi;
-		this.guncellemeTarihi = guncellemeTarihi;
-	}
-
-
 
 	public Long getId() {
 		return id;
@@ -67,6 +48,14 @@ public class Cart {
 
 	public void setItem(String item) {
 		this.item = item;
+	}
+
+	public BigDecimal getPrice() {
+		return Price;
+	}
+
+	public void setPrice(BigDecimal price) {
+		Price = price;
 	}
 
 	public Long getRestaurantId() {
@@ -85,20 +74,12 @@ public class Cart {
 		this.masaNo = masaNo;
 	}
 
-	public Date getGuncellemeTarihi() {
-		return guncellemeTarihi;
+	public String getMessage() {
+		return message;
 	}
 
-	public void setGuncellemeTarihi(Date guncellemeTarihi) {
-		this.guncellemeTarihi = guncellemeTarihi;
-	}
-
-	public BigDecimal getPrice() {
-		return Price;
-	}
-
-	public void setPrice(BigDecimal totalPrice) {
-		this.Price = totalPrice;
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
 	public Date getSiparisTarihi() {
@@ -112,26 +93,33 @@ public class Cart {
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
-		if (!(o instanceof Cart)) return false;
+		if (o == null || getClass() != o.getClass()) return false;
 		Cart cart = (Cart) o;
 		return Objects.equals(id, cart.id) &&
 				Objects.equals(item, cart.item) &&
 				Objects.equals(Price, cart.Price) &&
 				Objects.equals(restaurantId, cart.restaurantId) &&
 				Objects.equals(masaNo, cart.masaNo) &&
-				Objects.equals(siparisTarihi, cart.siparisTarihi) &&
-				Objects.equals(guncellemeTarihi, cart.guncellemeTarihi);
+				Objects.equals(message, cart.message) &&
+				Objects.equals(siparisTarihi, cart.siparisTarihi);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, item, Price, restaurantId, masaNo, siparisTarihi, guncellemeTarihi);
+		return Objects.hash(id, item, Price, restaurantId, masaNo, message, siparisTarihi);
 	}
 
 	@Override
 	public String toString() {
-		return "Cart [id=" + id + ", item=" + item + ", totalPrice=" + Price + ", restaurantId=" + restaurantId
-				+ ", masaNo=" + masaNo + ", siparisTarihi=" + siparisTarihi + ", guncellemeTarihi=" + guncellemeTarihi
-				+ "]";
+		return "Cart{" +
+				"id=" + id +
+				", item='" + item + '\'' +
+				", Price=" + Price +
+				", restaurantId=" + restaurantId +
+				", masaNo=" + masaNo +
+				", message='" + message + '\'' +
+				", siparisTarihi=" + siparisTarihi +
+				'}';
 	}
 }
+

@@ -13,4 +13,5 @@ public interface CartService {
 	  Cart addCart(Cart c);
 	  void emptyCart(Long id , Integer no);
 	  Optional<List<Cart>> transferCart(TransferCartDto dto);
+	  List<Cart> saveAllCart(List<Cart> carts);
 }
