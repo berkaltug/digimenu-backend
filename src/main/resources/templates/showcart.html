@@ -1,110 +1,121 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org"
-		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
-		xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-   <th:block th:replace="fragments/head :: head"></th:block>
-  </head>
-  <body>
-    
-    <th:block th:include=" fragments/header :: body"></th:block>
-    
-    <div class="container-fluid mt-5">
-      <div class="row">
-        <div class="col-md-6 offset-md-3">
-          <table id="hesapTable" class="table table-striped table-dark">
-            <thead>
-              <tr>
-                <th>Sipariş</th>
-                <th>Fiyat</th>
-                <th>Tarih</th>
-                <th>Mesaj</th>
-                <th>Ödendi</th>
-              </tr>
-            </thead>
-            <tbody>
-              <th:block th:if="${orders!=null and !orders.isEmpty()}">
-                <tr  class="siparisItem" th:each=" o : ${orders}">
-                  <td th:text="${o.item}"></td>
-                  <td class="price" th:text="${o.price}" th:value="${o.price}" name="price"></td>
-                  <td th:text="${o.siparisTarihi}"></td>
-                      <th:block th:if="${!o.message.isEmpty()}">
-                          <td th:text="${o.message}"></tdth:text>
-                      </th:block>
-                      <th:block th:if="${o.message.isEmpty()}">
-                          <td>-</td>
-                      </th:block>
-                  <td>
-                    <button class="btn btn-sm btn-danger" th:onclick="'deleteItem(\'' + *{o.id} + '\');'" ><span class="fas fa-times"></span></button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Toplam Ücret</td>
-                  <td id="toplamUcret"></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                	<td></td>
-                	<td></td>
-                	<td></td>
-                    <td></td>
-                	<td>
-                		<a th:href="@{'/restaurant/flushcart/' + *{orders[0].masaNo}}" class="btn btn-success">Hesap Ödendi <span class="fa fa-check"></span></a>
-                	</td>
-                </tr>
-              </th:block>
-              <th:block th:if="${orders.isEmpty()}">
-                <tr>
-                  <td>Masada Sipariş Bulunmamaktadır.</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-              </th:block>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-   <script>
-     $(document).ready(function(){
-       calculateTotalPrize()
-     });
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <th:block th:replace="fragments/head :: head"></th:block>
+</head>
+<body>
 
-    function deleteItem(id) {
-      $.ajax({
-        type: "GET",
-        contentType:"application/json",
-        xhrFields:{
-          useCredentials:true,
-        },
-        url: "https://digimenu.herokuapp.com/restaurant/flushitem/" + id,
-        success: function (data) {""
-          console.log('successsss')
-        }
-      });
+<th:block th:include=" fragments/header :: body"></th:block>
+
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <table id="hesapTable" class="table table-striped table-dark">
+                <thead>
+                <tr>
+                    <th style="width:25%">Sipariş</th>
+                    <th style="width:10%">Fiyat</th>
+                    <th style="width:20%">Tarih</th>
+                    <th style="width:35%">Mesaj</th>
+                    <th style="width:10%">Ödendi</th>
+                </tr>
+                </thead>
+                <tbody>
+                <th:block th:if="${orders!=null and !orders.isEmpty()}">
+                    <tr class="siparisItem" th:each=" o : ${orders}">
+                        <td th:text="${o.item}"></td>
+                        <td class="price" th:text="${o.price}" th:value="${o.price}" name="price"></td>
+                        <td th:text="${#dates.format(o.siparisTarihi, 'dd-MM-yyyy HH:mm')}"></td>
+                        <th:block th:if="${!o.message.isEmpty()}">
+                            <td th:text="${o.message}"></tdth:text>
+                        </th:block>
+                        <th:block th:if="${o.message.isEmpty()}">
+                            <td>-</td>
+                        </th:block>
+                        <td>
+                            <button class="btn btn-sm btn-danger" th:id="*{o.id}"><span
+                                    class="fas fa-times"></span></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Toplam Ücret</td>
+                        <td id="toplamUcret"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <a th:href="@{'/restaurant/flushcart/' + *{orders[0].masaNo}}" class="btn btn-success">Hesap
+                                Ödendi <span class="fa fa-check"></span></a>
+                        </td>
+                    </tr>
+                </th:block>
+                <th:block th:if="${orders.isEmpty()}">
+                    <tr>
+                        <td>Masada Sipariş Bulunmamaktadır.</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </th:block>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        calculateTotalPrize()
+    });
+
+    function calculateTotalPrize() {
+        var totalPrice2 = 0.0;
+        $('#hesapTable tbody .siparisItem').each(function (index, item) {
+            totalPrice2 += parseFloat($(item).children(".price").html());
+        });
+        $('#toplamUcret').html(totalPrice2);
     }
 
+    function deleteItem(id, obj) {
+        var $btn = obj;
+        $btn.attr('disabled', true);
+        $.ajax({
+            type: "GET",
+            contentType: "application/json",
+            xhrFields: {
+                useCredentials: true,
+            },
+            url: "https://digimenu.herokuapp.com/restaurant/flushitem/" + id,
+            success: function (data) {
+                $btn.closest("tr").remove();
+                calculateTotalPrize();
+            },
+            error: function (xhr, status, error) {
+                alert("Sunucuda bir problem oluştu ve ürün silinemedi.Daha sonra tekrar deneyiniz.");
+                $btn.attr('disabled', false);
+            }
+        });
+    }
 
-     $('#hesapTable').on('click','.btn-danger',function(){
-       $(this).closest("tr").remove();
-       calculateTotalPrize();
-     });
+    $('#hesapTable').on('click', '.btn-danger', function () {
+        deleteItem($(this).attr('id'), $(this));
+    });
 
 
-
-     function calculateTotalPrize(){
-       var totalPrice2=0.0;
-       $('#hesapTable tbody .siparisItem').each(function(index,item){
-            totalPrice2 += parseFloat($(item).children(".price").html());
-       });
-        console.log("---------------------------------" + totalPrice2);
-       $('#toplamUcret').html(totalPrice2);
-     }
-   </script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
 </html>
