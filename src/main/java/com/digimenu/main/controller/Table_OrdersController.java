@@ -3,6 +3,7 @@ package com.digimenu.main.controller;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.digimenu.main.domain.converter.TableOrderDtoConverter;
@@ -14,6 +15,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -73,9 +75,14 @@ public class Table_OrdersController {
     @PreAuthorize("hasRole('USER') OR hasRole('RESTAURANT') OR hasRole('ADMIN')")
     @PostMapping("{restaurant}/{masa}")
     @ResponseStatus(HttpStatus.CREATED)
-    void createTableOrder(@PathVariable("restaurant") Long id, @PathVariable("masa") Integer masaNo, @RequestBody TableOrderRequest request) {
-        CreateOrderResponse response = table_ordersService.createOrder(TableOrderDtoConverter.convert(request, id, masaNo));
-        this.msgTemplate.convertAndSendToUser(response.getRestaurantOwner(), "/restaurant/message", response.getSocketMessage());
+    ResponseEntity<String> createTableOrder(@PathVariable("restaurant") Long id, @PathVariable("masa") Integer masaNo, @RequestBody TableOrderRequest request) {
+        Optional<CreateOrderResponse> response = table_ordersService.createOrder(TableOrderDtoConverter.convert(request, id, masaNo));
+        if(response.isPresent()) {
+            this.msgTemplate.convertAndSendToUser(response.get().getRestaurantOwner(), "/restaurant/message", response.get().getSocketMessage());
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        }else{
+            return new ResponseEntity<>("Location Error ..!", HttpStatus.BAD_REQUEST);
+        }
     }
 
 
@@ -87,4 +94,6 @@ public class Table_OrdersController {
         sb.append("Garson Bekleniyor ! Lütfen <h6>" + masaNo + " </h6> Numaralı Masayla İlgileniniz.");
         this.msgTemplate.convertAndSendToUser(res.getOwner().getUsername(), "/restaurant/message", sb.toString());
     }
+
+
 }

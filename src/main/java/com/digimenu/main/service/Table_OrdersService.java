@@ -2,6 +2,7 @@ package com.digimenu.main.service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import com.digimenu.main.domain.dto.TableOrderDto;
 import com.digimenu.main.domain.entity.Table_Orders;
@@ -14,7 +15,7 @@ public interface Table_OrdersService {
 	List<Table_Orders> getTable_Orders();
 	void deleteTable_Order(Long id);
 	void addTable_Order(Table_Orders tableorders);
-	CreateOrderResponse createOrder(TableOrderDto tableOrderDto);
+	Optional<CreateOrderResponse> createOrder(TableOrderDto tableOrderDto);
 	ReportResponse getReport(Date startdate, Date endate);
 
 }

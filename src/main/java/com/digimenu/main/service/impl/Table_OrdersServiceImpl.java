@@ -3,6 +3,7 @@ package com.digimenu.main.service.impl;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import com.digimenu.main.domain.converter.CartEntityConverter;
 import com.digimenu.main.domain.converter.TableOrderDtoConverter;
@@ -24,6 +25,9 @@ import org.springframework.stereotype.Service;
 
 import com.digimenu.main.domain.entity.Table_Orders;
 import com.digimenu.main.repository.Table_OrdersRepository;
+
+import static java.lang.Math.sqrt;
+import static java.lang.Math.pow;
 
 @Service
 public class Table_OrdersServiceImpl implements Table_OrdersService {
@@ -71,9 +75,12 @@ public class Table_OrdersServiceImpl implements Table_OrdersService {
     }
 
     @Override
-    public CreateOrderResponse createOrder(TableOrderDto tableOrderDto) {
+    public Optional<CreateOrderResponse> createOrder(TableOrderDto tableOrderDto) {
 
-        final Restaurant restaurant = restaurantService.getRestaurant(tableOrderDto.getResId());    //table-orderda set etmek için çektik
+        final Restaurant restaurant = restaurantService.getRestaurant(tableOrderDto.getResId());
+        if(!checkLocation(tableOrderDto.getLatitude(),tableOrderDto.getLongitude(),restaurant.getLatitude(),restaurant.getLongitude(), restaurant.getRadius())){
+            return Optional.empty();
+        }
         final List<Table_Orders> tableOrdersList = new ArrayList<>();
         final List<Cart> cartList = new ArrayList<>();
         final CreateOrderResponse response = new CreateOrderResponse();
@@ -87,7 +94,7 @@ public class Table_OrdersServiceImpl implements Table_OrdersService {
         cartService.saveAllCart(cartList);
         response.setSocketMessage(makeSocketString(tableOrderDto.getMasaNo(), cartList));
         response.setRestaurantOwner(restaurantService.getRestaurant(tableOrderDto.getResId()).getOwner().getUsername());
-        return response;
+        return Optional.of(response);
     }
 
     @Override
@@ -111,6 +118,11 @@ public class Table_OrdersServiceImpl implements Table_OrdersService {
             }
         });
         return sb.toString();
+    }
+
+    private boolean checkLocation(Double x1,Double y1,Double x2,Double y2,Double radius){
+        Double distance=sqrt(pow((x2-x1),2) + pow((y2-y1),2));
+        return distance <= radius;
     }
 
 }
