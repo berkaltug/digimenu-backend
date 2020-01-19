@@ -10,6 +10,8 @@ public class TableOrderDtoConverter {
         dto.setItems(request.getItems());
         dto.setMasaNo(masaNo);
         dto.setResId(resId);
+        dto.setLatitude(request.getLatitude());
+        dto.setLongitude(request.getLongitude());
         return dto;
     }
 }
