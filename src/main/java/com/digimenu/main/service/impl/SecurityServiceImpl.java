@@ -11,8 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 @Service
 public class SecurityServiceImpl implements SecurityService {
-//	    @Autowired
-//	    private AuthenticationManager authenticationManager;
+
 
 	private UserDetailsService userDetailsService;
 	@Autowired
@@ -24,27 +23,13 @@ public class SecurityServiceImpl implements SecurityService {
 	    @Override
 	    public String findLoggedInUsername() {
 	        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-	        //System.out.println(principal);
-	        
 	        if (principal!=null) {
 	            UserDetails ud=(UserDetails)principal;
 	            return ud.getUsername();
 	        }
-
 	        return null;
 	    }
 	    
-//	    @Override
-//	    public void autoLogin(String username, String password) {
-//	        UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-//	        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());
-//
-//	        authenticationManager.authenticate(usernamePasswordAuthenticationToken);
-//
-//	        if (usernamePasswordAuthenticationToken.isAuthenticated()) {
-//	            SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
-//	            logger.debug(String.format("Auto login %s successfully!", username));
-//	        }
-//	    }
+
 
 }

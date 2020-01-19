@@ -78,6 +78,7 @@ public class Table_OrdersController {
         this.msgTemplate.convertAndSendToUser(response.getRestaurantOwner(), "/restaurant/message", response.getSocketMessage());
     }
 
+
     @PreAuthorize("hasRole('USER') or hasRole('RESTAURANT') or hasRole('ADMIN')")
     @PostMapping("/garson/{restaurant}/{masa}")
     public void callWaiter(@PathVariable("restaurant") Long restaurantId, @PathVariable("masa") Integer masaNo) {
