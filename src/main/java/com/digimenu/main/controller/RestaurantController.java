@@ -7,7 +7,9 @@ import javax.validation.Valid;
 
 import com.digimenu.main.domain.converter.TransferCartConverter;
 import com.digimenu.main.domain.dto.TransferCartDto;
+import com.digimenu.main.domain.request.ReportRequest;
 import com.digimenu.main.domain.request.TransferCartRequest;
+import com.digimenu.main.domain.response.ReportResponse;
 import com.digimenu.main.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -33,18 +35,17 @@ public class RestaurantController {
 	MenuService menuService;
 	CartService cartService;
 	CategoryService categoryService;
-	@Autowired
-	public RestaurantController(SecurityService securityService, UserService userService, RestaurantService restaurantService, MenuService menuService, CartService cartService, CategoryService categoryService) {
+	Table_OrdersService tableOrdersService;
+
+	public RestaurantController(SecurityService securityService, UserService userService, RestaurantService restaurantService, MenuService menuService, CartService cartService, CategoryService categoryService, Table_OrdersService tableOrdersService) {
 		this.securityService = securityService;
 		this.userService = userService;
 		this.restaurantService = restaurantService;
 		this.menuService = menuService;
 		this.cartService = cartService;
 		this.categoryService = categoryService;
+		this.tableOrdersService = tableOrdersService;
 	}
-
-
-
 
 	@GetMapping("/login")
 	public ModelAndView getlogin(Model model) {
@@ -180,7 +181,16 @@ public class RestaurantController {
 			return "redirect:/restaurant/transferCart";
 		}
 	}
-	
+
+
+	@PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
+	@PostMapping("/report")
+	@ResponseBody
+	public ReportResponse sellReportGet(@RequestBody ReportRequest request){
+		return tableOrdersService.getReport(request.getStartDate(),request.getEndDate());
+	}
+
+
 	//login olmuş restoranı çeker
 	private Restaurant getRestaurant() {
 		String loggedInUser=securityService.findLoggedInUsername();
