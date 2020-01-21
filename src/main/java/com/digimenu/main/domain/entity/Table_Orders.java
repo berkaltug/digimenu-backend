@@ -2,6 +2,8 @@ package com.digimenu.main.domain.entity;
 
 
 import com.digimenu.main.security.User;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.math.BigDecimal;
@@ -27,7 +29,7 @@ public class Table_Orders {
 
 	private String item;
 	private BigDecimal price;
-
+	@JsonBackReference("user-order")
 	@OneToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="user_id")
 	private User user;

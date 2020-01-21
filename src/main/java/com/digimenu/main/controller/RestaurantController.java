@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import com.digimenu.main.domain.converter.TransferCartConverter;
 import com.digimenu.main.domain.dto.TransferCartDto;
+import com.digimenu.main.domain.request.DeliveryRequest;
 import com.digimenu.main.domain.request.ReportRequest;
 import com.digimenu.main.domain.request.TransferCartRequest;
 import com.digimenu.main.domain.response.ReportResponse;
@@ -119,11 +120,11 @@ public class RestaurantController {
 	
 	@PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
 	@GetMapping("/cart/{masa}")
-	public String getCart(Model model,@PathVariable("masa") Integer id) {
+	public String getCart(Model model,@PathVariable("masa") Integer masaNo) {
 		Restaurant res=getRestaurant();
 		try {
-			List<Cart> siparisler=cartService.getCart(res.getId(), id);
-			
+			List<Cart> siparisler=cartService.getCart(res.getId(), masaNo);
+			model.addAttribute("masaNo",masaNo);
 			model.addAttribute("orders",siparisler);
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -159,6 +160,21 @@ public class RestaurantController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
+	@CrossOrigin
+	@ResponseBody
+	//@PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
+	@GetMapping("/delete-wrong-order/{name}/{masaNo}/{cartId}")
+	public ResponseEntity<String> deleteWrongOrder(@PathVariable("name") String name,@PathVariable("masaNo") Integer masaNo,@PathVariable("cartId") Long cartId) {
+		try {
+			tableOrdersService.deleteWrongTableOrder(getRestaurant(),name,masaNo);
+			cartService.deleteCart(cartId);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+
 	@PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
 	@GetMapping ("/transferCart")
 	public String transferCartGet(TransferCartRequest transferCartRequest,Model model){
@@ -180,6 +196,15 @@ public class RestaurantController {
 			model.addAttribute("error","Bir hata oluştu ve transfer yapılamadı.");
 			return "redirect:/restaurant/transferCart";
 		}
+	}
+
+	@PostMapping("/delivery")
+	public ResponseEntity<String> setDeliveryOption(@RequestBody DeliveryRequest request){
+		int result = cartService.updateDeliveryOption(request.getValue(), request.getId());
+		if(result != 1){
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 

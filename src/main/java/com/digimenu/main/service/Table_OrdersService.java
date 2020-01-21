@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.digimenu.main.domain.dto.TableOrderDto;
+import com.digimenu.main.domain.entity.Restaurant;
 import com.digimenu.main.domain.entity.Table_Orders;
 import com.digimenu.main.domain.response.CreateOrderResponse;
 import com.digimenu.main.domain.response.ReportResponse;
@@ -17,5 +18,5 @@ public interface Table_OrdersService {
 	void addTable_Order(Table_Orders tableorders);
 	Optional<CreateOrderResponse> createOrder(TableOrderDto tableOrderDto);
 	ReportResponse getReport(Date startdate, Date endate);
-
+	void deleteWrongTableOrder(Restaurant res,String name,Integer masaNo);
 }

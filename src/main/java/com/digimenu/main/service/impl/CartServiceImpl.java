@@ -25,7 +25,7 @@ public class CartServiceImpl implements CartService {
 
 	@Override
 	public List<Cart> getCart(Long id,Integer no) {
-		return cr.getCart(id, no);
+				return cr.getCart(id, no);
 	}
 
 	@Override
@@ -45,6 +45,11 @@ public class CartServiceImpl implements CartService {
 	@Override
 	public List<Cart> saveAllCart(List<Cart> carts){
 		return cr.saveAll(carts);
+	}
+
+	@Override
+	public int updateDeliveryOption(Boolean value,Long id) {
+		return cr.updateDeliveryField(value,id);
 	}
 
 	@Override

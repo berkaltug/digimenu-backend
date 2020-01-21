@@ -33,7 +33,7 @@ public class Cart {
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date siparisTarihi;
-
+	private Boolean isDelivered;
 	public Long getId() {
 		return id;
 	}
@@ -90,6 +90,14 @@ public class Cart {
 		this.siparisTarihi = siparisTarihi;
 	}
 
+	public Boolean getDelivered() {
+		return isDelivered;
+	}
+
+	public void setDelivered(Boolean delivered) {
+		isDelivered = delivered;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -101,12 +109,13 @@ public class Cart {
 				Objects.equals(restaurantId, cart.restaurantId) &&
 				Objects.equals(masaNo, cart.masaNo) &&
 				Objects.equals(message, cart.message) &&
-				Objects.equals(siparisTarihi, cart.siparisTarihi);
+				Objects.equals(siparisTarihi, cart.siparisTarihi) &&
+				Objects.equals(isDelivered, cart.isDelivered);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, item, Price, restaurantId, masaNo, message, siparisTarihi);
+		return Objects.hash(id, item, Price, restaurantId, masaNo, message, siparisTarihi, isDelivered);
 	}
 
 	@Override
@@ -119,6 +128,7 @@ public class Cart {
 				", masaNo=" + masaNo +
 				", message='" + message + '\'' +
 				", siparisTarihi=" + siparisTarihi +
+				", isDelivered=" + isDelivered +
 				'}';
 	}
 }

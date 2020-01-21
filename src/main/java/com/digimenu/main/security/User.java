@@ -1,6 +1,8 @@
 package com.digimenu.main.security;
 
 import com.digimenu.main.domain.entity.Table_Orders;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.util.List;
 import java.util.Objects;
@@ -42,7 +44,7 @@ public class User {
 	joinColumns= {@JoinColumn(name="user_id")},
 	inverseJoinColumns= {@JoinColumn(name="role_id")})
 	private List<Role> roles;
-
+	@JsonManagedReference("user-order")
 	@OneToOne(mappedBy = "user",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	Table_Orders order;
 
@@ -150,7 +152,6 @@ public class User {
 				", password='" + password + '\'' +
 				", isEnabled=" + isEnabled +
 				", roles=" + roles +
-				", order=" + order +
 				'}';
 	}
 }
