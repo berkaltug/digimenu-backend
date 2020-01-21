@@ -30,7 +30,7 @@ import static java.lang.Math.sqrt;
 import static java.lang.Math.pow;
 
 @Service
-public class Table_OrdersServiceImpl implements Table_OrdersService {
+            public class Table_OrdersServiceImpl implements Table_OrdersService {
 
     private Table_OrdersRepository tor;
     private RestaurantService restaurantService;
@@ -38,6 +38,7 @@ public class Table_OrdersServiceImpl implements Table_OrdersService {
     private CartService cartService;
     private SecurityService securityService;
     private UserService userService;
+
 
     @Autowired
     public Table_OrdersServiceImpl(Table_OrdersRepository tor, RestaurantService restaurantService, MenuService menuService, CartService cartService, SecurityService securityService, UserService userService) {
@@ -78,9 +79,9 @@ public class Table_OrdersServiceImpl implements Table_OrdersService {
     public Optional<CreateOrderResponse> createOrder(TableOrderDto tableOrderDto) {
 
         final Restaurant restaurant = restaurantService.getRestaurant(tableOrderDto.getResId());
-        if(!checkLocation(tableOrderDto.getLatitude(),tableOrderDto.getLongitude(),restaurant.getLatitude(),restaurant.getLongitude(), restaurant.getRadius())){
-            return Optional.empty();
-        }
+//        if(!checkLocation(tableOrderDto.getLatitude(),tableOrderDto.getLongitude(),restaurant.getLatitude(),restaurant.getLongitude(), restaurant.getRadius())){
+//            return Optional.empty();
+//        }
         final List<Table_Orders> tableOrdersList = new ArrayList<>();
         final List<Cart> cartList = new ArrayList<>();
         final CreateOrderResponse response = new CreateOrderResponse();
@@ -105,6 +106,11 @@ public class Table_OrdersServiceImpl implements Table_OrdersService {
                 endate)
         );
         return response;
+    }
+
+    @Override
+    public void deleteWrongTableOrder(Restaurant res, String name, Integer masaNo) {
+        tor.deleteWrongOrder(res, name, masaNo);
     }
 
 

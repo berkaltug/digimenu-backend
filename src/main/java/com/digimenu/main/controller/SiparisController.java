@@ -67,10 +67,5 @@ public class SiparisController {
 	Restaurant getRestaurant(@PathVariable("id") Long id) {
 		return restaurantService.getRestaurant(id);
 	}
-	
-	@PreAuthorize("hasRole('ADMIN')")
-	@GetMapping("restaurant/{id}/categories")
-	Collection<Category> getCategories(@PathVariable("id") Long id){
-		return restaurantService.getRestaurant(id).getCategories();
-	}
+
 }

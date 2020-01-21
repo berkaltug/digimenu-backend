@@ -39,16 +39,18 @@
 	<script type="text/javascript">
 
 	var audio=new Audio("../sounds/door_bell.mp3");
-	var stack=[];
-	var stackindex=1;
+	var queue=[];
+	var queueindex=1;
+	var zindex=0;
 		//websocket connection
 		$(document).ready(function() {
 
 			var socket = new SockJS('/stomp');
 			var stompClient = Stomp.over(socket);
 			stompClient.connect({}, function(frame) {
+			  queueindex--
 				stompClient.subscribe("/user/restaurant/message", function(data) {
-					html =  '<div class="modal" tabindex="-1" role="dialog" id="dynamicModal' +(stackindex++).toString() + '">';
+					html =  '<div class="modal"  role="dialog" id="dynamicModal' + (queueindex).toString() + '" style="{z-index:' + (zindex-=1061).toString() + '}" >';
 					html += '<div class="modal-dialog" role="document">';
 					html += '<div class="modal-content">';
 					html += '<div class="modal-header">';
@@ -66,8 +68,8 @@
 					html += '</div>';
 					html += '</div>';
 					html += '</div>';
-					stack.push(html);
-					var modal=stack.pop();
+					queue.push(html);
+					var modal=queue.shift();
 					$('body').append(modal);
 					$(modal).modal();
 					/*$(modal).modal('show');*/

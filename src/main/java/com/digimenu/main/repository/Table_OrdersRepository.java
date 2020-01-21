@@ -3,16 +3,16 @@ package com.digimenu.main.repository;
 import java.util.Date;
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import com.digimenu.main.domain.dto.ReportDto;
 import com.digimenu.main.domain.entity.Restaurant;
 import com.digimenu.main.domain.projection.ReportProjection;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.digimenu.main.domain.entity.Table_Orders;
+import org.springframework.transaction.annotation.Transactional;
 
 public interface Table_OrdersRepository extends JpaRepository<Table_Orders, Long> {
 	
@@ -26,4 +26,10 @@ public interface Table_OrdersRepository extends JpaRepository<Table_Orders, Long
 			"GROUP BY t.item")
 	List<ReportProjection> getSellReport(@Param("restaurant_id") Restaurant res, @Param("startdate") Date startdate, @Param("enddate") Date enddate);
 
+	@Transactional
+	@Modifying
+	@Query(
+			"DELETE FROM Table_Orders t WHERE t IN (SELECT DISTINCT t FROM Table_Orders t WHERE t.restaurant = :restaurant_id AND t.item = :item_name AND t.masa = :masa_no)"
+	)
+	int deleteWrongOrder( @Param("restaurant_id") Restaurant res , @Param("item_name")String name , @Param("masa_no") Integer masaNo);
 }

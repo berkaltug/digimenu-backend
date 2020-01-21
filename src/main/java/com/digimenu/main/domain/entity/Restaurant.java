@@ -47,6 +47,9 @@ public class Restaurant {
     @NotNull
     private Integer tableAmount;
 
+	public Restaurant() {
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -119,20 +122,20 @@ public class Restaurant {
 		this.longitude = longitude;
 	}
 
-	public Integer getTableAmount() {
-		return tableAmount;
-	}
-
-	public void setTableAmount(Integer tableAmount) {
-		this.tableAmount = tableAmount;
-	}
-
 	public Double getRadius() {
 		return radius;
 	}
 
 	public void setRadius(Double radius) {
 		this.radius = radius;
+	}
+
+	public Integer getTableAmount() {
+		return tableAmount;
+	}
+
+	public void setTableAmount(Integer tableAmount) {
+		this.tableAmount = tableAmount;
 	}
 
 	@Override

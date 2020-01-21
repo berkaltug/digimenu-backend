@@ -12,14 +12,19 @@
 <div class="container-fluid mt-5">
     <div class="row">
         <div class="col-md-8 offset-md-2">
+            <h3 style="color:white;background-color: #2f2f2f;margin-bottom: 1rem;">Masa <span id="masaNo"
+                                                                                              th:text="${masaNo}"></span>
+            </h3>
             <table id="hesapTable" class="table table-striped table-dark">
                 <thead>
                 <tr>
-                    <th style="width:25%">Sipariş</th>
+                    <th style="width:23%">Sipariş</th>
                     <th style="width:10%">Fiyat</th>
-                    <th style="width:20%">Tarih</th>
-                    <th style="width:35%">Mesaj</th>
-                    <th style="width:10%">Ödendi</th>
+                    <th style="width:14%">Tarih</th>
+                    <th style="width:23%">Mesaj</th>
+                    <th style="width:12%">Teslim Edildi</th>
+                    <th style="width:9%">İptal</th>
+                    <th style="width:9%">Ödendi</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -29,14 +34,22 @@
                         <td class="price" th:text="${o.price}" th:value="${o.price}" name="price"></td>
                         <td th:text="${#dates.format(o.siparisTarihi, 'dd-MM-yyyy HH:mm')}"></td>
                         <th:block th:if="${!o.message.isEmpty()}">
-                            <td th:text="${o.message}"></tdth:text>
+                            <td th:text="${o.message}"></td>
                         </th:block>
                         <th:block th:if="${o.message.isEmpty()}">
                             <td>-</td>
                         </th:block>
                         <td>
-                            <button class="btn btn-sm btn-danger" th:id="*{o.id}"><span
-                                    class="fas fa-times"></span></button>
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" th:id="'customSwitch' + ${o.id}" th:checked="${o.getDelivered()}" >
+                                <label class="custom-control-label" th:for="'customSwitch' + ${o.id}" ></label>
+                            </div>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-danger" th:id="*{o.id}">İptal Et</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-warning" th:id="*{o.id}">Ödendi</button>
                         </td>
                     </tr>
                     <tr>
@@ -45,8 +58,12 @@
                         <td></td>
                         <td></td>
                         <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
+                        <td></td>
+                        <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -60,6 +77,8 @@
                 <th:block th:if="${orders.isEmpty()}">
                     <tr>
                         <td>Masada Sipariş Bulunmamaktadır.</td>
+                        <td></td>
+                        <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -105,9 +124,66 @@
         });
     }
 
-    $('#hesapTable').on('click', '.btn-danger', function () {
+    function deleteWrongOrder(name, masaNo, cartId, obj) {
+        var $btn = obj;
+        $.ajax({
+            type: "GET",
+            contentType: "application/json",
+            xhrFields: {
+                useCredentials: true,
+            },
+            url: "https://digimenu.herokuapp.com/restaurant/delete-wrong-order/" + name + "/" + masaNo + "/" + cartId,
+            success: function (data) {
+                $btn.closest("tr").remove();
+                calculateTotalPrize();
+            },
+            error: function (xhr, status, error) {
+                alert("Sunucuda bir problem oluştu ve ürün silinemedi.Daha sonra tekrar deneyiniz.");
+                $btn.attr('disabled', false);
+            }
+        });
+    }
+
+    function setDeliveryOption(id, value,obj) {
+        var $switch = obj;
+
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                xhrFields: {
+                    useCredentials: true,
+                },
+                data:JSON.stringify({
+                    value:value,
+                    id:id
+                }),
+                url: "http://localhost:8080/restaurant/delivery",
+                success: function (data) {
+                    console.log("successfully delivered");
+                },
+                error: function (xhr, status, error) {
+                    alert("Sunucuda bir problem oluştu.Daha sonra tekrar deneyiniz.");
+
+                }
+            });
+    }
+
+    $('#hesapTable').on('click', '.btn-warning', function () {
         deleteItem($(this).attr('id'), $(this));
     });
+
+    $('#hesapTable').on('click', '.btn-danger', function () {
+        var name = $(this).closest("tr").find("td:eq(0)").text();
+        var masaNo = $("#masaNo").text();
+        var cartId = $(this).attr("id");
+        deleteWrongOrder(name, masaNo, cartId, $(this));
+    });
+
+    $('#hesapTable').on('click','.custom-control-input',function(){
+        var value=$(this).is(':checked');
+        var id =$(this).closest("tr").find("button.btn-danger").prop("id");
+        setDeliveryOption(id,value,$(this));
+    })
 
 
 </script>

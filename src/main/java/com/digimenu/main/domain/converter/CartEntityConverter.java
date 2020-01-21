@@ -12,6 +12,7 @@ public class CartEntityConverter {
         cart.setPrice(dto.getPrice());
         cart.setRestaurantId(resId);
         cart.setMessage(dto.getMessage());
+        cart.setDelivered(false);
         return cart;
     }
 }
