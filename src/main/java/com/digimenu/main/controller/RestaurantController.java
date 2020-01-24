@@ -211,10 +211,15 @@ public class RestaurantController {
 	@PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
 	@PostMapping("/report")
 	@ResponseBody
-	public ReportResponse sellReportGet(@RequestBody ReportRequest request){
+	public ReportResponse sellReport(@RequestBody ReportRequest request){
 		return tableOrdersService.getReport(request.getStartDate(),request.getEndDate());
 	}
 
+	@PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
+	@GetMapping("/report")
+	public String getReportPage(){
+		return "getreport";
+	}
 
 	//login olmuş restoranı çeker
 	private Restaurant getRestaurant() {

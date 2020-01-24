@@ -117,7 +117,7 @@ public class Table_Orders {
 	public String toString() {
 		return "Table_Orders{" +
 				"id=" + id +
-				", restaurant=" + restaurant +
+				", restaurant=" + restaurant.getId() +
 				", masa=" + masa +
 				", item='" + item + '\'' +
 				", price=" + price +

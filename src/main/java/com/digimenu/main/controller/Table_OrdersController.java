@@ -74,14 +74,13 @@ public class Table_OrdersController {
 
     @PreAuthorize("hasRole('USER') OR hasRole('RESTAURANT') OR hasRole('ADMIN')")
     @PostMapping("{restaurant}/{masa}")
-    @ResponseStatus(HttpStatus.CREATED)
     ResponseEntity<String> createTableOrder(@PathVariable("restaurant") Long id, @PathVariable("masa") Integer masaNo, @RequestBody TableOrderRequest request) {
         Optional<CreateOrderResponse> response = table_ordersService.createOrder(TableOrderDtoConverter.convert(request, id, masaNo));
         if(response.isPresent()) {
             this.msgTemplate.convertAndSendToUser(response.get().getRestaurantOwner(), "/restaurant/message", response.get().getSocketMessage());
             return new ResponseEntity<>(HttpStatus.CREATED);
         }else{
-            return new ResponseEntity<>("Location Error ..!", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Location Error !", HttpStatus.BAD_REQUEST);
         }
     }
 
