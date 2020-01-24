@@ -16,6 +16,7 @@ import javax.validation.constraints.NotNull;
 
 import com.digimenu.main.security.User;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Restaurant {
@@ -166,11 +167,11 @@ public class Restaurant {
 		return "Restaurant{" +
 				"id=" + id +
 				", name='" + name + '\'' +
-				", city=" + city +
+				", city=" + city.getId() +
 				", address='" + address + '\'' +
 				", tel=" + tel +
 				", mail='" + mail + '\'' +
-				", owner=" + owner +
+				", owner=" + owner.getUsername() +
 				", latitude=" + latitude +
 				", longitude=" + longitude +
 				", radius=" + radius +

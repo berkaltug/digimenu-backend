@@ -79,9 +79,9 @@ import static java.lang.Math.pow;
     public Optional<CreateOrderResponse> createOrder(TableOrderDto tableOrderDto) {
 
         final Restaurant restaurant = restaurantService.getRestaurant(tableOrderDto.getResId());
-//        if(!checkLocation(tableOrderDto.getLatitude(),tableOrderDto.getLongitude(),restaurant.getLatitude(),restaurant.getLongitude(), restaurant.getRadius())){
-//            return Optional.empty();
-//        }
+        if(!checkLocation(tableOrderDto.getLatitude(),tableOrderDto.getLongitude(),restaurant.getLatitude(),restaurant.getLongitude(), restaurant.getRadius())){
+            return Optional.empty();
+        }
         final List<Table_Orders> tableOrdersList = new ArrayList<>();
         final List<Cart> cartList = new ArrayList<>();
         final CreateOrderResponse response = new CreateOrderResponse();
