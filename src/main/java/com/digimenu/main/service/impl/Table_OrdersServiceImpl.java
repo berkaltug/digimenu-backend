@@ -30,7 +30,7 @@ import static java.lang.Math.sqrt;
 import static java.lang.Math.pow;
 
 @Service
-            public class Table_OrdersServiceImpl implements Table_OrdersService {
+public class Table_OrdersServiceImpl implements Table_OrdersService {
 
     private Table_OrdersRepository tor;
     private RestaurantService restaurantService;
