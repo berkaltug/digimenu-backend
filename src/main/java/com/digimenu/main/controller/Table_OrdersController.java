@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import com.digimenu.main.domain.converter.TableOrderDtoConverter;
 import com.digimenu.main.domain.request.TableOrderRequest;
 import com.digimenu.main.domain.response.CreateOrderResponse;
+import com.digimenu.main.service.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -30,10 +31,6 @@ import com.digimenu.main.domain.entity.Cart;
 import com.digimenu.main.domain.entity.Menu;
 import com.digimenu.main.domain.entity.Restaurant;
 import com.digimenu.main.domain.entity.Table_Orders;
-import com.digimenu.main.service.CartService;
-import com.digimenu.main.service.MenuService;
-import com.digimenu.main.service.RestaurantService;
-import com.digimenu.main.service.Table_OrdersService;
 
 
 @RestController
@@ -43,16 +40,12 @@ public class Table_OrdersController {
 
     private Table_OrdersService table_ordersService;
     private RestaurantService restaurantService;
-    private MenuService menuService;
-    private CartService cartService;
     SimpMessagingTemplate msgTemplate;
 
     @Autowired
-    public Table_OrdersController(Table_OrdersService table_ordersService, RestaurantService restaurantService, MenuService menuService, CartService cartService, SimpMessagingTemplate msgTemplate) {
+    public Table_OrdersController(Table_OrdersService table_ordersService, RestaurantService restaurantService, SimpMessagingTemplate msgTemplate) {
         this.table_ordersService = table_ordersService;
         this.restaurantService = restaurantService;
-        this.menuService = menuService;
-        this.cartService = cartService;
         this.msgTemplate = msgTemplate;
     }
 

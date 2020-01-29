@@ -38,16 +38,17 @@ import static java.lang.Math.pow;
     private CartService cartService;
     private SecurityService securityService;
     private UserService userService;
-
+    private MapsService mapsService;
 
     @Autowired
-    public Table_OrdersServiceImpl(Table_OrdersRepository tor, RestaurantService restaurantService, MenuService menuService, CartService cartService, SecurityService securityService, UserService userService) {
+    public Table_OrdersServiceImpl(Table_OrdersRepository tor, RestaurantService restaurantService, MenuService menuService, CartService cartService, SecurityService securityService, UserService userService, MapsService mapsService) {
         this.tor = tor;
         this.restaurantService = restaurantService;
         this.menuService = menuService;
         this.cartService = cartService;
         this.securityService = securityService;
         this.userService = userService;
+        this.mapsService = mapsService;
     }
 
     @Override
@@ -79,9 +80,10 @@ import static java.lang.Math.pow;
     public Optional<CreateOrderResponse> createOrder(TableOrderDto tableOrderDto) {
 
         final Restaurant restaurant = restaurantService.getRestaurant(tableOrderDto.getResId());
-        if(!checkLocation(tableOrderDto.getLatitude(),tableOrderDto.getLongitude(),restaurant.getLatitude(),restaurant.getLongitude(), restaurant.getRadius())){
+        if(!mapsService.checkHaversineDistance(tableOrderDto.getLatitude(),tableOrderDto.getLongitude(),restaurant.getLatitude(),restaurant.getLongitude(), restaurant.getRadius())){
             return Optional.empty();
         }
+
         final List<Table_Orders> tableOrdersList = new ArrayList<>();
         final List<Cart> cartList = new ArrayList<>();
         final CreateOrderResponse response = new CreateOrderResponse();
@@ -126,9 +128,6 @@ import static java.lang.Math.pow;
         return sb.toString();
     }
 
-    private boolean checkLocation(Double x1,Double y1,Double x2,Double y2,Double radius){
-        Double distance=sqrt(pow((x2-x1),2) + pow((y2-y1),2));
-        return distance <= radius;
-    }
+
 
 }
