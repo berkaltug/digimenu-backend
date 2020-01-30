@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import com.digimenu.main.domain.converter.TransferCartConverter;
 import com.digimenu.main.domain.dto.TransferCartDto;
+import com.digimenu.main.domain.entity.WebsocketMessage;
 import com.digimenu.main.domain.request.DeliveryRequest;
 import com.digimenu.main.domain.request.ReportRequest;
 import com.digimenu.main.domain.request.TransferCartRequest;
@@ -15,6 +16,7 @@ import com.digimenu.main.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,15 +32,18 @@ import com.digimenu.main.domain.entity.Restaurant;
 @RequestMapping(value="/restaurant")
 public class RestaurantController {
 	
-	SecurityService securityService;
-	UserService userService;
-	RestaurantService restaurantService;
-	MenuService menuService;
-	CartService cartService;
-	CategoryService categoryService;
-	Table_OrdersService tableOrdersService;
+	private SecurityService securityService;
+	private UserService userService;
+	private RestaurantService restaurantService;
+	private MenuService menuService;
+	private CartService cartService;
+	private CategoryService categoryService;
+	private Table_OrdersService tableOrdersService;
+	private WebsocketMessageService websocketMessageService;
+	private SimpMessagingTemplate simpMessagingTemplate;
 
-	public RestaurantController(SecurityService securityService, UserService userService, RestaurantService restaurantService, MenuService menuService, CartService cartService, CategoryService categoryService, Table_OrdersService tableOrdersService) {
+	@Autowired
+	public RestaurantController(SecurityService securityService, UserService userService, RestaurantService restaurantService, MenuService menuService, CartService cartService, CategoryService categoryService, Table_OrdersService tableOrdersService, WebsocketMessageService websocketMessageService,SimpMessagingTemplate simpMessagingTemplate) {
 		this.securityService = securityService;
 		this.userService = userService;
 		this.restaurantService = restaurantService;
@@ -46,6 +51,8 @@ public class RestaurantController {
 		this.cartService = cartService;
 		this.categoryService = categoryService;
 		this.tableOrdersService = tableOrdersService;
+		this.websocketMessageService = websocketMessageService;
+		this.simpMessagingTemplate = simpMessagingTemplate;
 	}
 
 	@GetMapping("/login")
@@ -221,11 +228,29 @@ public class RestaurantController {
 		return "getreport";
 	}
 
+	@CrossOrigin
+	@GetMapping("/mesaj/{id}")
+	@ResponseBody
+	public void deleteMessageEntity(@PathVariable("id") Integer id){
+		websocketMessageService.deleteMessage(id);
+	}
+
+	@CrossOrigin
+	@GetMapping("/recallMessages")
+	@ResponseBody
+	public void  returnUnsendMessages(){
+		String username=securityService.findLoggedInUsername();
+		List<WebsocketMessage> messages = websocketMessageService.getAllMessages(getRestaurant().getId());
+		for (WebsocketMessage message : messages) {
+			this.simpMessagingTemplate.convertAndSendToUser(username, "/restaurant/message", message.getMessage());
+		}
+	}
+
+
 	//login olmuş restoranı çeker
 	private Restaurant getRestaurant() {
 		String loggedInUser=securityService.findLoggedInUsername();
 		Restaurant restaurant=restaurantService.getByOwner(userService.findByUsername(loggedInUser));
 		return restaurant;
 	}
-	
 }

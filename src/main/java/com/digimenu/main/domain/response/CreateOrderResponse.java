@@ -1,10 +1,12 @@
 package com.digimenu.main.domain.response;
 
+import com.digimenu.main.domain.dto.MessageDto;
+
 import java.util.Objects;
 
 public class CreateOrderResponse {
     private String restaurantOwner;
-    private String socketMessage;
+    private MessageDto socketMessage;
 
     public String getRestaurantOwner() {
         return restaurantOwner;
@@ -14,11 +16,11 @@ public class CreateOrderResponse {
         this.restaurantOwner = restaurantOwner;
     }
 
-    public String getSocketMessage() {
+    public MessageDto getSocketMessage() {
         return socketMessage;
     }
 
-    public void setSocketMessage(String socketMessage) {
+    public void setSocketMessage(MessageDto socketMessage) {
         this.socketMessage = socketMessage;
     }
 
@@ -40,7 +42,8 @@ public class CreateOrderResponse {
     public String toString() {
         return "CreateOrderResponse{" +
                 "restaurantOwner='" + restaurantOwner + '\'' +
-                ", socketMessage='" + socketMessage + '\'' +
+                ", socketMessage=" + socketMessage +
                 '}';
     }
 }
+
