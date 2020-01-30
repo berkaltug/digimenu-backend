@@ -45,14 +45,16 @@
 	var queue=[];
 	var queueindex=1;
 	var zindex=0;
+    var masaNo;
+    var messageId;
 		//websocket connection
 		$(document).ready(function() {
-
 			var socket = new SockJS('/stomp');
 			var stompClient = Stomp.over(socket);
 			stompClient.connect({}, function(frame) {
-			  queueindex--
+			  queueindex--;
 				stompClient.subscribe("/user/restaurant/message", function(data) {
+				  databody=JSON.parse(data.body);
 					html =  '<div class="modal"  role="dialog" id="dynamicModal' + (queueindex).toString() + '" style="{z-index:' + (zindex-=1061).toString() + '}" >';
 					html += '<div class="modal-dialog" role="document">';
 					html += '<div class="modal-content">';
@@ -63,7 +65,7 @@
 					html += '</button>';
 					html += '</div>';
 					html += '<div class="modal-body text-center">';
-					html += '<p>' + data.body + '</p>';
+					html += '<p>' + databody.message + '</p>';
 					html += '</div>';
 					html += '<div class="modal-footer">';
 					html += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>';
@@ -80,9 +82,36 @@
 					$("#dynamicModal").modal();
 					$("#dynamicModal").modal('show');  */
 					audio.play();
+                    masaNo=databody.masaNo;
+                    deleteMessageFromTable(databody.messageId);
 				});
 			});
+			recallMessages();
 		});
+
+		function deleteMessageFromTable(messageId){
+          $.ajax({
+            type: "GET",
+            contentType: "application/json",
+            xhrFields: {
+              useCredentials: true,
+            },
+            url: "/restaurant/mesaj/" + messageId,
+            success: () => {}
+          });
+        }
+
+    function recallMessages(){
+      $.ajax({
+        type: "GET",
+        contentType: "application/json",
+        xhrFields: {
+          useCredentials: true,
+        },
+        url: "/restaurant/recallMessages/",
+        success: () =>{}
+      });
+    }
 	</script>
 
 

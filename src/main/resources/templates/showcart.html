@@ -112,7 +112,7 @@
             xhrFields: {
                 useCredentials: true,
             },
-            url: "https://digimenu.herokuapp.com/restaurant/flushitem/" + id,
+            url: "/restaurant/flushitem/" + id,
             success: function (data) {
                 $btn.closest("tr").remove();
                 calculateTotalPrize();
@@ -132,7 +132,7 @@
             xhrFields: {
                 useCredentials: true,
             },
-            url: "https://digimenu.herokuapp.com/restaurant/delete-wrong-order/" + name + "/" + masaNo + "/" + cartId,
+            url: "/restaurant/delete-wrong-order/" + name + "/" + masaNo + "/" + cartId,
             success: function (data) {
                 $btn.closest("tr").remove();
                 calculateTotalPrize();
@@ -157,7 +157,7 @@
                     value:value,
                     id:id
                 }),
-                url: "https://digimenu.herokuapp.com/restaurant/delivery",
+                url: "/restaurant/delivery",
                 success: function (data) {
                     console.log("successfully delivered");
                 },

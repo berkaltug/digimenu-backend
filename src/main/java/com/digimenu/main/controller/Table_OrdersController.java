@@ -40,7 +40,7 @@ public class Table_OrdersController {
 
     private Table_OrdersService table_ordersService;
     private RestaurantService restaurantService;
-    SimpMessagingTemplate msgTemplate;
+    private SimpMessagingTemplate msgTemplate;
 
     @Autowired
     public Table_OrdersController(Table_OrdersService table_ordersService, RestaurantService restaurantService, SimpMessagingTemplate msgTemplate) {

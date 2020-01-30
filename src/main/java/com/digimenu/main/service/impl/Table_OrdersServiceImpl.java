@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.Optional;
 
 import com.digimenu.main.domain.converter.CartEntityConverter;
+import com.digimenu.main.domain.converter.MessageDtoConverter;
 import com.digimenu.main.domain.converter.TableOrderDtoConverter;
 import com.digimenu.main.domain.converter.TableOrdersEntityConverter;
+import com.digimenu.main.domain.dto.MessageDto;
 import com.digimenu.main.domain.dto.TableOrderDto;
-import com.digimenu.main.domain.entity.Cart;
-import com.digimenu.main.domain.entity.Menu;
-import com.digimenu.main.domain.entity.Restaurant;
+import com.digimenu.main.domain.entity.*;
 import com.digimenu.main.domain.response.CreateOrderResponse;
 import com.digimenu.main.domain.response.ReportResponse;
 import com.digimenu.main.security.User;
@@ -23,7 +23,6 @@ import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.digimenu.main.domain.entity.Table_Orders;
 import com.digimenu.main.repository.Table_OrdersRepository;
 
 import static java.lang.Math.sqrt;
@@ -39,9 +38,10 @@ public class Table_OrdersServiceImpl implements Table_OrdersService {
     private SecurityService securityService;
     private UserService userService;
     private MapsService mapsService;
+    private WebsocketMessageService websocketMessageService;
 
     @Autowired
-    public Table_OrdersServiceImpl(Table_OrdersRepository tor, RestaurantService restaurantService, MenuService menuService, CartService cartService, SecurityService securityService, UserService userService, MapsService mapsService) {
+    public Table_OrdersServiceImpl(Table_OrdersRepository tor, RestaurantService restaurantService, MenuService menuService, CartService cartService, SecurityService securityService, UserService userService, MapsService mapsService, WebsocketMessageService websocketMessageService) {
         this.tor = tor;
         this.restaurantService = restaurantService;
         this.menuService = menuService;
@@ -49,6 +49,7 @@ public class Table_OrdersServiceImpl implements Table_OrdersService {
         this.securityService = securityService;
         this.userService = userService;
         this.mapsService = mapsService;
+        this.websocketMessageService = websocketMessageService;
     }
 
     @Override
@@ -95,8 +96,8 @@ public class Table_OrdersServiceImpl implements Table_OrdersService {
         });
         tor.saveAll(tableOrdersList);
         cartService.saveAllCart(cartList);
-        response.setSocketMessage(makeSocketString(tableOrderDto.getMasaNo(), cartList));
-        response.setRestaurantOwner(restaurantService.getRestaurant(tableOrderDto.getResId()).getOwner().getUsername());
+        response.setSocketMessage(makeMessageDto(tableOrderDto.getMasaNo(),cartList,restaurant.getId()));
+        response.setRestaurantOwner(restaurant.getOwner().getUsername());
         return Optional.of(response);
     }
 
@@ -115,6 +116,13 @@ public class Table_OrdersServiceImpl implements Table_OrdersService {
         tor.deleteWrongOrder(res, name, masaNo);
     }
 
+    private MessageDto makeMessageDto(Integer masaNo,List<Cart> cartList,Long resId){
+        WebsocketMessage message=new WebsocketMessage();
+        message.setMessage(makeSocketString(masaNo, cartList));
+        message.setRestaurantId(resId);
+        WebsocketMessage insertedMessage =websocketMessageService.insertMessage(message);
+        return MessageDtoConverter.convert(insertedMessage,masaNo);
+    }
 
     private String makeSocketString(Integer masaNo, List<Cart> cartList) {
         StringBuilder sb = new StringBuilder(); //daha sonra formatla oynamak icin stringbuilder
