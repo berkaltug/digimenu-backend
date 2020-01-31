@@ -120,8 +120,9 @@ public class Table_OrdersServiceImpl implements Table_OrdersService {
         WebsocketMessage message=new WebsocketMessage();
         message.setMessage(makeSocketString(masaNo, cartList));
         message.setRestaurantId(resId);
+        message.setMasaNo(masaNo);
         WebsocketMessage insertedMessage =websocketMessageService.insertMessage(message);
-        return MessageDtoConverter.convert(insertedMessage,masaNo);
+        return MessageDtoConverter.convert(insertedMessage);
     }
 
     private String makeSocketString(Integer masaNo, List<Cart> cartList) {

@@ -4,11 +4,11 @@ import com.digimenu.main.domain.dto.MessageDto;
 import com.digimenu.main.domain.entity.WebsocketMessage;
 
 public class MessageDtoConverter {
-    public static MessageDto convert(WebsocketMessage message,Integer masaNo){
+    public static MessageDto convert(WebsocketMessage message){
         MessageDto dto=new MessageDto();
         dto.setMessageId(message.getId());
         dto.setMessage(message.getMessage());
-        dto.setMasaNo(masaNo);
+        dto.setMasaNo(message.getMasaNo());
         return dto;
     }
 }

@@ -14,6 +14,8 @@ public class WebsocketMessage {
 
     private Long restaurantId;
 
+    private Integer masaNo;
+
     public Integer getId() {
         return id;
     }
@@ -38,6 +40,14 @@ public class WebsocketMessage {
         this.restaurantId = restaurantId;
     }
 
+    public Integer getMasaNo() {
+        return masaNo;
+    }
+
+    public void setMasaNo(Integer masaNo) {
+        this.masaNo = masaNo;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -45,12 +55,13 @@ public class WebsocketMessage {
         WebsocketMessage message1 = (WebsocketMessage) o;
         return Objects.equals(id, message1.id) &&
                 Objects.equals(message, message1.message) &&
-                Objects.equals(restaurantId, message1.restaurantId);
+                Objects.equals(restaurantId, message1.restaurantId) &&
+                Objects.equals(masaNo, message1.masaNo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, message, restaurantId);
+        return Objects.hash(id, message, restaurantId, masaNo);
     }
 
     @Override
@@ -59,6 +70,7 @@ public class WebsocketMessage {
                 "id=" + id +
                 ", message='" + message + '\'' +
                 ", restaurantId=" + restaurantId +
+                ", masaNo=" + masaNo +
                 '}';
     }
 }
