@@ -3,22 +3,33 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
       xmlns="http://www.w3.org/1999/xhtml">
 <head>
+
     <th:block th:replace="fragments/head :: head"></th:block>
+    <script  th:src="@{/jquery.datetimepicker.full.js}" ></script>
+    <link type="text/css" rel="stylesheet"  th:href="@{/jquery.datetimepicker.min.css}">
 </head>
 <body>
 <th:block th:include=" fragments/header :: body"></th:block>
 <div class="container-fluid mt-5">
-    <div class="row justify-content-space-around align-items-center">
-        <div class="container">
+    <div class="row ">
+        <div class="container justify-content-space-around align-items-center">
             <div class="row">
-                <div class='col-sm-6'>
+                <div class='col-sm-4'>
                     <div class="form-group">
-                        <div class='input-group date' id='datetimepicker1'>
-                            <input type='text' class="form-control" />
-                            <span class="input-group-addon"><span class="far fa-calendar-alt"></span>
-                    </span>
+                        <div class='input-group'>
+                            <input type='text' id='datetimepicker1' class="form-control" placeholder="Lütfen başlangıç tarihi seçiniz" value=""/>
                         </div>
                     </div>
+                </div>
+                <div class='col-sm-4'>
+                    <div class="form-group">
+                        <div class='input-group date' >
+                            <input type='text' id='datetimepicker2' class="form-control" placeholder="Lütfen bitiş tarihi seçiniz" value=""/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-primary" type="submit">Rapor Al</button>
                 </div>
             </div>
         </div>
@@ -27,9 +38,15 @@
 </div>
 <script type="text/javascript">
     $(function () {
-        $('#datetimepicker1').datepicker();
+        $.datetimepicker.setLocale('tr');
+        $('#datetimepicker1').datetimepicker({
+
+        });
+        $('#datetimepicker2').datetimepicker();
     });
 </script>
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>

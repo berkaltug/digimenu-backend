@@ -1,6 +1,7 @@
 package com.digimenu.main.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -99,8 +100,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     		http.csrf().disable()
     		.antMatcher("/restaurant/**")  //antmatcher tekil şekilde urlleri farklı configler için gruplamada kullanılır
     		.authorizeRequests()
+				.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
 				.antMatchers("/restaurant/flushitem/**").permitAll()
-				.antMatchers("/assets/**", "/webjars/**","/static/**","/h2-console/**").permitAll()
 				.anyRequest().hasRole("RESTAURANT")
 				.and()
 			.formLogin()
@@ -117,7 +118,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 			.permitAll()
 			.and()
 			.exceptionHandling().authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/restaurant/login"))
-			//.defaultAuthenticationEntryPointFor(loginUrlAuthenticationEntryPoint(), new AntPathRequestMatcher("/restaurant/**"))
+
 			;
     	}
 

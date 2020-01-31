@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
+import com.digimenu.main.domain.converter.MessageDtoConverter;
 import com.digimenu.main.domain.converter.TransferCartConverter;
 import com.digimenu.main.domain.dto.TransferCartDto;
 import com.digimenu.main.domain.entity.WebsocketMessage;
@@ -242,7 +243,7 @@ public class RestaurantController {
 		String username=securityService.findLoggedInUsername();
 		List<WebsocketMessage> messages = websocketMessageService.getAllMessages(getRestaurant().getId());
 		for (WebsocketMessage message : messages) {
-			this.simpMessagingTemplate.convertAndSendToUser(username, "/restaurant/message", message.getMessage());
+			this.simpMessagingTemplate.convertAndSendToUser(username, "/restaurant/message", MessageDtoConverter.convert(message));
 		}
 	}
 

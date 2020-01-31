@@ -53,6 +53,7 @@
 			var stompClient = Stomp.over(socket);
 			stompClient.connect({}, function(frame) {
 			  queueindex--;
+              recallMessages();
 				stompClient.subscribe("/user/restaurant/message", function(data) {
 				  databody=JSON.parse(data.body);
 					html =  '<div class="modal"  role="dialog" id="dynamicModal' + (queueindex).toString() + '" style="{z-index:' + (zindex-=1061).toString() + '}" >';
@@ -86,12 +87,12 @@
                     deleteMessageFromTable(databody.messageId);
 				});
 			});
-			recallMessages();
 		});
 
 		function deleteMessageFromTable(messageId){
           $.ajax({
             type: "GET",
+            async:false,
             contentType: "application/json",
             xhrFields: {
               useCredentials: true,
