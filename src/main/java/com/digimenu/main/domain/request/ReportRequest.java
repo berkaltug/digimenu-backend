@@ -1,11 +1,15 @@
 package com.digimenu.main.domain.request;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 import java.util.Objects;
 
 public class ReportRequest {
 
+    @JsonFormat(pattern = "dd-MM-yyyy HH:mm")
     private Date startDate;
+    @JsonFormat(pattern = "dd-MM-yyyy HH:mm")
     private Date endDate;
 
     public Date getStartDate() {
