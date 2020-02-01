@@ -27,7 +27,7 @@
                             <option th:each="i : ${#numbers.sequence(1,tables)}" th:value="${i}"
                                     th:text="Masa + ${i}"></option>
                         </select>
-                        <label for="masa1">Aktarılacak Masayı Seçiniz</label>
+                        <label for="masa1">Yeni Masayı Seçiniz</label>
                         <select name="masa2" id="masa2" th:field="*{target}" class="form-control">
                             <option th:each="i : ${#numbers.sequence(1,tables)}" th:value="${i}"
                                     th:text="Masa + ${i}"></option>
