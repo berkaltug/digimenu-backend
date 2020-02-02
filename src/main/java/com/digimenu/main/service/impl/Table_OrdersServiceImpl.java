@@ -104,7 +104,7 @@ public class Table_OrdersServiceImpl implements Table_OrdersService {
     @Override
     public ReportResponse getReport(Date startdate, Date endate) {
         ReportResponse response = new ReportResponse();
-        response.setReportList(tor.getSellReport(restaurantService.getRestaurant(1l),
+        response.setReportList(tor.getSellReport(restaurantService.getLoggedInRestaurant(),
                 startdate,
                 endate)
         );

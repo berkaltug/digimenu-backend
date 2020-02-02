@@ -13,7 +13,6 @@ public class MapsServiceImpl implements MapsService {
         double a =  Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(degToRad(lat1)) * Math.cos(degToRad(lat2)) * Math.sin(dLon/2) * Math.sin(dLon/2);
         double c = Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
         double d = R * c * 1000 ;// metre cinsinden olsun diye *1000
-        System.out.println(d);
         return radius >= d ? true : false ;
     }
 

@@ -4,6 +4,8 @@ import com.digimenu.main.domain.entity.Restaurant;
 import com.digimenu.main.security.User;
 
 public interface RestaurantService {
-	public Restaurant getRestaurant(Long id);
-	public Restaurant getByOwner(User owner);
+	Restaurant getRestaurant(Long id);
+	Restaurant getByOwner(User owner);
+	Restaurant getLoggedInRestaurant();
+	String getLoggedInRestaurantUsername();
 }
