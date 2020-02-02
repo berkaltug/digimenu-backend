@@ -33,8 +33,6 @@ import com.digimenu.main.domain.entity.Restaurant;
 @RequestMapping(value="/restaurant")
 public class RestaurantController {
 	
-	private SecurityService securityService;
-	private UserService userService;
 	private RestaurantService restaurantService;
 	private MenuService menuService;
 	private CartService cartService;
@@ -44,9 +42,7 @@ public class RestaurantController {
 	private SimpMessagingTemplate simpMessagingTemplate;
 
 	@Autowired
-	public RestaurantController(SecurityService securityService, UserService userService, RestaurantService restaurantService, MenuService menuService, CartService cartService, CategoryService categoryService, Table_OrdersService tableOrdersService, WebsocketMessageService websocketMessageService,SimpMessagingTemplate simpMessagingTemplate) {
-		this.securityService = securityService;
-		this.userService = userService;
+	public RestaurantController(RestaurantService restaurantService, MenuService menuService, CartService cartService, CategoryService categoryService, Table_OrdersService tableOrdersService, WebsocketMessageService websocketMessageService, SimpMessagingTemplate simpMessagingTemplate) {
 		this.restaurantService = restaurantService;
 		this.menuService = menuService;
 		this.cartService = cartService;
@@ -75,7 +71,7 @@ public class RestaurantController {
 		if (bindingResult.hasErrors()) {
 			return "addmenuitem";
 		}
-		menu.setRestaurant(this.getRestaurant());
+		menu.setRestaurant(restaurantService.getLoggedInRestaurant());
 		this.menuService.saveMenuItem(menu);
 		return "redirect:/restaurant/menu";
 	}
@@ -83,7 +79,7 @@ public class RestaurantController {
 	@PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
 	@GetMapping("/tables")
 	public String getTables(Model model) {
-		Restaurant restaurant=getRestaurant();
+		Restaurant restaurant=restaurantService.getLoggedInRestaurant();
 		model.addAttribute("tables",restaurant.getTableAmount());
 		return "showtable";
 	}
@@ -91,7 +87,7 @@ public class RestaurantController {
 	@PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
 	@GetMapping("/menu")
 	public String getMenu(Model model) {
-		Restaurant restaurant=getRestaurant();
+		Restaurant restaurant=restaurantService.getLoggedInRestaurant();
 		model.addAttribute("menu",menuService.getMenuItemsByRestaurant(restaurant.getId()).getItems());
 		return "showmenu";
 	}
@@ -99,7 +95,6 @@ public class RestaurantController {
 	@PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
 	@GetMapping("/edititem/{id}")
 	public String editMenu(Model model,@PathVariable("id") Long id) {
-		Restaurant res=getRestaurant();
 		model.addAttribute("category",categoryService.getCategories());
 		model.addAttribute("menu",menuService.getMenuItem(id));
 		return "editmenuitem";
@@ -108,7 +103,6 @@ public class RestaurantController {
 	@PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
 	@PostMapping("/updateitem")
 	public String editItem(@ModelAttribute(value="menu") @Valid Menu menu) {
-		
 		menuService.updateMenuItem(menu);
 		return "redirect:/restaurant/menu";
 	}
@@ -129,7 +123,7 @@ public class RestaurantController {
 	@PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
 	@GetMapping("/cart/{masa}")
 	public String getCart(Model model,@PathVariable("masa") Integer masaNo) {
-		Restaurant res=getRestaurant();
+		Restaurant res=restaurantService.getLoggedInRestaurant();
 		try {
 			List<Cart> siparisler=cartService.getCart(res.getId(), masaNo);
 			model.addAttribute("masaNo",masaNo);
@@ -144,7 +138,7 @@ public class RestaurantController {
 	@PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
 	@GetMapping("/flushcart/{masa}")
 	public String freeCart(@PathVariable("masa") Integer id) {
-		Restaurant res=getRestaurant();
+		Restaurant res=restaurantService.getLoggedInRestaurant();
 		try {
 			cartService.emptyCart(res.getId(),id);
 		}catch(Exception e) {
@@ -174,7 +168,7 @@ public class RestaurantController {
 	@GetMapping("/delete-wrong-order/{name}/{masaNo}/{cartId}")
 	public ResponseEntity<String> deleteWrongOrder(@PathVariable("name") String name,@PathVariable("masaNo") Integer masaNo,@PathVariable("cartId") Long cartId) {
 		try {
-			tableOrdersService.deleteWrongTableOrder(getRestaurant(),name,masaNo);
+			tableOrdersService.deleteWrongTableOrder(restaurantService.getLoggedInRestaurant(),name,masaNo);
 			cartService.deleteCart(cartId);
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -186,7 +180,7 @@ public class RestaurantController {
 	@PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
 	@GetMapping ("/transferCart")
 	public String transferCartGet(TransferCartRequest transferCartRequest,Model model){
-		model.addAttribute("tables",getRestaurant().getTableAmount());
+		model.addAttribute("tables",restaurantService.getLoggedInRestaurant().getTableAmount());
 		return "transfercart";
 	}
 
@@ -195,7 +189,7 @@ public class RestaurantController {
 	@PostMapping ("/transferCart")
 	public String transferCartPost(@ModelAttribute("transferCartRequest") TransferCartRequest transferCartRequest,BindingResult bindingResult,Model model){
 		TransferCartDto dto = TransferCartConverter.convert(transferCartRequest);
-		dto.setId(getRestaurant().getId());// converterda gerçekleştir bu işlemi
+		dto.setId(restaurantService.getLoggedInRestaurant().getId());// converterda gerçekleştir bu işlemi
 		Optional<List<Cart>> result = cartService.transferCart(dto);
 		if(result.isPresent()){
 			return "redirect:/restaurant/tables";
@@ -240,18 +234,11 @@ public class RestaurantController {
 	@GetMapping("/recallMessages")
 	@ResponseBody
 	public void  returnUnsendMessages(){
-		String username=securityService.findLoggedInUsername();
-		List<WebsocketMessage> messages = websocketMessageService.getAllMessages(getRestaurant().getId());
+		String username=restaurantService.getLoggedInRestaurantUsername();
+		List<WebsocketMessage> messages = websocketMessageService.getAllMessages(restaurantService.getLoggedInRestaurant().getId());
 		for (WebsocketMessage message : messages) {
 			this.simpMessagingTemplate.convertAndSendToUser(username, "/restaurant/message", MessageDtoConverter.convert(message));
 		}
 	}
 
-
-	//login olmuş restoranı çeker
-	private Restaurant getRestaurant() {
-		String loggedInUser=securityService.findLoggedInUsername();
-		Restaurant restaurant=restaurantService.getByOwner(userService.findByUsername(loggedInUser));
-		return restaurant;
-	}
 }
