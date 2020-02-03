@@ -1,8 +1,10 @@
 package com.digimenu.main.service.impl;
 
+import java.text.Collator;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 import com.digimenu.main.domain.response.GetMenuResponse;
@@ -37,8 +39,8 @@ public class MenuServiceImpl implements MenuService {
 				.collect(Collectors.toList()));
 
 
-
-		response.getItems().sort((menu, t1) -> menu.getItem().compareToIgnoreCase(t1.getItem()));
+		Collator collator= Collator.getInstance(new Locale("tr","TR"));
+		response.getItems().sort((menu, t1) -> collator.compare(menu.getItem(),t1.getItem()));
 		return response;
 	}
 
