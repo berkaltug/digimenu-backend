@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
-public class Menu {
+public class Menu{
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private Long id;
@@ -135,5 +135,6 @@ public class Menu {
 				", isActive=" + isActive +
 				'}';
 	}
+
 }
 
