@@ -1,5 +1,7 @@
 package com.digimenu.main.service.impl;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,12 +31,14 @@ public class MenuServiceImpl implements MenuService {
 	@Override
 	public GetMenuResponse getMenuItemsByRestaurant(Long id) {
 		GetMenuResponse response = new GetMenuResponse();
-		response.setItems(
-				mr.getByRestaurant(id)
+		response.setItems(mr.getByRestaurant(id)
 				.stream()
 				.filter(item -> item.getActive())
-				.collect(Collectors.toList())
-		);
+				.collect(Collectors.toList()));
+
+
+
+		response.getItems().sort((menu, t1) -> menu.getItem().compareToIgnoreCase(t1.getItem()));
 		return response;
 	}
 
