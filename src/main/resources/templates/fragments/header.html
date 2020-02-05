@@ -45,12 +45,12 @@
     var messageId;
 
     $(document).ready(function() {
-      renderSocketOrderMessage();
+      renderSocketMessage();
     });
 
-    window.addEventListener('online',  renderSocketOrderMessage);
+    window.addEventListener('online',  renderSocketMessage);
 
-		function renderSocketOrderMessage(event){
+		function renderSocketMessage(event){
 		  console.log("became online -- in render function")
           var socket = new SockJS('/stomp');
           var stompClient = Stomp.over(socket);

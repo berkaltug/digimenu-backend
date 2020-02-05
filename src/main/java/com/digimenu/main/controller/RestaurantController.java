@@ -237,6 +237,7 @@ public class RestaurantController {
 		String username=restaurantService.getLoggedInRestaurantUsername();
 		List<WebsocketMessage> messages = websocketMessageService.getAllMessages(restaurantService.getLoggedInRestaurant().getId());
 		for (WebsocketMessage message : messages) {
+			System.out.println(message.toString());
 			this.simpMessagingTemplate.convertAndSendToUser(username, "/restaurant/message", MessageDtoConverter.convert(message));
 		}
 	}

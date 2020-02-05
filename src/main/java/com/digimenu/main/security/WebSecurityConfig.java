@@ -98,7 +98,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     	@Override
     	protected void configure(HttpSecurity http) throws Exception{
     		http.csrf().disable()
-    		.antMatcher("/restaurant/**")  //antmatcher tekil şekilde urlleri farklı configler için gruplamada kullanılır
+    		.antMatcher("/restaurant/**")
     		.authorizeRequests()
 				.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
 				.antMatchers("/restaurant/flushitem/**").permitAll()

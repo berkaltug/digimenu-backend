@@ -6,8 +6,12 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import com.digimenu.main.domain.converter.MessageDtoConverter;
 import com.digimenu.main.domain.converter.TableOrderDtoConverter;
+import com.digimenu.main.domain.converter.WaitressDtoConverter;
+import com.digimenu.main.domain.request.LocationRequest;
 import com.digimenu.main.domain.request.TableOrderRequest;
+import com.digimenu.main.domain.response.CallWaitressResponse;
 import com.digimenu.main.domain.response.CreateOrderResponse;
 import com.digimenu.main.service.*;
 import org.json.simple.JSONArray;
@@ -56,7 +60,7 @@ public class Table_OrdersController {
 
     @PreAuthorize("hasRole('ADMIN')")  //test amaçlı fonk
     @GetMapping("{restaurant}/{masa}")
-    Collection<Table_Orders> getTableOrders(@PathVariable("restaurant") Long id, @PathVariable("masa") Integer masaNo) {
+    public Collection<Table_Orders> getTableOrders(@PathVariable("restaurant") Long id, @PathVariable("masa") Integer masaNo) {
         //return table_ordersService.getByTableNo(masaNo);
         List<Table_Orders> orders = table_ordersService.getTable_Orders();
         List<Table_Orders> resorders = orders.stream().filter(o -> o.getRestaurant().getId().equals(id)).collect(Collectors.toList());
@@ -67,7 +71,7 @@ public class Table_OrdersController {
 
     @PreAuthorize("hasRole('USER') OR hasRole('RESTAURANT') OR hasRole('ADMIN')")
     @PostMapping("{restaurant}/{masa}")
-    ResponseEntity<String> createTableOrder(@PathVariable("restaurant") Long id, @PathVariable("masa") Integer masaNo, @RequestBody TableOrderRequest request) {
+    public ResponseEntity<String> createTableOrder(@PathVariable("restaurant") Long id, @PathVariable("masa") Integer masaNo, @RequestBody TableOrderRequest request) {
         Optional<CreateOrderResponse> response = table_ordersService.createOrder(TableOrderDtoConverter.convert(request, id, masaNo));
         if(response.isPresent()) {
             this.msgTemplate.convertAndSendToUser(response.get().getRestaurantOwner(), "/restaurant/message", response.get().getSocketMessage());
@@ -80,11 +84,14 @@ public class Table_OrdersController {
 
     @PreAuthorize("hasRole('USER') or hasRole('RESTAURANT') or hasRole('ADMIN')")
     @PostMapping("/garson/{restaurant}/{masa}")
-    public void callWaiter(@PathVariable("restaurant") Long restaurantId, @PathVariable("masa") Integer masaNo) {
-        Restaurant res = restaurantService.getRestaurant(restaurantId);
-        StringBuilder sb = new StringBuilder();
-        sb.append("Garson Bekleniyor ! Lütfen <h6>" + masaNo + " </h6> Numaralı Masayla İlgileniniz.");
-        this.msgTemplate.convertAndSendToUser(res.getOwner().getUsername(), "/restaurant/message", sb.toString());
+    public ResponseEntity<String> callWaiter(@PathVariable("restaurant") Long restaurantId, @PathVariable("masa") Integer masaNo, @RequestBody LocationRequest request) {
+        Optional<CallWaitressResponse> response = table_ordersService.callWaitress(WaitressDtoConverter.convert(request, restaurantId, masaNo));
+        if(response.isPresent()){
+            this.msgTemplate.convertAndSendToUser(response.get().getUsername(), "/restaurant/message", response.get().getMessageDto());
+            return  new ResponseEntity<>(HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>("Location Error !", HttpStatus.BAD_REQUEST);
+        }
     }
 
 
