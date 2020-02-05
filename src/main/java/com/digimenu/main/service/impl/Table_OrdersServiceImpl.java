@@ -9,9 +9,11 @@ import com.digimenu.main.domain.converter.CartEntityConverter;
 import com.digimenu.main.domain.converter.MessageDtoConverter;
 import com.digimenu.main.domain.converter.TableOrderDtoConverter;
 import com.digimenu.main.domain.converter.TableOrdersEntityConverter;
+import com.digimenu.main.domain.dto.CallWaitressDto;
 import com.digimenu.main.domain.dto.MessageDto;
 import com.digimenu.main.domain.dto.TableOrderDto;
 import com.digimenu.main.domain.entity.*;
+import com.digimenu.main.domain.response.CallWaitressResponse;
 import com.digimenu.main.domain.response.CreateOrderResponse;
 import com.digimenu.main.domain.response.ReportResponse;
 import com.digimenu.main.security.User;
@@ -116,6 +118,19 @@ public class Table_OrdersServiceImpl implements Table_OrdersService {
         tor.deleteWrongOrder(res, name, masaNo);
     }
 
+    @Override
+    public Optional<CallWaitressResponse> callWaitress(CallWaitressDto dto){
+        final Restaurant restaurant=restaurantService.getRestaurant(dto.getRestaurantId());
+        if(!mapsService.checkHaversineDistance(dto.getLatitude(),dto.getLongitude(),restaurant.getLatitude(),restaurant.getLongitude(), restaurant.getRadius())){
+            return Optional.empty();
+        }else{
+            CallWaitressResponse response = new CallWaitressResponse();
+            response.setMessageDto(makeMessageDto(dto.getMasaNo(),dto.getRestaurantId()));
+            response.setUsername(restaurant.getOwner().getUsername());
+            return Optional.of(response);
+        }
+    }
+
     private MessageDto makeMessageDto(Integer masaNo,List<Cart> cartList,Long resId){
         WebsocketMessage message=new WebsocketMessage();
         message.setMessage(makeSocketString(masaNo, cartList));
@@ -124,6 +139,16 @@ public class Table_OrdersServiceImpl implements Table_OrdersService {
         WebsocketMessage insertedMessage =websocketMessageService.insertMessage(message);
         return MessageDtoConverter.convert(insertedMessage);
     }
+
+    private MessageDto makeMessageDto(Integer masaNo,Long resId){
+        WebsocketMessage message=new WebsocketMessage();
+        message.setMessage(makeWaitressMessage(masaNo));
+        message.setRestaurantId(resId);
+        message.setMasaNo(masaNo);
+        WebsocketMessage insertedMessage =websocketMessageService.insertMessage(message);
+        return MessageDtoConverter.convert(insertedMessage);
+    }
+
 
     private String makeSocketString(Integer masaNo, List<Cart> cartList) {
         StringBuilder sb = new StringBuilder(); //daha sonra formatla oynamak icin stringbuilder
@@ -137,6 +162,11 @@ public class Table_OrdersServiceImpl implements Table_OrdersService {
         return sb.toString();
     }
 
+    private String makeWaitressMessage(Integer masaNo){
+        StringBuilder sb = new StringBuilder();
+        sb.append("Garson Bekleniyor ! Lütfen <h6>" + masaNo + " </h6> Numaralı Masayla İlgileniniz.");
+        return sb.toString();
+    }
 
 
 }
