@@ -81,7 +81,6 @@ public class Table_OrdersController {
         }
     }
 
-
     @PreAuthorize("hasRole('USER') or hasRole('RESTAURANT') or hasRole('ADMIN')")
     @PostMapping("/garson/{restaurant}/{masa}")
     public ResponseEntity<String> callWaiter(@PathVariable("restaurant") Long restaurantId, @PathVariable("masa") Integer masaNo, @RequestBody LocationRequest request) {

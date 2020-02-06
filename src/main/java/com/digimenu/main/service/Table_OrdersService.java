@@ -1,5 +1,8 @@
 package com.digimenu.main.service;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -19,7 +22,7 @@ public interface Table_OrdersService {
 	void deleteTable_Order(Long id);
 	void addTable_Order(Table_Orders tableorders);
 	Optional<CreateOrderResponse> createOrder(TableOrderDto tableOrderDto);
-	ReportResponse getReport(Date startdate, Date endate);
+	ReportResponse getReport(Timestamp startdate, Timestamp endate);
 	void deleteWrongTableOrder(Restaurant res,String name,Integer masaNo);
 	Optional<CallWaitressResponse> callWaitress(CallWaitressDto dto);
 }

@@ -1,7 +1,10 @@
 package com.digimenu.main.repository;
 
-import java.util.Date;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.List;
+import java.util.Date;
 
 import com.digimenu.main.domain.dto.ReportDto;
 import com.digimenu.main.domain.entity.Restaurant;
@@ -9,10 +12,13 @@ import com.digimenu.main.domain.projection.ReportProjection;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.Temporal;
 import org.springframework.data.repository.query.Param;
 
 import com.digimenu.main.domain.entity.Table_Orders;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.TemporalType;
 
 public interface Table_OrdersRepository extends JpaRepository<Table_Orders, Long> {
 	
@@ -24,7 +30,9 @@ public interface Table_OrdersRepository extends JpaRepository<Table_Orders, Long
 			"FROM Table_Orders t " +
 			"WHERE t.restaurant = :restaurant_id AND t.siparisTarihi BETWEEN :startdate AND :enddate " +
 			"GROUP BY t.item")
-	List<ReportProjection> getSellReport(@Param("restaurant_id") Restaurant res, @Param("startdate") Date startdate, @Param("enddate") Date enddate);
+	List<ReportProjection> getSellReport(@Param("restaurant_id") Restaurant res,
+										 @Param("startdate") Timestamp startdate,
+										 @Param("enddate") Timestamp enddate);
 
 	@Transactional
 	@Modifying

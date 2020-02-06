@@ -1,5 +1,8 @@
 package com.digimenu.main.service.impl;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -104,7 +107,7 @@ public class Table_OrdersServiceImpl implements Table_OrdersService {
     }
 
     @Override
-    public ReportResponse getReport(Date startdate, Date endate) {
+    public ReportResponse getReport(Timestamp startdate, Timestamp endate) {
         ReportResponse response = new ReportResponse();
         response.setReportList(tor.getSellReport(restaurantService.getLoggedInRestaurant(),
                 startdate,
