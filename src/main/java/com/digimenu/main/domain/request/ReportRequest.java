@@ -1,31 +1,42 @@
 package com.digimenu.main.domain.request;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonSetter;
 
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.Date;
 import java.util.Objects;
 
 public class ReportRequest {
 
-    @JsonFormat(pattern = "dd-MM-yyyy HH:mm")
-    private Date startDate;
-    @JsonFormat(pattern = "dd-MM-yyyy HH:mm")
-    private Date endDate;
 
-    public Date getStartDate() {
+    private Timestamp startDate;
+
+    private Timestamp endDate;
+
+    public Timestamp getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
+    @JsonSetter("startDate")
+    public void setStartDate(String startDate) throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat(/* Here put your timestamp format, e.g.*/ "dd-MM-yyyy hh:mm");
+        Date parsedDate = dateFormat.parse(startDate);
+        this.startDate = new Timestamp(parsedDate.getTime());
     }
 
-    public Date getEndDate() {
+    public Timestamp getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
+    public void setEndDate(String endDate) throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat(/* Here put your timestamp format, e.g.*/ "dd-MM-yyyy hh:mm");
+        Date parsedDate = dateFormat.parse(endDate);
+        this.endDate = new Timestamp(parsedDate.getTime());
     }
 
     @Override

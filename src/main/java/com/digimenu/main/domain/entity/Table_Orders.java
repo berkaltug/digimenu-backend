@@ -7,7 +7,10 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 import javax.persistence.*;
@@ -35,8 +38,9 @@ public class Table_Orders {
 	private User user;
 
 	@CreationTimestamp
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date siparisTarihi;
+	@Basic
+	//@Temporal(TemporalType.TIMESTAMP)
+	private Timestamp siparisTarihi;
 
 	public Long getId() {
 		return id;
@@ -86,11 +90,11 @@ public class Table_Orders {
 		this.user = user;
 	}
 
-	public Date getSiparisTarihi() {
+	public Timestamp getSiparisTarihi() {
 		return siparisTarihi;
 	}
 
-	public void setSiparisTarihi(Date siparisTarihi) {
+	public void setSiparisTarihi(Timestamp siparisTarihi) {
 		this.siparisTarihi = siparisTarihi;
 	}
 
