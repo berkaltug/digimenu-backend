@@ -4,16 +4,24 @@
 		xmlns="http://www.w3.org/1999/xhtml">
   <head>
 		<th:block th:replace="fragments/head :: head"></th:block>
-	  <script>
-		  function setTwoNumberDecimal(event) {
-			  this.value = parseFloat(this.value).toFixed(2);
-			  console.log("input değeri " + this.value);
+	  <script type="text/javascript">
+		  function checkDec(el){
+			  var ex = /^[0-9]+\.?[0-9]*$/;
+			  if(ex.test(el.value)==false){
+				  el.value = el.value.substring(0,el.value.length - 1);
+			  }
 		  }
-
 	  </script>
   </head>
   <body>
   		<th:block th:replace="fragments/header :: body"></th:block>
+		<script>
+			function setTwoNumberDecimal(event) {
+				this.value = parseFloat(this.value).toFixed(2);
+				console.log("input değeri " + this.value);
+			}
+
+		</script>
 		<div class="container rounded p-2 mt-4" id="menuitemadd">
 			<div class="row">
 			<div class="col-md-2"></div>
@@ -31,7 +39,7 @@
 						</div>
 						<div class="form-group">
 							<label for="price">Fiyatı Giriniz</label>
-							<input type="number"  class="form-control"  th:step="0.01" onchange="setTwoNumberDecimal" id="price" name="price" th:field="*{price}" placeholder="Fiyat" value=" ">
+							<input type="number"  class="form-control"  th:step="0.01" onkeydown="checkDec(this)" id="price" name="price" th:field="*{price}" placeholder="Fiyat" value=" ">
 						</div>
 						<div class="form-group">
 							<label for="category">Kategori Seçiniz</label>
