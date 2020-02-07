@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -23,7 +24,8 @@ public class Menu{
 	private String item;
 	
 	private String ingredients;
-	
+
+	@Digits(integer=6, fraction=2)
 	private BigDecimal price;
 	@JsonBackReference(value="restaurant-item")  //json ignore görevi gördü karşı bir @jsonMaagedRef olmamasına rağmen
 	@ManyToOne(fetch=FetchType.LAZY)
