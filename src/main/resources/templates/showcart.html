@@ -100,7 +100,7 @@
         $('#hesapTable tbody .siparisItem').each(function (index, item) {
             totalPrice2 += parseFloat($(item).children(".price").html());
         });
-        $('#toplamUcret').html(totalPrice2 + " ₺");
+        $('#toplamUcret').html(parseFloat(totalPrice2).toFixed(2) + " ₺");
     }
 
     function deleteItem(id, obj) {
