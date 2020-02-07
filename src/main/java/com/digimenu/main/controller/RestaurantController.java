@@ -88,6 +88,7 @@ public class RestaurantController {
 	@GetMapping("/menu")
 	public String getMenu(Model model) {
 		Restaurant restaurant=restaurantService.getLoggedInRestaurant();
+
 		model.addAttribute("menu",menuService.getMenuItemsByRestaurant(restaurant.getId()).getItems());
 		return "showmenu";
 	}
