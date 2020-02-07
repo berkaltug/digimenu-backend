@@ -149,12 +149,11 @@ public class UserController {
 	@PostMapping("/resetpassword")
 	public String resetPassword(@ModelAttribute("token") String token,@ModelAttribute("pass") String pass) throws Exception {
 		PasswordResetToken passwordResetToken=passwordResetTokenRepository.findByToken(token);
-		System.err.println(token);
 		Optional<User> optionalUser= Optional.of(userService.findByUsername(passwordResetToken.getUser().getUsername()));
 		if(optionalUser.isPresent()){
 			User user= optionalUser.get();
 			user.setPassword(pass);
-			userService.save(user);
+			userService.forgetPassUserSave(user);
 			return "resetpasswordsuccess";
 
 		}
