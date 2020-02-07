@@ -3,7 +3,14 @@
 		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
 		xmlns="http://www.w3.org/1999/xhtml">
   <head>
-		<th:block th:replace="fragments/head :: head"></th:block>    
+		<th:block th:replace="fragments/head :: head"></th:block>
+	  <script>
+		  function setTwoNumberDecimal(event) {
+			  this.value = parseFloat(this.value).toFixed(2);
+			  console.log("input değeri " + this.value);
+		  }
+
+	  </script>
   </head>
   <body>
   		<th:block th:replace="fragments/header :: body"></th:block>
@@ -48,13 +55,7 @@
 				<div class="col-md-2"></div>
 			</div>
 		</div>
-		<script>
-			function setTwoNumberDecimal(event) {
-				this.value = parseFloat(this.value).toFixed(2);
-				console.log("input değeri " + this.value);
-			}
 
-		</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
