@@ -101,7 +101,12 @@
         $('#reportTable tbody .listItem').each(function (index, item) {
             totalPrice2 += parseFloat($(item).children(".price").html());
         });
-        $('#hasılat').html(totalPrice2 + " ₺");
+        $('#reportTable tbody .listItem').each(function (index, item) {
+            var x=parseFloat($(item).children(".price").html()).toFixed(2);
+            console.log(x + "value")
+            $(item).children(".price").html(x)
+        });
+        $('#hasılat').html(parseFloat(totalPrice2).toFixed(2) + " ₺");
     }
 
     $("#raporBtn").on('click', function(){
