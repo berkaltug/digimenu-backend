@@ -24,7 +24,7 @@ public class ReportRequest {
 
     @JsonSetter("startDate")
     public void setStartDate(String startDate) throws ParseException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat(/* Here put your timestamp format, e.g.*/ "dd-MM-yyyy hh:mm");
+        SimpleDateFormat dateFormat = new SimpleDateFormat(/* Here put your timestamp format, e.g.*/ "dd-MM-yyyy HH:mm");
         Date parsedDate = dateFormat.parse(startDate);
         this.startDate = new Timestamp(parsedDate.getTime());
     }
@@ -34,7 +34,7 @@ public class ReportRequest {
     }
 
     public void setEndDate(String endDate) throws ParseException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat(/* Here put your timestamp format, e.g.*/ "dd-MM-yyyy hh:mm");
+        SimpleDateFormat dateFormat = new SimpleDateFormat(/* Here put your timestamp format, e.g.*/ "dd-MM-yyyy HH:mm");
         Date parsedDate = dateFormat.parse(endDate);
         this.endDate = new Timestamp(parsedDate.getTime());
     }
