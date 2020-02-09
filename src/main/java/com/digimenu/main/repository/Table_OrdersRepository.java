@@ -36,8 +36,8 @@ public interface Table_OrdersRepository extends JpaRepository<Table_Orders, Long
 
 	@Transactional
 	@Modifying
-	@Query(
-			"DELETE FROM Table_Orders t WHERE t IN (SELECT DISTINCT t FROM Table_Orders t WHERE t.restaurant = :restaurant_id AND t.item = :item_name AND t.masa = :masa_no)"
+	@Query( value="delete from public.table_orders where in (select t from table_orders t where t.restaurant_id = :restaurant_id and t.item = :item_name and t.masa = :  )"
+			"DELETE FROM Table_Orders t WHERE t IN (SELECT t FROM Table_Orders t WHERE t.restaurant = :restaurant_id AND t.item = :item_name AND t.masa = :masa_no)"
 	)
 	int deleteWrongOrder( @Param("restaurant_id") Restaurant res , @Param("item_name")String name , @Param("masa_no") Integer masaNo);
 }
