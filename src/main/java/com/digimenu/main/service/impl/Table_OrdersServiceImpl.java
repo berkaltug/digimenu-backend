@@ -118,7 +118,7 @@ public class Table_OrdersServiceImpl implements Table_OrdersService {
 
     @Override
     public void deleteWrongTableOrder(Restaurant res, String name, Integer masaNo) {
-        tor.deleteWrongOrder(res, name, masaNo);
+        tor.deleteWrongOrder(res.getId(), name, masaNo);
     }
 
     @Override

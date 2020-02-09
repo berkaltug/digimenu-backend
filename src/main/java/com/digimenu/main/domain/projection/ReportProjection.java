@@ -5,5 +5,5 @@ import java.math.BigDecimal;
 public interface ReportProjection {
     Integer getCount();
     String getName();
-    BigDecimal getTotalPrice();
+    Double getTotalPrice();
 }

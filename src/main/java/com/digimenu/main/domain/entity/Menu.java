@@ -26,7 +26,7 @@ public class Menu{
 	private String ingredients;
 
 	@Digits(integer=6, fraction=2)
-	private BigDecimal price;
+	private Double price;
 	@JsonBackReference(value="restaurant-item")  //json ignore görevi gördü karşı bir @jsonMaagedRef olmamasına rağmen
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="restaurant_id")
@@ -41,7 +41,7 @@ public class Menu{
 	public Menu() {
 	}
 
-	public Menu(@NotNull String item, String ingredients, BigDecimal price, Restaurant restaurant, String category, Boolean isActive) {
+	public Menu(@NotNull String item, String ingredients, Double price, Restaurant restaurant, String category, Boolean isActive) {
 		this.item = item;
 		this.ingredients = ingredients;
 		this.price = price;
@@ -74,11 +74,11 @@ public class Menu{
 		this.ingredients = ingredients;
 	}
 
-	public BigDecimal getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
-	public void setPrice(BigDecimal price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 

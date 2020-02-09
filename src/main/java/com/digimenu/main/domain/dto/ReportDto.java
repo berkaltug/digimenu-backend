@@ -9,9 +9,9 @@ public class ReportDto implements ReportProjection {
 
     private Integer count;
     private String name;
-    private BigDecimal totalPrice;
+    private Double totalPrice;
 
-    public ReportDto(Integer count, String name, BigDecimal totalPrice) {
+    public ReportDto(Integer count, String name, Double totalPrice) {
         this.count = count;
         this.name = name;
         this.totalPrice = totalPrice;
@@ -33,11 +33,11 @@ public class ReportDto implements ReportProjection {
         this.name = name;
     }
 
-    public BigDecimal getTotalPrice() {
+    public Double getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(BigDecimal totalPrice) {
+    public void setTotalPrice(Double totalPrice) {
         this.totalPrice = totalPrice;
     }
 
