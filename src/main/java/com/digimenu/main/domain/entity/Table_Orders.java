@@ -31,7 +31,7 @@ public class Table_Orders {
 	private Integer masa;
 
 	private String item;
-	private BigDecimal price;
+	private Double price;
 	@JsonBackReference("user-order")
 	@OneToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="user_id")
@@ -74,11 +74,11 @@ public class Table_Orders {
 		this.item = item;
 	}
 
-	public BigDecimal getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
-	public void setPrice(BigDecimal price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 

@@ -15,7 +15,7 @@ public class MenuDto {
     private Long id;
     private String item;
     private String ingredients;
-    private BigDecimal price;
+    private Double price;
     private String category;
     private String message;
 
@@ -44,11 +44,11 @@ public class MenuDto {
         this.ingredients = ingredients;
     }
 
-    public BigDecimal getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

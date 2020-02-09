@@ -23,7 +23,7 @@ public class Cart {
 	
 	private String item;
 	
-	private BigDecimal Price;
+	private Double price;
 //	DB'de trigger sayesinde bu tabloya entity eklendiği için  Table_Orders'a bağlamaya gerek duymadık
 //	onun yerine triggerda tableordersa eklenen restoran ve masa numarasını bu fieldlere atıyoruz.
 	private Long restaurantId;
@@ -50,12 +50,12 @@ public class Cart {
 		this.item = item;
 	}
 
-	public BigDecimal getPrice() {
-		return Price;
+	public Double getPrice() {
+		return price;
 	}
 
-	public void setPrice(BigDecimal price) {
-		Price = price;
+	public void setPrice(Double price) {
+		this.price = price;
 	}
 
 	public Long getRestaurantId() {
@@ -105,7 +105,7 @@ public class Cart {
 		Cart cart = (Cart) o;
 		return Objects.equals(id, cart.id) &&
 				Objects.equals(item, cart.item) &&
-				Objects.equals(Price, cart.Price) &&
+				Objects.equals(price, cart.price) &&
 				Objects.equals(restaurantId, cart.restaurantId) &&
 				Objects.equals(masaNo, cart.masaNo) &&
 				Objects.equals(message, cart.message) &&
@@ -115,7 +115,7 @@ public class Cart {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, item, Price, restaurantId, masaNo, message, siparisTarihi, isDelivered);
+		return Objects.hash(id, item, price, restaurantId, masaNo, message, siparisTarihi, isDelivered);
 	}
 
 	@Override
@@ -123,7 +123,7 @@ public class Cart {
 		return "Cart{" +
 				"id=" + id +
 				", item='" + item + '\'' +
-				", Price=" + Price +
+				", Price=" + price +
 				", restaurantId=" + restaurantId +
 				", masaNo=" + masaNo +
 				", message='" + message + '\'' +
