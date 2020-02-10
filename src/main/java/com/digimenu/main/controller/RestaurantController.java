@@ -14,6 +14,7 @@ import com.digimenu.main.domain.request.ReportRequest;
 import com.digimenu.main.domain.request.TransferCartRequest;
 import com.digimenu.main.domain.response.ReportResponse;
 import com.digimenu.main.service.*;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -68,6 +69,7 @@ public class RestaurantController {
 	@PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
 	@PostMapping("/additem")
 	public String addItemPost(@ModelAttribute(value="menu") @Valid Menu menu,Model model,BindingResult bindingResult) {
+		System.out.println(menu);
 		if (bindingResult.hasErrors()) {
 			return "addmenuitem";
 		}
@@ -98,6 +100,7 @@ public class RestaurantController {
 	public String editMenu(Model model,@PathVariable("id") Long id) {
 		model.addAttribute("category",categoryService.getCategories());
 		model.addAttribute("menu",menuService.getMenuItem(id));
+		System.out.println(menuService.getMenuItem(id));
 		return "editmenuitem";
 	}
 	
