@@ -1,119 +1,147 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
-		xmlns="http://www.w3.org/1999/xhtml">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns="http://www.w3.org/1999/xhtml">
 <head>
 </head>
 <body>
 
-    <!-- navbar -->
-    <nav class="navbar navbar-expand-lg ">
-      <a class="navbar-brand" ><i class="fa fa-qrcode mr-1"></i>Digimenu</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<!-- navbar -->
+<nav class="navbar navbar-expand-lg ">
+    <a class="navbar-brand"><i class="fa fa-qrcode mr-1"></i>Digimenu</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="showmenu" th:href="@{/restaurant/menu}" ><i class="fas fa-book-open mr-2"></i>Menü</a>
-          </li>
-          <li class="nav-item" >
-            <a class="nav-link" href="showtable" th:href="@{/restaurant/tables}" ><i class="fas fa-chair mr-2"></i>Masalar</a>
-          </li>
-          <li class="nav-item" >
-            <a class="nav-link" href="transfercart" th:href="@{/restaurant/transferCart}" ><i class="fas fa-exchange-alt mr-2"></i>Hesap Aktar</a>
-          </li>
-          <li class="nav-item" >
-            <a class="nav-link" href="getreport" th:href="@{/restaurant/report}" ><i class="fas fa-chart-line mr-2"></i>Rapor</a>
-          </li>
+            <li class="nav-item">
+                <a class="nav-link" href="showmenu" th:href="@{/restaurant/menu}"><i class="fas fa-book-open mr-2"></i>Menü</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="showtable" th:href="@{/restaurant/tables}"><i class="fas fa-chair mr-2"></i>Masalar</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="transfercart" th:href="@{/restaurant/transferCart}"><i
+                        class="fas fa-exchange-alt mr-2"></i>Hesap Aktar</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="getreport" th:href="@{/restaurant/report}"><i
+                        class="fas fa-chart-line mr-2"></i>Rapor</a>
+            </li>
         </ul>
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a th:href="@{/restaurant/logout}" class="nav-link"><i class="fas fa-key mr-2"></i>Logout</a>
-          </li>
+            <li class="nav-item">
+                <a th:href="@{/restaurant/logout}" class="nav-link"><i class="fas fa-key mr-2"></i>Logout</a>
+            </li>
         </ul>
-      </div>
-    </nav>
+    </div>
+</nav>
 
-	<script type="text/javascript">
+<script type="text/javascript">
 
-	var audio=new Audio("../sounds/door_bell.mp3");
-	var queue=[];
-	var queueindex=1;
-	var zindex=0;
+    var audio = new Audio("../sounds/door_bell.mp3");
+    var queue = [];
+    var queueindex = 1;
+    var zindex = 0;
     var masaNo;
     var messageId;
-
-    $(document).ready(function() {
-      renderSocketMessage();
+    var connectionDown = false;
+    $(document).ready(function () {
+        renderSocketMessage();
+        console.log("reload çalıştı ")
+        setInterval(pingServer,15000)
     });
 
-    window.addEventListener('online',  renderSocketMessage);
+    window.addEventListener('online', renderSocketMessage);
 
-		function renderSocketMessage(event){
-		  console.log("became online -- in render function")
-          var socket = new SockJS('/stomp');
-          var stompClient = Stomp.over(socket);
-          stompClient.connect({}, function(frame) {
+    function renderSocketMessage(event) {
+        console.log("became online -- in render function")
+        var socket = new SockJS('/stomp');
+        var stompClient = Stomp.over(socket);
+        stompClient.connect({}, function (frame) {
             queueindex--;
             recallMessages();
-            stompClient.subscribe("/user/restaurant/message", function(data) {
-              databody=JSON.parse(data.body);
-              html =  '<div class="modal"  role="dialog" id="dynamicModal' + (queueindex).toString() + '" style="{z-index:' + (zindex-=1061).toString() + '}" >';
-              html += '<div class="modal-dialog" role="document">';
-              html += '<div class="modal-content">';
-              html += '<div class="modal-header">';
-              html += '<h5 class="modal-title">Yeni Bildirim</h5>';
-              html += '<button type="button" class="close" data-dismiss="modal" aria-label="Close">'
-              html += '<span aria-hidden="true">&times;</span>';
-              html += '</button>';
-              html += '</div>';
-              html += '<div class="modal-body text-center">';
-              html += '<p>' + databody.message + '</p>';
-              html += '</div>';
-              html += '<div class="modal-footer">';
-              html += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>';
-              html += '</div>';
-              html += '</div>';
-              html += '</div>';
-              html += '</div>';
-              queue.push(html);
-              var modal=queue.shift();
-              $('body').append(modal);
-              $(modal).modal();
+            stompClient.subscribe("/user/restaurant/message", function (data) {
+                databody = JSON.parse(data.body);
+                html = '<div class="modal"  role="dialog" id="dynamicModal' + (queueindex).toString() + '" style="{z-index:' + (zindex -= 1061).toString() + '}" >';
+                html += '<div class="modal-dialog" role="document">';
+                html += '<div class="modal-content">';
+                html += '<div class="modal-header">';
+                html += '<h5 class="modal-title">Yeni Bildirim</h5>';
+                html += '<button type="button" class="close" data-dismiss="modal" aria-label="Close">'
+                html += '<span aria-hidden="true">&times;</span>';
+                html += '</button>';
+                html += '</div>';
+                html += '<div class="modal-body text-center">';
+                html += '<p>' + databody.message + '</p>';
+                html += '</div>';
+                html += '<div class="modal-footer">';
+                html += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>';
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+                queue.push(html);
+                var modal = queue.shift();
+                $('body').append(modal);
+                $(modal).modal();
 
-              audio.play();
-              masaNo=databody.masaNo;
-              deleteMessageFromTable(databody.messageId);
+                audio.play();
+                masaNo = databody.masaNo;
+                deleteMessageFromTable(databody.messageId);
             });
-          });
-        }
+        });
+    }
 
-		function deleteMessageFromTable(messageId){
-          $.ajax({
+    function deleteMessageFromTable(messageId) {
+        $.ajax({
             type: "GET",
-            async:false,
+            async: false,
             contentType: "application/json",
             xhrFields: {
-              useCredentials: true,
+                useCredentials: true,
             },
             url: "/restaurant/mesaj/" + messageId,
-            success: () => {}
-          });
-        }
-
-    function recallMessages(){
-      $.ajax({
-        type: "GET",
-        contentType: "application/json",
-        xhrFields: {
-          useCredentials: true,
-        },
-        url: "/restaurant/recallMessages/",
-        success: () =>{}
-      });
+            success: () => {
+            }
+        });
     }
-	</script>
+
+    function recallMessages() {
+        $.ajax({
+            type: "GET",
+            contentType: "application/json",
+            xhrFields: {
+                useCredentials: true,
+            },
+            url: "/restaurant/recallMessages/",
+            success: () => {
+            }
+        });
+    }
+
+    function pingServer() {
+        $.ajax({
+            type: "GET",
+            url: "/restaurant/check",
+            success:  function(data, textStatus, xhr) {
+              console.log(xhr.status)
+              if(connectionDown==true && xhr.status==200){
+                console.log("successiçerisinde")
+                document.reload();
+              }
+            },
+            error: function (xhr, status, error) {
+              console.log("errora düştü")
+                connectionDown = true
+            }
+        });
+    }
+
+
+
+</script>
 
 
 </body>
