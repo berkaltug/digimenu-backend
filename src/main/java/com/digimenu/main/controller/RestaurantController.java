@@ -246,4 +246,13 @@ public class RestaurantController {
 		}
 	}
 
+	@CrossOrigin
+	@GetMapping("/check")
+	@ResponseBody
+	public ResponseEntity checkConnection(){
+		return new ResponseEntity(HttpStatus.OK);
+	}
+
+
+
 }
