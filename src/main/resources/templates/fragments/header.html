@@ -49,13 +49,13 @@
     var socket ;
     var stompClient;
     var connectionDown = false;
+
     $(document).ready(function () {
         renderSocketMessage();
         console.log("reload çalıştı ")
-        setInterval(pingServer, 300000)
     });
 
-    window.addEventListener('online', renderSocketMessage);
+    //window.addEventListener('online', renderSocketMessage);
 
 
     var connectCallback = function (frame) {
