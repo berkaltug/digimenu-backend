@@ -102,6 +102,7 @@
         console.log("became online -- in render function")
         socket = new SockJS('/stomp');
         stompClient = Stomp.over(socket);
+        stompClient.heartbeat.outgoing=5000;
         stompClient.connect({}, connectCallback, errorCallback);
     }
 
