@@ -46,59 +46,65 @@
     var zindex = 0;
     var masaNo;
     var messageId;
-    var socket = new SockJS('/stomp');
+    var socket ;
+    var stompClient;
     var connectionDown = false;
     $(document).ready(function () {
         renderSocketMessage();
         console.log("reload çalıştı ")
-        setInterval(pingServer,300000)
+        setInterval(pingServer, 300000)
     });
-    socket.onclose=function(e){
-        console.log("connection closeda girdi");
-    };
-    socket.onerror=function(e){
-        console.log("connection errora girdi")
-    }
+
     window.addEventListener('online', renderSocketMessage);
+
+
+    var connectCallback = function (frame) {
+        queueindex--;
+        recallMessages();
+        stompClient.subscribe("/user/restaurant/message", function (data) {
+            databody = JSON.parse(data.body);
+            html = '<div class="modal"  role="dialog" id="dynamicModal' + (queueindex).toString() + '" style="{z-index:' + (zindex -= 1061).toString() + '}" >';
+            html += '<div class="modal-dialog" role="document">';
+            html += '<div class="modal-content">';
+            html += '<div class="modal-header">';
+            html += '<h5 class="modal-title">Yeni Bildirim</h5>';
+            html += '<button type="button" class="close" data-dismiss="modal" aria-label="Close">'
+            html += '<span aria-hidden="true">&times;</span>';
+            html += '</button>';
+            html += '</div>';
+            html += '<div class="modal-body text-center">';
+            html += '<p>' + databody.message + '</p>';
+            html += '</div>';
+            html += '<div class="modal-footer">';
+            html += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>';
+            html += '</div>';
+            html += '</div>';
+            html += '</div>';
+            html += '</div>';
+            queue.push(html);
+            var modal = queue.shift();
+            $('body').append(modal);
+            $(modal).modal();
+
+            audio.play();
+            masaNo = databody.masaNo;
+            deleteMessageFromTable(databody.messageId);
+        });
+    }
+
+    var errorCallback = function (frame) {
+        console.log("error callback içinde");
+        setTimeout(renderSocketMessage, 10000);
+        console.log("10 sn içinde tekrar denenecek");
+    }
 
     function renderSocketMessage(event) {
         console.log("became online -- in render function")
-
-        var stompClient = Stomp.over(socket);
-        stompClient.connect({}, function (frame) {
-            queueindex--;
-            recallMessages();
-            stompClient.subscribe("/user/restaurant/message", function (data) {
-                databody = JSON.parse(data.body);
-                html = '<div class="modal"  role="dialog" id="dynamicModal' + (queueindex).toString() + '" style="{z-index:' + (zindex -= 1061).toString() + '}" >';
-                html += '<div class="modal-dialog" role="document">';
-                html += '<div class="modal-content">';
-                html += '<div class="modal-header">';
-                html += '<h5 class="modal-title">Yeni Bildirim</h5>';
-                html += '<button type="button" class="close" data-dismiss="modal" aria-label="Close">'
-                html += '<span aria-hidden="true">&times;</span>';
-                html += '</button>';
-                html += '</div>';
-                html += '<div class="modal-body text-center">';
-                html += '<p>' + databody.message + '</p>';
-                html += '</div>';
-                html += '<div class="modal-footer">';
-                html += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>';
-                html += '</div>';
-                html += '</div>';
-                html += '</div>';
-                html += '</div>';
-                queue.push(html);
-                var modal = queue.shift();
-                $('body').append(modal);
-                $(modal).modal();
-
-                audio.play();
-                masaNo = databody.masaNo;
-                deleteMessageFromTable(databody.messageId);
-            });
-        });
+        socket = new SockJS('/stomp');
+        stompClient = Stomp.over(socket);
+        stompClient.connect({}, connectCallback, errorCallback);
     }
+
 
     function deleteMessageFromTable(messageId) {
         $.ajax({
@@ -131,20 +137,19 @@
         $.ajax({
             type: "GET",
             url: "/restaurant/check",
-            success:  function(data, textStatus, xhr) {
-              console.log(xhr.status)
-              if(connectionDown==true && xhr.status==200){
-                console.log("successiçerisinde")
-                document.reload();
-              }
+            success: function (data, textStatus, xhr) {
+                console.log(xhr.status)
+                if (connectionDown == true && xhr.status == 200) {
+                    console.log("successiçerisinde")
+                    location.reload();
+                }
             },
             error: function (xhr, status, error) {
-              console.log("errora düştü")
+                console.log("errora düştü")
                 connectionDown = true
             }
         });
     }
-
 
 
 </script>
