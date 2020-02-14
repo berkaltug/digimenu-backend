@@ -46,18 +46,24 @@
     var zindex = 0;
     var masaNo;
     var messageId;
+    var socket = new SockJS('/stomp');
     var connectionDown = false;
     $(document).ready(function () {
         renderSocketMessage();
         console.log("reload çalıştı ")
         setInterval(pingServer,300000)
     });
-
+    socket.onclose=function(e){
+        console.log("connection closeda girdi");
+    };
+    socket.onerror=function(e){
+        console.log("connection errora girdi")
+    }
     window.addEventListener('online', renderSocketMessage);
 
     function renderSocketMessage(event) {
         console.log("became online -- in render function")
-        var socket = new SockJS('/stomp');
+
         var stompClient = Stomp.over(socket);
         stompClient.connect({}, function (frame) {
             queueindex--;
