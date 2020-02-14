@@ -103,6 +103,7 @@
         socket = new SockJS('/stomp');
         stompClient = Stomp.over(socket);
         stompClient.heartbeat.outgoing=5000;
+        stompClient.reconnect_delay = 5000;
         stompClient.connect({}, connectCallback, errorCallback);
     }
 
