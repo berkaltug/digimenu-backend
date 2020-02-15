@@ -48,8 +48,7 @@
     var messageId;
     var socket ;
     var stompClient;
-    var connectionDown = false;
-
+    var recInterval=null;
     $(document).ready(function () {
         renderSocketMessage();
     });
@@ -94,16 +93,23 @@
         //console.log("10 sn içinde tekrar denenecek");
     }
 
-    function renderSocketMessage(event) {
+    function renderSocketMessage() {
+        console.log("tries to reconnect")
         socket = new SockJS('/stomp');
+        stompClient = Stomp.over(socket);
+        clearInterval(recInterval);
 
-
-        var stompClient = Stomp.client("ws://192.168.43.35:8080/stomp");
-        stompClient.reconnect_delay =1000;
         stompClient.connect({}, connectCallback, errorCallback);
+
         socket.onclose= function(){
-            console.log("socket.onclose içerisinde")
+            console.log("socket.onclose içerisinde");
+            socket=null;
+            stompClient.disconnect();
+            recInterval=setInterval(function () {
+                renderSocketMessage();
+            },5000)
         }
+
     }
 
 
