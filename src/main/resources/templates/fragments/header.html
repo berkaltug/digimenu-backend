@@ -96,7 +96,9 @@
 
     function renderSocketMessage(event) {
         socket = new SockJS('/stomp');
-        var stompClient = Stomp.over(socket);
+
+
+        var stompClient = Stomp.client("ws://192.168.43.35:8080/stomp");
         stompClient.reconnect_delay =1000;
         stompClient.connect({}, connectCallback, errorCallback);
         socket.onclose= function(){
