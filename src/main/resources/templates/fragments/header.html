@@ -52,11 +52,7 @@
 
     $(document).ready(function () {
         renderSocketMessage();
-        console.log("reload çalıştı ")
     });
-
-    //window.addEventListener('online', renderSocketMessage);
-
 
     var connectCallback = function (frame) {
         queueindex--;
@@ -94,17 +90,18 @@
 
     var errorCallback = function (frame) {
         console.log("error callback içinde");
-        setTimeout(renderSocketMessage, 10000);
-        console.log("10 sn içinde tekrar denenecek");
+        //setTimeout(renderSocketMessage, 10000);
+        //console.log("10 sn içinde tekrar denenecek");
     }
 
     function renderSocketMessage(event) {
-        console.log("became online -- in render function")
         socket = new SockJS('/stomp');
-        stompClient = Stomp.over(socket);
-        stompClient.heartbeat.outgoing=5000;
-        stompClient.reconnect_delay = 5000;
+        var stompClient = Stomp.over(socket);
+        stompClient.reconnect_delay =1000;
         stompClient.connect({}, connectCallback, errorCallback);
+        socket.onclose= function(){
+            console.log("socket.onclose içerisinde")
+        }
     }
 
 
@@ -134,26 +131,6 @@
             }
         });
     }
-
-    function pingServer() {
-        $.ajax({
-            type: "GET",
-            url: "/restaurant/check",
-            success: function (data, textStatus, xhr) {
-                console.log(xhr.status)
-                if (connectionDown == true && xhr.status == 200) {
-                    console.log("successiçerisinde")
-                    location.reload();
-                }
-            },
-            error: function (xhr, status, error) {
-                console.log("errora düştü")
-                connectionDown = true
-            }
-        });
-    }
-
-
 </script>
 
 
