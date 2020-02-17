@@ -43,4 +43,5 @@ public class RestaurantServiceImpl implements RestaurantService {
 	public String getLoggedInRestaurantUsername() {
 		return securityService.findLoggedInUsername();
 	}
+	
 }

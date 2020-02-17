@@ -252,7 +252,11 @@ public class RestaurantController {
 	public ResponseEntity checkConnection(){
 		return new ResponseEntity(HttpStatus.OK);
 	}
-
+	@PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
+	@GetMapping("/tableNaming")
+	public String getTableNaming(){
+		return "tablenaming";
+	}
 
 
 }
