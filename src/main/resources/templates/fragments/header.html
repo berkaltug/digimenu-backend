@@ -18,8 +18,12 @@
             <li class="nav-item">
                 <a class="nav-link" href="showmenu" th:href="@{/restaurant/menu}"><i class="fas fa-book-open mr-2"></i>Menü</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="showtable" th:href="@{/restaurant/tables}"><i class="fas fa-chair mr-2"></i>Masalar</a>
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Masa İşlemleri</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item"  th:href="@{/restaurant/tables}"><i class="fas fa-chair mr-2"></i>Masalar</a>
+                    <a class="dropdown-item" th:href="@{/restaurant/tableNaming}"><i class="fas fa-pencil-alt mr-2"></i>Masa İsimleri</a>
+                </div>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="transfercart" th:href="@{/restaurant/transferCart}"><i
