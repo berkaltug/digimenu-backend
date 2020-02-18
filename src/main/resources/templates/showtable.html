@@ -12,11 +12,14 @@
 	<div class="container-fluid mt-5">
 		<div class="col-sm-12">
 			<div class="grid-container">
-				<th:block th:each="i : ${#numbers.sequence(1,tables)}">
-					<a th:href="@{'/restaurant/cart/' + *{i}}"
+				<th:block th:each=" i : ${#numbers.sequence(1,tableAmount)} ">
+					<a th:href="@{'/restaurant/cart/' + ${i}}"
 					   class="btn btn-lg btn-secondary d-flex flex-column justify-content-center">
 						<i class="fa fa-chair"></i>
-						<div><span th:text="'Masa '+*{i}"></span></div>
+						<div><span th:text="'Masa '+ ${i}"></span></div>
+						<th:block th:unless="${tables == null}">
+							<div><span th:text="${tables[i].name != null } ? ${tables[i].name}"></span></div>
+						</th:block>
 					</a>
 				</th:block>
 			</div>

@@ -11,16 +11,24 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3"></div>
-        <div class="col-sm-6 d-flex flex-column justify-content-center align-items-center" id="tablenamingcontainer" >
-            <h5 style="font-style: oblique ; margin-top: 15px">Sistemde gözükmesini istediğiniz şekilde masa isimlerini giriniz.</h5>
-            <form method="post">
-                <th:block th:each="i : ${#numbers.sequence(1,20)}">
-                    <div class="form-group d-flex justify-content-between align-items-center">
-                        <div><span th:text="'Masa '+ *{i} + ' için isim '"></span></div>
-                        <input  type="text" id="masa" style="margin-left: 15px">
-                    </div>
-                </th:block>
-                <button type="submit" class="btn btn-primary" >Kaydet</button>
+        <div class="col-sm-6 d-flex flex-column justify-content-center align-items-center" id="tablenamingcontainer">
+            <h5 style="font-style: oblique ; margin-top: 15px">Sistemde gözükmesini istediğiniz şekilde masa isimlerini
+                giriniz.</h5>
+            <form method="post" th:action="@{/restaurant/tableNaming}" th:object="${tableNameRequest}">
+                <fieldset>
+                    <th:block th:each="requestItem , itemStat : *{requestItemList}">
+
+                        <div class="form-group d-flex justify-content-between align-items-center">
+                            <div><span th:text="'Masa '+ ${itemStat.index + 1} + ' için isim '"></span></div>
+                            <input type="text" th:field="*{requestItemList[__${itemStat.index}__].name}"
+                                   style="margin-left: 15px">
+                            <input type="hidden" th:field="*{requestItemList[__${itemStat.index}__].masaNo}"
+                                   th:value="${itemStat.index}">
+                        </div>
+
+                    </th:block>
+                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                </fieldset>
             </form>
         </div>
     </div>
