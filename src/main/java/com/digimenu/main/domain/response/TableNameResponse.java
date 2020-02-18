@@ -1,10 +1,8 @@
-package com.digimenu.main.domain.request;
+package com.digimenu.main.domain.response;
 
-import javax.validation.constraints.NotEmpty;
 import java.util.Objects;
 
-public class TableNameRequestItem {
-    @NotEmpty
+public class TableNameResponse {
     private Integer masaNo;
     private String name;
 
@@ -28,7 +26,7 @@ public class TableNameRequestItem {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        TableNameRequestItem that = (TableNameRequestItem) o;
+        TableNameResponse that = (TableNameResponse) o;
         return Objects.equals(masaNo, that.masaNo) &&
                 Objects.equals(name, that.name);
     }
@@ -40,7 +38,7 @@ public class TableNameRequestItem {
 
     @Override
     public String toString() {
-        return "TableNameRequestItem{" +
+        return "TableNameResponse{" +
                 "masaNo=" + masaNo +
                 ", name='" + name + '\'' +
                 '}';
