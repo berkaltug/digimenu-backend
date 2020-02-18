@@ -80,14 +80,30 @@ public class RestaurantController {
     @GetMapping("/tables")
     public String getTables(Model model) {
         Restaurant restaurant = restaurantService.getLoggedInRestaurant();
-        Optional<List<TableNameResponse>> tableNames = restaurantService.getTableNames(restaurant);
-        if(tableNames.isPresent()){
-            model.addAttribute("tables", tableNames.get());
-        }else{
-            model.addAttribute("tables", null);
-        }
+        List<TableNameResponse> tableNames = restaurantService.getTableNames(restaurant);
+        model.addAttribute("tables", tableNames);
         model.addAttribute("tableAmount",restaurant.getTableAmount());
         return "showtable";
+    }
+
+    @PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
+    @GetMapping("/tableNaming")
+    public String getTableNaming(Model model) {
+        TableNameRequest request = new TableNameRequest();
+        List<TableNameRequestItem> list = new ArrayList<>();
+        for (int i = 0; i < restaurantService.getLoggedInRestaurant().getTableAmount(); i++) {
+            list.add(new TableNameRequestItem());
+        }
+        request.setRequestItemList(list);
+        model.addAttribute("tableNameRequest", request);
+        return "tablenaming";
+    }
+
+    @PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
+    @PostMapping("/tableNaming")
+    public String postTableNaming(@ModelAttribute(value = "tableNameRequest") TableNameRequest tableNameRequest) {
+        restaurantService.saveTableNames(TableNameDtoConverter.convert(tableNameRequest, restaurantService.getLoggedInRestaurant()));
+        return "redirect:/restaurant/tables";
     }
 
     @PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
@@ -247,33 +263,4 @@ public class RestaurantController {
             this.simpMessagingTemplate.convertAndSendToUser(username, "/restaurant/message", MessageDtoConverter.convert(message));
         }
     }
-
-    @CrossOrigin
-    @GetMapping("/check")
-    @ResponseBody
-    public ResponseEntity checkConnection() {
-        return new ResponseEntity(HttpStatus.OK);
-    }
-
-    @PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
-    @GetMapping("/tableNaming")
-    public String getTableNaming(Model model) {
-        TableNameRequest request = new TableNameRequest();
-        List<TableNameRequestItem> list = new ArrayList<>();
-        for (int i = 0; i < restaurantService.getLoggedInRestaurant().getTableAmount(); i++) {
-            list.add(new TableNameRequestItem());
-        }
-        request.setRequestItemList(list);
-        model.addAttribute("tableNameRequest", request);
-        return "tablenaming";
-    }
-
-    @PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
-    @PostMapping("/tableNaming")
-    public String postTableNaming(@ModelAttribute(value = "tableNameRequest") TableNameRequest tableNameRequest) {
-        restaurantService.saveTableNames(TableNameDtoConverter.convert(tableNameRequest, restaurantService.getLoggedInRestaurant()));
-        return "redirect:/restaurant/tables";
-    }
-
-
 }

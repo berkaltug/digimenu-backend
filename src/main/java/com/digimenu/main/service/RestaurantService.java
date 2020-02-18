@@ -15,5 +15,6 @@ public interface RestaurantService {
 	Restaurant getLoggedInRestaurant();
 	String getLoggedInRestaurantUsername();
 	void saveTableNames(List<TableNameDto> dto);
-	Optional<List<TableNameResponse>> getTableNames(Restaurant restaurant);
+	List<TableNameResponse> getTableNames(Restaurant restaurant);
+	List<TableName> getTableNamesLean(Restaurant restaurant);
 }

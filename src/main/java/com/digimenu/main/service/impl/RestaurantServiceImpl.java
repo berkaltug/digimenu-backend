@@ -62,13 +62,14 @@ public class RestaurantServiceImpl implements RestaurantService {
 	}
 
 	@Override
-	public Optional<List<TableNameResponse>> getTableNames(Restaurant restaurant) {
-		Optional<List<TableName>> tableNames = Optional.of(tableNameRepository.findTableNamesByRestaurant(restaurant));
-		if(tableNames.isPresent()) {
-			return Optional.of(TableNameResponseConverter.convert(tableNames.get()));
-		}else{
-			return Optional.empty();
-		}
+	public List<TableNameResponse> getTableNames(Restaurant restaurant) {
+		List<TableName> tableNames = tableNameRepository.findTableNamesByRestaurant(restaurant);
+			return TableNameResponseConverter.convert(tableNames);
+	}
+
+	@Override
+	public List<TableName> getTableNamesLean(Restaurant restaurant) {
+		return tableNameRepository.findTableNamesByRestaurant(restaurant);
 	}
 
 }
