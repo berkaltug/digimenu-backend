@@ -16,14 +16,20 @@
                 giriniz.</h5>
             <form method="post" th:action="@{/restaurant/tableNaming}" th:object="${tableNameRequest}">
                 <fieldset>
-                    <th:block th:each="requestItem , itemStat : *{requestItemList}">
+                    <th:block th:each="item,itemStat : *{requestItemList}">
 
                         <div class="form-group d-flex justify-content-between align-items-center">
-                            <div><span th:text="'Masa '+ ${itemStat.index + 1} + ' için isim '"></span></div>
+                            <div><span th:text="'Masa '+ ${itemStat.count} + ' için isim '"></span></div>
+                            <input type="hidden"
+                                   th:id="${'requestItemList'+__${itemStat.index}__+'.id'}"
+                                   th:name="${'requestItemList['+__${itemStat.index}__+'].id'}"
+                                   th:value="${item.id}">
                             <input type="text" th:field="*{requestItemList[__${itemStat.index}__].name}"
                                    style="margin-left: 15px">
-                            <input type="hidden" th:field="*{requestItemList[__${itemStat.index}__].masaNo}"
-                                   th:value="${itemStat.index}">
+                            <input type="hidden"
+                                    th:id="${'requestItemList'+__${itemStat.index}__+'.masaNo'}"
+                                   th:name="${'requestItemList['+__${itemStat.index}__+'].masaNo'}"
+                                   th:value="${itemStat.count}">
                         </div>
 
                     </th:block>

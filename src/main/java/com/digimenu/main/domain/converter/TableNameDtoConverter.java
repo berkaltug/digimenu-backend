@@ -13,6 +13,7 @@ public class TableNameDtoConverter {
         final List<TableNameDto> list=new ArrayList<>();
         request.getRequestItemList().forEach(item->{
             TableNameDto dto=new TableNameDto();
+            dto.setId(item.getId());
             dto.setMasaNo(item.getMasaNo());
             dto.setName(item.getName());
             dto.setRestaurant(restaurant);
