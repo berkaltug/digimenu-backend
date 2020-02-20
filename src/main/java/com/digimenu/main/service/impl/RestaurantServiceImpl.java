@@ -4,6 +4,7 @@ import com.digimenu.main.domain.converter.TableNameEntityConverter;
 import com.digimenu.main.domain.converter.TableNameResponseConverter;
 import com.digimenu.main.domain.dto.TableNameDto;
 import com.digimenu.main.domain.entity.TableName;
+import com.digimenu.main.domain.request.TableNameRequest;
 import com.digimenu.main.domain.response.TableNameResponse;
 import com.digimenu.main.repository.TableNameRepository;
 import com.digimenu.main.service.RestaurantService;
@@ -57,19 +58,27 @@ public class RestaurantServiceImpl implements RestaurantService {
 
 	@Override
 	public void saveTableNames(List<TableNameDto> dtoList) {
-		tableNameRepository.saveAll(TableNameEntityConverter.convert(dtoList));
+		TableNameEntityConverter.convert(dtoList).forEach(entity->{
+			tableNameRepository.save(entity);
+		});
 
 	}
 
 	@Override
 	public List<TableNameResponse> getTableNames(Restaurant restaurant) {
-		List<TableName> tableNames = tableNameRepository.findTableNamesByRestaurant(restaurant);
+		List<TableName> tableNames = tableNameRepository.findTableNamesByRestaurantOrderByMasaNoAsc(restaurant);
 			return TableNameResponseConverter.convert(tableNames);
 	}
 
 	@Override
-	public List<TableName> getTableNamesLean(Restaurant restaurant) {
-		return tableNameRepository.findTableNamesByRestaurant(restaurant);
+	public Optional<TableName> getTableName(Restaurant restaurant,Integer masaNo){
+		return Optional.ofNullable(tableNameRepository.findByRestaurantAndMasaNo(restaurant,masaNo));
 	}
-
+	@Override
+	public TableNameRequest getTableNameRequest(Restaurant restaurant){
+		List<TableName> tableNames=tableNameRepository.findTableNamesByRestaurantOrderByMasaNoAsc(restaurant);
+		TableNameRequest request=new TableNameRequest();
+		request.setRequestItemList(TableNameResponseConverter.convertToRequest(tableNames));
+		return request;
+	}
 }

@@ -89,12 +89,15 @@ public class RestaurantController {
     @PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
     @GetMapping("/tableNaming")
     public String getTableNaming(Model model) {
-        TableNameRequest request = new TableNameRequest();
-        List<TableNameRequestItem> list = new ArrayList<>();
-        for (int i = 0; i < restaurantService.getLoggedInRestaurant().getTableAmount(); i++) {
-            list.add(new TableNameRequestItem());
+        Restaurant restaurant = restaurantService.getLoggedInRestaurant();
+        TableNameRequest request = restaurantService.getTableNameRequest(restaurant);
+        if(request.getRequestItemList().isEmpty()) {
+            List<TableNameRequestItem> list = new ArrayList<>();
+            for (int i = 0; i < restaurant.getTableAmount(); i++) {
+                list.add(new TableNameRequestItem());
+            }
+            request.setRequestItemList(list);
         }
-        request.setRequestItemList(list);
         model.addAttribute("tableNameRequest", request);
         return "tablenaming";
     }
@@ -149,6 +152,11 @@ public class RestaurantController {
         Restaurant res = restaurantService.getLoggedInRestaurant();
         try {
             List<Cart> siparisler = cartService.getCart(res.getId(), masaNo);
+            Optional<TableName> tableName = restaurantService.getTableName(res, masaNo);
+            if(tableName.isPresent()){
+                String masaIsmi=tableName.get().getName();
+                model.addAttribute("masaIsmi",masaIsmi);
+            }
             model.addAttribute("masaNo", masaNo);
             model.addAttribute("orders", siparisler);
         } catch (Exception e) {

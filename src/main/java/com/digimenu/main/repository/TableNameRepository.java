@@ -8,5 +8,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface TableNameRepository extends JpaRepository<TableName,Long> {
-    List<TableName> findTableNamesByRestaurant(Restaurant restaurant_id);
+    List<TableName> findTableNamesByRestaurantOrderByMasaNoAsc(Restaurant restaurant);
+    TableName findByRestaurantAndMasaNo(Restaurant restaurant,Integer masaNo);
 }

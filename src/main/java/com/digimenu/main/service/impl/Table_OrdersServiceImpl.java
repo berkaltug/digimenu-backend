@@ -94,6 +94,11 @@ public class Table_OrdersServiceImpl implements Table_OrdersService {
         final List<Cart> cartList = new ArrayList<>();
         final CreateOrderResponse response = new CreateOrderResponse();
         final User user = userService.findByUsername(securityService.findLoggedInUsername());
+        String tableName = "";
+        Optional<TableName> tableNameEntity = restaurantService.getTableName(restaurant, tableOrderDto.getMasaNo());
+        if(tableNameEntity.isPresent()){
+            tableName="[ " + tableNameEntity.get().getName() + " ]";
+        }
         tableOrderDto.getItems().forEach(item -> {
             tableOrdersList.add(TableOrdersEntityConverter.convert(item, tableOrderDto.getMasaNo(), restaurant, user));
             cartList.add(CartEntityConverter.convert(item, tableOrderDto.getMasaNo(), tableOrderDto.getResId()));
@@ -101,7 +106,7 @@ public class Table_OrdersServiceImpl implements Table_OrdersService {
         });
         tor.saveAll(tableOrdersList);
         cartService.saveAllCart(cartList);
-        response.setSocketMessage(makeMessageDto(tableOrderDto.getMasaNo(),cartList,restaurant.getId()));
+        response.setSocketMessage(makeMessageDto(tableOrderDto.getMasaNo(),tableName,cartList,restaurant.getId()));
         response.setRestaurantOwner(restaurant.getOwner().getUsername());
         return Optional.of(response);
     }
@@ -134,9 +139,9 @@ public class Table_OrdersServiceImpl implements Table_OrdersService {
         }
     }
 
-    private MessageDto makeMessageDto(Integer masaNo,List<Cart> cartList,Long resId){
+    private MessageDto makeMessageDto(Integer masaNo,String tableName,List<Cart> cartList,Long resId){
         WebsocketMessage message=new WebsocketMessage();
-        message.setMessage(makeSocketString(masaNo, cartList));
+        message.setMessage(makeSocketString(masaNo,tableName, cartList));
         message.setRestaurantId(resId);
         message.setMasaNo(masaNo);
         WebsocketMessage insertedMessage =websocketMessageService.insertMessage(message);
@@ -153,9 +158,9 @@ public class Table_OrdersServiceImpl implements Table_OrdersService {
     }
 
 
-    private String makeSocketString(Integer masaNo, List<Cart> cartList) {
+    private String makeSocketString(Integer masaNo,String tableName, List<Cart> cartList) {
         StringBuilder sb = new StringBuilder(); //daha sonra formatla oynamak icin stringbuilder
-        sb.append("MASA:" + masaNo + " YENi SİPARİŞ ! <br> ");
+        sb.append("MASA:" + masaNo + " "+ tableName +"  YENi SİPARİŞ ! <br> ");
         cartList.forEach(item -> {
             sb.append("<br>" + " <b> <font color='#ce2865'> " + item.getItem() + " </font> </b> ");
             if (!item.getMessage().isEmpty()) {

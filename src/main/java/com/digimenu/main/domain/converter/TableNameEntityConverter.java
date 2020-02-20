@@ -14,6 +14,7 @@ public class TableNameEntityConverter {
             tableName.setName(item.getName());
             tableName.setRestaurant(item.getRestaurant());
             tableName.setMasaNo(item.getMasaNo());
+            tableName.setId(item.getId());
             list.add(tableName);
         });
         return list;
