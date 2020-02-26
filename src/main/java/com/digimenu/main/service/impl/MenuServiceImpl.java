@@ -45,6 +45,15 @@ public class MenuServiceImpl implements MenuService {
 	}
 
 	@Override
+	public GetMenuResponse getAllItemsByRestaurant(Long id) {
+		GetMenuResponse response = new GetMenuResponse();
+		response.setItems(mr.getByRestaurant(id));
+		Collator collator= Collator.getInstance(new Locale("tr","TR"));
+		response.getItems().sort((menu, t1) -> collator.compare(menu.getItem(),t1.getItem()));
+		return response;
+	}
+
+	@Override
 	public Menu getMenuItem(Long id) {
 		return mr.getOne(id);
 	}
@@ -65,9 +74,20 @@ public class MenuServiceImpl implements MenuService {
 	public void updateMenuItem(Menu menu) {
 		mr.save(menu);
 	}
-	
+
+	@Override
+	public GetMenuResponse getPassiveItemsByRestaurant(Long id) {
+		GetMenuResponse response = new GetMenuResponse();
+		response.setItems(mr.getByRestaurant(id)
+				.stream()
+				.filter(item -> !item.getActive())
+				.collect(Collectors.toList()));
 
 
+		Collator collator= Collator.getInstance(new Locale("tr","TR"));
+		response.getItems().sort((menu, t1) -> collator.compare(menu.getItem(),t1.getItem()));
+		return response;
+	}
 
-	
+
 }
