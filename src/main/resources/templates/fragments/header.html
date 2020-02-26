@@ -11,16 +11,20 @@
     <a class="navbar-brand"><i class="fa fa-qrcode mr-1"></i>Digimenu</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <i class="fas fa-bars" style="color:white"></i>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="showmenu" th:href="@{/restaurant/menu}"><i class="fas fa-book-open mr-2"></i>Menü</a>
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menü İşlemleri</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                    <a class="dropdown-item" href="showmenu" th:href="@{/restaurant/menu}"><i class="fas fa-book-open mr-2"></i>Menü</a>
+                    <a class="dropdown-item" href="passivespage" th:href="@{/restaurant/seePassives}"><i class="fas fa-times-circle mr-2"></i>Pasifleri Gör</a>
+                </div>
             </li>
             <li class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Masa İşlemleri</a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Masa İşlemleri</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
                     <a class="dropdown-item"  th:href="@{/restaurant/tables}"><i class="fas fa-chair mr-2"></i>Masalar</a>
                     <a class="dropdown-item" th:href="@{/restaurant/tableNaming}"><i class="fas fa-pencil-alt mr-2"></i>Masa İsimleri</a>
                 </div>

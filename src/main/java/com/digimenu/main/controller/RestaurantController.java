@@ -12,6 +12,7 @@ import com.digimenu.main.domain.converter.TransferCartConverter;
 import com.digimenu.main.domain.dto.TransferCartDto;
 import com.digimenu.main.domain.entity.*;
 import com.digimenu.main.domain.request.*;
+import com.digimenu.main.domain.response.GetMenuResponse;
 import com.digimenu.main.domain.response.ReportResponse;
 import com.digimenu.main.domain.response.TableNameResponse;
 import com.digimenu.main.service.*;
@@ -113,7 +114,7 @@ public class RestaurantController {
     @GetMapping("/menu")
     public String getMenu(Model model) {
         Restaurant restaurant = restaurantService.getLoggedInRestaurant();
-        model.addAttribute("menu", menuService.getMenuItemsByRestaurant(restaurant.getId()).getItems());
+        model.addAttribute("menu", menuService.getAllItemsByRestaurant(restaurant.getId()).getItems());
         return "showmenu";
     }
 
@@ -270,5 +271,12 @@ public class RestaurantController {
             System.out.println(message.toString());
             this.simpMessagingTemplate.convertAndSendToUser(username, "/restaurant/message", MessageDtoConverter.convert(message));
         }
+    }
+
+    @GetMapping("seePassives")
+    public String getPassives(Model model){
+        GetMenuResponse passives = menuService.getPassiveItemsByRestaurant(restaurantService.getLoggedInRestaurant().getId());
+        model.addAttribute("response",passives.getItems());
+        return "passivespage";
     }
 }
