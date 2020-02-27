@@ -38,17 +38,7 @@ public class Menu{
 
 	private Boolean isActive=true;
 
-	public Menu() {
-	}
-
-	public Menu(@NotNull String item, String ingredients, Double price, Restaurant restaurant, String category, Boolean isActive) {
-		this.item = item;
-		this.ingredients = ingredients;
-		this.price = price;
-		this.restaurant = restaurant;
-		this.category = category;
-		this.isActive = isActive;
-	}
+	private Boolean isFavourite=false;
 
 	public Long getId() {
 		return id;
@@ -106,10 +96,18 @@ public class Menu{
 		isActive = active;
 	}
 
+	public Boolean getFavourite() {
+		return isFavourite;
+	}
+
+	public void setFavourite(Boolean favourite) {
+		isFavourite = favourite;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
-		if (!(o instanceof Menu)) return false;
+		if (o == null || getClass() != o.getClass()) return false;
 		Menu menu = (Menu) o;
 		return Objects.equals(id, menu.id) &&
 				Objects.equals(item, menu.item) &&
@@ -117,12 +115,13 @@ public class Menu{
 				Objects.equals(price, menu.price) &&
 				Objects.equals(restaurant, menu.restaurant) &&
 				Objects.equals(category, menu.category) &&
-				Objects.equals(isActive, menu.isActive);
+				Objects.equals(isActive, menu.isActive) &&
+				Objects.equals(isFavourite, menu.isFavourite);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, item, ingredients, price, restaurant, category, isActive);
+		return Objects.hash(id, item, ingredients, price, restaurant, category, isActive, isFavourite);
 	}
 
 	@Override
@@ -135,8 +134,8 @@ public class Menu{
 				", restaurant=" + restaurant +
 				", category='" + category + '\'' +
 				", isActive=" + isActive +
+				", isFavourite=" + isFavourite +
 				'}';
 	}
-
 }
 
