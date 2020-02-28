@@ -38,34 +38,4 @@ public class SiparisController {
 	GetMenuResponse getMenu(@PathVariable("restaurantmenu") Long id) {
 		return menuService.getMenuItemsByRestaurant(id);
 	}
-	
-	@PreAuthorize("hasRole('ADMIN') OR hasRole('RESTAURANT') OR hasRole('USER')")
-	//Gerek var mı emin değilim
-	@GetMapping("/{restaurantmenu}/{menuitem}") //tek bir itemi ismi ile çeker
-	Menu getMenuItem(@PathVariable("restaurantmenu") Long id,@PathVariable("menuitem") String menuItem) {
-
-		GetMenuResponse menu = menuService.getMenuItemsByRestaurant(id);
-		List<Menu> result=new ArrayList<Menu>();
-		try {
-			result=menu.getItems().stream().filter(m->m.getItem().equals(menuItem)).collect(Collectors.toList());
-			System.out.println(result);
-			if (result.size()!=1) {
-				throw new IllegalStateException(); //buraya alternatif bul!!!!!!!!!!!!!!!!!!!!!
-			}
-			else {
-				return result.get(0);
-			}
-		}
-		catch(Exception e) {
-			System.out.println(e);
-		}
-		return result.get(0);
-	}	
-	
-	@PreAuthorize("hasRole('ADMIN')")
-	@GetMapping("restaurant/{id}")
-	Restaurant getRestaurant(@PathVariable("id") Long id) {
-		return restaurantService.getRestaurant(id);
-	}
-
 }

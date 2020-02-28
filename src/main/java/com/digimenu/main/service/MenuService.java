@@ -8,11 +8,10 @@ import com.digimenu.main.domain.response.GetMenuResponse;
 
 public interface MenuService {
 	GetMenuResponse getMenuItemsByRestaurant(Long id);
-	GetMenuResponse getAllItemsByRestaurant(Long id);
-	GetMenuResponse getPassiveItemsByRestaurant(Long id);
+	List<Menu> getAllItemsByRestaurant(Long id);
+	List<Menu> getPassiveItemsByRestaurant(Long id);
 	Menu getMenuItem(Long id);
 	void saveMenuItem(Menu menu);
 	void deleteMenuItem(Menu menu);
 	void updateMenuItem(Menu menu);
-
 }

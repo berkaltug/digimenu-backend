@@ -114,7 +114,7 @@ public class RestaurantController {
     @GetMapping("/menu")
     public String getMenu(Model model) {
         Restaurant restaurant = restaurantService.getLoggedInRestaurant();
-        model.addAttribute("menu", menuService.getAllItemsByRestaurant(restaurant.getId()).getItems());
+        model.addAttribute("menu", menuService.getAllItemsByRestaurant(restaurant.getId()));
         return "showmenu";
     }
 
@@ -275,8 +275,8 @@ public class RestaurantController {
 
     @GetMapping("seePassives")
     public String getPassives(Model model){
-        GetMenuResponse passives = menuService.getPassiveItemsByRestaurant(restaurantService.getLoggedInRestaurant().getId());
-        model.addAttribute("response",passives.getItems());
+        List<Menu> passives = menuService.getPassiveItemsByRestaurant(restaurantService.getLoggedInRestaurant().getId());
+        model.addAttribute("response",passives);
         return "passivespage";
     }
 }
