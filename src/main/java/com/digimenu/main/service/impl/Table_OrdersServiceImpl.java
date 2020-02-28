@@ -163,7 +163,7 @@ public class Table_OrdersServiceImpl implements Table_OrdersService {
         sb.append("MASA:" + masaNo + " "+ tableName +"  YENi SİPARİŞ ! <br> ");
         cartList.forEach(item -> {
             sb.append("<br>" + " <b> <font color='#ce2865'> " + item.getItem() + " </font> </b> ");
-            if (!item.getMessage().isEmpty()) {
+            if (item.getMessage()!=null && !item.getMessage().isEmpty()) {
                 sb.append(" --> mesaj: " + item.getMessage());
             }
         });

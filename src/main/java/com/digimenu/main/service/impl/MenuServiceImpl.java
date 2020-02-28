@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
 
+import com.digimenu.main.domain.converter.MenuDtoConverter;
 import com.digimenu.main.domain.response.GetMenuResponse;
 import com.digimenu.main.service.MenuService;
 import com.digimenu.main.service.RestaurantService;
@@ -33,24 +34,27 @@ public class MenuServiceImpl implements MenuService {
 	@Override
 	public GetMenuResponse getMenuItemsByRestaurant(Long id) {
 		GetMenuResponse response = new GetMenuResponse();
-		response.setItems(mr.getByRestaurant(id)
+		List<Menu> itemList = mr.getByRestaurant(id);
+		response.setItems(itemList
 				.stream()
 				.filter(item -> item.getActive())
-				.collect(Collectors.toList()));
-
-
+				.collect(Collectors.toList()).stream().map(item-> MenuDtoConverter.convert(item)).collect(Collectors.toList()));
+		response.setFavourites(itemList
+				.stream()
+				.filter(item->item.getFavourite())
+				.collect(Collectors.toList()).stream().map(item-> MenuDtoConverter.convert(item)).collect(Collectors.toList()));
 		Collator collator= Collator.getInstance(new Locale("tr","TR"));
 		response.getItems().sort((menu, t1) -> collator.compare(menu.getItem(),t1.getItem()));
+		response.getFavourites().sort((menu, t1) -> collator.compare(menu.getItem(),t1.getItem()));
 		return response;
 	}
 
 	@Override
-	public GetMenuResponse getAllItemsByRestaurant(Long id) {
-		GetMenuResponse response = new GetMenuResponse();
-		response.setItems(mr.getByRestaurant(id));
+	public List<Menu> getAllItemsByRestaurant(Long id) {
+		List<Menu> items = mr.getByRestaurant(id);
 		Collator collator= Collator.getInstance(new Locale("tr","TR"));
-		response.getItems().sort((menu, t1) -> collator.compare(menu.getItem(),t1.getItem()));
-		return response;
+		items.sort((menu, t1) -> collator.compare(menu.getItem(),t1.getItem()));
+		return items;
 	}
 
 	@Override
@@ -76,17 +80,17 @@ public class MenuServiceImpl implements MenuService {
 	}
 
 	@Override
-	public GetMenuResponse getPassiveItemsByRestaurant(Long id) {
-		GetMenuResponse response = new GetMenuResponse();
-		response.setItems(mr.getByRestaurant(id)
+	public List<Menu> getPassiveItemsByRestaurant(Long id) {
+
+		List<Menu> passives = mr.getByRestaurant(id)
 				.stream()
 				.filter(item -> !item.getActive())
-				.collect(Collectors.toList()));
+				.collect(Collectors.toList());
 
 
 		Collator collator= Collator.getInstance(new Locale("tr","TR"));
-		response.getItems().sort((menu, t1) -> collator.compare(menu.getItem(),t1.getItem()));
-		return response;
+		passives.sort((menu, t1) -> collator.compare(menu.getItem(),t1.getItem()));
+		return passives;
 	}
 
 
