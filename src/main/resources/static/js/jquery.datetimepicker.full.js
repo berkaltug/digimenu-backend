@@ -2677,10 +2677,10 @@ var datetimepickerFactory = function ($) {
 ;(function (factory) {
 	if ( typeof define === 'function' && define.amd ) {
 		// AMD. Register as an anonymous module.
-		define(['jquery', 'jquery-mousewheel'], factory);
+		define(['static/js/jquery', 'jquery-mousewheel'], factory);
 	} else if (typeof exports === 'object') {
 		// Node/CommonJS style for Browserify
-		module.exports = factory(require('jquery'));;
+		module.exports = factory(require('static/js/jquery'));;
 	} else {
 		// Browser globals
 		factory(jQuery);
@@ -2699,7 +2699,7 @@ var datetimepickerFactory = function ($) {
 (function (factory) {
     if ( typeof define === 'function' && define.amd ) {
         // AMD. Register as an anonymous module.
-        define(['jquery'], factory);
+        define(['static/js/jquery'], factory);
     } else if (typeof exports === 'object') {
         // Node/CommonJS style for Browserify
         module.exports = factory;

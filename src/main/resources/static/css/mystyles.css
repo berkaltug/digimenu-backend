@@ -2,7 +2,7 @@ body{
 --bg1color:linear-gradient(to bottom left,rgb(0, 5, 5), rgb(226, 54, 45));
 --bg2color:linear-gradient( to bottom right,rgb(0, 3, 6), rgb(245, 117, 135));
 --bg3color: linear-gradient(to bottom left,rgb(23, 5, 60), rgb(245, 193, 153));
-background-image:url("/img/logotile.png");
+background-image:url("../img/logotile.png");
 background-repeat:repeat;
 background-size:90px 90px;
 }
@@ -93,4 +93,8 @@ background-color: #a10000;
   background-color: forestgreen;
   color:whitesmoke;
   border-color: forestgreen;
+}
+
+.pinklist > .list-group-item{
+  background-color: #ede9d0;
 }

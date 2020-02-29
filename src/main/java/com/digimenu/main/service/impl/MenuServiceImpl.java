@@ -93,5 +93,15 @@ public class MenuServiceImpl implements MenuService {
 		return passives;
 	}
 
+	@Override
+	public List<Menu> getFavoriteItemsByRestaurant(Long id){
+		List<Menu> favourite = mr.getByRestaurant(id)
+				.stream()
+				.filter(item -> item.getFavourite())
+				.collect(Collectors.toList());
+		Collator collator= Collator.getInstance(new Locale("tr","TR"));
+		favourite.sort((menu, t1) -> collator.compare(menu.getItem(),t1.getItem()));
+		return favourite;
+	}
 
 }

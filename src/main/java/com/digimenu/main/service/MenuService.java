@@ -14,4 +14,5 @@ public interface MenuService {
 	void saveMenuItem(Menu menu);
 	void deleteMenuItem(Menu menu);
 	void updateMenuItem(Menu menu);
+	List<Menu> getFavoriteItemsByRestaurant(Long id);
 }

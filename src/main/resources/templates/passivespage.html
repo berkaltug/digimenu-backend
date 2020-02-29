@@ -11,18 +11,31 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-12">
-            <h3 style="color:white;background-color: #a10000;margin: 1rem;">Pasif Ayarlanmış Ürünler </h3>
-                <ul th:if="!${#lists.isEmpty(response)}" class="list-group grid-container">
-                    <li th:each="passive : ${response}" class="list-group-item">
-                        <div th:text="*{passive.item}"></div>
-                    </li>
-                </ul>
-                <ul th:if="${#lists.isEmpty(response)}" class="list-group">
-                    <li class="list-group-item">
-                        <div>Menünüzde Pasif işaretlenmiş ürün bulunmamaktadır.</div>
-                    </li>
-                </ul>
+        <div class="col-sm-6">
+            <h3 style="text-align:center;color:white;background-color: #a10000;margin: 1rem;">Pasif Ayarlanmış Ürünler </h3>
+            <ul th:if="!${#lists.isEmpty(passives)}" class="list-group pinklist">
+                <li th:each="passive : ${passives}" class="list-group-item">
+                    <div th:text="*{passive.item}"></div>
+                </li>
+            </ul>
+            <ul th:if="${#lists.isEmpty(passives)}" class="list-group">
+                <li class="list-group-item">
+                    <div>Menünüzde pasif işaretlenmiş ürün bulunmamaktadır.</div>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-6">
+            <h3 style="text-align:center;color:white;background-color: #a10000;margin: 1rem;">Favorilerdeki Ürünler</h3>
+            <ul th:if="!${#lists.isEmpty(favourites)}" class="list-group pinklist">
+                <li th:each="favourite : ${favourites}" class="list-group-item">
+                    <div th:text="*{favourite.item}"></div>
+                </li>
+            </ul>
+            <ul th:if="${#lists.isEmpty(favourites)}" class="list-group">
+                <li class="list-group-item">
+                    <div>Menünüzde favorilere eklenmiş ürün bulunmamaktadır.</div>
+                </li>
+            </ul>
         </div>
 
     </div>
