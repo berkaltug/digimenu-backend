@@ -273,10 +273,12 @@ public class RestaurantController {
         }
     }
 
-    @GetMapping("seePassives")
+    @GetMapping("/passivesAndFavourites")
     public String getPassives(Model model){
         List<Menu> passives = menuService.getPassiveItemsByRestaurant(restaurantService.getLoggedInRestaurant().getId());
-        model.addAttribute("response",passives);
+        List<Menu> favourites = menuService.getFavoriteItemsByRestaurant(restaurantService.getLoggedInRestaurant().getId());
+        model.addAttribute("passives",passives);
+        model.addAttribute("favourites",favourites);
         return "passivespage";
     }
 }
