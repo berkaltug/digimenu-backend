@@ -7,6 +7,7 @@ import com.digimenu.main.domain.entity.TableName;
 import com.digimenu.main.domain.request.TableNameRequest;
 import com.digimenu.main.domain.response.TableNameResponse;
 import com.digimenu.main.repository.TableNameRepository;
+import com.digimenu.main.service.CampaignService;
 import com.digimenu.main.service.RestaurantService;
 import com.digimenu.main.service.SecurityService;
 import com.digimenu.main.service.UserService;
@@ -27,6 +28,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 	private SecurityService securityService;
 	private UserService userService;
 	private TableNameRepository tableNameRepository;
+
 	@Autowired
 	public RestaurantServiceImpl(RestaurantRepository rr, SecurityService securityService, UserService userService, TableNameRepository tableNameRepository) {
 		this.rr = rr;
@@ -81,4 +83,6 @@ public class RestaurantServiceImpl implements RestaurantService {
 		request.setRequestItemList(TableNameResponseConverter.convertToRequest(tableNames));
 		return request;
 	}
+
+
 }

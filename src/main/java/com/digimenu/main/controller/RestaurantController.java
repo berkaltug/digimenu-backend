@@ -39,9 +39,10 @@ public class RestaurantController {
     private Table_OrdersService tableOrdersService;
     private WebsocketMessageService websocketMessageService;
     private SimpMessagingTemplate simpMessagingTemplate;
+    private CampaignService campaignService;
 
     @Autowired
-    public RestaurantController(RestaurantService restaurantService, MenuService menuService, CartService cartService, CategoryService categoryService, Table_OrdersService tableOrdersService, WebsocketMessageService websocketMessageService, SimpMessagingTemplate simpMessagingTemplate) {
+    public RestaurantController(RestaurantService restaurantService, MenuService menuService, CartService cartService, CategoryService categoryService, Table_OrdersService tableOrdersService, WebsocketMessageService websocketMessageService, SimpMessagingTemplate simpMessagingTemplate, CampaignService campaignService) {
         this.restaurantService = restaurantService;
         this.menuService = menuService;
         this.cartService = cartService;
@@ -49,6 +50,7 @@ public class RestaurantController {
         this.tableOrdersService = tableOrdersService;
         this.websocketMessageService = websocketMessageService;
         this.simpMessagingTemplate = simpMessagingTemplate;
+        this.campaignService = campaignService;
     }
 
     @GetMapping("/login")
