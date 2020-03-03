@@ -125,7 +125,6 @@ public class RestaurantController {
     public String editMenu(Model model, @PathVariable("id") Long id) {
         model.addAttribute("category", categoryService.getCategories());
         model.addAttribute("menu", menuService.getMenuItem(id));
-        System.out.println(menuService.getMenuItem(id));
         return "editmenuitem";
     }
 
@@ -282,5 +281,45 @@ public class RestaurantController {
         model.addAttribute("passives",passives);
         model.addAttribute("favourites",favourites);
         return "passivespage";
+    }
+
+    @GetMapping("/seeCampaigns")
+    public String getCampaigns(Model model){
+        List<Campaign> campaigns = campaignService.getAllCampaignsByRestaurant(restaurantService.getLoggedInRestaurant());
+        model.addAttribute("campaigns",campaigns);
+        return "showcampaigns";
+    }
+
+    @GetMapping("/createCampaign")
+    public String getCreateCampaign(Campaign campaign,Model model){
+        return "createcampaign";
+    }
+
+    @PostMapping("/createCampaign")
+    public String postCreateCampaign(@ModelAttribute(value="campaign") @Valid Campaign campaign,Model model,BindingResult result){
+        if(result.hasErrors()){
+            model.addAttribute("error","Bir hata oluştu.Girdiğiniz alanları kontorl ediniz.");
+            return "createcampaign";
+        }
+        campaign.setRestaurant(restaurantService.getLoggedInRestaurant());
+        campaignService.addCampaign(campaign);
+        return "redirect:/restaurant/seeCampaigns";
+    }
+
+    @GetMapping("/updateCampaign/{id}")
+    public String getUpdateCampaign(@PathVariable("id") Long id,Model model){
+        Campaign campaign = campaignService.getCampaign(id);
+        model.addAttribute("campaign",campaign);
+        return "updatecampaign";
+    }
+
+    @PostMapping("/updateCampaign")
+    public String postUpdateCampaign(@ModelAttribute(value="campaign")  @Valid Campaign campaign,Model model,BindingResult result){
+        if(result.hasErrors()){
+            model.addAttribute("error","Bir hata oluştu,lütfen girdiğiniz alanları kontrol edin");
+            return "updatecampaign";
+        }
+        campaignService.updateCampaign(campaign);
+        return "redirect:/restaurant/seeCampaigns";
     }
 }
