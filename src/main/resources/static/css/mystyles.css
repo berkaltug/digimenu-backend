@@ -111,8 +111,7 @@ background-color: #a10000;
   text-shadow: 0 0 20px white;
 }
 .grid-container>.campaign-item{
-  background: linear-gradient(155deg, rgb(100, 97, 234) 0%, rgb(179, 60, 234) 90%);
-  color:whitesmoke;
+  background: linear-gradient(45deg, rgb(144, 148, 234) 10%, rgb(233, 138, 234) 90%);
 }
 .btn-warning{
   background-color: forestgreen;
