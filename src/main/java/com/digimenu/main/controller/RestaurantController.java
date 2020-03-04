@@ -296,14 +296,14 @@ public class RestaurantController {
     }
 
     @PostMapping("/createCampaign")
-    public String postCreateCampaign(@ModelAttribute(value="campaign") @Valid Campaign campaign,Model model,BindingResult result){
+    public String postCreateCampaign(@ModelAttribute(value="campaign") @Valid Campaign campaign,BindingResult result){
         if(result.hasErrors()){
-            model.addAttribute("error","Bir hata oluştu.Girdiğiniz alanları kontorl ediniz.");
             return "createcampaign";
+        }else {
+            campaign.setRestaurant(restaurantService.getLoggedInRestaurant());
+            campaignService.addCampaign(campaign);
+            return "redirect:/restaurant/seeCampaigns";
         }
-        campaign.setRestaurant(restaurantService.getLoggedInRestaurant());
-        campaignService.addCampaign(campaign);
-        return "redirect:/restaurant/seeCampaigns";
     }
 
     @GetMapping("/updateCampaign/{id}")
@@ -314,12 +314,11 @@ public class RestaurantController {
     }
 
     @PostMapping("/updateCampaign")
-    public String postUpdateCampaign(@ModelAttribute(value="campaign")  @Valid Campaign campaign,Model model,BindingResult result){
+    public String postUpdateCampaign(@ModelAttribute(value="campaign")  @Valid Campaign campaign,BindingResult result){
         if(result.hasErrors()){
-            model.addAttribute("error","Bir hata oluştu,lütfen girdiğiniz alanları kontrol edin");
             return "updatecampaign";
         }
-        campaignService.updateCampaign(campaign);
+        System.out.println(campaignService.updateCampaign(campaign));
         return "redirect:/restaurant/seeCampaigns";
     }
 

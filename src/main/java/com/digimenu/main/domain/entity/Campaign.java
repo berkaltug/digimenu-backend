@@ -13,9 +13,9 @@ public class Campaign {
     @Id
     @GeneratedValue(strategy= GenerationType.SEQUENCE)
     private Long id;
-    @NotEmpty
+    @NotEmpty(message = "İsim boş bırakılamaz")
     private String name;
-    @NotEmpty
+    @NotEmpty(message = "içerik boş bırakılamaz")
     private String contents;
 
     @Digits(integer=6, fraction=2)
@@ -24,7 +24,7 @@ public class Campaign {
     @ManyToOne(fetch= FetchType.LAZY)
     @JoinColumn(name="restaurant_id")
     private Restaurant restaurant;
-    @NotNull
+    @NotNull(message = "Null değer hatası")
     private Boolean isActive;
 
     public Long getId() {
