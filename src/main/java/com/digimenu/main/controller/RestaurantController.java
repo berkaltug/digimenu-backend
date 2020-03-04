@@ -322,4 +322,10 @@ public class RestaurantController {
         campaignService.updateCampaign(campaign);
         return "redirect:/restaurant/seeCampaigns";
     }
+
+    @GetMapping("/deleteCampaign/{id}")
+    public String deleteCampaign(@PathVariable(value = "id") Long id){
+        campaignService.deleteCampaign(id);
+        return "redirect:/restaurant/seeCampaigns";
+    }
 }

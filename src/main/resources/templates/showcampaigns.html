@@ -1,0 +1,51 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <th:block th:replace="fragments/head :: head"></th:block>
+</head>
+<body>
+
+<th:block th:include=" fragments/header :: body"></th:block>
+<div class="container-fluid mt-5">
+    <ul  th:if="!${#lists.isEmpty(campaigns)}" class="grid-container list-group">
+        <li class="list-group-item  justify-content-center align-items-center campaign-item">
+            <span>Yeni kampanya oluştur</span>
+            <div class="btn-group btn-group-sm ml-auto" role="group">
+                <a  class="btn btn-success" th:href="@{/restaurant/createCampaign}">
+                    <i class="fas fa-plus"></i>
+                </a>
+            </div>
+        </li>
+        <li th:each="c : ${campaigns}" th:name="*{c.name}" class="list-group-item  justify-content-center align-items-center campaign-item">
+            <span th:text="*{c.name}"></span>
+            <div class="btn-group btn-group-sm ml-auto" role="group">
+                <a th:href="${'/restaurant/updateCampaign/' + c.id}" class="btn btn-success"><span class="fas fa-edit"></span></a>
+                <a th:href="${'/restaurant/deleteCampaign/' + c.id}" class="btn btn-danger"><span class="fas fa-trash-alt"></span></a>
+            </div>
+        </li>
+    </ul>
+    <ul th:if="${#lists.isEmpty(campaigns)}" class="list-group grid-container">
+        <li class="list-group-item d-flex flex-row justify-content-center campaign-item">
+            <div class="mt-1">Restoranınızda kampanya bulunmamaktadır !</div>
+        </li>
+        <li class="list-group-item  justify-content-center align-items-center campaign-item">
+            <span>Yeni kampanya oluştur</span>
+            <div class="btn-group btn-group-sm ml-auto" role="group">
+                <a  class="btn btn-success" th:href="@{/restaurant/createCampaign}">
+                    <i class="fas fa-plus"></i>
+                </a>
+            </div>
+        </li>
+    </ul>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
