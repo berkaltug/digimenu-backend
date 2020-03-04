@@ -22,11 +22,9 @@
         	 <li class="list-group-item  justify-content-center align-items-center">
 					<span>Yeni ürün ekle</span>
 					<div class="btn-group btn-group-sm ml-auto" role="group">
-
 							<a  class="btn btn-success" th:href="@{/restaurant/additem}">
 							<i class="fas fa-plus"></i>
 							</a>
-
 					</div>
 			 </li>
           <li th:each="m : ${menu}" th:name="*{m.item}" class="list-group-item  justify-content-center align-items-center">
