@@ -1,6 +1,8 @@
 package com.digimenu.main.domain.converter;
 
+import com.digimenu.main.domain.dto.CampaignDto;
 import com.digimenu.main.domain.dto.MenuDto;
+import com.digimenu.main.domain.entity.Campaign;
 import com.digimenu.main.domain.entity.Menu;
 
 public class MenuDtoConverter {

@@ -33,7 +33,6 @@ public class SiparisController {
 	}
 
 	@PreAuthorize("hasRole('ROLE_USER')")
-	//@Secured("USER")
 	@GetMapping("/{restaurantmenu}") //bütün menüyü çeker
 	GetMenuResponse getMenu(@PathVariable("restaurantmenu") Long id) {
 		return menuService.getMenuItemsByRestaurant(id);

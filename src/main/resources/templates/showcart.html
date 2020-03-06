@@ -31,7 +31,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <th:block th:if="${orders!=null and !orders.isEmpty()}">
+                <th:block th:if="${!orders.isEmpty()}">
                     <tr class="siparisItem" th:each=" o : ${orders}">
                         <td th:text="${o.item}"></td>
                         <td class="price" th:text="${o.price} + ' ₺'" th:value="${o.price}" name="price"></td>
