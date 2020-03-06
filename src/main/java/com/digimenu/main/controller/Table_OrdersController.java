@@ -58,17 +58,6 @@ public class Table_OrdersController {
         return table_ordersService.getTable_Orders();
     }
 
-    @PreAuthorize("hasRole('ADMIN')")  //test amaçlı fonk
-    @GetMapping("{restaurant}/{masa}")
-    public Collection<Table_Orders> getTableOrders(@PathVariable("restaurant") Long id, @PathVariable("masa") Integer masaNo) {
-        //return table_ordersService.getByTableNo(masaNo);
-        List<Table_Orders> orders = table_ordersService.getTable_Orders();
-        List<Table_Orders> resorders = orders.stream().filter(o -> o.getRestaurant().getId().equals(id)).collect(Collectors.toList());
-        List<Table_Orders> masaorders = resorders.stream().filter(o -> o.getMasa().equals(masaNo)).collect(Collectors.toList());
-
-        return masaorders;
-    }
-
     @PreAuthorize("hasRole('USER') OR hasRole('RESTAURANT') OR hasRole('ADMIN')")
     @PostMapping("{restaurant}/{masa}")
     public ResponseEntity<String> createTableOrder(@PathVariable("restaurant") Long id, @PathVariable("masa") Integer masaNo, @RequestBody TableOrderRequest request) {
