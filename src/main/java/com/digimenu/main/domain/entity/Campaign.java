@@ -92,4 +92,16 @@ public class Campaign {
     public int hashCode() {
         return Objects.hash(id, name, contents, price, restaurant, isActive);
     }
+
+    @Override
+    public String toString() {
+        return "Campaign{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", contents='" + contents + '\'' +
+                ", price=" + price +
+                ", restaurant=" + restaurant.getId() +
+                ", isActive=" + isActive +
+                '}';
+    }
 }
