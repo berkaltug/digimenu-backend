@@ -69,9 +69,9 @@ public class RestaurantController {
 
     @PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
     @PostMapping("/additem")
-    public String addItemPost(@ModelAttribute(value = "menu") @Valid Menu menu, Model model, BindingResult bindingResult) {
-        System.out.println(menu);
-        if (bindingResult.hasErrors()) {
+    public String addItemPost(@ModelAttribute(value = "menu") @Valid Menu menu,BindingResult result,Model model) {
+        if (result.hasErrors()) {
+            model.addAttribute("category",categoryService.getCategories());
             return "addmenuitem";
         }
         menu.setRestaurant(restaurantService.getLoggedInRestaurant());
@@ -130,7 +130,12 @@ public class RestaurantController {
 
     @PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
     @PostMapping("/updateitem")
-    public String editItem(@ModelAttribute(value = "menu") @Valid Menu menu) {
+    public String editItem(@ModelAttribute(value = "menu") @Valid Menu menu,BindingResult bindingResult,Model model) {
+        if(bindingResult.hasErrors()){
+            model.addAttribute("category", categoryService.getCategories());
+            model.addAttribute("menu", menu);
+            return "editmenuitem";
+        }
         menuService.updateMenuItem(menu);
         return "redirect:/restaurant/menu";
     }
