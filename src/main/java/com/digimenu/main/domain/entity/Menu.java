@@ -1,6 +1,5 @@
 package com.digimenu.main.domain.entity;
 
-import java.math.BigDecimal;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -33,9 +32,10 @@ public class Menu{
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="restaurant_id")
 	private Restaurant restaurant;
-	
-	
-	//fk bağlamadık o yüzden String , mappinge gerek yok diye düşündüm 
+
+	private Float rating;
+	private Integer voteCount;
+
 	private String category;
 
 	private Boolean isActive=true;
@@ -106,6 +106,22 @@ public class Menu{
 		isFavourite = favourite;
 	}
 
+	public Float getRating() {
+		return rating;
+	}
+
+	public void setRating(Float rating) {
+		this.rating = rating;
+	}
+
+	public Integer getVoteCount() {
+		return voteCount;
+	}
+
+	public void setVoteCount(Integer voteCount) {
+		this.voteCount = voteCount;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -116,6 +132,8 @@ public class Menu{
 				Objects.equals(ingredients, menu.ingredients) &&
 				Objects.equals(price, menu.price) &&
 				Objects.equals(restaurant, menu.restaurant) &&
+				Objects.equals(rating, menu.rating) &&
+				Objects.equals(voteCount, menu.voteCount) &&
 				Objects.equals(category, menu.category) &&
 				Objects.equals(isActive, menu.isActive) &&
 				Objects.equals(isFavourite, menu.isFavourite);
@@ -123,7 +141,7 @@ public class Menu{
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, item, ingredients, price, restaurant, category, isActive, isFavourite);
+		return Objects.hash(id, item, ingredients, price, restaurant, rating, voteCount, category, isActive, isFavourite);
 	}
 
 	@Override
@@ -133,7 +151,9 @@ public class Menu{
 				", item='" + item + '\'' +
 				", ingredients='" + ingredients + '\'' +
 				", price=" + price +
-				", restaurant=" + restaurant +
+				", restaurant=" + restaurant.getId() +
+				", rating=" + rating +
+				", voteCount=" + voteCount +
 				", category='" + category + '\'' +
 				", isActive=" + isActive +
 				", isFavourite=" + isFavourite +

@@ -27,6 +27,9 @@ public class Campaign {
     @NotNull(message = "Null değer hatası")
     private Boolean isActive;
 
+    private Float rating;
+    private Integer voteCount;
+
     public Long getId() {
         return id;
     }
@@ -75,6 +78,22 @@ public class Campaign {
         isActive = active;
     }
 
+    public Float getRating() {
+        return rating;
+    }
+
+    public void setRating(Float rating) {
+        this.rating = rating;
+    }
+
+    public Integer getVoteCount() {
+        return voteCount;
+    }
+
+    public void setVoteCount(Integer voteCount) {
+        this.voteCount = voteCount;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -85,12 +104,14 @@ public class Campaign {
                 Objects.equals(contents, campaign.contents) &&
                 Objects.equals(price, campaign.price) &&
                 Objects.equals(restaurant, campaign.restaurant) &&
-                Objects.equals(isActive, campaign.isActive);
+                Objects.equals(isActive, campaign.isActive) &&
+                Objects.equals(rating, campaign.rating) &&
+                Objects.equals(voteCount, campaign.voteCount);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, contents, price, restaurant, isActive);
+        return Objects.hash(id, name, contents, price, restaurant, isActive, rating, voteCount);
     }
 
     @Override
@@ -102,6 +123,8 @@ public class Campaign {
                 ", price=" + price +
                 ", restaurant=" + restaurant.getId() +
                 ", isActive=" + isActive +
+                ", rating=" + rating +
+                ", voteCount=" + voteCount +
                 '}';
     }
 }

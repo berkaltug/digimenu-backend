@@ -1,17 +1,9 @@
 package com.digimenu.main.domain.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import com.digimenu.main.security.User;
@@ -44,6 +36,9 @@ public class Restaurant {
     private Double latitude;
     private Double longitude;
     private Double radius;
+
+    @OneToMany(cascade=CascadeType.ALL,mappedBy = "restaurant")
+	private List<Comment> comments=new ArrayList<>();
 
     @NotNull
     private Integer tableAmount;
@@ -139,6 +134,24 @@ public class Restaurant {
 		this.tableAmount = tableAmount;
 	}
 
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+
+	public void addComment(Comment comment){
+		comments.add(comment);
+		comment.setRestaurant(this);
+	}
+
+	public void removeComment(Comment comment){
+		comments.remove(comment);
+		comment.setRestaurant(null);
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -154,12 +167,13 @@ public class Restaurant {
 				Objects.equals(latitude, that.latitude) &&
 				Objects.equals(longitude, that.longitude) &&
 				Objects.equals(radius, that.radius) &&
+				Objects.equals(comments, that.comments) &&
 				Objects.equals(tableAmount, that.tableAmount);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, name, city, address, tel, mail, owner, latitude, longitude, radius, tableAmount);
+		return Objects.hash(id, name, city, address, tel, mail, owner, latitude, longitude, radius, comments, tableAmount);
 	}
 
 	@Override

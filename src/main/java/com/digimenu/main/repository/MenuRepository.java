@@ -1,6 +1,7 @@
 package com.digimenu.main.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.digimenu.main.domain.entity.Restaurant;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,4 +14,6 @@ public interface MenuRepository extends JpaRepository<Menu, Long> {
 	
 	@Query(value="select * from public.menu m where m.restaurant_id= :res",nativeQuery=true)
 	List<Menu> getByRestaurant(@Param("res")Long res);
+
+	Optional<Menu> findByRestaurantAndItem(Restaurant restaurant, String item);
 }

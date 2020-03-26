@@ -4,6 +4,7 @@ import com.digimenu.main.domain.entity.Campaign;
 import com.digimenu.main.domain.entity.Restaurant;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CampaignService {
 
@@ -12,4 +13,5 @@ public interface CampaignService {
     Campaign updateCampaign(Campaign campaign);
     Campaign addCampaign(Campaign campaign);
     List<Campaign> getAllCampaignsByRestaurant(Restaurant restaurant);
+    Optional<Campaign> getByNameAndRestaurant(Restaurant restaurant, String name);
 }

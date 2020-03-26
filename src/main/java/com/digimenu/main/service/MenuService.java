@@ -1,6 +1,7 @@
 package com.digimenu.main.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.digimenu.main.domain.entity.Menu;
 import com.digimenu.main.domain.entity.Restaurant;
@@ -15,4 +16,5 @@ public interface MenuService {
 	void deleteMenuItem(Menu menu);
 	void updateMenuItem(Menu menu);
 	List<Menu> getFavoriteItemsByRestaurant(Long id);
+	Optional<Menu> getMenuByRestaurantAndName(Restaurant restaurant, String name);
 }

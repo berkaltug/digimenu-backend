@@ -28,7 +28,6 @@ public class CustomUserDetailsService implements UserDetailsService {
 	protected final Log logger = LogFactory.getLog(getClass());
 	@Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
-//		boolean isEnabled=true;
 		boolean accountNonExpired = true;
 	    boolean credentialsNonExpired = true;
 	    boolean accountNonLocked = true;
