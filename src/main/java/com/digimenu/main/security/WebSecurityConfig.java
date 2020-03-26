@@ -58,7 +58,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
 			http.requestMatchers()
-					.antMatchers("/user/**", "/table_orders/**").and()
+					.antMatchers("/user/**", "/table_orders/**","/comment/**").and()
 					.authorizeRequests()
 					.antMatchers(
 							"/user/register",

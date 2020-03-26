@@ -1,16 +1,12 @@
 package com.digimenu.main.service.impl;
 
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 import com.digimenu.main.domain.converter.CartEntityConverter;
 import com.digimenu.main.domain.converter.MessageDtoConverter;
-import com.digimenu.main.domain.converter.TableOrderDtoConverter;
 import com.digimenu.main.domain.converter.TableOrdersEntityConverter;
 import com.digimenu.main.domain.dto.CallWaitressDto;
 import com.digimenu.main.domain.dto.MessageDto;
@@ -21,10 +17,6 @@ import com.digimenu.main.domain.response.CreateOrderResponse;
 import com.digimenu.main.domain.response.ReportResponse;
 import com.digimenu.main.security.User;
 import com.digimenu.main.service.*;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,7 +30,6 @@ public class Table_OrdersServiceImpl implements Table_OrdersService {
 
     private Table_OrdersRepository tor;
     private RestaurantService restaurantService;
-    private MenuService menuService;
     private CartService cartService;
     private SecurityService securityService;
     private UserService userService;
@@ -46,10 +37,9 @@ public class Table_OrdersServiceImpl implements Table_OrdersService {
     private WebsocketMessageService websocketMessageService;
 
     @Autowired
-    public Table_OrdersServiceImpl(Table_OrdersRepository tor, RestaurantService restaurantService, MenuService menuService, CartService cartService, SecurityService securityService, UserService userService, MapsService mapsService, WebsocketMessageService websocketMessageService) {
+    public Table_OrdersServiceImpl(Table_OrdersRepository tor, RestaurantService restaurantService, CartService cartService, SecurityService securityService, UserService userService, MapsService mapsService, WebsocketMessageService websocketMessageService) {
         this.tor = tor;
         this.restaurantService = restaurantService;
-        this.menuService = menuService;
         this.cartService = cartService;
         this.securityService = securityService;
         this.userService = userService;

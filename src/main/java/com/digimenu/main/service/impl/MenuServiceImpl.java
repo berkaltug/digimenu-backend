@@ -3,11 +3,13 @@ package com.digimenu.main.service.impl;
 import java.text.Collator;
 import java.util.List;
 import java.util.Locale;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.digimenu.main.domain.converter.CampaignResponseItemConverter;
 import com.digimenu.main.domain.converter.MenuDtoConverter;
 import com.digimenu.main.domain.entity.Campaign;
+import com.digimenu.main.domain.entity.Restaurant;
 import com.digimenu.main.domain.response.GetMenuResponse;
 import com.digimenu.main.service.CampaignService;
 import com.digimenu.main.service.MenuService;
@@ -111,4 +113,8 @@ public class MenuServiceImpl implements MenuService {
 		return favourite;
 	}
 
+	@Override
+	public Optional<Menu> getMenuByRestaurantAndName(Restaurant restaurant, String name){
+		return menuRepository.findByRestaurantAndItem(restaurant,name);
+	}
 }

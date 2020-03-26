@@ -24,17 +24,17 @@ insert into category(id,name) values (-1,'İçecekler'),(-2,'Yiyecekler'),(-3,'Y
 
 
 
-insert into menu(id,item,ingredients,price,restaurant_id,category,is_active,is_favourite) values (-1,'ciğer','dana ciğer',17,1,'Ana Yemek',true,false);
-insert into menu(id,item,ingredients,price,restaurant_id,category,is_active,is_favourite) values (-2,'ayran','yogurt',3,1,'İçecek',true,false);
-insert into menu(id,item,ingredients,price,restaurant_id,category,is_active,is_favourite) values (-3,'ciğer sarma','dana ciğer,lavaş',15.45,1,'Ana Yemek',true,false);
-insert into menu(id,item,ingredients,price,restaurant_id,category,is_active,is_favourite) values (-4,'Izgara Köfte','dana kıyma,maydanoz,biber',16.56,1,'Ana Yemek',true,false);
-insert into menu(id,item,ingredients,price,restaurant_id,category,is_active,is_favourite) values (-5,'Vali Kebabı','Köfte,Adana Kebap,Urfa Kebap,Lahmacun',35,1,'Ana Yemek',true,false);
-insert into menu(id,item,ingredients,price,restaurant_id,category,is_active,is_favourite) values (-6,'İşkembe Çorbası','işkembe,sarımsak,sirke',10,1,'Ana Yemek',true,false);
-insert into menu(id,item,ingredients,price,restaurant_id,category,is_active,is_favourite) values (-7,'Coca-Cola','',5,1,'İçecek',true,false);
-insert into menu(id,item,ingredients,price,restaurant_id,category,is_active,is_favourite) values (-8,'Fanta','',5,1,'İçecek',true,false);
-insert into menu(id,item,ingredients,price,restaurant_id,category,is_active,is_favourite) values (-9,'Su','',2,1,'İçecek',true,false);
-insert into menu(id,item,ingredients,price,restaurant_id,category,is_active,is_favourite) values (-10,'bira','bira',20,2,'Alkollü İçecek',true,false);
-insert into menu(id,item,ingredients,price,restaurant_id,category,is_active,is_favourite) values (-11,'patates kızartması','patetes,yağ',10,2,'Aperatifler',true,false);
+insert into menu(id,item,ingredients,price,restaurant_id,category,is_active,is_favourite,rating,vote_count) values (-1,'ciğer','dana ciğer',17,1,'Ana Yemek',true,false,0,0);
+insert into menu(id,item,ingredients,price,restaurant_id,category,is_active,is_favourite,rating,vote_count) values (-2,'ayran','yogurt',3,1,'İçecek',true,false,0,0);
+insert into menu(id,item,ingredients,price,restaurant_id,category,is_active,is_favourite,rating,vote_count) values (-3,'ciğer sarma','dana ciğer,lavaş',15.45,1,'Ana Yemek',true,false,0,0);
+insert into menu(id,item,ingredients,price,restaurant_id,category,is_active,is_favourite,rating,vote_count) values (-4,'Izgara Köfte','dana kıyma,maydanoz,biber',16.56,1,'Ana Yemek',true,false,0,0);
+insert into menu(id,item,ingredients,price,restaurant_id,category,is_active,is_favourite,rating,vote_count) values (-5,'Vali Kebabı','Köfte,Adana Kebap,Urfa Kebap,Lahmacun',35,1,'Ana Yemek',true,false,0,0);
+insert into menu(id,item,ingredients,price,restaurant_id,category,is_active,is_favourite,rating,vote_count) values (-6,'İşkembe Çorbası','işkembe,sarımsak,sirke',10,1,'Ana Yemek',true,false,0,0);
+insert into menu(id,item,ingredients,price,restaurant_id,category,is_active,is_favourite,rating,vote_count) values (-7,'Coca-Cola','',5,1,'İçecek',true,false,0,0);
+insert into menu(id,item,ingredients,price,restaurant_id,category,is_active,is_favourite,rating,vote_count) values (-8,'Fanta','',5,1,'İçecek',true,false,0,0);
+insert into menu(id,item,ingredients,price,restaurant_id,category,is_active,is_favourite,rating,vote_count) values (-9,'Su','',2,1,'İçecek',true,false,0,0);
+insert into menu(id,item,ingredients,price,restaurant_id,category,is_active,is_favourite,rating,vote_count) values (-10,'bira','bira',20,2,'Alkollü İçecek',true,false,0,0);
+insert into menu(id,item,ingredients,price,restaurant_id,category,is_active,is_favourite,rating,vote_count) values (-11,'patates kızartması','patetes,yağ',10,2,'Aperatifler',true,false,0,0);
 
 
 
