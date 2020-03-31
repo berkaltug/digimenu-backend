@@ -47,7 +47,7 @@ public interface Table_OrdersRepository extends JpaRepository<Table_Orders, Long
 			"(SELECT r.name from Restaurant r WHERE r.id=t.restaurant) AS restaurantName, " +
 			"DAY(t.siparisTarihi) AS orderDate " +
 			"FROM Table_Orders t " +
-			"WHERE t.user = : userId " +
+			"WHERE t.user = :userId " +
 			"GROUP BY t.item , t.restaurant,DAY(t.siparisTarihi)")
-	List<PastOrdersProjection> getPastUserOrders(@Param("userId") User id);
+	List<PastOrdersProjection> getPastUserOrders(@Param("userId") User user);
 }

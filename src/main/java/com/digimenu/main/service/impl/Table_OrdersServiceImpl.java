@@ -14,6 +14,7 @@ import com.digimenu.main.domain.dto.TableOrderDto;
 import com.digimenu.main.domain.entity.*;
 import com.digimenu.main.domain.response.CallWaitressResponse;
 import com.digimenu.main.domain.response.CreateOrderResponse;
+import com.digimenu.main.domain.response.PastOrdersResponse;
 import com.digimenu.main.domain.response.ReportResponse;
 import com.digimenu.main.security.User;
 import com.digimenu.main.service.*;
@@ -22,13 +23,10 @@ import org.springframework.stereotype.Service;
 
 import com.digimenu.main.repository.Table_OrdersRepository;
 
-import static java.lang.Math.sqrt;
-import static java.lang.Math.pow;
-
 @Service
 public class Table_OrdersServiceImpl implements Table_OrdersService {
 
-    private Table_OrdersRepository tor;
+    private Table_OrdersRepository tableOrdersRepository;
     private RestaurantService restaurantService;
     private CartService cartService;
     private SecurityService securityService;
@@ -37,8 +35,8 @@ public class Table_OrdersServiceImpl implements Table_OrdersService {
     private WebsocketMessageService websocketMessageService;
 
     @Autowired
-    public Table_OrdersServiceImpl(Table_OrdersRepository tor, RestaurantService restaurantService, CartService cartService, SecurityService securityService, UserService userService, MapsService mapsService, WebsocketMessageService websocketMessageService) {
-        this.tor = tor;
+    public Table_OrdersServiceImpl(Table_OrdersRepository tableOrdersRepository, RestaurantService restaurantService, CartService cartService, SecurityService securityService, UserService userService, MapsService mapsService, WebsocketMessageService websocketMessageService) {
+        this.tableOrdersRepository = tableOrdersRepository;
         this.restaurantService = restaurantService;
         this.cartService = cartService;
         this.securityService = securityService;
@@ -49,27 +47,27 @@ public class Table_OrdersServiceImpl implements Table_OrdersService {
 
     @Override
     public Table_Orders getTable_Order(Long id) {
-        return tor.getOne(id);
+        return tableOrdersRepository.getOne(id);
     }
 
     @Override
     public List<Table_Orders> getByTableNo(Integer no) {
-        return tor.getByMasaNo(no);
+        return tableOrdersRepository.getByMasaNo(no);
     }
 
     @Override
     public List<Table_Orders> getTable_Orders() {
-        return tor.findAll();
+        return tableOrdersRepository.findAll();
     }
 
     @Override
     public void deleteTable_Order(Long id) {
-        tor.delete(tor.getOne(id));
+        tableOrdersRepository.delete(tableOrdersRepository.getOne(id));
     }
 
     @Override
     public void addTable_Order(Table_Orders tableorders) {
-        tor.save(tableorders);
+        tableOrdersRepository.save(tableorders);
     }
 
     @Override
@@ -94,7 +92,7 @@ public class Table_OrdersServiceImpl implements Table_OrdersService {
             cartList.add(CartEntityConverter.convert(item, tableOrderDto.getMasaNo(), tableOrderDto.getResId()));
 
         });
-        tor.saveAll(tableOrdersList);
+        tableOrdersRepository.saveAll(tableOrdersList);
         cartService.saveAllCart(cartList);
         response.setSocketMessage(makeMessageDto(tableOrderDto.getMasaNo(),tableName,cartList,restaurant.getId()));
         response.setRestaurantOwner(restaurant.getOwner().getUsername());
@@ -104,7 +102,7 @@ public class Table_OrdersServiceImpl implements Table_OrdersService {
     @Override
     public ReportResponse getReport(Timestamp startdate, Timestamp endate) {
         ReportResponse response = new ReportResponse();
-        response.setReportList(tor.getSellReport(restaurantService.getLoggedInRestaurant(),
+        response.setReportList(tableOrdersRepository.getSellReport(restaurantService.getLoggedInRestaurant(),
                 startdate,
                 endate)
         );
@@ -113,7 +111,7 @@ public class Table_OrdersServiceImpl implements Table_OrdersService {
 
     @Override
     public void deleteWrongTableOrder(Restaurant res, String name, Integer masaNo) {
-        tor.deleteWrongOrder(res.getId(), name, masaNo);
+        tableOrdersRepository.deleteWrongOrder(res.getId(), name, masaNo);
     }
 
     @Override
@@ -129,6 +127,12 @@ public class Table_OrdersServiceImpl implements Table_OrdersService {
         }
     }
 
+    @Override
+    public PastOrdersResponse findUsersPastOrders(){
+        PastOrdersResponse response = new PastOrdersResponse();
+        response.setPastOders(tableOrdersRepository.getPastUserOrders(userService.findLoggedInUser()));
+        return response;
+    }
     private MessageDto makeMessageDto(Integer masaNo,String tableName,List<Cart> cartList,Long resId){
         WebsocketMessage message=new WebsocketMessage();
         message.setMessage(makeSocketString(masaNo,tableName, cartList));
