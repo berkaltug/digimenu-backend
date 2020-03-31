@@ -10,6 +10,7 @@ import com.digimenu.main.domain.entity.Restaurant;
 import com.digimenu.main.domain.entity.Table_Orders;
 import com.digimenu.main.domain.response.CallWaitressResponse;
 import com.digimenu.main.domain.response.CreateOrderResponse;
+import com.digimenu.main.domain.response.PastOrdersResponse;
 import com.digimenu.main.domain.response.ReportResponse;
 
 public interface Table_OrdersService {
@@ -22,4 +23,5 @@ public interface Table_OrdersService {
 	ReportResponse getReport(Timestamp startdate, Timestamp endate);
 	void deleteWrongTableOrder(Restaurant res,String name,Integer masaNo);
 	Optional<CallWaitressResponse> callWaitress(CallWaitressDto dto);
+	PastOrdersResponse findUsersPastOrders();
 }

@@ -7,4 +7,5 @@ public interface UserService {
 	void forgetPassUserSave(User user) throws Exception;
 	User findByUsername(String username);
 	User findByEmail(String email);
+	User findLoggedInUser();
 }

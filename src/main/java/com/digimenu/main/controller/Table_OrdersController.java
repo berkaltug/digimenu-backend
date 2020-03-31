@@ -13,6 +13,7 @@ import com.digimenu.main.domain.request.LocationRequest;
 import com.digimenu.main.domain.request.TableOrderRequest;
 import com.digimenu.main.domain.response.CallWaitressResponse;
 import com.digimenu.main.domain.response.CreateOrderResponse;
+import com.digimenu.main.domain.response.PastOrdersResponse;
 import com.digimenu.main.service.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -82,5 +83,11 @@ public class Table_OrdersController {
         }
     }
 
+    @PreAuthorize("hasRole('USER') OR hasRole('RESTAURANT') OR hasRole('ADMIN')")
+    @GetMapping("/pastOrders")
+    public ResponseEntity<PastOrdersResponse> getPastOrders(){
+        PastOrdersResponse response = table_ordersService.findUsersPastOrders();
+        return new ResponseEntity<>(response,HttpStatus.OK);
+    }
 
 }
