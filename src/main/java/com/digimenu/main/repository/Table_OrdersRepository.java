@@ -8,7 +8,9 @@ import java.util.Date;
 
 import com.digimenu.main.domain.dto.ReportDto;
 import com.digimenu.main.domain.entity.Restaurant;
+import com.digimenu.main.domain.projection.PastOrdersProjection;
 import com.digimenu.main.domain.projection.ReportProjection;
+import com.digimenu.main.security.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -38,4 +40,14 @@ public interface Table_OrdersRepository extends JpaRepository<Table_Orders, Long
 	@Modifying
 	@Query(value = "DELETE FROM public.table_orders t WHERE t.id IN (SELECT t.id FROM public.table_orders t WHERE t.restaurant_id=?1  AND t.item=?2 AND t.masa=?3 LIMIT 1)", nativeQuery=true)
 	int deleteWrongOrder( long resId , String name , Integer masaNo);
+
+
+	//r.id=t.restaurant uyumsuz olabilir
+	@Query(value = "SELECT count(t.item) AS count,t.item AS name,t.restaurant AS restaurantId, " +
+			"(SELECT r.name from Restaurant r WHERE r.id=t.restaurant) AS restaurantName, " +
+			"DAY(t.siparisTarihi) AS orderDate " +
+			"FROM Table_Orders t " +
+			"WHERE t.user = : userId " +
+			"GROUP BY t.item , t.restaurant,DAY(t.siparisTarihi)")
+	List<PastOrdersProjection> getPastUserOrders(@Param("userId") User id);
 }
