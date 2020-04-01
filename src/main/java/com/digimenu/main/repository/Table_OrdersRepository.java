@@ -42,12 +42,16 @@ public interface Table_OrdersRepository extends JpaRepository<Table_Orders, Long
 	int deleteWrongOrder( long resId , String name , Integer masaNo);
 
 
-	//r.id=t.restaurant uyumsuz olabilir
-	@Query(value = "SELECT count(t.item) AS count,t.item AS name,t.restaurant AS restaurantId, " +
-			"(SELECT r.name from Restaurant r WHERE r.id=t.restaurant) AS restaurantName, " +
-			"DAY(t.siparisTarihi) AS orderDate " +
-			"FROM Table_Orders t " +
-			"WHERE t.user = :userId " +
-			"GROUP BY t.item , t.restaurant,DAY(t.siparisTarihi)")
-	List<PastOrdersProjection> getPastUserOrders(@Param("userId") User user);
+	//çalışmıyor bu halini düzeltip kullanmak lazım
+//	@Query(value = "SELECT count(t.item) AS count,t.item AS name,t.restaurant AS restaurantId, " + "DAY(t.siparisTarihi) AS orderDate " +
+//			"FROM Table_Orders t " +
+//			"WHERE t.user = :userId " +
+//			"GROUP BY t.item , t.restaurant,DAY(t.siparisTarihi)")
+//	List<PastOrdersProjection> getPastUserOrders(@Param("userId") User user);
+
+	@Query(value = "select count(t.item) as count ,t.item as name , t.restaurant_id as restaurantId , (select r.name from restaurant r where r.id=t.restaurant_id) as restaurantName, date(t.siparis_tarihi) as orderDate " +
+			"from table_orders t " +
+			"where t.user_id = :userId " +
+			"group by t.item,t.restaurant_id,date(t.siparis_tarihi)" , nativeQuery = true)
+	List<PastOrdersProjection> getPastUserOrders(@Param("userId") Long userId );
 }

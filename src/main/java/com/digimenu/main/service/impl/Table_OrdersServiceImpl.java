@@ -130,9 +130,10 @@ public class Table_OrdersServiceImpl implements Table_OrdersService {
     @Override
     public PastOrdersResponse findUsersPastOrders(){
         PastOrdersResponse response = new PastOrdersResponse();
-        response.setPastOders(tableOrdersRepository.getPastUserOrders(userService.findLoggedInUser()));
+        response.setPastOders(tableOrdersRepository.getPastUserOrders(userService.findLoggedInUser().getId()));
         return response;
     }
+
     private MessageDto makeMessageDto(Integer masaNo,String tableName,List<Cart> cartList,Long resId){
         WebsocketMessage message=new WebsocketMessage();
         message.setMessage(makeSocketString(masaNo,tableName, cartList));
