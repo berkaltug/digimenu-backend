@@ -1,20 +1,20 @@
 package com.digimenu.main.domain.response;
 
-import com.digimenu.main.domain.projection.PastOrdersProjection;
+import com.digimenu.main.domain.dto.PastOrdersResponseDto;
 
 import java.util.List;
 import java.util.Objects;
 
 public class PastOrdersResponse {
 
-    List<PastOrdersProjection> pastOders;
+    private List<PastOrdersResponseDto> pastOrders;
 
-    public List<PastOrdersProjection> getPastOders() {
-        return pastOders;
+    public List<PastOrdersResponseDto> getPastOrders() {
+        return pastOrders;
     }
 
-    public void setPastOders(List<PastOrdersProjection> pastOders) {
-        this.pastOders = pastOders;
+    public void setPastOrders(List<PastOrdersResponseDto> pastOrders) {
+        this.pastOrders = pastOrders;
     }
 
     @Override
@@ -22,18 +22,18 @@ public class PastOrdersResponse {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PastOrdersResponse that = (PastOrdersResponse) o;
-        return Objects.equals(pastOders, that.pastOders);
+        return Objects.equals(pastOrders, that.pastOrders);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(pastOders);
+        return Objects.hash(pastOrders);
     }
 
     @Override
     public String toString() {
-        return "PastOrdersResponse{" +
-                "pastOders=" + pastOders +
+        return "PastOrderResponse{" +
+                "pastOrders=" + pastOrders +
                 '}';
     }
 }

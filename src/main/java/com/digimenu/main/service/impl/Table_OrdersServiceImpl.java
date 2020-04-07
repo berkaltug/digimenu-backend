@@ -1,21 +1,24 @@
 package com.digimenu.main.service.impl;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import com.digimenu.main.domain.converter.CartEntityConverter;
 import com.digimenu.main.domain.converter.MessageDtoConverter;
+import com.digimenu.main.domain.converter.PastOrdersResponseConverter;
 import com.digimenu.main.domain.converter.TableOrdersEntityConverter;
 import com.digimenu.main.domain.dto.CallWaitressDto;
 import com.digimenu.main.domain.dto.MessageDto;
 import com.digimenu.main.domain.dto.TableOrderDto;
 import com.digimenu.main.domain.entity.*;
+import com.digimenu.main.domain.projection.PastOrdersProjection;
 import com.digimenu.main.domain.response.CallWaitressResponse;
 import com.digimenu.main.domain.response.CreateOrderResponse;
+import com.digimenu.main.domain.dto.PastOrdersResponseDto;
 import com.digimenu.main.domain.response.PastOrdersResponse;
 import com.digimenu.main.domain.response.ReportResponse;
+import com.digimenu.main.domain.util.PastTuple;
 import com.digimenu.main.security.User;
 import com.digimenu.main.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -129,10 +132,14 @@ public class Table_OrdersServiceImpl implements Table_OrdersService {
 
     @Override
     public PastOrdersResponse findUsersPastOrders(){
-        PastOrdersResponse response = new PastOrdersResponse();
-        response.setPastOders(tableOrdersRepository.getPastUserOrders(userService.findLoggedInUser().getId()));
-        return response;
+
+        Map<PastTuple, List<PastOrdersProjection>> orders = tableOrdersRepository.getPastUserOrders(userService.findLoggedInUser().getId())
+                .stream()
+                .collect(Collectors.groupingBy(order -> new PastTuple(order.getRestaurantId(), order.getRestaurantName(), order.getOrderDate())));
+
+        return PastOrdersResponseConverter.convert(orders);
     }
+
 
     private MessageDto makeMessageDto(Integer masaNo,String tableName,List<Cart> cartList,Long resId){
         WebsocketMessage message=new WebsocketMessage();

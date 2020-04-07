@@ -1,23 +1,16 @@
 package com.digimenu.main.controller;
 
-import java.util.Arrays;
-import java.util.Map;
 import java.util.Optional;
-import java.util.UUID;
 
 import javax.validation.Valid;
 
-import com.digimenu.main.domain.response.PastOrdersResponse;
 import com.digimenu.main.service.SecurityService;
 import com.digimenu.main.service.SendGridMailService;
 import com.sendgrid.helpers.mail.objects.Content;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,9 +23,6 @@ import com.digimenu.main.security.ConfirmationToken;
 import com.digimenu.main.security.PasswordResetToken;
 import com.digimenu.main.security.User;
 import com.digimenu.main.service.UserService;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @RequestMapping(value="/user")

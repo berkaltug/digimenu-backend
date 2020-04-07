@@ -10,6 +10,7 @@ import com.digimenu.main.domain.entity.Restaurant;
 import com.digimenu.main.domain.entity.Table_Orders;
 import com.digimenu.main.domain.response.CallWaitressResponse;
 import com.digimenu.main.domain.response.CreateOrderResponse;
+import com.digimenu.main.domain.dto.PastOrdersResponseDto;
 import com.digimenu.main.domain.response.PastOrdersResponse;
 import com.digimenu.main.domain.response.ReportResponse;
 
