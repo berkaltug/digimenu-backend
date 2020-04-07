@@ -1,24 +1,17 @@
 package com.digimenu.main.controller;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
-import com.digimenu.main.domain.converter.MessageDtoConverter;
 import com.digimenu.main.domain.converter.TableOrderDtoConverter;
 import com.digimenu.main.domain.converter.WaitressDtoConverter;
 import com.digimenu.main.domain.request.LocationRequest;
 import com.digimenu.main.domain.request.TableOrderRequest;
 import com.digimenu.main.domain.response.CallWaitressResponse;
 import com.digimenu.main.domain.response.CreateOrderResponse;
+import com.digimenu.main.domain.dto.PastOrdersResponseDto;
 import com.digimenu.main.domain.response.PastOrdersResponse;
 import com.digimenu.main.service.*;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,12 +22,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.digimenu.main.domain.entity.Cart;
-import com.digimenu.main.domain.entity.Menu;
-import com.digimenu.main.domain.entity.Restaurant;
 import com.digimenu.main.domain.entity.Table_Orders;
 
 

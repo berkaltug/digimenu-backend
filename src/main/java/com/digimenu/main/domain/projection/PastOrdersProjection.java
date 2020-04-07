@@ -4,6 +4,7 @@ import java.util.Date;
 
 public interface PastOrdersProjection {
     Integer getCount();
+    Double getTotal();
     String getName();
     Long getRestaurantId();
     String getRestaurantName();

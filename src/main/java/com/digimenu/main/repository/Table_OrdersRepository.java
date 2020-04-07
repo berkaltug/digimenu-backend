@@ -49,7 +49,7 @@ public interface Table_OrdersRepository extends JpaRepository<Table_Orders, Long
 //			"GROUP BY t.item , t.restaurant,DAY(t.siparisTarihi)")
 //	List<PastOrdersProjection> getPastUserOrders(@Param("userId") User user);
 
-	@Query(value = "select count(t.item) as count ,t.item as name , t.restaurant_id as restaurantId , (select r.name from restaurant r where r.id=t.restaurant_id) as restaurantName, date(t.siparis_tarihi) as orderDate " +
+	@Query(value = "select count(t.item) as count ,sum(t.price) as total,t.item as name , t.restaurant_id as restaurantId , (select r.name from restaurant r where r.id=t.restaurant_id) as restaurantName, date(t.siparis_tarihi) as orderDate " +
 			"from table_orders t " +
 			"where t.user_id = :userId " +
 			"group by t.item,t.restaurant_id,date(t.siparis_tarihi)" , nativeQuery = true)
