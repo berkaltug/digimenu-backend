@@ -1,14 +1,15 @@
 package com.digimenu.main.domain.dto;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public class PastOrderDto {
 
     private Integer count;
-    private Double total;
+    private BigDecimal total;
     private String name;
 
-    public PastOrderDto(Integer count, Double total, String name) {
+    public PastOrderDto(Integer count, BigDecimal total, String name) {
         this.count = count;
         this.total = total;
         this.name = name;
@@ -22,11 +23,11 @@ public class PastOrderDto {
         this.count = count;
     }
 
-    public Double getTotal() {
+    public BigDecimal getTotal() {
         return total;
     }
 
-    public void setTotal(Double total) {
+    public void setTotal(BigDecimal total) {
         this.total = total;
     }
 

@@ -1,5 +1,6 @@
 package com.digimenu.main.domain.dto;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public class CampaignDto {
@@ -7,7 +8,7 @@ public class CampaignDto {
     public Long id;
     public String name;
     public String contents;
-    public Double price;
+    public BigDecimal price;
     public String message;
 
     public Long getId() {
@@ -34,11 +35,11 @@ public class CampaignDto {
         this.contents = contents;
     }
 
-    public Double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

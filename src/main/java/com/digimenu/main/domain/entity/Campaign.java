@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
@@ -18,8 +19,8 @@ public class Campaign {
     @NotEmpty(message = "içerik boş bırakılamaz")
     private String contents;
 
-    @Digits(integer=6, fraction=2)
-    private Double price;
+    @Digits(integer = 6,fraction = 2)
+    private BigDecimal price;
     @JsonBackReference(value="restaurant-campaign")  //json ignore görevi gördü karşı bir @jsonMaagedRef olmamasına rağmen
     @ManyToOne(fetch= FetchType.LAZY)
     @JoinColumn(name="restaurant_id")
@@ -54,11 +55,11 @@ public class Campaign {
         this.contents = contents;
     }
 
-    public Double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

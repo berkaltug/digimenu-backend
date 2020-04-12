@@ -36,10 +36,10 @@
                         <td th:text="${o.item}"></td>
                         <td class="price" th:text="${o.price} + ' ₺'" th:value="${o.price}" name="price"></td>
                         <td th:text="${#dates.format(o.siparisTarihi, 'dd-MM-yyyy HH:mm')}"></td>
-                        <th:block th:if="${!o.message.isEmpty()}">
+                        <th:block th:if="${o.message!=null && !o.message.isEmpty()}">
                             <td th:text="${o.message}"></td>
                         </th:block>
-                        <th:block th:if="${o.message.isEmpty()}">
+                        <th:block th:if="${o.message==null || o.message.isEmpty()}">
                             <td>-</td>
                         </th:block>
                         <td>
@@ -72,7 +72,7 @@
                         <td></td>
                         <td></td>
                         <td>
-                            <a th:href="@{'/restaurant/flushcart/' + *{orders[0].masaNo}}" class="btn btn-success">Hesap
+                            <a th:href="@{'/restaurant/flushcart/' + ${orders[0].masaNo}}" class="btn btn-success">Hesap
                                 Ödendi <span class="fa fa-check"></span></a>
                         </td>
                     </tr>

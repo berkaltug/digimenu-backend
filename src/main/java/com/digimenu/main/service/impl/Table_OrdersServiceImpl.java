@@ -15,7 +15,6 @@ import com.digimenu.main.domain.entity.*;
 import com.digimenu.main.domain.projection.PastOrdersProjection;
 import com.digimenu.main.domain.response.CallWaitressResponse;
 import com.digimenu.main.domain.response.CreateOrderResponse;
-import com.digimenu.main.domain.dto.PastOrdersResponseDto;
 import com.digimenu.main.domain.response.PastOrdersResponse;
 import com.digimenu.main.domain.response.ReportResponse;
 import com.digimenu.main.domain.util.PastTuple;
@@ -36,9 +35,9 @@ public class Table_OrdersServiceImpl implements Table_OrdersService {
     private UserService userService;
     private MapsService mapsService;
     private WebsocketMessageService websocketMessageService;
-
+    private SiparisService siparisService;
     @Autowired
-    public Table_OrdersServiceImpl(Table_OrdersRepository tableOrdersRepository, RestaurantService restaurantService, CartService cartService, SecurityService securityService, UserService userService, MapsService mapsService, WebsocketMessageService websocketMessageService) {
+    public Table_OrdersServiceImpl(Table_OrdersRepository tableOrdersRepository, RestaurantService restaurantService, CartService cartService, SecurityService securityService, UserService userService, MapsService mapsService, WebsocketMessageService websocketMessageService, SiparisService siparisService) {
         this.tableOrdersRepository = tableOrdersRepository;
         this.restaurantService = restaurantService;
         this.cartService = cartService;
@@ -46,6 +45,7 @@ public class Table_OrdersServiceImpl implements Table_OrdersService {
         this.userService = userService;
         this.mapsService = mapsService;
         this.websocketMessageService = websocketMessageService;
+        this.siparisService = siparisService;
     }
 
     @Override
@@ -90,12 +90,16 @@ public class Table_OrdersServiceImpl implements Table_OrdersService {
         if(tableNameEntity.isPresent()){
             tableName="[ " + tableNameEntity.get().getName() + " ]";
         }
+        final Siparis siparis =new Siparis();
         tableOrderDto.getItems().forEach(item -> {
-            tableOrdersList.add(TableOrdersEntityConverter.convert(item, tableOrderDto.getMasaNo(), restaurant, user));
+            tableOrdersList.add(TableOrdersEntityConverter.convert(item, tableOrderDto.getMasaNo(), restaurant, user, siparis));
             cartList.add(CartEntityConverter.convert(item, tableOrderDto.getMasaNo(), tableOrderDto.getResId()));
-
         });
-        tableOrdersRepository.saveAll(tableOrdersList);
+        siparis.setTableOrders(tableOrdersList);
+        siparis.setRestaurant(restaurant);
+        siparis.setUser(user);
+        siparis.setVoted(false);
+        siparisService.insertOrder(siparis);
         cartService.saveAllCart(cartList);
         response.setSocketMessage(makeMessageDto(tableOrderDto.getMasaNo(),tableName,cartList,restaurant.getId()));
         response.setRestaurantOwner(restaurant.getOwner().getUsername());

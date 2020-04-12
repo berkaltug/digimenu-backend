@@ -3,17 +3,14 @@ package com.digimenu.main.domain.entity;
 
 import com.digimenu.main.security.User;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.math.BigDecimal;
-import java.sql.Date;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
 import java.util.Objects;
 
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -31,7 +28,8 @@ public class Table_Orders {
 	private Integer masa;
 
 	private String item;
-	private Double price;
+	@Digits(integer = 6,fraction = 2)
+	private BigDecimal price;
 	@JsonBackReference("user-order")
 	@OneToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="user_id")
@@ -41,6 +39,8 @@ public class Table_Orders {
 	@Basic
 	//@Temporal(TemporalType.TIMESTAMP)
 	private Timestamp siparisTarihi;
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Siparis siparis;
 
 	public Long getId() {
 		return id;
@@ -74,11 +74,11 @@ public class Table_Orders {
 		this.item = item;
 	}
 
-	public Double getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 
-	public void setPrice(Double price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 
@@ -98,6 +98,14 @@ public class Table_Orders {
 		this.siparisTarihi = siparisTarihi;
 	}
 
+	public Siparis getSiparis() {
+		return siparis;
+	}
+
+	public void setSiparis(Siparis siparis) {
+		this.siparis = siparis;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -109,24 +117,26 @@ public class Table_Orders {
 				Objects.equals(item, that.item) &&
 				Objects.equals(price, that.price) &&
 				Objects.equals(user, that.user) &&
-				Objects.equals(siparisTarihi, that.siparisTarihi);
+				Objects.equals(siparisTarihi, that.siparisTarihi) &&
+				Objects.equals(siparis, that.siparis);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, restaurant, masa, item, price, user, siparisTarihi);
+		return Objects.hash(id, restaurant, masa, item, price, user, siparisTarihi, siparis);
 	}
 
 	@Override
 	public String toString() {
 		return "Table_Orders{" +
 				"id=" + id +
-				", restaurant=" + restaurant.getId() +
+				", restaurant=" + restaurant +
 				", masa=" + masa +
 				", item='" + item + '\'' +
 				", price=" + price +
 				", user=" + user +
 				", siparisTarihi=" + siparisTarihi +
+				", order=" + siparis +
 				'}';
 	}
 }
