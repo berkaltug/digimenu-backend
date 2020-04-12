@@ -1,5 +1,6 @@
 package com.digimenu.main.domain.response;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public class CampaignResponseItem {
@@ -7,7 +8,7 @@ public class CampaignResponseItem {
     public Long id;
     public String name;
     public String contents;
-    public Double price;
+    public BigDecimal price;
 
     public Long getId() {
         return id;
@@ -33,11 +34,11 @@ public class CampaignResponseItem {
         this.contents = contents;
     }
 
-    public Double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

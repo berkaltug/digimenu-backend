@@ -1,5 +1,6 @@
 package com.digimenu.main.domain.entity;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -27,7 +28,7 @@ public class Menu{
 	private String ingredients;
 	@NotNull(message = "Ücret alanı boş bırakılamaz")
 	@Digits(integer=6, fraction=2)
-	private Double price;
+	private BigDecimal price;
 	@JsonBackReference(value="restaurant-item")  //json ignore görevi gördü karşı bir @jsonMaagedRef olmamasına rağmen
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="restaurant_id")
@@ -66,11 +67,11 @@ public class Menu{
 		this.ingredients = ingredients;
 	}
 
-	public Double getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 
-	public void setPrice(Double price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 

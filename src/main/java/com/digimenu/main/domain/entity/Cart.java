@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Digits;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -22,8 +23,8 @@ public class Cart {
 	private Long id;
 	
 	private String item;
-	
-	private Double price;
+	@Digits(integer = 6,fraction = 2)
+	private BigDecimal price;
 //	DB'de trigger sayesinde bu tabloya entity eklendiği için  Table_Orders'a bağlamaya gerek duymadık
 //	onun yerine triggerda tableordersa eklenen restoran ve masa numarasını bu fieldlere atıyoruz.
 	private Long restaurantId;
@@ -50,11 +51,11 @@ public class Cart {
 		this.item = item;
 	}
 
-	public Double getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 
-	public void setPrice(Double price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 

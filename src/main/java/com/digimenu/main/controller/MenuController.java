@@ -21,13 +21,13 @@ import com.digimenu.main.service.RestaurantService;
 
 @RestController
 @RequestMapping("/menu")
-public class SiparisController {
+public class MenuController {
 	
 	private MenuService menuService;
 	private RestaurantService restaurantService;
 
 	@Autowired
-	public SiparisController(MenuService menuService, RestaurantService restaurantService) {
+	public MenuController(MenuService menuService, RestaurantService restaurantService) {
 		this.menuService = menuService;
 		this.restaurantService = restaurantService;
 	}

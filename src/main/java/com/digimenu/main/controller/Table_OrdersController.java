@@ -1,10 +1,12 @@
 package com.digimenu.main.controller;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 import com.digimenu.main.domain.converter.TableOrderDtoConverter;
 import com.digimenu.main.domain.converter.WaitressDtoConverter;
+import com.digimenu.main.domain.entity.Siparis;
 import com.digimenu.main.domain.request.LocationRequest;
 import com.digimenu.main.domain.request.TableOrderRequest;
 import com.digimenu.main.domain.response.CallWaitressResponse;
@@ -35,12 +37,14 @@ public class Table_OrdersController {
     private Table_OrdersService table_ordersService;
     private RestaurantService restaurantService;
     private SimpMessagingTemplate msgTemplate;
+    private SiparisService siparisService;
 
     @Autowired
-    public Table_OrdersController(Table_OrdersService table_ordersService, RestaurantService restaurantService, SimpMessagingTemplate msgTemplate) {
+    public Table_OrdersController(Table_OrdersService table_ordersService, RestaurantService restaurantService, SimpMessagingTemplate msgTemplate, SiparisService siparisService) {
         this.table_ordersService = table_ordersService;
         this.restaurantService = restaurantService;
         this.msgTemplate = msgTemplate;
+        this.siparisService = siparisService;
     }
 
     @GetMapping
@@ -79,4 +83,9 @@ public class Table_OrdersController {
         return new ResponseEntity<>(response,HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('USER') OR hasRole('RESTAURANT') OR hasRole('ADMIN')")
+    @GetMapping("/past-orders")
+    public PastOrdersResponse getAllSiparis(){
+        return siparisService.pastOrders();
+    }
 }

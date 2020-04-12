@@ -1,13 +1,11 @@
 package com.digimenu.main.security;
 
+import com.digimenu.main.domain.entity.Siparis;
 import com.digimenu.main.domain.entity.Table_Orders;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -33,20 +31,25 @@ public class User {
 	@Email
 	@Column(unique=true)
 	private String email;
-	
+
+	@JsonIgnore
 	@NotNull
 	private String password;
 	
 	private boolean isEnabled;
-	
+
+	@JsonIgnore
 	@ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	@JoinTable(name="user_role",
 	joinColumns= {@JoinColumn(name="user_id")},
 	inverseJoinColumns= {@JoinColumn(name="role_id")})
 	private List<Role> roles;
-	@JsonManagedReference("user-order")
+	@JsonIgnore
 	@OneToOne(mappedBy = "user",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-	Table_Orders order;
+	Table_Orders tableOrder;
+	@JsonIgnore
+	@OneToMany(mappedBy = "user")
+	private List<Siparis> siparisList;
 
 	public Long getId() {
 		return id;
@@ -112,12 +115,20 @@ public class User {
 		this.roles = roles;
 	}
 
-	public Table_Orders getOrder() {
-		return order;
+	public Table_Orders getTableOrder() {
+		return tableOrder;
 	}
 
-	public void setOrder(Table_Orders order) {
-		this.order = order;
+	public void setTableOrder(Table_Orders order) {
+		this.tableOrder = order;
+	}
+
+	public List<Siparis> getSiparisList() {
+		return siparisList;
+	}
+
+	public void setSiparisList(List<Siparis> siparises) {
+		this.siparisList = siparises;
 	}
 
 	@Override
@@ -133,12 +144,13 @@ public class User {
 				Objects.equals(email, user.email) &&
 				Objects.equals(password, user.password) &&
 				Objects.equals(roles, user.roles) &&
-				Objects.equals(order, user.order);
+				Objects.equals(tableOrder, user.tableOrder) &&
+				Objects.equals(siparisList, user.siparisList);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, username, name, surname, email, password, isEnabled, roles, order);
+		return Objects.hash(id, username, name, surname, email, password, isEnabled, roles, tableOrder, siparisList);
 	}
 
 	@Override
