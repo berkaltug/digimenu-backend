@@ -1,24 +1,34 @@
 package com.digimenu.main.domain.dto;
 
-import com.digimenu.main.domain.dto.PastOrderDto;
-import com.digimenu.main.domain.projection.PastOrdersProjection;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
 public class PastOrdersResponseDto {
-
+  private Long orderId;
   private Long restaurantId;
   private String restaurantName;
   private Date orderDate;
+  private boolean isVoted;
   private List<PastOrderDto> orders;
 
-  public PastOrdersResponseDto(Long restaurantId, String restaurantName, Date orderDate, List<PastOrderDto> orders) {
+  public PastOrdersResponseDto(Long orderId, Long restaurantId, String restaurantName, Date orderDate, boolean isVoted, List<PastOrderDto> orders) {
+    this.orderId = orderId;
     this.restaurantId = restaurantId;
     this.restaurantName = restaurantName;
     this.orderDate = orderDate;
+    this.isVoted = isVoted;
     this.orders = orders;
+  }
+
+  public Long getOrderId() {
+    return orderId;
+  }
+
+  public void setOrderId(Long orderId) {
+    this.orderId = orderId;
   }
 
   public Long getRestaurantId() {
@@ -44,6 +54,14 @@ public class PastOrdersResponseDto {
   public void setOrderDate(Date orderDate) {
     this.orderDate = orderDate;
   }
+  @JsonProperty("isVoted")
+  public boolean isVoted() {
+    return isVoted;
+  }
+
+  public void setVoted(boolean voted) {
+    isVoted = voted;
+  }
 
   public List<PastOrderDto> getOrders() {
     return orders;
@@ -58,7 +76,9 @@ public class PastOrdersResponseDto {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     PastOrdersResponseDto that = (PastOrdersResponseDto) o;
-    return Objects.equals(restaurantId, that.restaurantId) &&
+    return isVoted == that.isVoted &&
+            Objects.equals(orderId, that.orderId) &&
+            Objects.equals(restaurantId, that.restaurantId) &&
             Objects.equals(restaurantName, that.restaurantName) &&
             Objects.equals(orderDate, that.orderDate) &&
             Objects.equals(orders, that.orders);
@@ -66,15 +86,17 @@ public class PastOrdersResponseDto {
 
   @Override
   public int hashCode() {
-    return Objects.hash(restaurantId, restaurantName, orderDate, orders);
+    return Objects.hash(orderId, restaurantId, restaurantName, orderDate, isVoted, orders);
   }
 
   @Override
   public String toString() {
     return "PastOrdersResponseDto{" +
-            "restaurantId=" + restaurantId +
+            "orderId=" + orderId +
+            ", restaurantId=" + restaurantId +
             ", restaurantName='" + restaurantName + '\'' +
             ", orderDate=" + orderDate +
+            ", isVoted=" + isVoted +
             ", orders=" + orders +
             '}';
   }
