@@ -8,23 +8,23 @@ import java.util.List;
 import java.util.Objects;
 
 public class GetMenuResponse {
-    List<MenuDto> items;
-    List<MenuDto> favourites;
+    List<MenuResponseItem> items;
+    List<MenuResponseItem> favourites;
     List<CampaignResponseItem> campaigns;
 
-    public List<MenuDto> getItems() {
+    public List<MenuResponseItem> getItems() {
         return items;
     }
 
-    public void setItems(List<MenuDto> items) {
+    public void setItems(List<MenuResponseItem> items) {
         this.items = items;
     }
 
-    public List<MenuDto> getFavourites() {
+    public List<MenuResponseItem> getFavourites() {
         return favourites;
     }
 
-    public void setFavourites(List<MenuDto> favourites) {
+    public void setFavourites(List<MenuResponseItem> favourites) {
         this.favourites = favourites;
     }
 

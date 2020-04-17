@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 import com.digimenu.main.domain.converter.CampaignResponseItemConverter;
 import com.digimenu.main.domain.converter.MenuDtoConverter;
+import com.digimenu.main.domain.converter.MenuResponseItemConverter;
 import com.digimenu.main.domain.entity.Campaign;
 import com.digimenu.main.domain.entity.Restaurant;
 import com.digimenu.main.domain.response.GetMenuResponse;
@@ -42,11 +43,11 @@ public class MenuServiceImpl implements MenuService {
 		response.setItems(itemList
 				.stream()
 				.filter(item -> item.getActive())
-				.collect(Collectors.toList()).stream().map(item-> MenuDtoConverter.convert(item)).collect(Collectors.toList()));
+				.collect(Collectors.toList()).stream().map(item-> MenuResponseItemConverter.convert(item)).collect(Collectors.toList()));
 		response.setFavourites(itemList
 				.stream()
 				.filter(item->item.getFavourite())
-				.collect(Collectors.toList()).stream().map(item-> MenuDtoConverter.convert(item)).collect(Collectors.toList()));
+				.collect(Collectors.toList()).stream().map(item-> MenuResponseItemConverter.convert(item)).collect(Collectors.toList()));
 		response.setCampaigns(campaigns
 				.stream()
 				.map(item-> CampaignResponseItemConverter.convert(item))
