@@ -74,6 +74,8 @@ public class MenuServiceImpl implements MenuService {
 
 	@Override
 	public void saveMenuItem(Menu menu) {
+		menu.setRating(0f);
+		menu.setVoteCount(0);
 		menuRepository.save(menu);
 	}
 
