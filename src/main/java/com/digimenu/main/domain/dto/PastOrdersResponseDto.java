@@ -10,11 +10,11 @@ public class PastOrdersResponseDto {
   private Long orderId;
   private Long restaurantId;
   private String restaurantName;
-  private Date orderDate;
+  private String orderDate;
   private boolean isVoted;
   private List<PastOrderDto> orders;
 
-  public PastOrdersResponseDto(Long orderId, Long restaurantId, String restaurantName, Date orderDate, boolean isVoted, List<PastOrderDto> orders) {
+  public PastOrdersResponseDto(Long orderId, Long restaurantId, String restaurantName, String orderDate, boolean isVoted, List<PastOrderDto> orders) {
     this.orderId = orderId;
     this.restaurantId = restaurantId;
     this.restaurantName = restaurantName;
@@ -47,11 +47,11 @@ public class PastOrdersResponseDto {
     this.restaurantName = restaurantName;
   }
 
-  public Date getOrderDate() {
+  public String getOrderDate() {
     return orderDate;
   }
 
-  public void setOrderDate(Date orderDate) {
+  public void setOrderDate(String orderDate) {
     this.orderDate = orderDate;
   }
   @JsonProperty("isVoted")

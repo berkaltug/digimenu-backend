@@ -9,6 +9,7 @@ import com.digimenu.main.domain.response.PastOrdersResponse;
 import com.digimenu.main.domain.util.PastTuple;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -31,7 +32,7 @@ public class PastOrdersResponseConverter {
                     siparis.getOrderId(),
                     siparis.getRestaurant().getId(),
                     siparis.getRestaurant().getName(),
-                    new Date(siparis.getSiparisTarihi().getTime()),
+                    new SimpleDateFormat("dd/MM/yyyy hh:mm").format(new Date(siparis.getSiparisTarihi().getTime())),
                     siparis.getVoted(),
                     pastOrderDtoList);
             pastOrdersResponseDtoList.add(pastOrdersResponseDto);
