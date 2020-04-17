@@ -40,6 +40,10 @@
 							</select>
 						</div>
 						<div class="form-group">
+							<label for="rating">Ürünün Oylanmış Puanı</label>
+							<input class="form-control" name="rating" id="rating" th:field="*{rating}" readonly="readonly">
+						</div>
+						<div class="form-group">
 							<label for="active">Aktif mi ?</label>
 							<select name="active" id="active" th:field="*{active}" class="form-control">
 								<option  th:value="${true}" text="Aktif" selected>Aktif</option>
