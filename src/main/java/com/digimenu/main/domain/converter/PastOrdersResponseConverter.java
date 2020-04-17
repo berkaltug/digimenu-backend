@@ -13,26 +13,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class PastOrdersResponseConverter {
-    public static PastOrdersResponse convert(Map<PastTuple, List<PastOrdersProjection>> orders) {
-        PastOrdersResponse response = new PastOrdersResponse();
-        Map<PastTuple, List<PastOrderDto>> newmap = new HashMap<>();
-        orders.forEach((k, v) -> {
-                    List<PastOrderDto> list = new ArrayList<>();
-                    v.forEach(projection -> {
-                        PastOrderDto dto = new PastOrderDto(projection.getCount(), projection.getTotal(), projection.getName());
-                        list.add(dto);
-                    });
-                    newmap.put(k, list);
-                }
-        );
-        List<PastOrdersResponseDto> dtoList=new ArrayList<>();
-        newmap.forEach((k,v)->{
-            PastOrdersResponseDto dto = new PastOrdersResponseDto(k.getRestaurantId(), k.getRestaurantName(), k.getOrderDate(), v);
-            dtoList.add(dto);
-        });
-        response.setPastOrders(dtoList);
-        return response;
-    }
 
     public static PastOrdersResponse convert(List<Siparis> siparisList){
         PastOrdersResponse response=new PastOrdersResponse();
@@ -48,9 +28,11 @@ public class PastOrdersResponseConverter {
                 pastOrderDtoList.add(dto);
             });
             PastOrdersResponseDto pastOrdersResponseDto=new PastOrdersResponseDto(
+                    siparis.getOrderId(),
                     siparis.getRestaurant().getId(),
                     siparis.getRestaurant().getName(),
                     new Date(siparis.getSiparisTarihi().getTime()),
+                    siparis.getVoted(),
                     pastOrderDtoList);
             pastOrdersResponseDtoList.add(pastOrdersResponseDto);
         });

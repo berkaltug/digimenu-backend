@@ -8,6 +8,7 @@ public class CommentRequest {
     private List<RatingRequest> ratingRequests =new ArrayList<>();
     private String commentMessage;
     private Long restaurantId;
+    private Long orderId;
 
     public List<RatingRequest> getRatingRequests() {
         return ratingRequests;
@@ -33,6 +34,14 @@ public class CommentRequest {
         this.restaurantId = restaurantId;
     }
 
+    public Long getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -40,20 +49,22 @@ public class CommentRequest {
         CommentRequest that = (CommentRequest) o;
         return Objects.equals(ratingRequests, that.ratingRequests) &&
                 Objects.equals(commentMessage, that.commentMessage) &&
-                Objects.equals(restaurantId, that.restaurantId);
+                Objects.equals(restaurantId, that.restaurantId) &&
+                Objects.equals(orderId, that.orderId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ratingRequests, commentMessage, restaurantId);
+        return Objects.hash(ratingRequests, commentMessage, restaurantId, orderId);
     }
 
     @Override
     public String toString() {
         return "CommentRequest{" +
-                "ratingRequest=" + ratingRequests +
+                "ratingRequests=" + ratingRequests +
                 ", commentMessage='" + commentMessage + '\'' +
                 ", restaurantId=" + restaurantId +
+                ", orderId=" + orderId +
                 '}';
     }
 }

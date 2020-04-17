@@ -76,12 +76,6 @@ public class Table_OrdersController {
         }
     }
 
-    @PreAuthorize("hasRole('USER') OR hasRole('RESTAURANT') OR hasRole('ADMIN')")
-    @GetMapping("/pastOrders")
-    public ResponseEntity<PastOrdersResponse> getPastOrders(){
-        PastOrdersResponse response = table_ordersService.findUsersPastOrders();
-        return new ResponseEntity<>(response,HttpStatus.OK);
-    }
 
     @PreAuthorize("hasRole('USER') OR hasRole('RESTAURANT') OR hasRole('ADMIN')")
     @GetMapping("/past-orders")

@@ -24,5 +24,4 @@ public interface Table_OrdersService {
 	ReportResponse getReport(Timestamp startdate, Timestamp endate);
 	void deleteWrongTableOrder(Restaurant res,String name,Integer masaNo);
 	Optional<CallWaitressResponse> callWaitress(CallWaitressDto dto);
-	PastOrdersResponse findUsersPastOrders();
 }

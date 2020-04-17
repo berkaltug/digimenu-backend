@@ -134,17 +134,6 @@ public class Table_OrdersServiceImpl implements Table_OrdersService {
         }
     }
 
-    @Override
-    public PastOrdersResponse findUsersPastOrders(){
-
-        Map<PastTuple, List<PastOrdersProjection>> orders = tableOrdersRepository.getPastUserOrders(userService.findLoggedInUser().getId())
-                .stream()
-                .collect(Collectors.groupingBy(order -> new PastTuple(order.getRestaurantId(), order.getRestaurantName(), order.getOrderDate())));
-
-        return PastOrdersResponseConverter.convert(orders);
-    }
-
-
     private MessageDto makeMessageDto(Integer masaNo,String tableName,List<Cart> cartList,Long resId){
         WebsocketMessage message=new WebsocketMessage();
         message.setMessage(makeSocketString(masaNo,tableName, cartList));
