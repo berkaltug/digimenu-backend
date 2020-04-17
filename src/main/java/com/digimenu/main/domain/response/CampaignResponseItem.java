@@ -5,10 +5,11 @@ import java.util.Objects;
 
 public class CampaignResponseItem {
 
-    public Long id;
-    public String name;
-    public String contents;
-    public BigDecimal price;
+    private Long id;
+    private String name;
+    private String contents;
+    private BigDecimal price;
+    private Float rating;
 
     public Long getId() {
         return id;
@@ -42,6 +43,14 @@ public class CampaignResponseItem {
         this.price = price;
     }
 
+    public Float getRating() {
+        return rating;
+    }
+
+    public void setRating(Float rating) {
+        this.rating = rating;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -50,12 +59,13 @@ public class CampaignResponseItem {
         return Objects.equals(id, that.id) &&
                 Objects.equals(name, that.name) &&
                 Objects.equals(contents, that.contents) &&
-                Objects.equals(price, that.price);
+                Objects.equals(price, that.price) &&
+                Objects.equals(rating, that.rating);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, contents, price);
+        return Objects.hash(id, name, contents, price, rating);
     }
 
     @Override
@@ -64,7 +74,8 @@ public class CampaignResponseItem {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", contents='" + contents + '\'' +
-                ", price='" + price + '\'' +
+                ", price=" + price +
+                ", rating=" + rating +
                 '}';
     }
 }
