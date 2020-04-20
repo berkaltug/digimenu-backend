@@ -38,9 +38,9 @@ public class RestaurantController {
     private WebsocketMessageService websocketMessageService;
     private SimpMessagingTemplate simpMessagingTemplate;
     private CampaignService campaignService;
-
+    private CommentService commentService;
     @Autowired
-    public RestaurantController(RestaurantService restaurantService, MenuService menuService, CartService cartService, CategoryService categoryService, Table_OrdersService tableOrdersService, WebsocketMessageService websocketMessageService, SimpMessagingTemplate simpMessagingTemplate, CampaignService campaignService) {
+    public RestaurantController(RestaurantService restaurantService, MenuService menuService, CartService cartService, CategoryService categoryService, Table_OrdersService tableOrdersService, WebsocketMessageService websocketMessageService, SimpMessagingTemplate simpMessagingTemplate, CampaignService campaignService, CommentService commentService) {
         this.restaurantService = restaurantService;
         this.menuService = menuService;
         this.cartService = cartService;
@@ -49,6 +49,7 @@ public class RestaurantController {
         this.websocketMessageService = websocketMessageService;
         this.simpMessagingTemplate = simpMessagingTemplate;
         this.campaignService = campaignService;
+        this.commentService = commentService;
     }
 
     @GetMapping("/login")
@@ -329,5 +330,11 @@ public class RestaurantController {
     public String deleteCampaign(@PathVariable(value = "id") Long id){
         campaignService.deleteCampaign(id);
         return "redirect:/restaurant/seeCampaigns";
+    }
+
+    @GetMapping("/comments")
+    public String getComments(Model model){
+        model.addAttribute("comments",commentService.getRestaurantComments());
+        return "listcommentpage";
     }
 }
