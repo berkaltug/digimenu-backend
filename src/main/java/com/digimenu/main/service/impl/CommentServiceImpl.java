@@ -8,6 +8,7 @@ import com.digimenu.main.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -54,6 +55,11 @@ public class CommentServiceImpl implements CommentService {
             siparis.get().setVoted(true);
             siparisService.insertOrder(siparis.get());
         }
+    }
+
+    @Override
+    public List<Comment> getRestaurantComments() {
+        return commentRepository.findCommentsByRestaurant(restaurantService.getLoggedInRestaurant());
     }
 
     private User findUser() {
