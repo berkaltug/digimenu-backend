@@ -21,7 +21,7 @@
             <tr th:each=" c : ${comments}">
                 <td th:text="${c.message}"></td>
             </tr>
-x            </tbody>
+            </tbody>
         </th:block>
         <th:block th:if="${comments.isEmpty()}">
             <tbody>
