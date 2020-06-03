@@ -3,6 +3,7 @@ package com.digimenu.main.service.impl;
 import java.text.Collator;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -12,6 +13,7 @@ import com.digimenu.main.domain.converter.MenuResponseItemConverter;
 import com.digimenu.main.domain.entity.Campaign;
 import com.digimenu.main.domain.entity.Restaurant;
 import com.digimenu.main.domain.response.GetMenuResponse;
+import com.digimenu.main.domain.response.MenuResponseItem;
 import com.digimenu.main.service.CampaignService;
 import com.digimenu.main.service.MenuService;
 import com.digimenu.main.service.RestaurantService;
@@ -119,5 +121,10 @@ public class MenuServiceImpl implements MenuService {
 	@Override
 	public Optional<Menu> getMenuByRestaurantAndName(Restaurant restaurant, String name){
 		return menuRepository.findByRestaurantAndItem(restaurant,name);
+	}
+
+	@Override
+	public Map<String,List<MenuResponseItem>> orderItemsByCategory(List<MenuResponseItem> items){
+		return items.stream().collect(Collectors.groupingBy(MenuResponseItem::getCategory));
 	}
 }

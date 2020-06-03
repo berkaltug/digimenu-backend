@@ -21,6 +21,7 @@ insert into restaurant(id,name,address,tel,mail,owner_id,city_id,table_amount,la
 
 --alt alta yazma bunu patlıyor !!!
 insert into category(id,name) values (-1,'İçecekler'),(-2,'Yiyecekler'),(-3,'Yemekler'),(-4,'Alkollü İçecekler'),(-5,'Alkolsüz İçecekler'),(-6,'Kokteyller'),(-7,'Alkollü Kokteyller'),(-8,'Alkolsüz Kokteyller'),(-9,'İthal Alkoller'),(-10,'Yerli Alkoller'),(-11,'Meşrubatlar'),(-12,'Sıcak İçecekler'),(-13,'Soğuk İçecekler'),(-14,'Soğuk Kahveler'),(-15,'Sıcak Kahveler'),(-16,'Alkollü Kahveler'),(-17,'Kahveler'),(-18,'Bitki Çayları'),(-19,'Başlangıçlar'),(-20,'Aperatifler'),(-21,'Kebaplar'),(-22,'Dönerler'),(-23,'Makarnalar'),(-24,'Pizzalar'),(-25,'Burgerler'),(-26,'Izgaralar'),(-27,'Köfteler'),(-28,'Kırmızı Et'),(-29,'Beyaz Et'),(-30,'Çorbalar'),(-31,'Salatalar'),(-32,'Deniz Ürünleri'),(-33,'Ana Yemekler'),(-34,'Ara Sıcaklar'),(-35,'Mezeler'),(-36,'Kahvaltılar'),(-37,'Sandviçler'),(-38,'Dürümler'),(-39,'Tatlılar'),(-40,'Diyet Menü'),(-41,'Sporcu Menü'),(-42,'Pastalar'),(-43,'Sütlü Tatlılar'),(-44,'Şerbetli Tatlılar'),(-45,'Dondurmalar'),(-46,'Waffle'),(-47,'Dünya Mutfağı'),(-48,'Türk Mutfağı'),(-49,'Uzak Doğu Mutfağı'),(-50,'Fransız Mutfağı'),(-51,'Meksika Mutfağı'),(-52,'İtalyan Mutfağı'),(-53,'Soğuk Mezeler'),(-54,'Sıcak Mezeler');
+sl alter table
 
 
 
