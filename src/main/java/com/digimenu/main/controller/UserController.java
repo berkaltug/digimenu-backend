@@ -55,6 +55,7 @@ public class UserController {
 			} else if (existingUsername != null) {
 				return new ResponseEntity<>("Bu kullanıcı adı kullanılmaktadır", HttpStatus.CONFLICT);
 			}else if(bindingResult.hasErrors()){
+				bindingResult.getAllErrors().stream().forEach(err-> System.err.println(err));
 				return new ResponseEntity<>(bindingResult.getFieldErrors().get(0).getDefaultMessage(),HttpStatus.BAD_REQUEST);
 			}
 			else {

@@ -3,6 +3,7 @@ package com.digimenu.main.security;
 import com.digimenu.main.domain.entity.Siparis;
 import com.digimenu.main.domain.entity.Table_Orders;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 import java.util.Objects;
@@ -32,7 +33,6 @@ public class User {
 	@Column(unique=true)
 	private String email;
 
-	@JsonIgnore
 	@NotNull
 	private String password;
 	
@@ -90,11 +90,12 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	@JsonIgnore
 	public String getPassword() {
 		return password;
 	}
 
+	@JsonProperty
 	public void setPassword(String password) {
 		this.password = password;
 	}
