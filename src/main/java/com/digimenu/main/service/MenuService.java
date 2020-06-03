@@ -1,11 +1,13 @@
 package com.digimenu.main.service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import com.digimenu.main.domain.entity.Menu;
 import com.digimenu.main.domain.entity.Restaurant;
 import com.digimenu.main.domain.response.GetMenuResponse;
+import com.digimenu.main.domain.response.MenuResponseItem;
 
 public interface MenuService {
 	GetMenuResponse getMenuItemsByRestaurant(Long id);
@@ -17,4 +19,5 @@ public interface MenuService {
 	void updateMenuItem(Menu menu);
 	List<Menu> getFavoriteItemsByRestaurant(Long id);
 	Optional<Menu> getMenuByRestaurantAndName(Restaurant restaurant, String name);
+	Map<String,List<MenuResponseItem>> orderItemsByCategory(List<MenuResponseItem> items);
 }

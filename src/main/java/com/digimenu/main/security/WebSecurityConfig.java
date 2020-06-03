@@ -99,7 +99,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     		http.csrf().disable()
     		.antMatcher("/restaurant/**")
     		.authorizeRequests()
-				.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+				.antMatchers("/webjars/**","/static/**","static/**").permitAll()
 				.antMatchers("/restaurant/flushitem/**").permitAll()
 				.anyRequest().hasRole("RESTAURANT")
 				.and()
@@ -124,6 +124,29 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
     }
 
+    @Configuration
+	@Order(3)
+	public static class WebMenuSecurityConfig extends WebSecurityConfigurerAdapter{
+    	@Override
+		public void configure(HttpSecurity http) throws Exception {
+    		http.csrf().disable()
+					.antMatcher("/webmenu/**")
+					.authorizeRequests()
+					.anyRequest()
+					.permitAll();
+		}
+	}
+
+	//bu config çok önemli yoksa static dosyasındaki her şey mime type yüzünden engelleniyor default security ayarlarında
+	@Configuration
+	@Order(4)
+	public static class StaticAssetsConfig extends WebSecurityConfigurerAdapter{
+
+    	@Override
+		public void configure ( HttpSecurity http) throws Exception{
+    		http.authorizeRequests().antMatchers("/","/home","/static/**").permitAll();
+		}
+	}
 }
     
     

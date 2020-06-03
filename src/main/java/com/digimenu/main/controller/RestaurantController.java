@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping(value = "/restaurant")
+@RequestMapping(path = "/restaurant")
 public class RestaurantController {
 
     private RestaurantService restaurantService;
@@ -52,7 +52,7 @@ public class RestaurantController {
         this.commentService = commentService;
     }
 
-    @GetMapping("/login")
+    @RequestMapping(path="/login",method = RequestMethod.GET)
     public ModelAndView getlogin(Model model) {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("restaurantlogin");

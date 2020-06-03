@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <!--    <script th:src="@{/js/jquery-3.4.1.js}" type="text/javascript"></script>   mime type engelleme hatası çözülünce kullan -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/fontawesome-free-5.7.2-web/css/all.css}">
+    <link rel="stylesheet" th:href="@{/css/webmenustyles.css}" type="text/css" media="screen">
+    <title>Digimenu</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 d-flex flex-column align-items-center m-1">
+            <img th:src="@{/img/logo.png}" alt="logomuz :)" class="img-fluid">
+            <h4 id="header">Menümüz</h4>
+            <div class="accordion align-self-stretch" id="accordionExample">
+
+                <th:block th:if="!${#lists.isEmpty(campaigns)}">
+                    <div class="card">
+                        <div class="card-header" id="headingCampaign">
+                            <button class="btn btn-primary btn-block text-center" type="button" data-toggle="collapse"
+                                    data-target="#collapseCampaign" aria-expanded="false"
+                                    aria-controls="collapseCampaign">
+                                Kampanyalar
+                            </button>
+                        </div>
+                        <div id="collapseCampaign" class="collapse" aria-labelledby="headingCampaign"
+                             data-parent="#accordionExample">
+                            <th:block th:each="campaign : ${campaigns}">
+                                <div class="d-flex flex-row align-self-stretch justify-content-around item-container">
+                                    <div class="d-flex w-75 p-2 flex-column justify-content-around">
+                                        <span class="item-header" th:text="${campaign.name}"></span>
+                                        <span th:if="${campaign.contents != null && !campaign.contents.isEmpty()}"
+                                              class="item-ingredients" th:text="${campaign.contents}"></span>
+                                    </div>
+                                    <div class="d-flex w-25 flex-row justify-content-center align-items-center">
+                                        <span th:text="${campaign.price} + ' ₺'"></span>
+                                    </div>
+                                </div>
+                            </th:block>
+                        </div>
+                    </div>
+                </th:block>
+
+                <th:block th:if="!${#lists.isEmpty(favourites)}">
+                    <div class="card">
+                        <div class="card-header" th:if="!${#lists.isEmpty(favourites)}" id="headingFavourites">
+                            <button class="btn btn-primary btn-block text-center" type="button" data-toggle="collapse"
+                                    data-target="#collapseFavourites" aria-expanded="false"
+                                    aria-controls="collapseFavourites">
+                                Öne Çıkanlar
+                            </button>
+                        </div>
+                        <div id="collapseFavourites" class="collapse" aria-labelledby="headingFavourites"
+                             data-parent="#accordionExample">
+                            <th:block  th:each="fav : ${favourites}">
+                                <div class="d-flex flex-row align-self-stretch justify-content-around item-container">
+                                    <div class="d-flex w-75 p-2 flex-column justify-content-around">
+                                        <span class="item-header" th:text="${fav.item}"></span>
+                                        <span th:if="${fav.ingredients != null && !fav.ingredients.isEmpty()}"
+                                              class="item-ingredients" th:text="${fav.ingredients}"></span>
+                                    </div>
+                                    <div class="d-flex w-25 flex-row justify-content-center align-items-center">
+                                        <span th:text="${fav.price} + ' ₺'"></span>
+                                    </div>
+                                </div>
+                            </th:block>
+                        </div>
+                    </div>
+                </th:block>
+
+
+                <th:block th:each="entry,stats : ${itemsMap}">
+                    <div class="card">
+                        <div class="card-header" th:id="'heading' + ${stats.index}">
+                            <button class="btn btn-primary btn-block text-center " type="button" data-toggle="collapse"
+                                    th:data-target="'#collapse' + ${stats.index}" aria-expanded="false"
+                                    th:aria-controls="'#collapse' + ${stats.index}">
+                                <span th:text="${entry.key}"></span>
+                            </button>
+                        </div>
+                        <div th:id="'collapse' + ${stats.index}" class="collapse"
+                             th:aria-labelledby="'heading' + ${stats.index}" data-parent="#accordionExample">
+                            <th:block th:each="item : ${entry.value}">
+                                <div class="d-flex flex-row align-self-stretch justify-content-around item-container">
+                                    <div class="d-flex w-75 p-2 flex-column justify-content-around">
+                                        <span class="item-header" th:text="${item.item}"></span>
+                                        <span th:if="${item.ingredients != null && !item.ingredients.isEmpty()}"
+                                              class="item-ingredients" th:text="${item.ingredients}"></span>
+                                    </div>
+                                    <div class="d-flex w-25 flex-row justify-content-center align-items-center">
+                                        <span th:text="${item.price} + ' ₺'"></span>
+                                    </div>
+                                </div>
+
+                            </th:block>
+                        </div>
+                    </div>
+                </th:block>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+<script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+</body>
+</html>
