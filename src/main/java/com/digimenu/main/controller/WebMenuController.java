@@ -3,6 +3,7 @@ package com.digimenu.main.controller;
 import com.digimenu.main.domain.entity.Menu;
 import com.digimenu.main.domain.response.GetMenuResponse;
 import com.digimenu.main.service.MenuService;
+import com.digimenu.main.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,8 @@ public class WebMenuController {
 
     @Autowired
     private MenuService menuService;
+    @Autowired
+    private RestaurantService restaurantService;
 
     @GetMapping(path="/{id}")
     public String getWebMenu(@PathVariable("id") Long id, Model model){
@@ -25,7 +28,7 @@ public class WebMenuController {
         model.addAttribute("favourites",response.getFavourites());
         model.addAttribute("campaigns",response.getCampaigns());
         model.addAttribute("itemsMap",menuService.orderItemsByCategory(response.getItems()));
-        System.out.println(response);
+        model.addAttribute("restaurantName",restaurantService.getRestaurant(id).getName());
         return "webmenu";
     }
 }

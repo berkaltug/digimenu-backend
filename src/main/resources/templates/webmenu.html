@@ -18,7 +18,7 @@
     <div class="row">
         <div class="col-sm-12 d-flex flex-column align-items-center m-1">
             <img th:src="@{/img/logo.png}" alt="logomuz :)" class="img-fluid">
-            <h4 id="header">Menümüz</h4>
+            <h4 id="header" th:text="*{restaurantName}"></h4>
             <div class="accordion align-self-stretch" id="accordionExample">
 
                 <th:block th:if="!${#lists.isEmpty(campaigns)}">
