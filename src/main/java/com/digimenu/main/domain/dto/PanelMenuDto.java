@@ -6,17 +6,20 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.Objects;
 
 public class PanelMenuDto {
 
     private Long id;
     @NotEmpty(message = "Ürün ismi boş bırakılamaz")
     private String item;
+    private Long restaurantId;
     private String ingredients;
     @NotNull(message = "Ücret alanı boş bırakılamaz")
     @Digits(integer=6, fraction=2)
     private BigDecimal price;
     private Float rating;
+    private Integer voteCount;
     private String category;
     private MultipartFile image;
     private Boolean isActive=true;
@@ -92,5 +95,21 @@ public class PanelMenuDto {
 
     public void setFavourite(Boolean favourite) {
         isFavourite = favourite;
+    }
+
+    public Long getRestaurantId() {
+        return restaurantId;
+    }
+
+    public void setRestaurantId(Long restaurantId) {
+        this.restaurantId = restaurantId;
+    }
+
+    public Integer getVoteCount() {
+        return voteCount;
+    }
+
+    public void setVoteCount(Integer voteCount) {
+        this.voteCount = voteCount;
     }
 }

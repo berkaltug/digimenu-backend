@@ -42,8 +42,9 @@ public class RestaurantController {
     private CampaignService campaignService;
     private CommentService commentService;
     private CloudinaryService cloudinaryService;
+
     @Autowired
-    public RestaurantController(RestaurantService restaurantService, MenuService menuService, CartService cartService, CategoryService categoryService, Table_OrdersService tableOrdersService, WebsocketMessageService websocketMessageService, SimpMessagingTemplate simpMessagingTemplate, CampaignService campaignService, CommentService commentService,CloudinaryService cloudinaryService) {
+    public RestaurantController(RestaurantService restaurantService, MenuService menuService, CartService cartService, CategoryService categoryService, Table_OrdersService tableOrdersService, WebsocketMessageService websocketMessageService, SimpMessagingTemplate simpMessagingTemplate, CampaignService campaignService, CommentService commentService, CloudinaryService cloudinaryService) {
         this.restaurantService = restaurantService;
         this.menuService = menuService;
         this.cartService = cartService;
@@ -53,10 +54,10 @@ public class RestaurantController {
         this.simpMessagingTemplate = simpMessagingTemplate;
         this.campaignService = campaignService;
         this.commentService = commentService;
-        this.cloudinaryService=cloudinaryService;
+        this.cloudinaryService = cloudinaryService;
     }
 
-    @RequestMapping(path="/login",method = RequestMethod.GET)
+    @RequestMapping(path = "/login", method = RequestMethod.GET)
     public ModelAndView getlogin(Model model) {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("restaurantlogin");
@@ -72,16 +73,52 @@ public class RestaurantController {
 
     @PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
     @PostMapping("/additem")
-    public String addItemPost(@ModelAttribute(value = "panelMenuDto") @Valid PanelMenuDto panelMenuDto,BindingResult result,Model model) {
+    public String addItemPost(@ModelAttribute(value = "panelMenuDto") @Valid PanelMenuDto panelMenuDto, BindingResult result, Model model) {
         if (result.hasErrors()) {
             System.err.println(result.getFieldErrors());
-            model.addAttribute("category",categoryService.getCategories());
+            model.addAttribute("category", categoryService.getCategories());
             return "addmenuitem";
         }
-        Menu menu= PanelMenuDtoConverter.convert(panelMenuDto);
+        Menu menu = PanelMenuDtoConverter.convert(panelMenuDto);
         menu.setRestaurant(restaurantService.getLoggedInRestaurant());
-        menu.setImagePublicId(cloudinaryService.uploadFile(panelMenuDto.getImage()));
+        if(panelMenuDto.getImage()!=null){
+            menu.setImagePublicId(cloudinaryService.uploadFile(panelMenuDto.getImage()));
+        }
         this.menuService.saveMenuItem(menu);
+        return "redirect:/restaurant/menu";
+    }
+
+    @PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
+    @GetMapping("/edititem/{id}")
+    public String editMenu(Model model, @PathVariable("id") Long id) {
+        model.addAttribute("category", categoryService.getCategories());
+        Menu menu=menuService.getMenuItem(id);
+        model.addAttribute("imagePublicId",menu.getImagePublicId()); // mevcut fotoyu cdn'den çekip görüntülemek için
+        model.addAttribute("panelMenuDto", PanelMenuDtoConverter.convert(menu));
+        return "editmenuitem";
+    }
+
+    @PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
+    @PostMapping("/updateitem")
+    public String editItem(@ModelAttribute(value = "panelMenuDto") @Valid PanelMenuDto panelMenuDto, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("category", categoryService.getCategories());
+            model.addAttribute("panelMenuDto", panelMenuDto);
+            return "editmenuitem";
+        }
+
+        Menu menu = PanelMenuDtoConverter.convert(panelMenuDto);
+        menu.setRestaurant(restaurantService.getRestaurant(panelMenuDto.getRestaurantId()));
+        menu.setVoteCount(panelMenuDto.getVoteCount());
+        String oldImageId=menuService.getMenuItem(panelMenuDto.getId()).getImagePublicId();
+        String newImageId;
+        if(panelMenuDto.getImage()!=null && !panelMenuDto.getImage().isEmpty()){
+           newImageId = cloudinaryService.updateFile(panelMenuDto.getImage(), oldImageId);
+           menu.setImagePublicId(newImageId);
+        }else{
+            menu.setImagePublicId(oldImageId);
+        }
+        menuService.updateMenuItem(menu);
         return "redirect:/restaurant/menu";
     }
 
@@ -91,7 +128,7 @@ public class RestaurantController {
         Restaurant restaurant = restaurantService.getLoggedInRestaurant();
         List<TableNameResponse> tableNames = restaurantService.getTableNames(restaurant);
         model.addAttribute("tables", tableNames);
-        model.addAttribute("tableAmount",restaurant.getTableAmount());
+        model.addAttribute("tableAmount", restaurant.getTableAmount());
         return "showtable";
     }
 
@@ -100,7 +137,7 @@ public class RestaurantController {
     public String getTableNaming(Model model) {
         Restaurant restaurant = restaurantService.getLoggedInRestaurant();
         TableNameRequest request = restaurantService.getTableNameRequest(restaurant);
-        if(request.getRequestItemList().isEmpty()) {
+        if (request.getRequestItemList().isEmpty()) {
             List<TableNameRequestItem> list = new ArrayList<>();
             for (int i = 0; i < restaurant.getTableAmount(); i++) {
                 list.add(new TableNameRequestItem());
@@ -126,26 +163,6 @@ public class RestaurantController {
         return "showmenu";
     }
 
-    @PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
-    @GetMapping("/edititem/{id}")
-    public String editMenu(Model model, @PathVariable("id") Long id) {
-        model.addAttribute("category", categoryService.getCategories());
-        model.addAttribute("menu", menuService.getMenuItem(id));
-        return "editmenuitem";
-    }
-
-    @PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
-    @PostMapping("/updateitem")
-    public String editItem(@ModelAttribute(value = "menu") @Valid Menu menu,BindingResult bindingResult,Model model) {
-        if(bindingResult.hasErrors()){
-            model.addAttribute("category", categoryService.getCategories());
-            model.addAttribute("menu", menu);
-            return "editmenuitem";
-        }
-        menuService.updateMenuItem(menu);
-        return "redirect:/restaurant/menu";
-    }
-
 
     @PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
     @GetMapping("/delete/{id}")
@@ -166,9 +183,9 @@ public class RestaurantController {
         try {
             List<Cart> siparisler = cartService.getCart(res.getId(), masaNo);
             Optional<TableName> tableName = restaurantService.getTableName(res, masaNo);
-            if(tableName.isPresent()){
-                String masaIsmi=tableName.get().getName();
-                model.addAttribute("masaIsmi",masaIsmi);
+            if (tableName.isPresent()) {
+                String masaIsmi = tableName.get().getName();
+                model.addAttribute("masaIsmi", masaIsmi);
             }
             model.addAttribute("masaNo", masaNo);
             model.addAttribute("orders", siparisler);
@@ -286,31 +303,31 @@ public class RestaurantController {
     }
 
     @GetMapping("/passivesAndFavourites")
-    public String getPassives(Model model){
+    public String getPassives(Model model) {
         List<Menu> passives = menuService.getPassiveItemsByRestaurant(restaurantService.getLoggedInRestaurant().getId());
         List<Menu> favourites = menuService.getFavoriteItemsByRestaurant(restaurantService.getLoggedInRestaurant().getId());
-        model.addAttribute("passives",passives);
-        model.addAttribute("favourites",favourites);
+        model.addAttribute("passives", passives);
+        model.addAttribute("favourites", favourites);
         return "passivespage";
     }
 
     @GetMapping("/seeCampaigns")
-    public String getCampaigns(Model model){
+    public String getCampaigns(Model model) {
         List<Campaign> campaigns = campaignService.getAllCampaignsByRestaurant(restaurantService.getLoggedInRestaurant());
-        model.addAttribute("campaigns",campaigns);
+        model.addAttribute("campaigns", campaigns);
         return "showcampaigns";
     }
 
     @GetMapping("/createCampaign")
-    public String getCreateCampaign(Campaign campaign,Model model){
+    public String getCreateCampaign(Campaign campaign, Model model) {
         return "createcampaign";
     }
 
     @PostMapping("/createCampaign")
-    public String postCreateCampaign(@ModelAttribute(value="campaign") @Valid Campaign campaign,BindingResult result){
-        if(result.hasErrors()){
+    public String postCreateCampaign(@ModelAttribute(value = "campaign") @Valid Campaign campaign, BindingResult result) {
+        if (result.hasErrors()) {
             return "createcampaign";
-        }else {
+        } else {
             campaign.setRestaurant(restaurantService.getLoggedInRestaurant());
             campaignService.addCampaign(campaign);
             return "redirect:/restaurant/seeCampaigns";
@@ -318,15 +335,15 @@ public class RestaurantController {
     }
 
     @GetMapping("/updateCampaign/{id}")
-    public String getUpdateCampaign(@PathVariable("id") Long id,Model model){
+    public String getUpdateCampaign(@PathVariable("id") Long id, Model model) {
         Campaign campaign = campaignService.getCampaign(id);
-        model.addAttribute("campaign",campaign);
+        model.addAttribute("campaign", campaign);
         return "updatecampaign";
     }
 
     @PostMapping("/updateCampaign")
-    public String postUpdateCampaign(@ModelAttribute(value="campaign")  @Valid Campaign campaign,BindingResult result){
-        if(result.hasErrors()){
+    public String postUpdateCampaign(@ModelAttribute(value = "campaign") @Valid Campaign campaign, BindingResult result) {
+        if (result.hasErrors()) {
             return "updatecampaign";
         }
         System.out.println(campaignService.updateCampaign(campaign));
@@ -334,14 +351,14 @@ public class RestaurantController {
     }
 
     @GetMapping("/deleteCampaign/{id}")
-    public String deleteCampaign(@PathVariable(value = "id") Long id){
+    public String deleteCampaign(@PathVariable(value = "id") Long id) {
         campaignService.deleteCampaign(id);
         return "redirect:/restaurant/seeCampaigns";
     }
 
     @GetMapping("/comments")
-    public String getComments(Model model){
-        model.addAttribute("comments",commentService.getRestaurantComments());
+    public String getComments(Model model) {
+        model.addAttribute("comments", commentService.getRestaurantComments());
         return "listcommentpage";
     }
 }

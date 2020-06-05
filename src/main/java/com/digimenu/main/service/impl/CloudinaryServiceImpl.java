@@ -33,6 +33,23 @@ public class CloudinaryServiceImpl implements CloudinaryService {
         }
     }
 
+    @Override
+    public String updateFile(MultipartFile newFile,String oldPublicId){
+        try{
+            if(oldPublicId!=null){
+                cloudinary.uploader().destroy(oldPublicId,ObjectUtils.emptyMap());
+            }
+            File updating = convertMultiPartToFile(newFile);
+            Map uploadResult= cloudinary.uploader().upload(updating, ObjectUtils.emptyMap());
+            return uploadResult.get("public_id").toString();
+        }catch (IOException e){
+            System.err.println(e);
+            return null;
+        }catch(Exception e){
+            System.err.println(e);
+            return null;
+        }
+    }
     private File convertMultiPartToFile(MultipartFile file) throws IOException {
         File convFile = new File(file.getOriginalFilename());
         FileOutputStream fos = new FileOutputStream(convFile);
