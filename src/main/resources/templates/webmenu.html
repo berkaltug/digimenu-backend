@@ -11,6 +11,7 @@
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" th:href="@{/fontawesome-free-5.7.2-web/css/all.css}">
     <link rel="stylesheet" th:href="@{/css/webmenustyles.css}" type="text/css" media="screen">
+    <link rel="stylesheet" th:href="@{/css/ribbon.css}" type="text/css" media="screen">
     <title>Digimenu</title>
 </head>
 <body>
@@ -79,10 +80,10 @@
                 <th:block th:each="entry,stats : ${itemsMap}">
                     <div class="card">
                         <div class="card-header" th:id="'heading' + ${stats.index}">
-                            <button class="btn btn-primary btn-block text-center " type="button" data-toggle="collapse"
+                            <button class="btn btn-primary btn-block text-center" type="button" data-toggle="collapse"
                                     th:data-target="'#collapse' + ${stats.index}" aria-expanded="false"
                                     th:aria-controls="'#collapse' + ${stats.index}">
-                                <span th:text="${entry.key}"></span>
+                                <span  th:text="${entry.key}"></span>
                             </button>
                         </div>
                         <div th:id="'collapse' + ${stats.index}" class="collapse"

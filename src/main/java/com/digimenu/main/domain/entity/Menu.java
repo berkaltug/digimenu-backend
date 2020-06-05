@@ -43,6 +43,8 @@ public class Menu{
 
 	private Boolean isFavourite=false;
 
+	private String imagePublicId;
+
 	public Long getId() {
 		return id;
 	}
@@ -123,6 +125,14 @@ public class Menu{
 		this.voteCount = voteCount;
 	}
 
+	public String getImagePublicId() {
+		return imagePublicId;
+	}
+
+	public void setImagePublicId(String imagePublicId) {
+		this.imagePublicId = imagePublicId;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -137,12 +147,13 @@ public class Menu{
 				Objects.equals(voteCount, menu.voteCount) &&
 				Objects.equals(category, menu.category) &&
 				Objects.equals(isActive, menu.isActive) &&
-				Objects.equals(isFavourite, menu.isFavourite);
+				Objects.equals(isFavourite, menu.isFavourite) &&
+				Objects.equals(imagePublicId, menu.imagePublicId);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, item, ingredients, price, restaurant, rating, voteCount, category, isActive, isFavourite);
+		return Objects.hash(id, item, ingredients, price, restaurant, rating, voteCount, category, isActive, isFavourite, imagePublicId);
 	}
 
 	@Override
@@ -158,6 +169,7 @@ public class Menu{
 				", category='" + category + '\'' +
 				", isActive=" + isActive +
 				", isFavourite=" + isFavourite +
+				", imagePublicId='" + imagePublicId + '\'' +
 				'}';
 	}
 }
