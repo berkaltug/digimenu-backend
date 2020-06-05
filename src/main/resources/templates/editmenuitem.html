@@ -12,12 +12,15 @@
 			<div class="col-md-2"></div>
 				<div class="col-md-8 d-flex flex-column">
 					<h3 class="ml-auto mr-auto">Menü Ürün Güncelle</h3>
-					<form  th:action="@{/restaurant/updateitem}" th:object="${menu}"  method="post">
+					<form  th:action="@{/restaurant/updateitem}" th:object="${panelMenuDto}"  method="post" enctype="multipart/form-data">
 						<div class="form-group">
 							<input type="hidden" class="form-control" name="identifier" id="identifier" th:field="*{id}" readonly="readonly" >
 						</div>
 						<div class="form-group">
-							<input type="hidden" class="form-control" name="restaurant" id="restaurant" th:field="*{restaurant}" readonly="readonly">
+							<input type="hidden" class="form-control" name="restaurant" id="restaurant" th:field="*{restaurantId}" readonly="readonly">
+						</div>
+						<div class="form-group">
+							<input type="hidden" class="form-control" name="voteCount" id="voteCount" th:field="*{voteCount}" readonly="readonly">
 						</div>
 						<div class="form-group">
 							<label for="name">Menüde Görünecek İsmi Giriniz</label>
@@ -38,6 +41,22 @@
 							<select name="category" id="category" th:field="*{category}" class="form-control">
 								<option th:each=" c : ${category}" th:value="${c.name}" th:text="${c.name}" ></option>
 							</select>
+						</div>
+						<div class= "d-flex flex-row justify-content-start">
+							<div class="col-md-6 d-flex">
+								<div class="d-flex flex-column justify-content-center align-self-stretch">
+									<label class="text-center" for="file">Lütfen menüde gözükecek bir fotoğraf yükleyiniz. (Opsiyonel) (Maksimum 2MB)</label>
+									<input id="file" type="file" name="file" th:field="*{image}" accept="image/*" class="form-control-file text-center">
+									<input type="hidden" th:value="${imagePublicId}" id="img-id">
+									<div class="alert alert-warning" th:if="${param.bigfile}">Dosya boyutu limiti aşıldı.</div>
+								</div>
+							</div>
+							<div class="col-md-6 d-flex justify-content-center">
+								<div style="width:305px;height:305px;border:2px solid darkgray;background-color:lightgray;">
+
+									<img src="" alt="" id="pic" style="object-fit:contain">
+								</div>
+							</div>
 						</div>
 						<div class="form-group">
 							<label for="rating">Ürünün Oylanmış Puanı</label>
@@ -66,6 +85,8 @@
 				<div class="col-md-2"></div>
 			</div>
 		</div>
+	<script th:src="@{/js/getoldimage.js}"></script>
+	<script th:src="@{/js/selectimg.js}"></script>
 	<script th:src="@{/js/priceinput.js}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
