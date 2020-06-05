@@ -7,8 +7,10 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import com.digimenu.main.domain.converter.MessageDtoConverter;
+import com.digimenu.main.domain.converter.PanelMenuDtoConverter;
 import com.digimenu.main.domain.converter.TableNameDtoConverter;
 import com.digimenu.main.domain.converter.TransferCartConverter;
+import com.digimenu.main.domain.dto.PanelMenuDto;
 import com.digimenu.main.domain.dto.TransferCartDto;
 import com.digimenu.main.domain.entity.*;
 import com.digimenu.main.domain.request.*;
@@ -39,8 +41,9 @@ public class RestaurantController {
     private SimpMessagingTemplate simpMessagingTemplate;
     private CampaignService campaignService;
     private CommentService commentService;
+    private CloudinaryService cloudinaryService;
     @Autowired
-    public RestaurantController(RestaurantService restaurantService, MenuService menuService, CartService cartService, CategoryService categoryService, Table_OrdersService tableOrdersService, WebsocketMessageService websocketMessageService, SimpMessagingTemplate simpMessagingTemplate, CampaignService campaignService, CommentService commentService) {
+    public RestaurantController(RestaurantService restaurantService, MenuService menuService, CartService cartService, CategoryService categoryService, Table_OrdersService tableOrdersService, WebsocketMessageService websocketMessageService, SimpMessagingTemplate simpMessagingTemplate, CampaignService campaignService, CommentService commentService,CloudinaryService cloudinaryService) {
         this.restaurantService = restaurantService;
         this.menuService = menuService;
         this.cartService = cartService;
@@ -50,6 +53,7 @@ public class RestaurantController {
         this.simpMessagingTemplate = simpMessagingTemplate;
         this.campaignService = campaignService;
         this.commentService = commentService;
+        this.cloudinaryService=cloudinaryService;
     }
 
     @RequestMapping(path="/login",method = RequestMethod.GET)
@@ -61,19 +65,22 @@ public class RestaurantController {
 
     @PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
     @GetMapping("/additem")
-    public String addItemGet(Menu menu, Model model) {
+    public String addItemGet(PanelMenuDto menu, Model model) {
         model.addAttribute("category", categoryService.getCategories());
         return "addmenuitem";
     }
 
     @PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
     @PostMapping("/additem")
-    public String addItemPost(@ModelAttribute(value = "menu") @Valid Menu menu,BindingResult result,Model model) {
+    public String addItemPost(@ModelAttribute(value = "panelMenuDto") @Valid PanelMenuDto panelMenuDto,BindingResult result,Model model) {
         if (result.hasErrors()) {
+            System.err.println(result.getFieldErrors());
             model.addAttribute("category",categoryService.getCategories());
             return "addmenuitem";
         }
+        Menu menu= PanelMenuDtoConverter.convert(panelMenuDto);
         menu.setRestaurant(restaurantService.getLoggedInRestaurant());
+        menu.setImagePublicId(cloudinaryService.uploadFile(panelMenuDto.getImage()));
         this.menuService.saveMenuItem(menu);
         return "redirect:/restaurant/menu";
     }
