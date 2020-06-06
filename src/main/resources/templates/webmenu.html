@@ -15,11 +15,19 @@
     <title>Digimenu</title>
 </head>
 <body>
+
+
+
 <div class="container">
     <div class="row">
         <div class="col-sm-12 d-flex flex-column align-items-center m-1">
             <img th:src="@{/img/logo.png}" alt="logomuz :)" class="img-fluid">
-            <h4 id="header" th:text="*{restaurantName}"></h4>
+
+                <h2 class="ribbon mb-4 mt-2">
+                    <a th:text="*{restaurantName}" class="ribbon-content"></a>
+                </h2>
+
+
             <div class="accordion align-self-stretch" id="accordionExample">
 
                 <th:block th:if="!${#lists.isEmpty(campaigns)}">
@@ -60,7 +68,7 @@
                         </div>
                         <div id="collapseFavourites" class="collapse" aria-labelledby="headingFavourites"
                              data-parent="#accordionExample">
-                            <th:block  th:each="fav : ${favourites}">
+                            <th:block th:each="fav : ${favourites}">
                                 <div class="d-flex flex-row align-self-stretch justify-content-around item-container">
                                     <div class="d-flex w-75 p-2 flex-column justify-content-around">
                                         <span class="item-header" th:text="${fav.item}"></span>
@@ -83,37 +91,58 @@
                             <button class="btn btn-primary btn-block text-center" type="button" data-toggle="collapse"
                                     th:data-target="'#collapse' + ${stats.index}" aria-expanded="false"
                                     th:aria-controls="'#collapse' + ${stats.index}">
-                                <span  th:text="${entry.key}"></span>
+                                <span th:text="${entry.key}"></span>
                             </button>
                         </div>
                         <div th:id="'collapse' + ${stats.index}" class="collapse"
                              th:aria-labelledby="'heading' + ${stats.index}" data-parent="#accordionExample">
                             <th:block th:each="item : ${entry.value}">
-                                <div class="d-flex flex-row align-self-stretch justify-content-around item-container">
-                                    <div class="d-flex w-75 p-2 flex-column justify-content-around">
+
+                                <div class="d-flex flex-row align-self-stretch justify-content-start align-items-center p-2 item-container">
+                                    <div  th:if="${item.imagePublicId != null && !item.imagePublicId.isEmpty()}">
+                                        <a data-toggle="modal" data-target="#exampleModal" class="pic-button">
+                                            <img th:src="'http://res.cloudinary.com/hkn1l1hym/image/upload/w_300/' + ${item.imagePublicId}" th:alt="${item.imagePublicId}" class="my-image" >
+                                        </a>
+                                    </div>
+                                    <div class="d-flex p-2 flex-column justify-content-around  w-75">
                                         <span class="item-header" th:text="${item.item}"></span>
                                         <span th:if="${item.ingredients != null && !item.ingredients.isEmpty()}"
                                               class="item-ingredients" th:text="${item.ingredients}"></span>
                                     </div>
-                                    <div class="d-flex w-25 flex-row justify-content-center align-items-center">
+                                    <div class="d-flex flex-row justify-content-center align-items-center ml-auto w-25">
                                         <span th:text="${item.price} + ' ₺'"></span>
                                     </div>
                                 </div>
-
                             </th:block>
                         </div>
                     </div>
                 </th:block>
-
             </div>
-
         </div>
-
-
     </div>
-
-
 </div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="modalFoodName" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header justify-content-center">
+                <div id="baslik">
+                    <span id="modalFoodName">Stitched</span>
+                </div>
+            </div>
+            <div class="modal-body d-flex flex-column justify-content-center align-items-center">
+                <div class="modal-image-container d-flex flex-column justify-content-center align-items-center">
+                    <img src="" alt="" class="modal-image">
+                </div>
+                <div id="modalFoodInfo">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script
         src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -124,5 +153,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
+<script th:src="@{/js/webmenuimages.js}"></script>
 </body>
 </html>

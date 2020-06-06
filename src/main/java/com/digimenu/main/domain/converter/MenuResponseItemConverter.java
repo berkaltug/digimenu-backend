@@ -13,6 +13,7 @@ public class MenuResponseItemConverter {
         response.setItem(menu.getItem());
         response.setPrice(menu.getPrice());
         response.setRating(menu.getRating());
+        response.setImagePublicId(menu.getImagePublicId());
         return response;
     }
 }

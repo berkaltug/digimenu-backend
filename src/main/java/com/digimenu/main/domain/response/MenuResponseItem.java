@@ -9,6 +9,7 @@ public class MenuResponseItem {
     private String ingredients;
     private BigDecimal price;
     private String category;
+    private String imagePublicId;
     private Float rating;
 
     public Long getId() {
@@ -59,6 +60,14 @@ public class MenuResponseItem {
         this.rating = rating;
     }
 
+    public String getImagePublicId() {
+        return imagePublicId;
+    }
+
+    public void setImagePublicId(String imagePublicId) {
+        this.imagePublicId = imagePublicId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -69,12 +78,13 @@ public class MenuResponseItem {
                 Objects.equals(ingredients, that.ingredients) &&
                 Objects.equals(price, that.price) &&
                 Objects.equals(category, that.category) &&
+                Objects.equals(imagePublicId, that.imagePublicId) &&
                 Objects.equals(rating, that.rating);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, item, ingredients, price, category, rating);
+        return Objects.hash(id, item, ingredients, price, category, imagePublicId, rating);
     }
 
     @Override
@@ -85,6 +95,7 @@ public class MenuResponseItem {
                 ", ingredients='" + ingredients + '\'' +
                 ", price=" + price +
                 ", category='" + category + '\'' +
+                ", imagePublicId='" + imagePublicId + '\'' +
                 ", rating=" + rating +
                 '}';
     }
