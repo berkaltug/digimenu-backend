@@ -11,6 +11,7 @@ public class CampaignResponseItem {
     private BigDecimal price;
     private Float rating;
 
+
     public Long getId() {
         return id;
     }

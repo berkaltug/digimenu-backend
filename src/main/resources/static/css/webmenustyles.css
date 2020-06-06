@@ -1,51 +1,127 @@
-:root{
-  --light-shade:#faf9f8;
-  --light-accent: #efe7de;
-  --main:#a91101;
-  --main-border: #941103;
-  --dark-accent:#666666;
-  --dark-shade:#323232;
-  --main-complimentary:#0198a9;
+:root {
+    --light-shade: #faf9f8;
+    --light-accent: #efe7de;
+    --main: #a91101;
+    --main-border: #941103;
+    --dark-accent: #666666;
+    --dark-shade: #323232;
+    --main-complimentary: #0198a9;
 }
 
-body{
-  background-color: var(--light-accent);
+body {
+    background-color: var(--light-accent);
 }
 
-#header{
-  color:var(--main);
-  font-weight: bold;
+#header {
+    color: var(--main);
+    font-weight: bold;
 }
 
-.btn-primary{
-  background-color: var(--main);
-  border-color: var(--main);
-}
-.btn-primary:focus{
-  background-color: var(--main-complimentary);
-  border-color: var(--main-complimentary);
-  box-shadow: 0 0 0 0;
-}
-.card{
-  margin:10px;
-}
-.card>.card-header{
-  padding: 0;
-}
-.item-container{
-  border-bottom: 1px solid var(--main);
-  background-color: var(--light-shade);
-  min-height:3em;
+.fiyat {
+    flex: 1 0 0;
 }
 
-.item-container:nth-last-of-type(1){
-  border-bottom: 0px;
+.icerik {
+    flex: 3 0 0;
 }
-.item-header{
-  font-weight: bold;
-  font-size: 16px;
-  color:var(--main)
+.modal-image-container{
+    width: 302px;
+    height: 302px;
 }
-.item-ingredients{
-  font-size: 14px;
+.modal-image{
+    object-fit: contain;
+    object-position: center;
+}
+
+.btn-primary {
+    background-color: var(--main);
+    border-color: var(--main);
+}
+
+.btn-primary:focus {
+    background-color: var(--main-complimentary);
+    border-color: var(--main-complimentary);
+    box-shadow: 0 0 0 0;
+}
+
+.card {
+    margin: 0.6rem;
+}
+
+
+.my-image{
+    width: 60px;
+    height : 60px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    box-shadow: -3px 6px 8px #4b4a4a;
+}
+.card > .card-header {
+    padding: 0;
+}
+
+.item-container {
+    border-bottom: 1px solid var(--main);
+    background-color: var(--light-shade);
+    min-height: 2.5rem;
+}
+
+.item-container:nth-last-of-type(1) {
+    border-bottom: 0px;
+}
+
+.item-header {
+    font-weight: bold;
+    font-size: 1rem;
+    color: var(--main)
+}
+
+.item-ingredients {
+    font-size: 0.9rem;
+}
+
+@media screen and (max-width: 360px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media screen and (min-width: 801px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+/*copy paste heading style*/
+#modalFoodName {
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+    color: #520902;
+    font-size: 1.3rem;
+
+}
+
+#baslik {
+    /*stitching*/
+    outline: 2px dashed #520902;
+    outline-offset: -5px;
+    background-color: #a91101;
+    display: flex;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    justify-content: center;
+    align-items: center;
+    /*shadow*/
+    -webkit-box-shadow: -2px 2px 5px #000;
+    -moz-box-shadow: -2px 2px 5px #000;
+    box-shadow: -2px 2px 5px #000;
 }
