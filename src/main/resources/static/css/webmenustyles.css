@@ -25,17 +25,26 @@ body {
     flex: 3 0 0;
 }
 .modal-image-container{
-    width: 302px;
-    height: 302px;
+    width: 330px;
+    height: 310px;
+    outline: 10px ridge #A91101;
+    outline-offset: 5px;
+    border: 10px double #A91101;
+    border-radius: 10px;
+    background-color: var(--light-shade);
 }
+
 .modal-image{
-    object-fit: contain;
+    object-fit: cover;
     object-position: center;
 }
 
 .btn-primary {
     background-color: var(--main);
     border-color: var(--main);
+}
+.modal-content{
+    background-color: var(--light-accent);
 }
 
 .btn-primary:focus {
@@ -101,15 +110,26 @@ body {
 
 /*copy paste heading style*/
 #modalFoodName {
-    font-family: Helvetica, sans-serif;
-    font-weight: bold;
-    color: #520902;
-    font-size: 1.3rem;
-
+    font: bold 2em "Times New Roman", sans-serif;
+    background-color: #240303;
+    color: transparent;
+    text-shadow: 1px 1px 1px rgba(230, 91, 91, 0.5);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
 }
 
+#modalFoodInfo{
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    font-family:"Times New Roman",Times,serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--dark-shade);
+}
 #baslik {
     /*stitching*/
+
     outline: 2px dashed #520902;
     outline-offset: -5px;
     background-color: #a91101;
@@ -121,7 +141,7 @@ body {
     justify-content: center;
     align-items: center;
     /*shadow*/
-    -webkit-box-shadow: -2px 2px 5px #000;
-    -moz-box-shadow: -2px 2px 5px #000;
-    box-shadow: -2px 2px 5px #000;
+    -webkit-box-shadow: -2px 2px 5px #2a2a2a;
+    -moz-box-shadow: -2px 2px 5px  #2a2a2a;
+    box-shadow: -2px 2px 5px  #2a2a2a;
 }
