@@ -10,6 +10,7 @@ $(".pic-button").click(function(event){
     console.log(isim);
     $("#modalFoodName").text(isim);
     //içindekiler metnini çek null değilse modalda yerleştir
+    $("#modalFoodInfo").text(""); // modaldaki içindekiler boşsa öncekini yazmasın diye boşalt
     var icerik=$(this).closest(".item-container").find(".item-ingredients").text();
     if(icerik!=null && icerik != ""){
         $("#modalFoodInfo").html(icerik);
