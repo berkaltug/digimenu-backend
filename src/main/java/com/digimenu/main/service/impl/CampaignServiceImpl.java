@@ -37,6 +37,8 @@ public class CampaignServiceImpl implements CampaignService {
 
     @Override
     public Campaign addCampaign(Campaign campaign) {
+        campaign.setRating(0f);
+        campaign.setVoteCount(0);
         return campaignRepository.save(campaign);
     }
 

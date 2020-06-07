@@ -27,7 +27,7 @@ public class Campaign {
     private Restaurant restaurant;
     @NotNull(message = "Null değer hatası")
     private Boolean isActive;
-
+    private String imagePublicId;
     private Float rating;
     private Integer voteCount;
 
@@ -95,6 +95,14 @@ public class Campaign {
         this.voteCount = voteCount;
     }
 
+    public String getImagePublicId() {
+        return imagePublicId;
+    }
+
+    public void setImagePublicId(String imagePublicId) {
+        this.imagePublicId = imagePublicId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -106,13 +114,14 @@ public class Campaign {
                 Objects.equals(price, campaign.price) &&
                 Objects.equals(restaurant, campaign.restaurant) &&
                 Objects.equals(isActive, campaign.isActive) &&
+                Objects.equals(imagePublicId, campaign.imagePublicId) &&
                 Objects.equals(rating, campaign.rating) &&
                 Objects.equals(voteCount, campaign.voteCount);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, contents, price, restaurant, isActive, rating, voteCount);
+        return Objects.hash(id, name, contents, price, restaurant, isActive, imagePublicId, rating, voteCount);
     }
 
     @Override
@@ -124,6 +133,7 @@ public class Campaign {
                 ", price=" + price +
                 ", restaurant=" + restaurant.getId() +
                 ", isActive=" + isActive +
+                ", imagePublicId='" + imagePublicId + '\'' +
                 ", rating=" + rating +
                 ", voteCount=" + voteCount +
                 '}';

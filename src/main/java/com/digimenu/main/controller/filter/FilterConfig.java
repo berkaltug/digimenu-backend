@@ -14,7 +14,7 @@ public class FilterConfig {
     public FilterRegistrationBean<FileSizeFilter> fileSizeFilter(){
         FilterRegistrationBean<FileSizeFilter> registerBean= new FilterRegistrationBean<>();
         registerBean.setFilter(new FileSizeFilter());
-        registerBean.setUrlPatterns(Arrays.asList("/restaurant/additem","/restaurant/updateitem"));
+        registerBean.setUrlPatterns(Arrays.asList("/restaurant/additem","/restaurant/updateitem","/restaurant/createCampaign","/restaurant/updateCampaign"));
         return registerBean;
     }
 }
