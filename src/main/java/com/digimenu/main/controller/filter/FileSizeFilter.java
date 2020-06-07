@@ -18,7 +18,6 @@ public class FileSizeFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
-        System.out.println("in filter");
        try{
            chain.doFilter(req,resp);
        }catch (MaxUploadSizeExceededException e){
