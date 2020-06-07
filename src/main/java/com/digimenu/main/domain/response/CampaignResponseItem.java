@@ -10,6 +10,7 @@ public class CampaignResponseItem {
     private String contents;
     private BigDecimal price;
     private Float rating;
+    private String imagePublicId;
 
 
     public Long getId() {
@@ -52,6 +53,14 @@ public class CampaignResponseItem {
         this.rating = rating;
     }
 
+    public String getImagePublicId() {
+        return imagePublicId;
+    }
+
+    public void setImagePublicId(String imagePublicId) {
+        this.imagePublicId = imagePublicId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -61,12 +70,13 @@ public class CampaignResponseItem {
                 Objects.equals(name, that.name) &&
                 Objects.equals(contents, that.contents) &&
                 Objects.equals(price, that.price) &&
-                Objects.equals(rating, that.rating);
+                Objects.equals(rating, that.rating) &&
+                Objects.equals(imagePublicId, that.imagePublicId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, contents, price, rating);
+        return Objects.hash(id, name, contents, price, rating, imagePublicId);
     }
 
     @Override
@@ -77,6 +87,7 @@ public class CampaignResponseItem {
                 ", contents='" + contents + '\'' +
                 ", price=" + price +
                 ", rating=" + rating +
+                ", imagePublicId='" + imagePublicId + '\'' +
                 '}';
     }
 }

@@ -11,6 +11,7 @@ public class CampaignResponseItemConverter {
         item.setContents(campaign.getContents());
         item.setName(campaign.getName());
         item.setPrice(campaign.getPrice());
+        item.setImagePublicId(campaign.getImagePublicId());
         return item;
     }
 }

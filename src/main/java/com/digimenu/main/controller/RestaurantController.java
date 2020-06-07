@@ -6,10 +6,8 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
-import com.digimenu.main.domain.converter.MessageDtoConverter;
-import com.digimenu.main.domain.converter.PanelMenuDtoConverter;
-import com.digimenu.main.domain.converter.TableNameDtoConverter;
-import com.digimenu.main.domain.converter.TransferCartConverter;
+import com.digimenu.main.domain.converter.*;
+import com.digimenu.main.domain.dto.PanelCampaignDto;
 import com.digimenu.main.domain.dto.PanelMenuDto;
 import com.digimenu.main.domain.dto.TransferCartDto;
 import com.digimenu.main.domain.entity.*;
@@ -106,7 +104,7 @@ public class RestaurantController {
             model.addAttribute("panelMenuDto", panelMenuDto);
             return "editmenuitem";
         }
-
+        //burdaki kod bloğunu olduğu gibi servise alıp servise panelMenuDto gönder
         Menu menu = PanelMenuDtoConverter.convert(panelMenuDto);
         menu.setRestaurant(restaurantService.getRestaurant(panelMenuDto.getRestaurantId()));
         menu.setVoteCount(panelMenuDto.getVoteCount());
@@ -319,16 +317,20 @@ public class RestaurantController {
     }
 
     @GetMapping("/createCampaign")
-    public String getCreateCampaign(Campaign campaign, Model model) {
+    public String getCreateCampaign(PanelCampaignDto campaign, Model model) {
         return "createcampaign";
     }
 
     @PostMapping("/createCampaign")
-    public String postCreateCampaign(@ModelAttribute(value = "campaign") @Valid Campaign campaign, BindingResult result) {
+    public String postCreateCampaign(@ModelAttribute(value = "panelCampaignDto") @Valid PanelCampaignDto panelCampaignDto, BindingResult result) {
         if (result.hasErrors()) {
             return "createcampaign";
         } else {
+            Campaign campaign= PanelCampaignConverter.convert(panelCampaignDto);
             campaign.setRestaurant(restaurantService.getLoggedInRestaurant());
+            if(panelCampaignDto.getImage()!=null && !panelCampaignDto.getImage().isEmpty()){
+                campaign.setImagePublicId(cloudinaryService.uploadFile(panelCampaignDto.getImage()));
+            }
             campaignService.addCampaign(campaign);
             return "redirect:/restaurant/seeCampaigns";
         }
@@ -337,16 +339,29 @@ public class RestaurantController {
     @GetMapping("/updateCampaign/{id}")
     public String getUpdateCampaign(@PathVariable("id") Long id, Model model) {
         Campaign campaign = campaignService.getCampaign(id);
-        model.addAttribute("campaign", campaign);
+        model.addAttribute("imagePublicId",campaign.getImagePublicId());
+        model.addAttribute("panelCampaignDto", PanelCampaignConverter.convert(campaign));
         return "updatecampaign";
     }
 
     @PostMapping("/updateCampaign")
-    public String postUpdateCampaign(@ModelAttribute(value = "campaign") @Valid Campaign campaign, BindingResult result) {
+    //parametrelerin sırası önemli burda! bozarsan çalışmıyor
+    public String postUpdateCampaign(@ModelAttribute(value = "panelCampaignDto") @Valid PanelCampaignDto panelCampaignDto, BindingResult result,Model model) {
         if (result.hasErrors()) {
+            model.addAttribute("panelCampaignDto",panelCampaignDto);
             return "updatecampaign";
         }
-        System.out.println(campaignService.updateCampaign(campaign));
+        Campaign campaign = PanelCampaignConverter.convert(panelCampaignDto);
+        campaign.setRestaurant(restaurantService.getRestaurant(panelCampaignDto.getRestaurantId()));
+        String oldImageId = campaignService.getCampaign(panelCampaignDto.getId()).getImagePublicId();
+        String newImageId ;
+        if(panelCampaignDto.getImage()!=null && !panelCampaignDto.getImage().isEmpty()){
+            newImageId = cloudinaryService.updateFile(panelCampaignDto.getImage(),oldImageId);
+            campaign.setImagePublicId(newImageId);
+        }else{
+            campaign.setImagePublicId(oldImageId);
+        }
+        campaignService.updateCampaign(campaign);
         return "redirect:/restaurant/seeCampaigns";
     }
 

@@ -131,7 +131,8 @@ body {
     /*stitching*/
 
     outline: 2px dashed #520902;
-    outline-offset: -5px;
+    outline-offset: -6px;
+    border-radius:6px;
     background-color: #a91101;
     display: flex;
     padding-left: 25px;

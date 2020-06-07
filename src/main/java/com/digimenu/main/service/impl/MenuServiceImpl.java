@@ -48,7 +48,7 @@ public class MenuServiceImpl implements MenuService {
 				.collect(Collectors.toList()).stream().map(item-> MenuResponseItemConverter.convert(item)).collect(Collectors.toList()));
 		response.setFavourites(itemList
 				.stream()
-				.filter(item->item.getFavourite())
+				.filter(item->item.getFavourite() && item.getActive())
 				.collect(Collectors.toList()).stream().map(item-> MenuResponseItemConverter.convert(item)).collect(Collectors.toList()));
 		response.setCampaigns(campaigns
 				.stream()
