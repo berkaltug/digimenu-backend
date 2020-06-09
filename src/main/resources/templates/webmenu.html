@@ -13,156 +13,159 @@
     <title>Digimenu</title>
 </head>
 <body>
-
-
-
-<div class="container" style="min-height: 100%">
-    <div class="row">
-        <div class="col-sm-12 d-flex flex-column align-items-center m-1">
-            <img th:src="@{/img/logo.png}" alt="logomuz :)" class="img-fluid">
+<div id="page-container">
+    <div class="container" id="content-wrap">
+        <div class="row">
+            <div class="col-sm-12 d-flex flex-column align-items-center m-1">
+                <img th:src="@{/img/logo.png}" alt="logomuz :)" class="img-fluid">
 
                 <h2 class="ribbon mb-4 mt-2">
                     <a th:text="*{restaurantName}" class="ribbon-content"></a>
                 </h2>
 
 
-            <div class="accordion align-self-stretch" id="accordionExample">
+                <div class="accordion align-self-stretch" id="accordionExample">
 
-                <th:block th:if="!${#lists.isEmpty(campaigns)}">
-                    <div class="card">
-                        <div class="card-header" id="headingCampaign">
-                            <button class="btn btn-primary btn-block text-center" type="button" data-toggle="collapse"
-                                    data-target="#collapseCampaign" aria-expanded="false"
-                                    aria-controls="collapseCampaign">
-                                Kampanyalar
-                            </button>
+                    <th:block th:if="!${#lists.isEmpty(campaigns)}">
+                        <div class="card">
+                            <div class="card-header" id="headingCampaign">
+                                <button class="btn btn-primary btn-block text-center" type="button" data-toggle="collapse"
+                                        data-target="#collapseCampaign" aria-expanded="false"
+                                        aria-controls="collapseCampaign">
+                                    Kampanyalar
+                                </button>
+                            </div>
+                            <div id="collapseCampaign" class="collapse" aria-labelledby="headingCampaign"
+                                 data-parent="#accordionExample">
+                                <th:block th:each="campaign : ${campaigns}">
+                                    <div class="d-flex flex-row align-self-stretch justify-content-around p-2 item-container">
+                                        <div  th:if="${campaign.imagePublicId != null && !campaign.imagePublicId.isEmpty()}">
+                                            <a data-toggle="modal" data-target="#exampleModal" class="pic-button">
+                                                <img th:src="'http://res.cloudinary.com/hkn1l1hym/image/upload/w_300/' + ${campaign.imagePublicId}" th:alt="${campaign.imagePublicId}" class="my-image" >
+                                            </a>
+                                        </div>
+                                        <div class="d-flex w-75 p-2 flex-column justify-content-around">
+                                            <span class="item-header" th:text="${campaign.name}"></span>
+                                            <span th:if="${campaign.contents != null && !campaign.contents.isEmpty()}"
+                                                  class="item-ingredients" th:text="${campaign.contents}"></span>
+                                        </div>
+                                        <div class="d-flex w-25 flex-row justify-content-center align-items-center">
+                                            <span th:text="${campaign.price} + ' ₺'"></span>
+                                        </div>
+                                    </div>
+                                </th:block>
+                            </div>
                         </div>
-                        <div id="collapseCampaign" class="collapse" aria-labelledby="headingCampaign"
-                             data-parent="#accordionExample">
-                            <th:block th:each="campaign : ${campaigns}">
-                                <div class="d-flex flex-row align-self-stretch justify-content-around p-2 item-container">
-                                    <div  th:if="${campaign.imagePublicId != null && !campaign.imagePublicId.isEmpty()}">
-                                        <a data-toggle="modal" data-target="#exampleModal" class="pic-button">
-                                            <img th:src="'http://res.cloudinary.com/hkn1l1hym/image/upload/w_300/' + ${campaign.imagePublicId}" th:alt="${campaign.imagePublicId}" class="my-image" >
-                                        </a>
+                    </th:block>
+
+                    <th:block th:if="!${#lists.isEmpty(favourites)}">
+                        <div class="card">
+                            <div class="card-header" th:if="!${#lists.isEmpty(favourites)}" id="headingFavourites">
+                                <button class="btn btn-primary btn-block text-center" type="button" data-toggle="collapse"
+                                        data-target="#collapseFavourites" aria-expanded="false"
+                                        aria-controls="collapseFavourites">
+                                    Öne Çıkanlar
+                                </button>
+                            </div>
+                            <div id="collapseFavourites" class="collapse" aria-labelledby="headingFavourites"
+                                 data-parent="#accordionExample">
+                                <th:block th:each="fav : ${favourites}">
+                                    <div class="d-flex flex-row align-self-stretch justify-content-around p-2 item-container">
+                                        <div  th:if="${fav.imagePublicId != null && !fav.imagePublicId.isEmpty()}">
+                                            <a data-toggle="modal" data-target="#exampleModal" class="pic-button">
+                                                <img th:src="'http://res.cloudinary.com/hkn1l1hym/image/upload/w_300/' + ${fav.imagePublicId}" th:alt="${fav.imagePublicId}" class="my-image" >
+                                            </a>
+                                        </div>
+                                        <div class="d-flex w-75 p-2 flex-column justify-content-around">
+                                            <span class="item-header" th:text="${fav.item}"></span>
+                                            <span th:if="${fav.ingredients != null && !fav.ingredients.isEmpty()}"
+                                                  class="item-ingredients" th:text="${fav.ingredients}"></span>
+                                        </div>
+                                        <div class="d-flex w-25 flex-row justify-content-center align-items-center">
+                                            <span th:text="${fav.price} + ' ₺'"></span>
+                                        </div>
                                     </div>
-                                    <div class="d-flex w-75 p-2 flex-column justify-content-around">
-                                        <span class="item-header" th:text="${campaign.name}"></span>
-                                        <span th:if="${campaign.contents != null && !campaign.contents.isEmpty()}"
-                                              class="item-ingredients" th:text="${campaign.contents}"></span>
-                                    </div>
-                                    <div class="d-flex w-25 flex-row justify-content-center align-items-center">
-                                        <span th:text="${campaign.price} + ' ₺'"></span>
-                                    </div>
-                                </div>
-                            </th:block>
+                                </th:block>
+                            </div>
                         </div>
+                    </th:block>
+
+
+                    <th:block th:each="entry,stats : ${itemsMap}">
+                        <div class="card">
+                            <div class="card-header" th:id="'heading' + ${stats.index}">
+                                <button class="btn btn-primary btn-block text-center" type="button" data-toggle="collapse"
+                                        th:data-target="'#collapse' + ${stats.index}" aria-expanded="false"
+                                        th:aria-controls="'#collapse' + ${stats.index}">
+                                    <span th:text="${entry.key}"></span>
+                                </button>
+                            </div>
+                            <div th:id="'collapse' + ${stats.index}" class="collapse"
+                                 th:aria-labelledby="'heading' + ${stats.index}" data-parent="#accordionExample">
+                                <th:block th:each="item : ${entry.value}">
+
+                                    <div class="d-flex flex-row align-self-stretch justify-content-start align-items-center p-2 item-container">
+                                        <div  th:if="${item.imagePublicId != null && !item.imagePublicId.isEmpty()}">
+                                            <a data-toggle="modal" data-target="#exampleModal" class="pic-button">
+                                                <img th:src="'http://res.cloudinary.com/hkn1l1hym/image/upload/w_300/' + ${item.imagePublicId}" th:alt="${item.imagePublicId}" class="my-image" >
+                                            </a>
+                                        </div>
+                                        <div class="d-flex p-2 flex-column justify-content-around  w-75">
+                                            <span class="item-header" th:text="${item.item}"></span>
+                                            <span th:if="${item.ingredients != null && !item.ingredients.isEmpty()}"
+                                                  class="item-ingredients" th:text="${item.ingredients}"></span>
+                                        </div>
+                                        <div class="d-flex flex-row justify-content-center align-items-center ml-auto w-25">
+                                            <span th:text="${item.price} + ' ₺'"></span>
+                                        </div>
+                                    </div>
+                                </th:block>
+                            </div>
+                        </div>
+                    </th:block>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="modalFoodName" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header justify-content-center">
+                    <div id="baslik">
+                        <span id="modalFoodName">Yemek İsmi</span>
                     </div>
-                </th:block>
-
-                <th:block th:if="!${#lists.isEmpty(favourites)}">
-                    <div class="card">
-                        <div class="card-header" th:if="!${#lists.isEmpty(favourites)}" id="headingFavourites">
-                            <button class="btn btn-primary btn-block text-center" type="button" data-toggle="collapse"
-                                    data-target="#collapseFavourites" aria-expanded="false"
-                                    aria-controls="collapseFavourites">
-                                Öne Çıkanlar
-                            </button>
-                        </div>
-                        <div id="collapseFavourites" class="collapse" aria-labelledby="headingFavourites"
-                             data-parent="#accordionExample">
-                            <th:block th:each="fav : ${favourites}">
-                                <div class="d-flex flex-row align-self-stretch justify-content-around p-2 item-container">
-                                    <div  th:if="${fav.imagePublicId != null && !fav.imagePublicId.isEmpty()}">
-                                        <a data-toggle="modal" data-target="#exampleModal" class="pic-button">
-                                            <img th:src="'http://res.cloudinary.com/hkn1l1hym/image/upload/w_300/' + ${fav.imagePublicId}" th:alt="${fav.imagePublicId}" class="my-image" >
-                                        </a>
-                                    </div>
-                                    <div class="d-flex w-75 p-2 flex-column justify-content-around">
-                                        <span class="item-header" th:text="${fav.item}"></span>
-                                        <span th:if="${fav.ingredients != null && !fav.ingredients.isEmpty()}"
-                                              class="item-ingredients" th:text="${fav.ingredients}"></span>
-                                    </div>
-                                    <div class="d-flex w-25 flex-row justify-content-center align-items-center">
-                                        <span th:text="${fav.price} + ' ₺'"></span>
-                                    </div>
-                                </div>
-                            </th:block>
-                        </div>
+                </div>
+                <div class="modal-body d-flex flex-column justify-content-center align-items-center">
+                    <div class="modal-image-container  d-flex flex-column justify-content-center align-items-center">
+                        <img src="" alt="" class="modal-image">
                     </div>
-                </th:block>
-
-
-                <th:block th:each="entry,stats : ${itemsMap}">
-                    <div class="card">
-                        <div class="card-header" th:id="'heading' + ${stats.index}">
-                            <button class="btn btn-primary btn-block text-center" type="button" data-toggle="collapse"
-                                    th:data-target="'#collapse' + ${stats.index}" aria-expanded="false"
-                                    th:aria-controls="'#collapse' + ${stats.index}">
-                                <span th:text="${entry.key}"></span>
-                            </button>
-                        </div>
-                        <div th:id="'collapse' + ${stats.index}" class="collapse"
-                             th:aria-labelledby="'heading' + ${stats.index}" data-parent="#accordionExample">
-                            <th:block th:each="item : ${entry.value}">
-
-                                <div class="d-flex flex-row align-self-stretch justify-content-start align-items-center p-2 item-container">
-                                    <div  th:if="${item.imagePublicId != null && !item.imagePublicId.isEmpty()}">
-                                        <a data-toggle="modal" data-target="#exampleModal" class="pic-button">
-                                            <img th:src="'http://res.cloudinary.com/hkn1l1hym/image/upload/w_300/' + ${item.imagePublicId}" th:alt="${item.imagePublicId}" class="my-image" >
-                                        </a>
-                                    </div>
-                                    <div class="d-flex p-2 flex-column justify-content-around  w-75">
-                                        <span class="item-header" th:text="${item.item}"></span>
-                                        <span th:if="${item.ingredients != null && !item.ingredients.isEmpty()}"
-                                              class="item-ingredients" th:text="${item.ingredients}"></span>
-                                    </div>
-                                    <div class="d-flex flex-row justify-content-center align-items-center ml-auto w-25">
-                                        <span th:text="${item.price} + ' ₺'"></span>
-                                    </div>
-                                </div>
-                            </th:block>
-                        </div>
+                    <div id="modalFoodInfo">
                     </div>
-                </th:block>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" style="background-color: #0198a9" data-dismiss="modal">Kapat</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="modalFoodName" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header justify-content-center">
-                <div id="baslik">
-                    <span id="modalFoodName">Yemek İsmi</span>
-                </div>
-            </div>
-            <div class="modal-body d-flex flex-column justify-content-center align-items-center">
-                <div class="modal-image-container  d-flex flex-column justify-content-center align-items-center">
-                    <img src="" alt="" class="modal-image">
-                </div>
-                <div id="modalFoodInfo">
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" style="background-color: #0198a9" data-dismiss="modal">Kapat</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!--<div class="my-footer">
-    <div class="row">
+
+
+
+<div id="my-footer">
+    <div class="row align-self-stretch" style="max-width: 100%">
         <div class="col-sm-6 d-flex flex-column justify-content-center align-items-center">
             <div><i>*Sunumlar değişiklik gösterebilir</i></div>
-            <div><i>*Resimler temsilidir</i></div>
+            <div><i>*Resimler temsili olabilir</i></div>
         </div>
         <div class="col-sm-6 d-flex flex-column justify-content-center align-items-center">
-            <div><h6 class="m-0 mr-2">Digimenu © 2020</h6><a href="https://www.instagram.com/digimenuapp"><i class="fab fa-instagram"></i></a></div>
+            <div class="d-flex justify-content-around align-items-center">
+                <a href="https://www.instagram.com/digimenuapp"><i class="fab fa-instagram"></i></a><h6 class="m-0 ml-3">Digimenu © 2020</h6>
+            </div>
             <div><a href="http://www.digimenuqr.com" style="color: whitesmoke">Hakkımızda daha fazlası için tıklayın</a></div>
-
         </div>
     </div>
-</div>-->
+</div>
 <script
         src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="

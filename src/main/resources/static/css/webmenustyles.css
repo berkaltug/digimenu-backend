@@ -147,14 +147,30 @@ body {
     -moz-box-shadow: -2px 2px 5px  #2a2a2a;
     box-shadow: -2px 2px 5px  #2a2a2a;
 }
-.my-footer{
+html{ height:100%;max-width: 100%; }
+body{ min-height:100%; padding:0; margin:0; position:relative; }
+#page-container {
+    position: relative;
+    min-height: 100%;
+}
+#content-wrap {
+    padding-bottom: 4.2rem;    /* Footer height */
+}
 
-    left: 0;
+#my-footer{
+    position: absolute;
     bottom: 0;
     width: 100%;
-    min-height: 3rem;
+    height: 4.2rem;
     background-color: #666666;
     color: #faf9f8;
-    text-align: center;
-    vertical-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+@media screen and (max-width: 600px){
+    #my-footer{
+        height: 8rem;
+    }
 }
