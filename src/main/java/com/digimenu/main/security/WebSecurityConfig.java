@@ -107,7 +107,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				.loginPage("/restaurant/login")
 				//.loginProcessingUrl("/restaurant/reslogin")
 				.failureUrl("/restaurant/login?error")
-				.defaultSuccessUrl("/restaurant/tables",true)
+				.defaultSuccessUrl("/restaurant/menu",true)
 				.permitAll()
 				.and()
 			.logout()
