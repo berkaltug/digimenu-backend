@@ -147,3 +147,14 @@ body {
     -moz-box-shadow: -2px 2px 5px  #2a2a2a;
     box-shadow: -2px 2px 5px  #2a2a2a;
 }
+.my-footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    min-height: 3rem;
+    background-color: #666666;
+    color: #faf9f8;
+    text-align: center;
+    vertical-align: center;
+}
