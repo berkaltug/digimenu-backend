@@ -178,3 +178,6 @@ body{ min-height:100%; padding:0; margin:0; position:relative; }
         padding-bottom: 11rem;    /* Footer height */
     }
 }
+.modal-header>.close{
+    margin-left: -2rem;
+}
