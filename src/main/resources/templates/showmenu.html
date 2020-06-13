@@ -1,37 +1,40 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org"
-		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
-		xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-   <th:block th:replace="fragments/head :: head"></th:block>
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <th:block th:replace="fragments/head :: head"></th:block>
 
-  </head>
-  <body>
-    <th:block th:include=" fragments/header :: body"></th:block>
-    <div class="container-fluid mt-5">
-		<div class="row mb-3">
-			<div class="col -md-3"></div>
-			<div class="col-md-6">
-				<input type="text" id="searchbox1" placeholder="Aradığınız ürünü yazınız." class="form-control">
-			</div>
-			<div class="col-md-3"></div>
-		</div>
-      <span class="col-sm-12">
+</head>
+<body>
+<th:block th:include=" fragments/header :: body"></th:block>
+<div class="container-fluid mt-5">
+    <div class="row mb-3">
+        <div class="col -md-3"></div>
+        <div class="col-md-6">
+            <input type="text" id="searchbox1" placeholder="Aradığınız ürünü yazınız." class="form-control">
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <span class="col-sm-12">
 
         <ul name="menulist" id="menulist" th:if="!${#lists.isEmpty(menu)}" class="list-group grid-container">
         	 <li class="list-group-item  justify-content-center align-items-center">
 					<span>Yeni ürün ekle</span>
 					<div class="btn-group btn-group-sm ml-auto" role="group">
-							<a  class="btn btn-success" th:href="@{/restaurant/additem}">
+							<a class="btn btn-success" th:href="@{/restaurant/additem}">
 							<i class="fas fa-plus"></i>
 							</a>
 					</div>
 			 </li>
-          <li th:each="m : ${menu}" th:name="*{m.item}" class="list-group-item  justify-content-center align-items-center">
+          <li th:each="m : ${menu}" th:name="*{m.item}"
+              class="list-group-item  justify-content-center align-items-center">
             <span th:text="*{m.item}"></span>
             <div class="btn-group btn-group-sm ml-auto" role="group">
-              <a th:href="${'/restaurant/edititem/' + m.id}" class="btn btn-success"><span class="fas fa-edit"></span></a>
-              <a th:href="${'/restaurant/delete/' + m.id}" class="btn btn-danger"><span class="fas fa-trash-alt"></span></a>
+              <a th:href="${'/restaurant/edititem/' + m.id}" class="btn btn-success"><span
+                      class="fas fa-edit"></span></a>
+              <a data-toggle="modal" data-target="#deleteModal" th:data-menu-id="${m.id}" th:data-menu-item="${m.item}"
+                 class="btn btn-danger"><span class="fas fa-trash-alt" style="color:#FFFFFF"></span></a>
             </div>
           </li>
         </ul>
@@ -43,21 +46,41 @@
 				<li class="list-group-item d-flex flex-row justify-content-center">
 					<div class="mt-1">Yeni ürün ekle</div>
 					<div class="btn-group btn-group-sm ml-auto" role="group">
-						<a  class="btn btn-success" th:href="@{/restaurant/additem}">
+						<a class="btn btn-success" th:href="@{/restaurant/additem}">
 							<i class="fas fa-plus"></i>
 							</a>
 					</div>
 				</li>
 			</ul>
+</div>
+</div>
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalHeader" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="deleteModalHeader">Modal title</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				Bu ürünü silmek istediğinizden emin misiniz ?
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+				<a href="#" class="btn btn-danger" id="deleteBtn">Sil</a>
+			</div>
 		</div>
 	</div>
-	<script th:src="@{/js/searchbox.js}" type="text/javascript" ></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-			integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-			crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-			integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-			crossorigin="anonymous"></script>
-    
-  </body>
-  </html>
+</div>
+<script th:src="@{/js/deleteconfirm.js}" type="text/javascript"></script>
+<script th:src="@{/js/searchbox.js}" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>
