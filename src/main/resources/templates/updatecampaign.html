@@ -8,7 +8,7 @@
 <body>
 <th:block th:replace="fragments/header :: body"></th:block>
 <div class="container rounded p-2 mt-4" id="menuitemadd">
-    <div class="row">
+    <div class="row m-0">
         <div class="col-md-2"></div>
         <div class="col-md-8 d-flex flex-column">
             <h3 class="ml-auto mr-auto">Kampanya Güncelleme Sayfası</h3>
@@ -38,16 +38,23 @@
                     <input type="number"  class="form-control" step="0.01" id="price" name="price" th:field="*{price}" placeholder="Fiyat" value=" ">
                     <div  class="alert alert-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
                 </div>
-                <div class= "d-flex flex-row justify-content-start">
-                    <div class="col-md-6 d-flex">
+                <div class="row">
+                    <div class="col-md-6  d-flex">
                         <div class="d-flex flex-column justify-content-center align-self-stretch">
                             <label class="text-center" for="file">Lütfen menüde gözükecek bir fotoğraf yükleyiniz. (Opsiyonel) (Maksimum 2MB)</label>
                             <input type="hidden" th:value="${imagePublicId}" id="img-id" readonly>
                             <input id="file" type="file" name="file" th:field="*{image}" accept="image/*" class="form-control-file text-center">
+                            <p class="mt-3" style="font-size: 0.8rem;text-align: center">( Üründeki fotoğraf iptal edilecekse kutucuğu işaretleyiniz. Fotoğraf güncellerken işaretlemeyiniz , eski fotoğraf otomatik silinecektir )</p>
+                            <div class="form-check text-center">
+                                <input class="form-check-input" type="checkbox" th:field="*{shouldDelImage}" id="defaultCheck1">
+                                <label class="form-check-label" for="defaultCheck1">
+                                    Fotoğraf Silinsin Mi ?
+                                </label>
+                            </div>
                             <div class="alert alert-warning" th:if="${param.bigfile}">Dosya boyutu limiti aşıldı.</div>
                         </div>
                     </div>
-                    <div class="col-md-6 d-flex justify-content-center">
+                    <div class="col-md-6  d-flex justify-content-center">
                         <div style="width:305px;height:305px;border:2px solid darkgray;background-color:lightgray;">
                             <img src="" alt="" id="pic" style="object-fit:contain">
                         </div>

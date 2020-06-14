@@ -22,6 +22,7 @@ public class PanelCampaignDto {
     private MultipartFile image;
     private Float rating;
     private Integer voteCount;
+    private Boolean shouldDelImage;
 
     public Long getId() {
         return id;
@@ -93,5 +94,13 @@ public class PanelCampaignDto {
 
     public void setVoteCount(Integer voteCount) {
         this.voteCount = voteCount;
+    }
+
+    public Boolean getShouldDelImage() {
+        return shouldDelImage;
+    }
+
+    public void setShouldDelImage(Boolean shouldDelImage) {
+        this.shouldDelImage = shouldDelImage;
     }
 }
