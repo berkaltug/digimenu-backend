@@ -9,7 +9,7 @@
   		<th:block th:replace="fragments/header :: body"></th:block>
 
 		<div class="container rounded p-2 mt-4" id="menuitemadd">
-			<div class="row">
+			<div class="row m-0">
 			<div class="col-md-2"></div>
 				<div class="col-md-8 d-flex flex-column">
 					<h3 class="ml-auto mr-auto">Menüye Ürün Ekle</h3>
@@ -34,7 +34,7 @@
 								<option th:each=" c : ${category}" th:value="${c.name}" th:text="${c.name}" ></option>
 							</select>
 						</div>
-						<div class= "d-flex flex-row justify-content-start">
+						<div class= "row">
 							<div class="col-md-6 d-flex">
 								<div class="d-flex flex-column justify-content-center align-self-stretch">
 									<label class="text-center" for="file">Lütfen menüde gözükecek bir fotoğraf yükleyiniz. (Opsiyonel) (Maksimum 2MB)</label>

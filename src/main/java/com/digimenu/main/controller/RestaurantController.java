@@ -309,12 +309,7 @@ public class RestaurantController {
         if (result.hasErrors()) {
             return "createcampaign";
         } else {
-            Campaign campaign= PanelCampaignConverter.convert(panelCampaignDto);
-            campaign.setRestaurant(restaurantService.getLoggedInRestaurant());
-            if(panelCampaignDto.getImage()!=null && !panelCampaignDto.getImage().isEmpty()){
-                campaign.setImagePublicId(cloudinaryService.uploadFile(panelCampaignDto.getImage()));
-            }
-            campaignService.addCampaign(campaign);
+            campaignService.addCampaign(panelCampaignDto);
             return "redirect:/restaurant/seeCampaigns";
         }
     }
@@ -334,17 +329,7 @@ public class RestaurantController {
             model.addAttribute("panelCampaignDto",panelCampaignDto);
             return "updatecampaign";
         }
-        Campaign campaign = PanelCampaignConverter.convert(panelCampaignDto);
-        campaign.setRestaurant(restaurantService.getRestaurant(panelCampaignDto.getRestaurantId()));
-        String oldImageId = campaignService.getCampaign(panelCampaignDto.getId()).getImagePublicId();
-        String newImageId ;
-        if(panelCampaignDto.getImage()!=null && !panelCampaignDto.getImage().isEmpty()){
-            newImageId = cloudinaryService.updateFile(panelCampaignDto.getImage(),oldImageId);
-            campaign.setImagePublicId(newImageId);
-        }else{
-            campaign.setImagePublicId(oldImageId);
-        }
-        campaignService.updateCampaign(campaign);
+        campaignService.updateCampaign(panelCampaignDto);
         return "redirect:/restaurant/seeCampaigns";
     }
 
