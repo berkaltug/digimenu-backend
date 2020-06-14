@@ -22,6 +22,7 @@ public class PanelMenuDto {
     private Integer voteCount;
     private String category;
     private MultipartFile image;
+    private Boolean shouldDelImage;
     private Boolean isActive=true;
     private Boolean isFavourite=false;
 
@@ -111,5 +112,13 @@ public class PanelMenuDto {
 
     public void setVoteCount(Integer voteCount) {
         this.voteCount = voteCount;
+    }
+
+    public Boolean getShouldDelImage() {
+        return shouldDelImage;
+    }
+
+    public void setShouldDelImage(Boolean shouldDelImage) {
+        this.shouldDelImage = shouldDelImage;
     }
 }
