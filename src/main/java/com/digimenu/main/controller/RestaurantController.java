@@ -77,12 +77,7 @@ public class RestaurantController {
             model.addAttribute("category", categoryService.getCategories());
             return "addmenuitem";
         }
-        Menu menu = PanelMenuDtoConverter.convert(panelMenuDto);
-        menu.setRestaurant(restaurantService.getLoggedInRestaurant());
-        if(panelMenuDto.getImage()!=null){
-            menu.setImagePublicId(cloudinaryService.uploadFile(panelMenuDto.getImage()));
-        }
-        this.menuService.saveMenuItem(menu);
+        this.menuService.saveMenuItem(panelMenuDto);
         return "redirect:/restaurant/menu";
     }
 
@@ -104,19 +99,7 @@ public class RestaurantController {
             model.addAttribute("panelMenuDto", panelMenuDto);
             return "editmenuitem";
         }
-        //burdaki kod bloğunu olduğu gibi servise alıp servise panelMenuDto gönder
-        Menu menu = PanelMenuDtoConverter.convert(panelMenuDto);
-        menu.setRestaurant(restaurantService.getRestaurant(panelMenuDto.getRestaurantId()));
-        menu.setVoteCount(panelMenuDto.getVoteCount());
-        String oldImageId=menuService.getMenuItem(panelMenuDto.getId()).getImagePublicId();
-        String newImageId;
-        if(panelMenuDto.getImage()!=null && !panelMenuDto.getImage().isEmpty()){
-           newImageId = cloudinaryService.updateFile(panelMenuDto.getImage(), oldImageId);
-           menu.setImagePublicId(newImageId);
-        }else{
-            menu.setImagePublicId(oldImageId);
-        }
-        menuService.updateMenuItem(menu);
+        menuService.updateMenuItem(panelMenuDto);
         return "redirect:/restaurant/menu";
     }
 

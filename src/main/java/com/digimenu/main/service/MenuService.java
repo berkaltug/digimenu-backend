@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import com.digimenu.main.domain.dto.PanelMenuDto;
 import com.digimenu.main.domain.entity.Menu;
 import com.digimenu.main.domain.entity.Restaurant;
 import com.digimenu.main.domain.response.GetMenuResponse;
@@ -14,8 +15,9 @@ public interface MenuService {
 	List<Menu> getAllItemsByRestaurant(Long id);
 	List<Menu> getPassiveItemsByRestaurant(Long id);
 	Menu getMenuItem(Long id);
-	void saveMenuItem(Menu menu);
+	void saveMenuItem(PanelMenuDto panelMenuDto);
 	void deleteMenuItem(Menu menu);
+	void updateMenuItem(PanelMenuDto panelMenuDto);
 	void updateMenuItem(Menu menu);
 	List<Menu> getFavoriteItemsByRestaurant(Long id);
 	Optional<Menu> getMenuByRestaurantAndName(Restaurant restaurant, String name);

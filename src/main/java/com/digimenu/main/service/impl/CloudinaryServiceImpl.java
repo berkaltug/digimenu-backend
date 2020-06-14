@@ -3,6 +3,8 @@ package com.digimenu.main.service.impl;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import com.digimenu.main.service.CloudinaryService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,7 +19,7 @@ public class CloudinaryServiceImpl implements CloudinaryService {
 
    @Autowired
    private Cloudinary cloudinary;
-
+    private static final Logger logger = LoggerFactory.getLogger(CloudinaryServiceImpl.class);
     @Override
     public String uploadFile(MultipartFile file) {
         try {
@@ -25,10 +27,10 @@ public class CloudinaryServiceImpl implements CloudinaryService {
             Map uploadResult= cloudinary.uploader().upload(uploading, ObjectUtils.emptyMap());
             return uploadResult.get("public_id").toString();
         }catch (IOException e){
-            System.err.println(e);
+            logger.warn(e.toString());
             return null;
         }catch(Exception e){
-            System.err.println(e);
+            logger.warn(e.toString());
             return null;
         }
     }
@@ -43,13 +45,25 @@ public class CloudinaryServiceImpl implements CloudinaryService {
             Map uploadResult= cloudinary.uploader().upload(updating, ObjectUtils.emptyMap());
             return uploadResult.get("public_id").toString();
         }catch (IOException e){
-            System.err.println(e);
+            logger.warn(oldPublicId + " id'si ile ilgili şu exception" + e.toString());
             return null;
         }catch(Exception e){
-            System.err.println(e);
+            logger.warn(e.toString());
             return null;
         }
     }
+
+    @Override
+    public void deleteFile(String publicId) {
+        try{
+            cloudinary.uploader().destroy(publicId,ObjectUtils.emptyMap());
+        }catch (IOException e){
+           logger.warn(publicId + "id'si ile ilgili şu exception " + e);
+        }catch (Exception e){
+            logger.warn(e.toString());
+        }
+    }
+
     private File convertMultiPartToFile(MultipartFile file) throws IOException {
         File convFile = new File(file.getOriginalFilename());
         FileOutputStream fos = new FileOutputStream(convFile);
