@@ -6,6 +6,7 @@ import com.digimenu.main.domain.entity.TableName;
 import com.digimenu.main.domain.request.TableNameRequest;
 import com.digimenu.main.domain.response.TableNameResponse;
 import com.digimenu.main.security.User;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,4 +20,5 @@ public interface RestaurantService {
 	List<TableNameResponse> getTableNames(Restaurant restaurant);
 	TableNameRequest getTableNameRequest(Restaurant restaurant);
 	Optional<TableName> getTableName(Restaurant restaurant,Integer masaNo);
+	void saveRestaurantLogo(MultipartFile multipartFile);
 }
