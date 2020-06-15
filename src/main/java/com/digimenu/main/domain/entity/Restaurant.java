@@ -36,6 +36,7 @@ public class Restaurant {
     private Double latitude;
     private Double longitude;
     private Double radius;
+	private String logoPublicId;
 
     @OneToMany(cascade=CascadeType.ALL,mappedBy = "restaurant")
 	private List<Comment> comments=new ArrayList<>();
@@ -152,6 +153,31 @@ public class Restaurant {
 		comment.setRestaurant(null);
 	}
 
+	public String getLogoPublicId() {
+		return logoPublicId;
+	}
+
+	public void setLogoPublicId(String logoPublicId) {
+		this.logoPublicId = logoPublicId;
+	}
+
+	public Restaurant(Long id, @NotNull String name, City city, @NotNull String address, @NotNull Long tel, @NotNull String mail, User owner, Double latitude, Double longitude, Double radius, String logoPublicId, List<Comment> comments, @NotNull Integer tableAmount) {
+		this.id = id;
+		this.name = name;
+		this.city = city;
+		this.address = address;
+		this.tel = tel;
+		this.mail = mail;
+		this.owner = owner;
+		this.latitude = latitude;
+		this.longitude = longitude;
+		this.radius = radius;
+		this.logoPublicId = logoPublicId;
+		this.comments = comments;
+		this.tableAmount = tableAmount;
+	}
+
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -167,13 +193,14 @@ public class Restaurant {
 				Objects.equals(latitude, that.latitude) &&
 				Objects.equals(longitude, that.longitude) &&
 				Objects.equals(radius, that.radius) &&
+				Objects.equals(logoPublicId, that.logoPublicId) &&
 				Objects.equals(comments, that.comments) &&
 				Objects.equals(tableAmount, that.tableAmount);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, name, city, address, tel, mail, owner, latitude, longitude, radius, comments, tableAmount);
+		return Objects.hash(id, name, city, address, tel, mail, owner, latitude, longitude, radius, logoPublicId, comments, tableAmount);
 	}
 
 	@Override
@@ -190,6 +217,7 @@ public class Restaurant {
 				", longitude=" + longitude +
 				", radius=" + radius +
 				", tableAmount=" + tableAmount +
+				", logoPublicId=" + logoPublicId +
 				'}';
 	}
 }

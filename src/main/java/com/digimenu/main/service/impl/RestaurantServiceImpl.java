@@ -7,16 +7,14 @@ import com.digimenu.main.domain.entity.TableName;
 import com.digimenu.main.domain.request.TableNameRequest;
 import com.digimenu.main.domain.response.TableNameResponse;
 import com.digimenu.main.repository.TableNameRepository;
-import com.digimenu.main.service.CampaignService;
-import com.digimenu.main.service.RestaurantService;
-import com.digimenu.main.service.SecurityService;
-import com.digimenu.main.service.UserService;
+import com.digimenu.main.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.digimenu.main.domain.entity.Restaurant;
 import com.digimenu.main.repository.RestaurantRepository;
 import com.digimenu.main.security.User;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
@@ -28,13 +26,15 @@ public class RestaurantServiceImpl implements RestaurantService {
 	private SecurityService securityService;
 	private UserService userService;
 	private TableNameRepository tableNameRepository;
+	private CloudinaryService cloudinaryService;
 
 	@Autowired
-	public RestaurantServiceImpl(RestaurantRepository rr, SecurityService securityService, UserService userService, TableNameRepository tableNameRepository) {
+	public RestaurantServiceImpl(RestaurantRepository rr, SecurityService securityService, UserService userService, TableNameRepository tableNameRepository, CloudinaryService cloudinaryService) {
 		this.rr = rr;
 		this.securityService = securityService;
 		this.userService = userService;
 		this.tableNameRepository = tableNameRepository;
+		this.cloudinaryService = cloudinaryService;
 	}
 
 	@Override
@@ -63,7 +63,6 @@ public class RestaurantServiceImpl implements RestaurantService {
 		TableNameEntityConverter.convert(dtoList).forEach(entity->{
 			tableNameRepository.save(entity);
 		});
-
 	}
 
 	@Override
@@ -76,6 +75,15 @@ public class RestaurantServiceImpl implements RestaurantService {
 	public Optional<TableName> getTableName(Restaurant restaurant,Integer masaNo){
 		return Optional.ofNullable(tableNameRepository.findByRestaurantAndMasaNo(restaurant,masaNo));
 	}
+
+	@Override
+	public void saveRestaurantLogo(MultipartFile image) {
+		String logoId = cloudinaryService.uploadFile(image);
+		Restaurant restaurant = getLoggedInRestaurant();
+		restaurant.setLogoPublicId(logoId);
+		rr.save(restaurant);
+	}
+
 	@Override
 	public TableNameRequest getTableNameRequest(Restaurant restaurant){
 		List<TableName> tableNames=tableNameRepository.findTableNamesByRestaurantOrderByMasaNoAsc(restaurant);

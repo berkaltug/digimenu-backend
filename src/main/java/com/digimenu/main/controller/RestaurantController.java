@@ -186,7 +186,6 @@ public class RestaurantController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return "redirect:/restaurant/tables";
     }
 
@@ -343,5 +342,10 @@ public class RestaurantController {
     public String getComments(Model model) {
         model.addAttribute("comments", commentService.getRestaurantComments());
         return "listcommentpage";
+    }
+
+    @GetMapping("/logo")
+    public String getLogoPage(Model model){
+        return "logopage";
     }
 }
