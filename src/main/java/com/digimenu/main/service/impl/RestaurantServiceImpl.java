@@ -2,6 +2,7 @@ package com.digimenu.main.service.impl;
 
 import com.digimenu.main.domain.converter.TableNameEntityConverter;
 import com.digimenu.main.domain.converter.TableNameResponseConverter;
+import com.digimenu.main.domain.dto.LogoDto;
 import com.digimenu.main.domain.dto.TableNameDto;
 import com.digimenu.main.domain.entity.TableName;
 import com.digimenu.main.domain.request.TableNameRequest;
@@ -77,10 +78,22 @@ public class RestaurantServiceImpl implements RestaurantService {
 	}
 
 	@Override
-	public void saveRestaurantLogo(MultipartFile image) {
-		String logoId = cloudinaryService.uploadFile(image);
+	public void saveRestaurantLogo(LogoDto logoDto) {
 		Restaurant restaurant = getLoggedInRestaurant();
-		restaurant.setLogoPublicId(logoId);
+		String oldImageId = restaurant.getLogoPublicId();
+		if(logoDto.getShouldDelImage()==true && oldImageId!=null){
+			cloudinaryService.deleteFile(oldImageId);
+			restaurant.setLogoPublicId(null);
+		}
+		if(logoDto.getLogo()!=null && !logoDto.getLogo().isEmpty() && logoDto.getShouldDelImage()==false){
+			String newLogoId;
+			if(oldImageId==null){
+				newLogoId = cloudinaryService.uploadFile(logoDto.getLogo());
+			}else{
+				newLogoId = cloudinaryService.updateFile(logoDto.getLogo(),oldImageId);
+			}
+			restaurant.setLogoPublicId(newLogoId);
+		}
 		rr.save(restaurant);
 	}
 

@@ -11,10 +11,14 @@ import java.util.Arrays;
 public class FilterConfig {
 
     @Bean
-    public FilterRegistrationBean<FileSizeFilter> fileSizeFilter(){
-        FilterRegistrationBean<FileSizeFilter> registerBean= new FilterRegistrationBean<>();
+    public FilterRegistrationBean<FileSizeFilter> fileSizeFilter() {
+        FilterRegistrationBean<FileSizeFilter> registerBean = new FilterRegistrationBean<>();
         registerBean.setFilter(new FileSizeFilter());
-        registerBean.setUrlPatterns(Arrays.asList("/restaurant/additem","/restaurant/updateitem","/restaurant/createCampaign","/restaurant/updateCampaign"));
+        registerBean.setUrlPatterns(Arrays.asList("/restaurant/additem",
+                "/restaurant/updateitem",
+                "/restaurant/createCampaign",
+                "/restaurant/updateCampaign",
+                "/restaurant/logo"));
         return registerBean;
     }
 }

@@ -7,6 +7,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import com.digimenu.main.domain.converter.*;
+import com.digimenu.main.domain.dto.LogoDto;
 import com.digimenu.main.domain.dto.PanelCampaignDto;
 import com.digimenu.main.domain.dto.PanelMenuDto;
 import com.digimenu.main.domain.dto.TransferCartDto;
@@ -85,8 +86,8 @@ public class RestaurantController {
     @GetMapping("/edititem/{id}")
     public String editMenu(Model model, @PathVariable("id") Long id) {
         model.addAttribute("category", categoryService.getCategories());
-        Menu menu=menuService.getMenuItem(id);
-        model.addAttribute("imagePublicId",menu.getImagePublicId()); // mevcut fotoyu cdn'den çekip görüntülemek için
+        Menu menu = menuService.getMenuItem(id);
+        model.addAttribute("imagePublicId", menu.getImagePublicId()); // mevcut fotoyu cdn'den çekip görüntülemek için
         model.addAttribute("panelMenuDto", PanelMenuDtoConverter.convert(menu));
         return "editmenuitem";
     }
@@ -316,16 +317,16 @@ public class RestaurantController {
     @GetMapping("/updateCampaign/{id}")
     public String getUpdateCampaign(@PathVariable("id") Long id, Model model) {
         Campaign campaign = campaignService.getCampaign(id);
-        model.addAttribute("imagePublicId",campaign.getImagePublicId());
+        model.addAttribute("imagePublicId", campaign.getImagePublicId());
         model.addAttribute("panelCampaignDto", PanelCampaignConverter.convert(campaign));
         return "updatecampaign";
     }
 
     @PostMapping("/updateCampaign")
     //parametrelerin sırası önemli burda! bozarsan çalışmıyor
-    public String postUpdateCampaign(@ModelAttribute(value = "panelCampaignDto") @Valid PanelCampaignDto panelCampaignDto, BindingResult result,Model model) {
+    public String postUpdateCampaign(@ModelAttribute(value = "panelCampaignDto") @Valid PanelCampaignDto panelCampaignDto, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            model.addAttribute("panelCampaignDto",panelCampaignDto);
+            model.addAttribute("panelCampaignDto", panelCampaignDto);
             return "updatecampaign";
         }
         campaignService.updateCampaign(panelCampaignDto);
@@ -338,14 +339,25 @@ public class RestaurantController {
         return "redirect:/restaurant/seeCampaigns";
     }
 
+    @PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
     @GetMapping("/comments")
     public String getComments(Model model) {
         model.addAttribute("comments", commentService.getRestaurantComments());
         return "listcommentpage";
     }
 
+    @PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
     @GetMapping("/logo")
-    public String getLogoPage(Model model){
+    public String getLogoPage(LogoDto image,Model model) {
+        model.addAttribute("logoId",restaurantService.getLoggedInRestaurant().getLogoPublicId());
         return "logopage";
+    }
+
+
+    @PostMapping("/logo")
+    @PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
+    public String postLogoPage(@ModelAttribute("logoDto") LogoDto dto, Model model) {
+        restaurantService.saveRestaurantLogo(dto);
+        return "redirect:/restaurant/menu";
     }
 }
