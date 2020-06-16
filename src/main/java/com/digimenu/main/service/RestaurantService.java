@@ -1,5 +1,6 @@
 package com.digimenu.main.service;
 
+import com.digimenu.main.domain.dto.LogoDto;
 import com.digimenu.main.domain.dto.TableNameDto;
 import com.digimenu.main.domain.entity.Restaurant;
 import com.digimenu.main.domain.entity.TableName;
@@ -20,5 +21,5 @@ public interface RestaurantService {
 	List<TableNameResponse> getTableNames(Restaurant restaurant);
 	TableNameRequest getTableNameRequest(Restaurant restaurant);
 	Optional<TableName> getTableName(Restaurant restaurant,Integer masaNo);
-	void saveRestaurantLogo(MultipartFile multipartFile);
+	void saveRestaurantLogo(LogoDto logoDto);
 }

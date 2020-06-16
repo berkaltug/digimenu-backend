@@ -1,6 +1,7 @@
 package com.digimenu.main.controller;
 
 import com.digimenu.main.domain.entity.Menu;
+import com.digimenu.main.domain.entity.Restaurant;
 import com.digimenu.main.domain.response.GetMenuResponse;
 import com.digimenu.main.service.MenuService;
 import com.digimenu.main.service.RestaurantService;
@@ -24,11 +25,13 @@ public class WebMenuController {
 
     @GetMapping(path="/{id}")
     public String getWebMenu(@PathVariable("id") Long id, Model model){
+        Restaurant restaurant=restaurantService.getRestaurant(id);
         GetMenuResponse response = menuService.getMenuItemsByRestaurant(id);
         model.addAttribute("favourites",response.getFavourites());
         model.addAttribute("campaigns",response.getCampaigns());
         model.addAttribute("itemsMap",menuService.orderItemsByCategory(response.getItems()));
-        model.addAttribute("restaurantName",restaurantService.getRestaurant(id).getName());
+        model.addAttribute("restaurantName",restaurant.getName());
+        model.addAttribute("logoId",restaurant.getLogoPublicId());
         return "webmenu";
     }
 }
