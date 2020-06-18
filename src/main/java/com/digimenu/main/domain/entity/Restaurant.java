@@ -44,6 +44,8 @@ public class Restaurant {
     @NotNull
     private Integer tableAmount;
 
+    private Integer themeId;
+
 	public Restaurant() {
 	}
 
@@ -161,22 +163,13 @@ public class Restaurant {
 		this.logoPublicId = logoPublicId;
 	}
 
-	public Restaurant(Long id, @NotNull String name, City city, @NotNull String address, @NotNull Long tel, @NotNull String mail, User owner, Double latitude, Double longitude, Double radius, String logoPublicId, List<Comment> comments, @NotNull Integer tableAmount) {
-		this.id = id;
-		this.name = name;
-		this.city = city;
-		this.address = address;
-		this.tel = tel;
-		this.mail = mail;
-		this.owner = owner;
-		this.latitude = latitude;
-		this.longitude = longitude;
-		this.radius = radius;
-		this.logoPublicId = logoPublicId;
-		this.comments = comments;
-		this.tableAmount = tableAmount;
+	public Integer getThemeId() {
+		return themeId;
 	}
 
+	public void setThemeId(Integer themeId) {
+		this.themeId = themeId;
+	}
 
 	@Override
 	public boolean equals(Object o) {
@@ -195,12 +188,13 @@ public class Restaurant {
 				Objects.equals(radius, that.radius) &&
 				Objects.equals(logoPublicId, that.logoPublicId) &&
 				Objects.equals(comments, that.comments) &&
-				Objects.equals(tableAmount, that.tableAmount);
+				Objects.equals(tableAmount, that.tableAmount) &&
+				Objects.equals(themeId, that.themeId);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, name, city, address, tel, mail, owner, latitude, longitude, radius, logoPublicId, comments, tableAmount);
+		return Objects.hash(id, name, city, address, tel, mail, owner, latitude, longitude, radius, logoPublicId, comments, tableAmount, themeId);
 	}
 
 	@Override
@@ -218,6 +212,7 @@ public class Restaurant {
 				", radius=" + radius +
 				", tableAmount=" + tableAmount +
 				", logoPublicId=" + logoPublicId +
+				",themeId=" + themeId +
 				'}';
 	}
 }
