@@ -7,10 +7,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import com.digimenu.main.domain.converter.*;
-import com.digimenu.main.domain.dto.LogoDto;
-import com.digimenu.main.domain.dto.PanelCampaignDto;
-import com.digimenu.main.domain.dto.PanelMenuDto;
-import com.digimenu.main.domain.dto.TransferCartDto;
+import com.digimenu.main.domain.dto.*;
 import com.digimenu.main.domain.entity.*;
 import com.digimenu.main.domain.request.*;
 import com.digimenu.main.domain.response.ReportResponse;
@@ -360,4 +357,22 @@ public class RestaurantController {
         restaurantService.saveRestaurantLogo(dto);
         return "redirect:/restaurant/menu";
     }
+    @GetMapping("/theme")
+    @PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
+    public String getThemePage(Model model){
+        Restaurant restaurant = restaurantService.getLoggedInRestaurant();
+        if(restaurant.getThemeId()!=null){
+            model.addAttribute("themeId",restaurant.getThemeId());
+        }
+        return "themepage";
+    }
+
+    @PostMapping("/theme")
+    @PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
+    public String postThemePage(@ModelAttribute("themeDto") ThemeDto themeDto){
+        Restaurant restaurant=restaurantService.getLoggedInRestaurant();
+        restaurant.setThemeId(themeDto.getThemeId());
+        return null;
+    }
+
 }
