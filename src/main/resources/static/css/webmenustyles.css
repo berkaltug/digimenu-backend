@@ -44,7 +44,7 @@ body{ min-height:100%; padding:0; margin:0; position:relative; }
     border-color: var(--main);
 }
 .modal-content{
-    background-color: var(--background);
+    background-color: lightgray;
 }
 
 .btn-primary:focus {
@@ -113,12 +113,9 @@ body{ min-height:100%; padding:0; margin:0; position:relative; }
 /*copy paste heading style*/
 #modalFoodName {
     font: bold 2em "Times New Roman", sans-serif;
-    background-color: #240303;
-    color: transparent;
-    text-shadow: 1px 1px 1px var(--box-color);
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    background-clip: text;
+    color: #fbfbfb;
+    text-shadow: 1px 1px 1px #191919;
+
 }
 
 #modalFoodInfo{
