@@ -1,54 +1,47 @@
-html[data-theme='theme-1']{
-    --light-shade: #F8F9F8;
-    --light-accent: #EA85A3;
-    --main: #A6ABC2 ;
-    --main-border: #6c7292;
-    --dark-accent: #968BAC;
-    --dark-shade: #665CA8;
-    --main-complimentary: #c2bda6;
+html[data-theme='theme-1'] {
+    --box-color: #F8F9F8;
+    --background: #E8C6D0;
+    --main: #5F74D7;
+    --main-complimentary: #F6A655;
+    --font-color: #242323;
 }
-html[data-theme='theme-2']{
-    --light-shade: #F7F2ED;
-    --light-accent: #ABAD75;
-    --main: #B29C63;
-    --main-border: #806e3c;
-    --dark-accent: #A38871;
-    --dark-shade: #516E40;
-    --main-complimentary: #6379b2;
+
+html[data-theme='theme-2'] {
+    --box-color: #F6F2F1;
+    --background: #93A6C3;
+    --main: #6A70D1;
+    --main-complimentary: #9c9517;
+    --font-color: #242323;
 }
-html[data-theme='theme-3']{
-    --light-shade: #FAFCF7;
-    --light-accent: #ED9F8B;
+
+html[data-theme='theme-3'] {
+    --box-color: #FAFCF7;
+    --background: #ED9F8B;
     --main: #E74446;
-    --main-border: #aa2c2c;
-    --dark-accent: #7D7B7C;
-    --dark-shade: #23162B;
     --main-complimentary: #44e7e4;
+    --font-color: #242323;
 }
-html[data-theme='theme-4']{
-    --light-shade: #FBFAF8;
-    --light-accent: #B29C8C;
+
+html[data-theme='theme-4'] {
+    --box-color: #FBFAF8;
+    --background: #B29C8C;
     --main: #D4B0BE;
-    --main-border: #c18098;
-    --dark-accent: #8D95A3;
-    --dark-shade: #6C4061;
     --main-complimentary: #bed4b0;
+    --font-color: #242323;
 }
-html[data-theme='theme-5']{
-    --light-shade: #EFF1EE;
-    --light-accent: #98806F;
+
+html[data-theme='theme-5'] {
+    --box-color: #EFF1EE;
+    --background: #98806F;
     --main: #8D96A1;
-    --main-border: #627da0;
-    --dark-accent: #7D6060;
-    --dark-shade: #2B2D37;
     --main-complimentary: #A1988D;
+    --font-color: #242323;
 }
-html[data-theme='theme-6']{
-    --light-shade: #F7F7F7;
-    --light-accent: #A3AFBA;
+
+html[data-theme='theme-6'] {
+    --box-color: #F7F7F7;
+    --background: #A3AFBA;
     --main: #F6D534;
-    --main-border: #826f1e;
-    --dark-accent: #9A6F4D;
-    --dark-shade: #2A3538;
     --main-complimentary: #3455F6;
+    --font-color: #242323;
 }
