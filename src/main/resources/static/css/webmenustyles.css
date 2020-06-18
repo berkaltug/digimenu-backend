@@ -1,17 +1,16 @@
 :root {
-    --light-shade: #faf9f8;
-    --light-accent: #efe7de;
+    --box-color: #faf9f8;
+    --background: #efe7de;
     --main: #a91101;
-    --main-border: #941103;
-    --dark-accent: #666666;
-    --dark-shade: #323232;
     --main-complimentary: #0198a9;
+    --font-color: #242323;
 }
 
 body {
-    background-color: var(--light-accent);
+    background-color: var(--background);
 }
-
+html{ height:100%;max-width: 100%; }
+body{ min-height:100%; padding:0; margin:0; position:relative; }
 #header {
     color: var(--main);
     font-weight: bold;
@@ -27,11 +26,11 @@ body {
 .modal-image-container{
     width: 330px;
     height: 310px;
-    outline: 10px ridge #A91101;
+    outline: 10px ridge var(--main);
     outline-offset: 5px;
-    border: 10px double #A91101;
+    border: 10px double var(--main);
     border-radius: 10px;
-    background-color: var(--light-shade);
+    background-color: var(--box-color);
 }
 
 .modal-image{
@@ -45,7 +44,7 @@ body {
     border-color: var(--main);
 }
 .modal-content{
-    background-color: var(--light-accent);
+    background-color: var(--background);
 }
 
 .btn-primary:focus {
@@ -75,7 +74,7 @@ body {
 
 .item-container {
     border-bottom: 1px solid var(--main);
-    background-color: var(--light-shade);
+    background-color: var(--box-color);
     min-height: 2.5rem;
 }
 
@@ -116,7 +115,7 @@ body {
     font: bold 2em "Times New Roman", sans-serif;
     background-color: #240303;
     color: transparent;
-    text-shadow: 1px 1px 1px rgba(249, 216, 216, 0.75);
+    text-shadow: 1px 1px 1px var(--box-color);
     -webkit-background-clip: text;
     -moz-background-clip: text;
     background-clip: text;
@@ -128,15 +127,15 @@ body {
     font-family:"Times New Roman",Times,serif;
     font-size: 1.5rem;
     font-style: italic;
-    color: var(--dark-shade);
+    color:var(--font-color);
 }
 #baslik {
     /*stitching*/
 
-    outline: 2px dashed #520902;
+    outline: 2px dashed #424141;
     outline-offset: -6px;
     border-radius:6px;
-    background-color: #a91101;
+    background-color: var(--main);
     display: flex;
     padding-left: 25px;
     padding-right: 25px;
@@ -149,8 +148,7 @@ body {
     -moz-box-shadow: -2px 2px 5px  #2a2a2a;
     box-shadow: -2px 2px 5px  #2a2a2a;
 }
-html{ height:100%;max-width: 100%; }
-body{ min-height:100%; padding:0; margin:0; position:relative; }
+
 #page-container {
     position: relative;
     min-height: 100%;
@@ -182,4 +180,13 @@ body{ min-height:100%; padding:0; margin:0; position:relative; }
 }
 .modal-header>.close{
     margin-left: -2rem;
+}
+.modal-header{
+    border-bottom: 0px;
+}
+.modal-footer{
+    border-top:0px;
+}
+.modal-footer>.btn{
+    background-color: var(--main-complimentary);
 }

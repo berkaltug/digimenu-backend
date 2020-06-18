@@ -16,7 +16,7 @@ insert into user_role(user_id,role_id) values (-2,3);
 insert into user_role(user_id,role_id) values (-3,3);
 insert into user_role(user_id,role_id) values (-3,2);
 
-insert into restaurant(id,name,address,tel,mail,owner_id,city_id,table_amount,latitude,longitude,radius) values (1,'Aydın Tava Ciğer','çilingirler cad',123456789,'aydın@asd',-1,22,20,41.669290,26.593021,15);
+insert into restaurant(id,name,address,tel,mail,owner_id,city_id,table_amount,latitude,longitude,radius) values (1,'Tava Ciğerci','çilingirler cad',123456789,'aydın@asd',-1,22,20,41.669290,26.593021,15);
 insert into restaurant(id,name,address,tel,mail,owner_id,city_id,table_amount,latitude,longitude,radius) values (2,'Variant','üni',123456789,'var@asd',-3,22,15,41.669290,26.593021,15);
 
 --alt alta yazma bunu patlıyor !!!
