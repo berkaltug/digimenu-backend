@@ -90,16 +90,182 @@ html[data-theme='theme-8'] {
     --ribbon-font: #886F25;
 }
 html[data-theme='theme-9'] {
-    --box-color: #F7F7F7;
-    --background: #A3AFBA;
-    --main: #222222;
-    --main-complimentary: #3455F6;
+    --box-color: #faf9f8;
+    --background: #efe7de;
+    --main: #F6A655;
+    --main-complimentary: #0198a9;
     --font-color: #242323;
+    --ribbon-before-after: hsl(30, 82%, 62%);
+    --ribbon-background: hsl(30, 90%, 65%);
+    --ribbon-content-border: hsl(30, 90%, 44%);
+    --ribbon-content-before-after: hsl(30, 80%, 40%);
+    --ribbon-font: hsl(30, 90%, 40%);
+}
+html[data-theme='theme-9']>body {
+    background-image: url("../img/menubackgrounds/leather.jpg");
+    background-repeat: repeat;
+}
+html[data-theme='theme-9'] .btn-primary{
+    color:#0a0a0a;
 }
 html[data-theme='theme-10'] {
-    --box-color: #F7F7F7;
-    --background: #A3AFBA;
-    --main: #222222;
-    --main-complimentary: #3455F6;
+    --box-color: #faf9f8;
+    --background: #efe7de;
+    --main: #f6a655;
+    --main-complimentary: #0198a9;
     --font-color: #242323;
+    --ribbon-before-after: hsl(30, 82%, 62%);
+    --ribbon-background: hsl(30, 90%, 65%);
+    --ribbon-content-border: hsl(30, 90%, 44%);
+    --ribbon-content-before-after: hsl(30, 80%, 40%);
+    --ribbon-font: hsl(30, 90%, 40%);
 }
+html[data-theme='theme-10'] > body {
+    background-image: url("../img/menubackgrounds/red.jpg");
+    background-repeat: repeat;
+}
+html[data-theme='theme-10'] .btn-primary{
+    color:#0a0a0a;
+}
+html[data-theme='theme-11'] {
+    --box-color: #faf9f8;
+    --background: #efe7de;
+    --main: #2B2F5E;
+    --main-complimentary: #0198a9;
+    --font-color: #242323;
+    --ribbon-before-after: #2F3259;
+    --ribbon-background: #34396F;
+    --ribbon-content-border: #666DBD;
+    --ribbon-content-before-after: #070811;
+    --ribbon-font: #BABBC8;
+}
+html[data-theme='theme-11'] > body {
+    background-image: url("../img/menubackgrounds/green.jpg");
+    background-repeat: repeat;
+}
+html[data-theme='theme-12'] {
+    --box-color: #faf9f8;
+    --background: #efe7de;
+    --main: #2B2F5E;
+    --main-complimentary: #0198a9;
+    --font-color: #242323;
+    --ribbon-before-after: #2F3259;
+    --ribbon-background: #34396F;
+    --ribbon-content-border: #666DBD;
+    --ribbon-content-before-after: #070811;
+    --ribbon-font: #BABBC8;
+}
+html[data-theme='theme-12'] > body {
+    background-image: url("../img/menubackgrounds/fabric1.jpg");
+    background-repeat: repeat;
+    background-size: contain;
+}
+html[data-theme='theme-13'] {
+    --box-color: #faf9f8;
+    --background: #efe7de;
+    --main: #f6a655;
+    --main-complimentary: #0198a9;
+    --font-color: #242323;
+    --ribbon-before-after: hsl(30, 82%, 62%);
+    --ribbon-background: hsl(30, 90%, 65%);
+    --ribbon-content-border: hsl(30, 90%, 44%);
+    --ribbon-content-before-after: hsl(30, 80%, 40%);
+    --ribbon-font: hsl(30, 90%, 40%);
+}
+html[data-theme='theme-13'] > body {
+    background-image: url("../img/menubackgrounds/fabric2.jpg");
+    background-repeat: repeat;
+    background-size: contain;
+}
+html[data-theme='theme-14'] {
+    --box-color: #faf9f8;
+    --background: #efe7de;
+    --main: #5D46CE;
+    --main-complimentary: #0198a9;
+    --font-color: #242323;
+    --ribbon-before-after: #523AC6;
+    --ribbon-background: #5D46CE;
+    --ribbon-content-border: #8D7CDF;
+    --ribbon-content-before-after: #251671;
+    --ribbon-font: #180962;
+}
+html[data-theme='theme-14'] > body {
+    background-image: url("../img/menubackgrounds/fabric3.jpg");
+    background-repeat: repeat;
+    background-size: contain;
+}
+html[data-theme='theme-15'] {
+    --box-color: #faf9f8;
+    --background: #efe7de;
+    --main: #328E8B;
+    --main-complimentary: #0198a9;
+    --font-color: #242323;
+    --ribbon-before-after: #18716E;
+    --ribbon-background: #328E8B;
+    --ribbon-content-border: #48AEAA;
+    --ribbon-content-before-after: #09403E;
+    --ribbon-font: #06514E;
+}
+html[data-theme='theme-15'] > body {
+    background-image: url("../img/menubackgrounds/fabric4.jpg");
+    background-repeat: repeat;
+    background-size: contain;
+}
+html[data-theme='theme-16'] {
+    --box-color: #faf9f8;
+    --background: #efe7de;
+    --main: #328E8B;
+    --main-complimentary: #0198a9;
+    --font-color: #242323;
+    --ribbon-before-after: #18716E;
+    --ribbon-background: #328E8B;
+    --ribbon-content-border: #48AEAA;
+    --ribbon-content-before-after: #09403E;
+    --ribbon-font: #06514E;
+}
+html[data-theme='theme-16'] > body {
+    background-image: url("../img/menubackgrounds/5025.png");
+    background-repeat: repeat;
+}
+html[data-theme='theme-17'] {
+    --box-color: #faf9f8;
+    --background: #efe7de;
+    --main: #023A60;
+    --main-complimentary: #0198a9;
+    --font-color: #242323;
+    --ribbon-before-after: #07426A;
+    --ribbon-background: #04436F;
+    --ribbon-content-border: #2778AE;
+    --ribbon-content-before-after: #030D13;
+    --ribbon-font: #D5DFE6;
+}
+html[data-theme='theme-17'] > body {
+    background-image: url("../img/menubackgrounds/1047.png");
+    background-repeat: repeat;
+}
+html[data-theme='theme-18'] {
+    --box-color: #faf9f8;
+    --background: #efe7de;
+    --main: #142C3E;
+    --main-complimentary: #0198a9;
+    --font-color: #242323;
+    --ribbon-before-after: #0D2333;
+    --ribbon-background: #142C3E;
+    --ribbon-content-border: #42525E;
+    --ribbon-content-before-after: #142C3E;
+    --ribbon-font: #D2DBE1;
+}
+html[data-theme='theme-18'] > body {
+    background-image: url("../img/menubackgrounds/plank1.jpg");
+    background-repeat: repeat;
+    background-size: contain;
+}
+html[data-theme='theme-19'] {
+ /*uses default root values */
+}
+html[data-theme='theme-19'] > body {
+    background-image: url("../img/menubackgrounds/plank2.jpg");
+    background-repeat: repeat;
+    background-size: contain;
+}
+
