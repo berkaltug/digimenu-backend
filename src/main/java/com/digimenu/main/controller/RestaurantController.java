@@ -361,9 +361,11 @@ public class RestaurantController {
     @PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
     public String getThemePage(Model model){
         Restaurant restaurant = restaurantService.getLoggedInRestaurant();
+        ThemeDto dto= new ThemeDto();
         if(restaurant.getThemeId()!=null){
-            model.addAttribute("themeId",restaurant.getThemeId());
+            dto.setThemeId(restaurant.getThemeId());
         }
+        model.addAttribute("themeDto",dto);
         return "themepage";
     }
 
@@ -372,7 +374,8 @@ public class RestaurantController {
     public String postThemePage(@ModelAttribute("themeDto") ThemeDto themeDto){
         Restaurant restaurant=restaurantService.getLoggedInRestaurant();
         restaurant.setThemeId(themeDto.getThemeId());
-        return null;
+        restaurantService.saveRestaurant(restaurant);
+        return "redirect:/restaurant/menu";
     }
 
 }

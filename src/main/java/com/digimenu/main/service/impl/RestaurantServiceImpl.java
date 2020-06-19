@@ -48,6 +48,10 @@ public class RestaurantServiceImpl implements RestaurantService {
 	}
 
 	@Override
+	public void saveRestaurant(Restaurant restaurant){
+		rr.save(restaurant);
+	}
+	@Override
 	public Restaurant getLoggedInRestaurant() {
 		String loggedInUser=securityService.findLoggedInUsername();
 		Restaurant restaurant=rr.findByOwner(userService.findByUsername(loggedInUser));

@@ -4,6 +4,11 @@
     --main: #a91101;
     --main-complimentary: #0198a9;
     --font-color: #242323;
+    --ribbon-before-after:hsl(30, 82%, 62%);
+    --ribbon-background:hsl(30, 90%, 65%);
+    --ribbon-content-border: hsl(30, 90%, 44%);
+    --ribbon-content-before-after: hsl(30, 80%, 40%);
+    --ribbon-font: hsl(30, 90%, 40%);
 }
 
 body {
