@@ -4,6 +4,11 @@ html[data-theme='theme-1'] {
     --main: #99527D;
     --main-complimentary: #7d9952;
     --font-color: #242323;
+    --ribbon-before-after: #844E6E;
+    --ribbon-background: #99527D;
+    --ribbon-content-border: #BF71A0;
+    --ribbon-content-before-after: #602247;
+    --ribbon-font: #5E304C;
 }
 
 html[data-theme='theme-2'] {
@@ -20,6 +25,11 @@ html[data-theme='theme-3'] {
     --main: #E74446;
     --main-complimentary: #819f9f;
     --font-color: #242323;
+    --ribbon-before-after: #6b8a8a;
+    --ribbon-background: #819f9f;
+    --ribbon-content-border: #a4bfbf;
+    --ribbon-content-before-after: #325353;
+    --ribbon-font: #3a6262;
 }
 
 html[data-theme='theme-4'] {
@@ -28,6 +38,11 @@ html[data-theme='theme-4'] {
     --main: #69736D;
     --main-complimentary: #cc4f4f;
     --font-color: #242323;
+    --ribbon-before-after: #aa4a4a;
+    --ribbon-background: #cc4f4f;
+    --ribbon-content-border: #ff8585;
+    --ribbon-content-before-after: #6c1313;
+    --ribbon-font: #912525;
 }
 
 html[data-theme='theme-5'] {
@@ -36,9 +51,52 @@ html[data-theme='theme-5'] {
     --main: #654075;
     --main-complimentary: #c14a4a;
     --font-color: #242323;
+    --ribbon-before-after: #455e3b;
+    --ribbon-background: #507540;
+    --ribbon-content-border: #8ca482;
+    --ribbon-content-before-after: #507540;
+    --ribbon-font: #284d19;
 }
 
 html[data-theme='theme-6'] {
+    --box-color: #F7F7F7;
+    --background: #A3AFBA;
+    --main: #222222;
+    --main-complimentary: #3455F6;
+    --font-color: #242323;
+}
+html[data-theme='theme-7'] {
+    --box-color: #E0D5B9;
+    --background: #C2B29E;
+    --main: #F17143;
+    --main-complimentary: #3455F6;
+    --font-color: #242323;
+    --ribbon-before-after: #45A7CA;
+    --ribbon-background: #43C3F1;
+    --ribbon-content-border: #2186AA;
+    --ribbon-content-before-after: #01506C;
+    --ribbon-font: #0984B0;
+}
+html[data-theme='theme-8'] {
+    --box-color: #F1EFE4;
+    --background: #303167;
+    --main: #B9A467;
+    --main-complimentary: #3455F6;
+    --font-color: #111;
+    --ribbon-before-after: #937E40;
+    --ribbon-background: #B9A467;
+    --ribbon-content-border: #978042;
+    --ribbon-content-before-after: #554412;
+    --ribbon-font: #886F25;
+}
+html[data-theme='theme-9'] {
+    --box-color: #F7F7F7;
+    --background: #A3AFBA;
+    --main: #222222;
+    --main-complimentary: #3455F6;
+    --font-color: #242323;
+}
+html[data-theme='theme-10'] {
     --box-color: #F7F7F7;
     --background: #A3AFBA;
     --main: #222222;

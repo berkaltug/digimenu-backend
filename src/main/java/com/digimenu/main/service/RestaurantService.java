@@ -14,6 +14,7 @@ import java.util.Optional;
 
 public interface RestaurantService {
 	Restaurant getRestaurant(Long id);
+	void saveRestaurant(Restaurant restaurant);
 	Restaurant getByOwner(User owner);
 	Restaurant getLoggedInRestaurant();
 	String getLoggedInRestaurantUsername();
