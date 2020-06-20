@@ -371,7 +371,7 @@ public class RestaurantController {
 
     @PostMapping("/theme")
     @PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
-    public String postThemePage(@ModelAttribute("themeDto") ThemeDto themeDto){
+    public String postThemePage(@ModelAttribute("themeDto") ThemeDto themeDto,Model model){
         Restaurant restaurant=restaurantService.getLoggedInRestaurant();
         restaurant.setThemeId(themeDto.getThemeId());
         restaurantService.saveRestaurant(restaurant);
