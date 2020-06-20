@@ -32,6 +32,7 @@ public class WebMenuController {
         model.addAttribute("itemsMap",menuService.orderItemsByCategory(response.getItems()));
         model.addAttribute("restaurantName",restaurant.getName());
         model.addAttribute("logoId",restaurant.getLogoPublicId());
+        model.addAttribute("themeId",restaurant.getThemeId());
         return "webmenu";
     }
 }

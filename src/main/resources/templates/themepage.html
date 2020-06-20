@@ -14,8 +14,14 @@
     <h3 class="text-center">Webmenu temanızı buradan seçebilirsiniz. </h3>
     <div class="row">
         <div class="col-md-10 offset-md-1">
-            <form th:action="@{restaurant/theme}" th:object="${themeDto}" th:method="post">
-                <ul class="list-group list-group-horizontal-md">
+            <form th:action="@{/restaurant/theme}" th:object="${themeDto}" th:method="post">
+                <ul class="list-group d-flex justify-content-center flex-row flex-wrap">
+                    <li>
+                        <input type="radio"  id="theme-0" name="theme" th:value="0" th:field="*{themeId}">
+                        <label for="theme-0">
+                            <img class="img-fluid menu-theme" th:src="@{/img/menu-themes/theme-0.png}" alt="">
+                        </label>
+                    </li>
                     <li>
                         <input type="radio"  id="theme-1" name="theme" th:value="1" th:field="*{themeId}">
                         <label for="theme-1">
@@ -76,11 +82,94 @@
                             <img class="img-fluid menu-theme" th:src="@{/img/menu-themes/theme-10.png}" alt="">
                         </label>
                     </li>
+                    <li>
+                        <input type="radio"  id="theme-11" name="theme" th:value="11" th:field="*{themeId}">
+                        <label for="theme-11">
+                            <img class="img-fluid menu-theme" th:src="@{/img/menu-themes/theme-11.png}" alt="">
+                        </label>
+                    </li>
+                    <li>
+                        <input type="radio"  id="theme-12" name="theme" th:value="12" th:field="*{themeId}">
+                        <label for="theme-12">
+                            <img class="img-fluid menu-theme" th:src="@{/img/menu-themes/theme-12.png}" alt="">
+                        </label>
+                    </li>
+                    <li>
+                        <input type="radio"  id="theme-13" name="theme" th:value="13" th:field="*{themeId}">
+                        <label for="theme-13">
+                            <img class="img-fluid menu-theme" th:src="@{/img/menu-themes/theme-13.png}" alt="">
+                        </label>
+                    </li>
+                    <li>
+                        <input type="radio"  id="theme-14" name="theme" th:value="14" th:field="*{themeId}">
+                        <label for="theme-14">
+                            <img class="img-fluid menu-theme" th:src="@{/img/menu-themes/theme-14.png}" alt="">
+                        </label>
+                    </li>
+                    <li>
+                        <input type="radio"  id="theme-15" name="theme" th:value="15" th:field="*{themeId}">
+                        <label for="theme-15">
+                            <img class="img-fluid menu-theme" th:src="@{/img/menu-themes/theme-15.png}" alt="">
+                        </label>
+                    </li>
+                    <li>
+                        <input type="radio"  id="theme-16" name="theme" th:value="16" th:field="*{themeId}">
+                        <label for="theme-16">
+                            <img class="img-fluid menu-theme" th:src="@{/img/menu-themes/theme-16.png}" alt="">
+                        </label>
+                    </li>
+                    <li>
+                        <input type="radio"  id="theme-17" name="theme" th:value="17" th:field="*{themeId}">
+                        <label for="theme-17">
+                            <img class="img-fluid menu-theme" th:src="@{/img/menu-themes/theme-17.png}" alt="">
+                        </label>
+                    </li>
+                    <li>
+                        <input type="radio"  id="theme-18" name="theme" th:value="18" th:field="*{themeId}">
+                        <label for="theme-18">
+                            <img class="img-fluid menu-theme" th:src="@{/img/menu-themes/theme-18.png}" alt="">
+                        </label>
+                    </li>
+                    <li>
+                        <input type="radio"  id="theme-19" name="theme" th:value="19" th:field="*{themeId}">
+                        <label for="theme-19">
+                            <img class="img-fluid menu-theme" th:src="@{/img/menu-themes/theme-19.png}" alt="">
+                        </label>
+                    </li>
+                    <li>
+                        <input type="radio"  id="theme-20" name="theme" th:value="20" th:field="*{themeId}">
+                        <label for="theme-20">
+                            <img class="img-fluid menu-theme" th:src="@{/img/menu-themes/theme-20.png}" alt="">
+                        </label>
+                    </li>
+                    <li>
+                        <input type="radio"  id="theme-21" name="theme" th:value="21" th:field="*{themeId}">
+                        <label for="theme-21">
+                            <img class="img-fluid menu-theme" th:src="@{/img/menu-themes/theme-21.png}" alt="">
+                        </label>
+                    </li>
+                    <li>
+                        <input type="radio"  id="theme-22" name="theme" th:value="22" th:field="*{themeId}">
+                        <label for="theme-22">
+                            <img class="img-fluid menu-theme" th:src="@{/img/menu-themes/theme-22.png}" alt="">
+                        </label>
+                    </li>
+                    <li>
+                        <input type="radio"  id="theme-23" name="theme" th:value="23" th:field="*{themeId}">
+                        <label for="theme-23">
+                            <img class="img-fluid menu-theme" th:src="@{/img/menu-themes/theme-23.png}" alt="">
+                        </label>
+                    </li>
                 </ul>
+                <div class="form-group ml-auto">
+                    <button type="submit"  class="btn btn-primary">Kaydet</button>
+                </div>
             </form>
         </div>
     </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 </body>
 </html>

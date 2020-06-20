@@ -6,18 +6,18 @@ label:before {
 }
 :checked+label:before {
     content: url("https://cdn1.iconfinder.com/data/icons/windows8_icons_iconpharm/26/checked_checkbox.png");
+    background-color: #faf9f8;
+    height: 26px;
+    width: 26px;
 }
 input[type=radio] {
     display: none;
 }
 /*pure cosmetics:*/
 img {
-    width: 150px;
-    height: 150px;
+    width: 200px;
 }
 label {
     margin: 5px;
 }
-.list-group-horizontal-md>li{
-    margin:1rem
-}
+

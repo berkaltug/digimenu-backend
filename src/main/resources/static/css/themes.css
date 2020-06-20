@@ -268,4 +268,63 @@ html[data-theme='theme-19'] > body {
     background-repeat: repeat;
     background-size: contain;
 }
+html[data-theme='theme-20'] {
+    --box-color: #eeebe7;
+    --background: #efe7de;
+    --main: #a94801;
+    --main-complimentary: #0198a9;
+    --font-color: #242323;
+    --ribbon-before-after: #9b4a0f;
+    --ribbon-background: #a94801;
+    --ribbon-content-border: #fb8229;
+    --ribbon-content-before-after: #512607;
+    --ribbon-font: #532503;
+}
+html[data-theme='theme-20'] > body {
+    background-image: url("../img/menubackgrounds/brick2.jpg");
+    background-repeat: repeat;
+    background-size: contain;
+}
+html[data-theme='theme-21'] {
+    --box-color: #eeebe7;
+    --background: #efe7de;
+    --main: #197CAC;
+    --main-complimentary: #0198a9;
+    --font-color: #242323;
+    --ribbon-before-after: #1186BF;
+    --ribbon-background: #3793BF;
+    --ribbon-content-border: #33B0EC;
+    --ribbon-content-before-after: #1A4357;
+    --ribbon-font: #084F71;
+}
+html[data-theme='theme-21'] > body {
+    background-image: url("../img/menubackgrounds/brick1.jpg");
+    background-repeat: repeat;
+    background-size: contain;
+}
+html[data-theme='theme-22'] {
+    --box-color: #eeebe7;
+    --background: #efe7de;
+    --main: #784b17;
+    --main-complimentary: #0198a9;
+    --font-color: #242323;
+    --ribbon-before-after: #774d1d;
+    --ribbon-background: #8e591c;
+    --ribbon-content-border: #a46721;
+    --ribbon-content-before-after: #462c0d;
+    --ribbon-font: #553107;
+}
+html[data-theme='theme-22'] > body {
+    background-image: url("../img/menubackgrounds/flower.png");
+    background-repeat: repeat;
+    background-size: contain;
+}
+html[data-theme='theme-23'] {
+    --box-color: #f7f0ef;
+}
+html[data-theme='theme-23'] > body {
+    background-image: url("../img/menubackgrounds/watercolor.png");
+    background-repeat: repeat;
+    background-size: contain;
+}
 
