@@ -33,6 +33,10 @@ public class WebMenuController {
         model.addAttribute("restaurantName",restaurant.getName());
         model.addAttribute("logoId",restaurant.getLogoPublicId());
         model.addAttribute("themeId",restaurant.getThemeId());
+        Integer counter=restaurant.getMenuCounter();
+        counter++;
+        restaurant.setMenuCounter(counter);
+        restaurantService.saveRestaurant(restaurant);
         return "webmenu";
     }
 }
