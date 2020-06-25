@@ -45,7 +45,8 @@ public class Restaurant {
     private Integer tableAmount;
 
     private Integer themeId;
-
+	@Column(columnDefinition = "integer default 0")
+	private Integer menuCounter;
 	public Restaurant() {
 	}
 
@@ -171,6 +172,14 @@ public class Restaurant {
 		this.themeId = themeId;
 	}
 
+	public Integer getMenuCounter() {
+		return menuCounter;
+	}
+
+	public void setMenuCounter(Integer menuCounter) {
+		this.menuCounter = menuCounter;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -189,12 +198,13 @@ public class Restaurant {
 				Objects.equals(logoPublicId, that.logoPublicId) &&
 				Objects.equals(comments, that.comments) &&
 				Objects.equals(tableAmount, that.tableAmount) &&
-				Objects.equals(themeId, that.themeId);
+				Objects.equals(themeId, that.themeId) &&
+				Objects.equals(menuCounter, that.menuCounter);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, name, city, address, tel, mail, owner, latitude, longitude, radius, logoPublicId, comments, tableAmount, themeId);
+		return Objects.hash(id, name, city, address, tel, mail, owner, latitude, longitude, radius, logoPublicId, comments, tableAmount, themeId, menuCounter);
 	}
 
 	@Override
@@ -213,6 +223,7 @@ public class Restaurant {
 				", tableAmount=" + tableAmount +
 				", logoPublicId=" + logoPublicId +
 				",themeId=" + themeId +
+				",menuCounter=" +
 				'}';
 	}
 }
