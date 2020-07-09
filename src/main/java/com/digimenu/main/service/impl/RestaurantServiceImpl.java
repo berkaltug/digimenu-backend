@@ -4,9 +4,12 @@ import com.digimenu.main.domain.converter.TableNameEntityConverter;
 import com.digimenu.main.domain.converter.TableNameResponseConverter;
 import com.digimenu.main.domain.dto.LogoDto;
 import com.digimenu.main.domain.dto.TableNameDto;
+import com.digimenu.main.domain.entity.Category;
+import com.digimenu.main.domain.entity.CategorySort;
 import com.digimenu.main.domain.entity.TableName;
 import com.digimenu.main.domain.request.TableNameRequest;
 import com.digimenu.main.domain.response.TableNameResponse;
+import com.digimenu.main.repository.CategorySortRepository;
 import com.digimenu.main.repository.TableNameRepository;
 import com.digimenu.main.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +20,7 @@ import com.digimenu.main.repository.RestaurantRepository;
 import com.digimenu.main.security.User;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class RestaurantServiceImpl implements RestaurantService {
@@ -27,14 +29,15 @@ public class RestaurantServiceImpl implements RestaurantService {
 	private SecurityService securityService;
 	private UserService userService;
 	private TableNameRepository tableNameRepository;
+	private CategorySortRepository categorySortRepository;
 	private CloudinaryService cloudinaryService;
-
 	@Autowired
-	public RestaurantServiceImpl(RestaurantRepository rr, SecurityService securityService, UserService userService, TableNameRepository tableNameRepository, CloudinaryService cloudinaryService) {
+	public RestaurantServiceImpl(RestaurantRepository rr, SecurityService securityService, UserService userService, TableNameRepository tableNameRepository, CategorySortRepository categorySortRepository, CloudinaryService cloudinaryService) {
 		this.rr = rr;
 		this.securityService = securityService;
 		this.userService = userService;
 		this.tableNameRepository = tableNameRepository;
+		this.categorySortRepository = categorySortRepository;
 		this.cloudinaryService = cloudinaryService;
 	}
 
@@ -109,5 +112,15 @@ public class RestaurantServiceImpl implements RestaurantService {
 		return request;
 	}
 
-
+	@Override
+	public Map<Category, Integer> getCategorySort(Restaurant restaurant){
+		HashMap<Category, Integer> sortHash = new HashMap<>();
+		List<CategorySort> list = categorySortRepository.findByRestaurant(restaurant);
+		if(list!=null || !list.isEmpty()){
+			list.forEach(l->sortHash.put(l.getCategory(),l.getSortingNo()));
+			return sortHash;
+		}else{
+			return Collections.emptyMap();
+		}
+	}
 }

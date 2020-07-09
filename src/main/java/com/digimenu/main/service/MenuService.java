@@ -21,5 +21,5 @@ public interface MenuService {
 	void updateMenuItem(Menu menu);
 	List<Menu> getFavoriteItemsByRestaurant(Long id);
 	Optional<Menu> getMenuByRestaurantAndName(Restaurant restaurant, String name);
-	Map<String,List<MenuResponseItem>> orderItemsByCategory(List<MenuResponseItem> items);
+	Map<String,List<MenuResponseItem>> groupItemsByCategory(List<MenuResponseItem> items,Restaurant restaurant);
 }

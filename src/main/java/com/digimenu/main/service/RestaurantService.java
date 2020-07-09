@@ -2,14 +2,15 @@ package com.digimenu.main.service;
 
 import com.digimenu.main.domain.dto.LogoDto;
 import com.digimenu.main.domain.dto.TableNameDto;
+import com.digimenu.main.domain.entity.Category;
 import com.digimenu.main.domain.entity.Restaurant;
 import com.digimenu.main.domain.entity.TableName;
 import com.digimenu.main.domain.request.TableNameRequest;
 import com.digimenu.main.domain.response.TableNameResponse;
 import com.digimenu.main.security.User;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public interface RestaurantService {
@@ -23,4 +24,5 @@ public interface RestaurantService {
 	TableNameRequest getTableNameRequest(Restaurant restaurant);
 	Optional<TableName> getTableName(Restaurant restaurant,Integer masaNo);
 	void saveRestaurantLogo(LogoDto logoDto);
+	Map<Category, Integer> getCategorySort(Restaurant restaurant);
 }
