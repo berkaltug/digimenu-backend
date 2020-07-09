@@ -1,10 +1,7 @@
 package com.digimenu.main.service.impl;
 
 import java.text.Collator;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import com.digimenu.main.domain.converter.CampaignResponseItemConverter;
@@ -13,6 +10,7 @@ import com.digimenu.main.domain.converter.MenuResponseItemConverter;
 import com.digimenu.main.domain.converter.PanelMenuDtoConverter;
 import com.digimenu.main.domain.dto.PanelMenuDto;
 import com.digimenu.main.domain.entity.Campaign;
+import com.digimenu.main.domain.entity.Category;
 import com.digimenu.main.domain.entity.Restaurant;
 import com.digimenu.main.domain.response.GetMenuResponse;
 import com.digimenu.main.domain.response.MenuResponseItem;
@@ -156,7 +154,12 @@ public class MenuServiceImpl implements MenuService {
 	}
 
 	@Override
-	public Map<String,List<MenuResponseItem>> orderItemsByCategory(List<MenuResponseItem> items){
-		return items.stream().collect(Collectors.groupingBy(MenuResponseItem::getCategory));
+	public Map<String,List<MenuResponseItem>> groupItemsByCategory(List<MenuResponseItem> items,Restaurant restaurant){
+		Map<Category, Integer> sortHash = restaurantService.getCategorySort(restaurant);
+		if(sortHash.isEmpty()){
+			return items.stream().collect(Collectors.groupingBy(MenuResponseItem::getCategory));
+		}else{
+			return null ; //doldurulacak
+		}
 	}
 }
