@@ -4,7 +4,6 @@ import com.digimenu.main.domain.converter.TableNameEntityConverter;
 import com.digimenu.main.domain.converter.TableNameResponseConverter;
 import com.digimenu.main.domain.dto.LogoDto;
 import com.digimenu.main.domain.dto.TableNameDto;
-import com.digimenu.main.domain.entity.Category;
 import com.digimenu.main.domain.entity.CategorySort;
 import com.digimenu.main.domain.entity.TableName;
 import com.digimenu.main.domain.request.TableNameRequest;
@@ -18,7 +17,6 @@ import org.springframework.stereotype.Service;
 import com.digimenu.main.domain.entity.Restaurant;
 import com.digimenu.main.repository.RestaurantRepository;
 import com.digimenu.main.security.User;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.*;
 
@@ -113,14 +111,14 @@ public class RestaurantServiceImpl implements RestaurantService {
 	}
 
 	@Override
-	public Map<Category, Integer> getCategorySort(Restaurant restaurant){
-		HashMap<Category, Integer> sortHash = new HashMap<>();
-		List<CategorySort> list = categorySortRepository.findByRestaurant(restaurant);
-		if(list!=null || !list.isEmpty()){
-			list.forEach(l->sortHash.put(l.getCategory(),l.getSortingNo()));
-			return sortHash;
-		}else{
-			return Collections.emptyMap();
-		}
+	public List<CategorySort> getCategorySort(Restaurant restaurant){
+		return categorySortRepository.findByRestaurant(restaurant);
+	}
+
+	@Override
+	public Optional<List<CategorySort>> saveCategorySort(List<CategorySort> categorySorts) {
+		Restaurant restaurant=getLoggedInRestaurant();
+		categorySorts.forEach(categorySort -> categorySort.setRestaurant(restaurant));
+		return Optional.ofNullable(categorySortRepository.saveAll(categorySorts));
 	}
 }
