@@ -377,5 +377,24 @@ public class RestaurantController {
         restaurantService.saveRestaurant(restaurant);
         return "redirect:/restaurant/menu";
     }
+    @GetMapping("/categorySort")
+    @PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
+    public String getCategorySort(Model model){
+        Restaurant restaurant=restaurantService.getLoggedInRestaurant();
+        model.addAttribute("catOrderRequest", CatSortRequestConverter.convert(restaurantService.getCategorySort(restaurant)));
+        return "categorysortpage";
+    }
+
+    @PostMapping("/categorySort")
+    @PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
+    public String postCategorySort(@ModelAttribute("catOrderRequest") CatSortRequest request,Model model){
+        Restaurant restaurant=restaurantService.getLoggedInRestaurant();
+        Optional<List<CategorySort>> result = restaurantService.saveCategorySort(CartSortEntityConverter.convert(request));
+        if(!result.isPresent()){
+            model.addAttribute("catOrderRequest", CatSortRequestConverter.convert(restaurantService.getCategorySort(restaurant)));
+            return "redirect:/restaurant/categorySort?error";
+        }
+        return "redirect:/restaurant/menu";
+    }
 
 }

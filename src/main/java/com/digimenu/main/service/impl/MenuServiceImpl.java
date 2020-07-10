@@ -9,9 +9,7 @@ import com.digimenu.main.domain.converter.MenuDtoConverter;
 import com.digimenu.main.domain.converter.MenuResponseItemConverter;
 import com.digimenu.main.domain.converter.PanelMenuDtoConverter;
 import com.digimenu.main.domain.dto.PanelMenuDto;
-import com.digimenu.main.domain.entity.Campaign;
-import com.digimenu.main.domain.entity.Category;
-import com.digimenu.main.domain.entity.Restaurant;
+import com.digimenu.main.domain.entity.*;
 import com.digimenu.main.domain.response.GetMenuResponse;
 import com.digimenu.main.domain.response.MenuResponseItem;
 import com.digimenu.main.service.CampaignService;
@@ -23,7 +21,6 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.digimenu.main.domain.entity.Menu;
 import com.digimenu.main.repository.MenuRepository;
 @Service
 public class MenuServiceImpl implements MenuService {
@@ -155,9 +152,12 @@ public class MenuServiceImpl implements MenuService {
 
 	@Override
 	public Map<String,List<MenuResponseItem>> groupItemsByCategory(List<MenuResponseItem> items,Restaurant restaurant){
-		Map<Category, Integer> sortHash = restaurantService.getCategorySort(restaurant);
-		if(sortHash.isEmpty()){
-			return items.stream().collect(Collectors.groupingBy(MenuResponseItem::getCategory));
+		List<CategorySort> sortList = restaurantService.getCategorySort(restaurant);
+		if(sortList.isEmpty()){
+			Map<String, List<MenuResponseItem>> itemMap = items.stream().collect(Collectors.groupingBy(MenuResponseItem::getCategory));
+			Map<String, List<MenuResponseItem>> sortedMap = new TreeMap<>(Collator.getInstance(new Locale("tr","TR")));
+			sortedMap.putAll(itemMap);
+			return sortedMap;
 		}else{
 			return null ; //doldurulacak
 		}
