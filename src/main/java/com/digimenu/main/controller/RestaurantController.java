@@ -3,6 +3,7 @@ package com.digimenu.main.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import javax.validation.Valid;
 
@@ -381,7 +382,21 @@ public class RestaurantController {
     @PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
     public String getCategorySort(Model model){
         Restaurant restaurant=restaurantService.getLoggedInRestaurant();
-        model.addAttribute("catOrderRequest", CatSortRequestConverter.convert(restaurantService.getCategorySort(restaurant)));
+        List<CategorySort> catSort = restaurantService.getCategorySort(restaurant);
+        if (catSort==null || !catSort.isEmpty()){
+            model.addAttribute("catOrderRequest", CatSortRequestConverter.convert(catSort));
+        }else{
+            Set<String> categories = menuService.findCategories(restaurant);
+            CatSortRequest emptyRequest=new CatSortRequest();
+            List emptyList=new ArrayList<CatSortDto>();
+            categories.forEach(cat->{
+                CatSortDto dto=new CatSortDto();
+                dto.setCategory(cat);
+                emptyList.add(dto);
+            });
+            emptyRequest.setDtoList(emptyList);
+            model.addAttribute("catOrderRequest", emptyRequest);
+        }
         return "categorysortpage";
     }
 
