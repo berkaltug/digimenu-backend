@@ -1,10 +1,7 @@
 package com.digimenu.main.service.impl;
 
 import java.text.Collator;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import com.digimenu.main.domain.converter.CampaignResponseItemConverter;
@@ -145,7 +142,7 @@ public class MenuServiceImpl implements MenuService {
 				.stream()
 				.filter(item -> item.getFavourite())
 				.collect(Collectors.toList());
-		Collator collator= Collator.getInstance(new Locale("tr","TR"));
+		Collator collator = Collator.getInstance(new Locale("tr","TR"));
 		favourite.sort((menu, t1) -> collator.compare(menu.getItem(),t1.getItem()));
 		return favourite;
 	}
@@ -157,6 +154,9 @@ public class MenuServiceImpl implements MenuService {
 
 	@Override
 	public Map<String,List<MenuResponseItem>> orderItemsByCategory(List<MenuResponseItem> items){
-		return items.stream().collect(Collectors.groupingBy(MenuResponseItem::getCategory));
+		Map<String, List<MenuResponseItem>> itemMap = items.stream().collect(Collectors.groupingBy(MenuResponseItem::getCategory));
+		Map<String, List<MenuResponseItem>> sortedMap = new TreeMap<>(Collator.getInstance(new Locale("tr","TR")));
+		sortedMap.putAll(itemMap);
+		return sortedMap;
 	}
 }
