@@ -12,8 +12,7 @@ public class CategorySort {
 
     @ManyToOne(fetch=FetchType.LAZY)
     private Restaurant restaurant;
-    @ManyToOne(fetch=FetchType.LAZY)
-    private Category category;
+    private String category;
     private Integer sortingNo;
 
     public Long getId() {
@@ -32,11 +31,11 @@ public class CategorySort {
         this.restaurant = restaurant;
     }
 
-    public Category getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(String category) {
         this.category = category;
     }
 

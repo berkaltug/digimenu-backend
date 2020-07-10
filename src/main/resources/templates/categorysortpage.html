@@ -7,29 +7,28 @@
 </head>
 <body>
 <th:block th:include=" fragments/header :: body"></th:block>
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3"></div>
         <div class="col-sm-6 d-flex flex-column justify-content-center align-items-center" id="tablenamingcontainer">
-            <h5 style="font-style: oblique ; margin-top: 15px">Sistemde gözükmesini istediğiniz şekilde masa isimlerini
-                giriniz.</h5>
-            <form method="post" th:action="@{/restaurant/tableNaming}" th:object="${tableNameRequest}">
+            <h6 style="font-style: oblique ; margin-top: 15px">Yemek Kategorilerinizi burada sıralayabilirsiniz. Yukarıda gözükmesini istediğiniz kategoriye 1'den başlayarak numaralar veriniz.</h6>
+            <p style="font-style: oblique ;">Kategorileriniz her zaman (varsa) öne çıkanlar ve kampanyalardan sonra gözükecektir. </p>
+            <form method="post" th:action="@{/restaurant/categorySort}" th:object="${catOrderRequest}">
                 <fieldset>
-                    <th:block th:each="item,itemStat : *{requestItemList}">
+                    <th:block th:each="item,itemStat : *{dtoList}">
 
                         <div class="form-group d-flex justify-content-between align-items-center">
-                            <div><span th:text="'Masa '+ ${itemStat.count} + ' için isim '"></span></div>
+                            <div><span th:text=" ${item.category} + ' için sıra no. '"></span></div>
                             <input type="hidden"
-                                   th:id="${'requestItemList'+__${itemStat.index}__+'.id'}"
-                                   th:name="${'requestItemList['+__${itemStat.index}__+'].id'}"
+                                   th:id="${'dtolist'+__${itemStat.index}__+'.id'}"
+                                   th:name="${'dtoList['+__${itemStat.index}__+'].id'}"
                                    th:value="${item.id}">
-                            <input type="text" th:field="*{requestItemList[__${itemStat.index}__].name}"
+                            <input type="number" th:field="*{dtoList[__${itemStat.index}__].orderNo}"
                                    style="margin-left: 15px">
                             <input type="hidden"
-                                    th:id="${'requestItemList'+__${itemStat.index}__+'.masaNo'}"
-                                   th:name="${'requestItemList['+__${itemStat.index}__+'].masaNo'}"
-                                   th:value="${itemStat.count}">
+                                   th:id="${'dtoList'+__${itemStat.index}__+'.category'}"
+                                   th:name="${'dtoList['+__${itemStat.index}__+'].category'}"
+                                   th:value="${item.category}">
                         </div>
 
                     </th:block>

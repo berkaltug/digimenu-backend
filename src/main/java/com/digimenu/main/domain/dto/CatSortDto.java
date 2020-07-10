@@ -4,7 +4,7 @@ import com.digimenu.main.domain.entity.Category;
 
 public class CatSortDto {
     private  Long id;
-    private Category category;
+    private String category;
     private Integer orderNo;
 
     public Long getId() {
@@ -15,11 +15,11 @@ public class CatSortDto {
         this.id = id;
     }
 
-    public Category getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(String category) {
         this.category = category;
     }
 

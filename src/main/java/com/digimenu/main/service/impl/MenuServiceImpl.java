@@ -2,6 +2,9 @@ package com.digimenu.main.service.impl;
 
 import java.text.Collator;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import com.digimenu.main.domain.converter.CampaignResponseItemConverter;
@@ -159,7 +162,19 @@ public class MenuServiceImpl implements MenuService {
 			sortedMap.putAll(itemMap);
 			return sortedMap;
 		}else{
-			return null ; //doldurulacak
+			Map<String, List<MenuResponseItem>> itemMap = items.stream().collect(Collectors.groupingBy(MenuResponseItem::getCategory));
+			// sortliste göre sıralancak
+			return null;
 		}
 	}
+
+	@Override
+	public Set<String> findCategories(Restaurant restaurant){
+		List<Menu> list = menuRepository.getByRestaurant(restaurant.getId());
+		Set<String> categorySet=new HashSet<>();
+		list.forEach(item->categorySet.add(item.getCategory()));
+		return  categorySet;
+	}
+
+
 }
