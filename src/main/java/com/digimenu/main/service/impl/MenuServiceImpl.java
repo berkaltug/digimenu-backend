@@ -2,6 +2,9 @@ package com.digimenu.main.service.impl;
 
 import java.text.Collator;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import com.digimenu.main.domain.converter.CampaignResponseItemConverter;
@@ -9,10 +12,10 @@ import com.digimenu.main.domain.converter.MenuDtoConverter;
 import com.digimenu.main.domain.converter.MenuResponseItemConverter;
 import com.digimenu.main.domain.converter.PanelMenuDtoConverter;
 import com.digimenu.main.domain.dto.PanelMenuDto;
-import com.digimenu.main.domain.entity.Campaign;
-import com.digimenu.main.domain.entity.Restaurant;
+import com.digimenu.main.domain.entity.*;
 import com.digimenu.main.domain.response.GetMenuResponse;
 import com.digimenu.main.domain.response.MenuResponseItem;
+import com.digimenu.main.domain.util.CategoryComparator;
 import com.digimenu.main.service.CampaignService;
 import com.digimenu.main.service.CloudinaryService;
 import com.digimenu.main.service.MenuService;
@@ -22,7 +25,6 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.digimenu.main.domain.entity.Menu;
 import com.digimenu.main.repository.MenuRepository;
 @Service
 public class MenuServiceImpl implements MenuService {
@@ -142,7 +144,7 @@ public class MenuServiceImpl implements MenuService {
 				.stream()
 				.filter(item -> item.getFavourite())
 				.collect(Collectors.toList());
-		Collator collator = Collator.getInstance(new Locale("tr","TR"));
+		Collator collator= Collator.getInstance(new Locale("tr","TR"));
 		favourite.sort((menu, t1) -> collator.compare(menu.getItem(),t1.getItem()));
 		return favourite;
 	}
@@ -153,10 +155,38 @@ public class MenuServiceImpl implements MenuService {
 	}
 
 	@Override
-	public Map<String,List<MenuResponseItem>> orderItemsByCategory(List<MenuResponseItem> items){
-		Map<String, List<MenuResponseItem>> itemMap = items.stream().collect(Collectors.groupingBy(MenuResponseItem::getCategory));
-		Map<String, List<MenuResponseItem>> sortedMap = new TreeMap<>(Collator.getInstance(new Locale("tr","TR")));
-		sortedMap.putAll(itemMap);
-		return sortedMap;
+	public Map<String,List<MenuResponseItem>> groupItemsByCategory(List<MenuResponseItem> items,Restaurant restaurant){
+		List<CategorySort> sortList = restaurantService.getCategorySort(restaurant);
+		if(sortList.isEmpty()){
+			Map<String, List<MenuResponseItem>> itemMap = items.stream().collect(Collectors.groupingBy(MenuResponseItem::getCategory));
+			Map<String, List<MenuResponseItem>> sortedMap = new TreeMap<>(Collator.getInstance(new Locale("tr","TR")));
+			sortedMap.putAll(itemMap);
+			return sortedMap;
+		}else{
+			List<String> sortedCategories = sortList.stream().map(CategorySort::getCategory).collect(Collectors.toList());
+
+			// sortliste göre sıralancak
+			Collections.sort(items,new CategoryComparator(sortedCategories));
+			//LinkedHashMap constructor kullanmazsan sıra bozuluyor, linkedhashmap eklendiği sırayı korur
+			return items
+					.stream()
+					.collect(
+							Collectors.groupingBy(
+									MenuResponseItem::getCategory,
+									LinkedHashMap::new,
+									Collectors.toList()
+							)
+					);
+		}
 	}
+
+	@Override
+	public Set<String> findCategories(Restaurant restaurant){
+		List<Menu> list = menuRepository.getByRestaurant(restaurant.getId());
+		Set<String> categorySet=new HashSet<>();
+		list.forEach(item->categorySet.add(item.getCategory()));
+		return  categorySet;
+	}
+
+
 }
