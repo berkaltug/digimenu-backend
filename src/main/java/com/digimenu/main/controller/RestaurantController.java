@@ -3,6 +3,8 @@ package com.digimenu.main.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -377,5 +379,46 @@ public class RestaurantController {
         restaurantService.saveRestaurant(restaurant);
         return "redirect:/restaurant/menu";
     }
+    @GetMapping("/categorySort")
+    @PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
+    public String getCategorySort(Model model){
+        Restaurant restaurant=restaurantService.getLoggedInRestaurant();
+        List<CategorySort> catSorts = restaurantService.getCategorySort(restaurant);
+        Set<String> categories = menuService.findCategories(restaurant);
+        Set<String> kontrolList= catSorts.stream().map(CategorySort::getCategory).collect(Collectors.toSet());
+        if (catSorts==null || !catSorts.isEmpty()){
+            CatSortRequest request = CatSortRequestConverter.convert(catSorts);
+           categories.forEach(category->{
+               if(!kontrolList.contains(category)){
+                   CatSortDto dto = new CatSortDto();
+                   dto.setCategory(category);
+                   request.getDtoList().add(dto);
+               }
+           });
+            model.addAttribute("catOrderRequest", request);
+        }else{
+            CatSortRequest emptyRequest=new CatSortRequest();
+            List emptyList=new ArrayList<CatSortDto>();
+            categories.forEach(cat->{
+                CatSortDto dto=new CatSortDto();
+                dto.setCategory(cat);
+                emptyList.add(dto);
+            });
+            emptyRequest.setDtoList(emptyList);
+            model.addAttribute("catOrderRequest", emptyRequest);
+        }
+        return "categorysortpage";
+    }
 
+    @PostMapping("/categorySort")
+    @PreAuthorize("hasRole('RESTAURANT') OR hasRole('ADMIN')")
+    public String postCategorySort(@ModelAttribute("catOrderRequest") CatSortRequest request,Model model){
+        Restaurant restaurant=restaurantService.getLoggedInRestaurant();
+        Optional<List<CategorySort>> result = restaurantService.saveCategorySort(CartSortEntityConverter.convert(request));
+        if(!result.isPresent()){
+            model.addAttribute("catOrderRequest", CatSortRequestConverter.convert(restaurantService.getCategorySort(restaurant)));
+            return "redirect:/restaurant/categorySort?error";
+        }
+        return "redirect:/restaurant/menu";
+    }
 }

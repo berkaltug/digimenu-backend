@@ -3,8 +3,10 @@ package com.digimenu.main.service;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
 import com.digimenu.main.domain.dto.PanelMenuDto;
+import com.digimenu.main.domain.entity.Category;
 import com.digimenu.main.domain.entity.Menu;
 import com.digimenu.main.domain.entity.Restaurant;
 import com.digimenu.main.domain.response.GetMenuResponse;
@@ -21,5 +23,6 @@ public interface MenuService {
 	void updateMenuItem(Menu menu);
 	List<Menu> getFavoriteItemsByRestaurant(Long id);
 	Optional<Menu> getMenuByRestaurantAndName(Restaurant restaurant, String name);
-	Map<String,List<MenuResponseItem>> orderItemsByCategory(List<MenuResponseItem> items);
+	Map<String,List<MenuResponseItem>> groupItemsByCategory(List<MenuResponseItem> items,Restaurant restaurant);
+	Set<String> findCategories(Restaurant restaurant);
 }
