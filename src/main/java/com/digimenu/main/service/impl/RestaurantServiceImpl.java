@@ -112,7 +112,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 
 	@Override
 	public List<CategorySort> getCategorySort(Restaurant restaurant){
-		return categorySortRepository.findByRestaurant(restaurant);
+		return categorySortRepository.findByRestaurantOrderBySortingNoAsc(restaurant);
 	}
 
 	@Override

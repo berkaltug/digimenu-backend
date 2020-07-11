@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface CategorySortRepository extends JpaRepository<CategorySort,Long> {
-    List<CategorySort> findByRestaurant(Restaurant restaurant);
+    List<CategorySort> findByRestaurantOrderBySortingNoAsc(Restaurant restaurant);
 }
