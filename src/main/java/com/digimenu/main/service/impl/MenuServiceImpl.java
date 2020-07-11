@@ -15,6 +15,7 @@ import com.digimenu.main.domain.dto.PanelMenuDto;
 import com.digimenu.main.domain.entity.*;
 import com.digimenu.main.domain.response.GetMenuResponse;
 import com.digimenu.main.domain.response.MenuResponseItem;
+import com.digimenu.main.domain.util.CategoryComparator;
 import com.digimenu.main.service.CampaignService;
 import com.digimenu.main.service.CloudinaryService;
 import com.digimenu.main.service.MenuService;
@@ -162,9 +163,20 @@ public class MenuServiceImpl implements MenuService {
 			sortedMap.putAll(itemMap);
 			return sortedMap;
 		}else{
-			Map<String, List<MenuResponseItem>> itemMap = items.stream().collect(Collectors.groupingBy(MenuResponseItem::getCategory));
+			List<String> sortedCategories = sortList.stream().map(CategorySort::getCategory).collect(Collectors.toList());
+
 			// sortliste göre sıralancak
-			return null;
+			Collections.sort(items,new CategoryComparator(sortedCategories));
+			//LinkedHashMap constructor kullanmazsan sıra bozuluyor, linkedhashmap eklendiği sırayı korur
+			return items
+					.stream()
+					.collect(
+							Collectors.groupingBy(
+									MenuResponseItem::getCategory,
+									LinkedHashMap::new,
+									Collectors.toList()
+							)
+					);
 		}
 	}
 
