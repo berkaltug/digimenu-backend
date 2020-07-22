@@ -110,7 +110,7 @@ public class UserController {
 		PasswordResetToken prt=new PasswordResetToken(user);
 		passwordResetTokenRepository.save(prt);
 		StringBuilder sb=new StringBuilder();
-		String contentBody=sb.append("Parolanızı yenilemek için lütfen linke tıklayınız : " +"\n"
+		String contentBody=sb.append("Kullanıcı adı : " + user.getUsername() +" \n  Parolanızı yenilemek için lütfen linke tıklayınız : " +"\n"
 				+"https://digimenu.herokuapp.com/user/resetpassword/"+prt.getToken() +"\n"
 				+"Eğer bu eposta bilginiz dahilinde gelmediyse , lütfen tıklamayıp görmezden geliniz ! "+"\n"
 				+"Digimenu Ekibi")
