@@ -10,6 +10,7 @@ public class MenuResponseItemConverter {
         response.setId(menu.getId());
         response.setCategory(menu.getCategory());
         response.setIngredients(menu.getIngredients());
+        response.setOptions(menu.getOptions());
         response.setItem(menu.getItem());
         response.setPrice(menu.getPrice());
         response.setRating(menu.getRating());

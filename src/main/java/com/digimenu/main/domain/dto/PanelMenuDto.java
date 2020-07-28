@@ -15,6 +15,7 @@ public class PanelMenuDto {
     private String item;
     private Long restaurantId;
     private String ingredients;
+    private String options;
     @NotNull(message = "Ücret alanı boş bırakılamaz")
     @Digits(integer=6, fraction=2)
     private BigDecimal price;
@@ -120,5 +121,13 @@ public class PanelMenuDto {
 
     public void setShouldDelImage(Boolean shouldDelImage) {
         this.shouldDelImage = shouldDelImage;
+    }
+
+    public String getOptions() {
+        return options;
+    }
+
+    public void setOptions(String options) {
+        this.options = options;
     }
 }
