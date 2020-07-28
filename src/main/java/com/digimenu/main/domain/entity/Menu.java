@@ -26,6 +26,8 @@ public class Menu{
 	private String item;
 	
 	private String ingredients;
+	private String options;
+
 	@NotNull(message = "Ücret alanı boş bırakılamaz")
 	@Digits(integer=6, fraction=2)
 	private BigDecimal price;
@@ -44,6 +46,7 @@ public class Menu{
 	private Boolean isFavourite=false;
 
 	private String imagePublicId;
+
 
 	public Long getId() {
 		return id;
@@ -69,6 +72,14 @@ public class Menu{
 		this.ingredients = ingredients;
 	}
 
+	public String getOptions() {
+		return options;
+	}
+
+	public void setOptions(String options) {
+		this.options = options;
+	}
+
 	public BigDecimal getPrice() {
 		return price;
 	}
@@ -83,6 +94,22 @@ public class Menu{
 
 	public void setRestaurant(Restaurant restaurant) {
 		this.restaurant = restaurant;
+	}
+
+	public Float getRating() {
+		return rating;
+	}
+
+	public void setRating(Float rating) {
+		this.rating = rating;
+	}
+
+	public Integer getVoteCount() {
+		return voteCount;
+	}
+
+	public void setVoteCount(Integer voteCount) {
+		this.voteCount = voteCount;
 	}
 
 	public String getCategory() {
@@ -109,22 +136,6 @@ public class Menu{
 		isFavourite = favourite;
 	}
 
-	public Float getRating() {
-		return rating;
-	}
-
-	public void setRating(Float rating) {
-		this.rating = rating;
-	}
-
-	public Integer getVoteCount() {
-		return voteCount;
-	}
-
-	public void setVoteCount(Integer voteCount) {
-		this.voteCount = voteCount;
-	}
-
 	public String getImagePublicId() {
 		return imagePublicId;
 	}
@@ -141,6 +152,7 @@ public class Menu{
 		return Objects.equals(id, menu.id) &&
 				Objects.equals(item, menu.item) &&
 				Objects.equals(ingredients, menu.ingredients) &&
+				Objects.equals(options, menu.options) &&
 				Objects.equals(price, menu.price) &&
 				Objects.equals(restaurant, menu.restaurant) &&
 				Objects.equals(rating, menu.rating) &&
@@ -153,7 +165,7 @@ public class Menu{
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, item, ingredients, price, restaurant, rating, voteCount, category, isActive, isFavourite, imagePublicId);
+		return Objects.hash(id, item, ingredients, options, price, restaurant, rating, voteCount, category, isActive, isFavourite, imagePublicId);
 	}
 
 	@Override
@@ -162,6 +174,7 @@ public class Menu{
 				"id=" + id +
 				", item='" + item + '\'' +
 				", ingredients='" + ingredients + '\'' +
+				", options='" + options + '\'' +
 				", price=" + price +
 				", restaurant=" + restaurant.getId() +
 				", rating=" + rating +

@@ -9,6 +9,7 @@ public class PanelMenuDtoConverter {
         menu.setId(panelMenuDto.getId());
         menu.setItem(panelMenuDto.getItem());
         menu.setIngredients(panelMenuDto.getIngredients());
+        menu.setOptions(panelMenuDto.getOptions());
         menu.setRating(panelMenuDto.getRating());
         menu.setActive(panelMenuDto.getActive());
         menu.setFavourite(panelMenuDto.getFavourite());
@@ -25,6 +26,7 @@ public class PanelMenuDtoConverter {
         dto.setCategory(menu.getCategory());
         dto.setFavourite(menu.getFavourite());
         dto.setIngredients(menu.getIngredients());
+        dto.setOptions(menu.getOptions());
         dto.setItem(menu.getItem());
         dto.setPrice(menu.getPrice());
         dto.setRating(menu.getRating());

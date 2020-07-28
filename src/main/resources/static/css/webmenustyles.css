@@ -96,7 +96,13 @@ body{ min-height:100%; padding:0; margin:0; position:relative; }
 .item-ingredients {
     font-size: 0.9rem;
 }
-
+.item-options{
+    font-size: 0.9rem;
+}
+.item-options-header{
+    font-size:0.9rem;
+    color: var(--main);
+}
 @media screen and (max-width: 360px) {
     html {
         font-size: 12px;

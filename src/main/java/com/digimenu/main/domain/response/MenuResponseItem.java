@@ -7,6 +7,7 @@ public class MenuResponseItem {
     private Long id;
     private String item;
     private String ingredients;
+    private String options;
     private BigDecimal price;
     private String category;
     private String imagePublicId;
@@ -36,6 +37,14 @@ public class MenuResponseItem {
         this.ingredients = ingredients;
     }
 
+    public String getOptions() {
+        return options;
+    }
+
+    public void setOptions(String options) {
+        this.options = options;
+    }
+
     public BigDecimal getPrice() {
         return price;
     }
@@ -52,20 +61,20 @@ public class MenuResponseItem {
         this.category = category;
     }
 
-    public Float getRating() {
-        return rating;
-    }
-
-    public void setRating(Float rating) {
-        this.rating = rating;
-    }
-
     public String getImagePublicId() {
         return imagePublicId;
     }
 
     public void setImagePublicId(String imagePublicId) {
         this.imagePublicId = imagePublicId;
+    }
+
+    public Float getRating() {
+        return rating;
+    }
+
+    public void setRating(Float rating) {
+        this.rating = rating;
     }
 
     @Override
@@ -76,6 +85,7 @@ public class MenuResponseItem {
         return Objects.equals(id, that.id) &&
                 Objects.equals(item, that.item) &&
                 Objects.equals(ingredients, that.ingredients) &&
+                Objects.equals(options, that.options) &&
                 Objects.equals(price, that.price) &&
                 Objects.equals(category, that.category) &&
                 Objects.equals(imagePublicId, that.imagePublicId) &&
@@ -84,7 +94,7 @@ public class MenuResponseItem {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, item, ingredients, price, category, imagePublicId, rating);
+        return Objects.hash(id, item, ingredients, options, price, category, imagePublicId, rating);
     }
 
     @Override
@@ -93,6 +103,7 @@ public class MenuResponseItem {
                 "id=" + id +
                 ", item='" + item + '\'' +
                 ", ingredients='" + ingredients + '\'' +
+                ", options='" + options + '\'' +
                 ", price=" + price +
                 ", category='" + category + '\'' +
                 ", imagePublicId='" + imagePublicId + '\'' +
