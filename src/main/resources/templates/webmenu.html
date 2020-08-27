@@ -19,7 +19,8 @@
     <div class="container" id="content-wrap">
         <div class="row">
             <div class="col-sm-12 d-flex flex-column align-items-center m-1">
-                <img th:if="${logoId == null}" th:src="@{/img/logo.png}" alt="logomuz :)" class="img-fluid">
+                <img th:if="${logoId == null && themeId!= 24}" th:src="@{/img/logo.png}" alt="logomuz :)" class="img-fluid">
+                <img th:if="${logoId == null && themeId== 24}" th:src="@{/img/whitelogo.png}" alt="logomuz :)" class="img-fluid">
                 <img th:if="${logoId!= null}"
                      th:src="'http://res.cloudinary.com/hkn1l1hym/image/upload/w_300/' + ${logoId}"
                      alt="restaurant-logo" class="img-fluid ">

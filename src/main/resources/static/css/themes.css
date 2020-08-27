@@ -327,4 +327,14 @@ html[data-theme='theme-23'] > body {
     background-repeat: repeat;
     background-size: contain;
 }
+html[data-theme='theme-24'] {
+    --box-color: #f4f8ff;
+    --background: #060606;
+    --main: #7d7e8e;
+    --main-complimentary: #6f3131;
+    --font-color: #242323;
+}
+html[data-theme='theme-24'] .ribbon {
+    display: none;
+}
 
